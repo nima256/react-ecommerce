@@ -1,0 +1,15 @@
+@font-face {
+  font-family: myFirstFont;
+  src: url("./assets/Fonts/NotoNaskhArabic-VariableFont_wght.ttf");
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: myFirstFont;
+}
+
+.container-fluid {
+  padding: 0px 4px;
+}
