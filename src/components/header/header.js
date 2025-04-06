@@ -1,6 +1,6 @@
-import React from "react";
 import "../header/header.css";
 import Logo from "../../assets/images/Logo.jpg";
+import Select from "../selectDrop/select";
 
 import SearchIcon from "@mui/icons-material/Search";
 
@@ -17,8 +17,7 @@ const Header = () => {
             {/* Header Search Start */}
             <div className="col-sm-5">
               <div className="headerSearch d-flex align-items-center">
-                <div className="selectDrop cursor">همه دسته بندی ها</div>
-
+                <Select />
                 <div className="search">
                   <input type="text" placeholder="جستجو کالا" />
                   <SearchIcon className="searchIcon cursor" />
