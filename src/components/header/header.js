@@ -1,6 +1,9 @@
 import "../header/header.css";
 import Logo from "../../assets/images/Logo.jpg";
 import Select from "../selectDrop/select";
+import compareIcon from "../../assets/images/comparison.svg";
+import cartIcon from "../../assets/images/cart-shopping.svg";
+import accountIcon from "../../assets/images/account.svg";
 
 import SearchIcon from "@mui/icons-material/Search";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
@@ -49,7 +52,11 @@ const Header = () => {
         <div className="container-fluid">
           <div className="row">
             <div className="col-sm-2">
-              <img src={Logo} alt="Logo" />
+              <img
+                src={Logo}
+                alt="Logo"
+                style={{ width: "273px", height: "100px" }}
+              />
             </div>
 
             {/* Header Search Start */}
@@ -70,12 +77,41 @@ const Header = () => {
             {/* Header Search End */}
 
             <div className="col-sm-5 d-flex align-items-center">
-              <div className="countryWrapper">
-                <Select
-                  data={countryList}
-                  placeholder={"مکان شما"}
-                  icon={<LocationOnOutlinedIcon style={{ opacity: "0.5" }} />}
-                />
+              <div className="mr-auto d-flex align-items-center">
+                <div className="countryWrapper">
+                  <Select
+                    data={countryList}
+                    placeholder={"مکان شما"}
+                    icon={<LocationOnOutlinedIcon style={{ opacity: "0.5" }} />}
+                  />
+                </div>
+
+                <ul className="list list-inline mb-0 header-tabs">
+                  <li className="list-inline-item">
+                    <span>
+                      <img src={compareIcon} alt="لوگو مقایسه" />
+                      <span className="badge bg-success rounded-circle d-flex justify-content-center">
+                        3
+                      </span>
+                      مقایسه
+                    </span>
+                  </li>
+                  <li className="list-inline-item">
+                    <span>
+                      <img src={cartIcon} alt="سبد خرید" />
+                      <span className="badge bg-success rounded-circle d-flex justify-content-center">
+                        3
+                      </span>
+                      سبد خرید
+                    </span>
+                  </li>
+                  <li className="list-inline-item">
+                    <span>
+                      <img src={accountIcon} alt="حساب کاربری" />
+                      حساب کاربری
+                    </span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
