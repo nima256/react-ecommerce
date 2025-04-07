@@ -9,6 +9,9 @@ const Select = ({ data, placeholder, icon }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [selectedItem, setSelectedItem] = useState(placeholder);
 
+  const [listData, setListData] = useState(data);
+  const [listData2, setListData2] = useState(data);
+
   const openSelect = () => {
     setIsOpenSelect(!isOpenSelect);
   };
@@ -19,18 +22,37 @@ const Select = ({ data, placeholder, icon }) => {
     setSelectedItem(item);
   };
 
+  const filterList = (e) => {
+    const keyward = e.target.value;
+
+    const list = listData2.filter((item) => {
+      return item.includes(keyward);
+    });
+
+    const list2 = list.filter((item, index) => list.indexOf(item) === index);
+
+    setListData(list2);
+  };
+
   return (
     <ClickAwayListener onClickAway={() => setIsOpenSelect(false)}>
       <div className="selectDropWrapper cursor position-relative">
         {icon}
         <span className="selectDropp" onClick={openSelect}>
-          {selectedItem} <ArrowDropDownIcon className="dropDownArrow" />
+          {selectedItem.length > 14
+            ? selectedItem.substr(0, 14) + "..."
+            : selectedItem}{" "}
+          <ArrowDropDownIcon className="dropDownArrow" />
         </span>
 
         {isOpenSelect === true && (
           <div className="selectDrop">
             <div className="searchField">
-              <input type="text" placeholder="جستجو دسته بندی..." />
+              <input
+                type="text"
+                placeholder="جستجو دسته بندی..."
+                onChange={filterList}
+              />
             </div>
             <ul className="searchResults">
               <li
@@ -40,7 +62,7 @@ const Select = ({ data, placeholder, icon }) => {
               >
                 {placeholder}
               </li>
-              {data.map((item, index) => {
+              {listData.map((item, index) => {
                 return (
                   <li
                     key={index + 1}
