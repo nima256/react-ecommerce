@@ -2,19 +2,20 @@ header {
   width: 100%;
   height: auto;
   margin: auto;
-  padding: 30px 0px;
+  padding: 10px 0px;
 }
 
 header .headerSearch {
-  width: 100%;
-  height: 60px;
+  width: 97%;
+  height: 52px;
   border: 1px solid #bce3c9;
   padding: 10px 20px;
+  border-radius: 4px;
 }
 
 header .headerSearch .selectDropWrapper {
   width: 20%;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 500;
   position: relative;
 }
@@ -40,7 +41,7 @@ header .headerSearch .search input {
   height: 50px;
   border: 0px;
   outline: none !important;
-  font-size: 18px;
+  font-size: 15px;
 }
 
 header .headerSearch .search .searchIcon {
@@ -52,13 +53,14 @@ header .headerSearch .search .searchIcon {
 }
 
 header .countryWrapper .selectDropWrapper {
-  width: 200px !important;
+  width: 168px !important;
   height: 40px;
   border: 1px solid #ececec;
   padding-right: 10px;
   display: flex;
   align-items: center;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
+  /* box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23); */
 }
 
 header .countryWrapper .selectDropWrapper .selectDropp {
@@ -74,7 +76,7 @@ header .countryWrapper .selectDropp {
 }
 
 header .header-tabs {
-  padding-right: 40px;
+  padding-right: 102px;
 }
 
 .mr-auto {
@@ -87,7 +89,7 @@ header .header-tabs li {
 }
 
 header .header-tabs li span {
-  font-size: 20px;
+  font-size: 16px;
   cursor: pointer;
 }
 
@@ -99,12 +101,47 @@ header .header-tabs li span img {
 }
 
 header .header-tabs li span.badge {
-  font-size: 16px;
-  width: 20px;
-  height: 20px;
+  font-size: 13px;
+  width: 18px;
+  height: 18px;
   color: #fff;
   font-weight: 400;
   position: absolute;
-  top: -16px;
-  right: 14px;
+  top: -15px;
+  right: 18px;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 40px;
+  left: 0px;
+  width: 200px;
+  height: auto;
+  background: #fff;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);
+  padding: 10px 0px !important;
+}
+
+.dropdownMenu li {
+  width: 100%;
+  list-style: none;
+  margin: 0px !important;
+}
+
+.dropdownMenu li button {
+  width: 100% !important;
+  text-align: left !important;
+  justify-content: flex-start !important;
+  color: rgba(0, 0, 0, 0.7) !important;
+  font-size: 15px !important;
+  padding: 10px 15px !important;
+}
+
+.dropdownMenu li button svg {
+  opacity: 0.7;
+  margin-left: 8px !important;
+}
+
+.dropdownMenu li button:hover {
+  background: #f1f1f1;
 }

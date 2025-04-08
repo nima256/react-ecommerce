@@ -38,7 +38,11 @@ const Select = ({ data, placeholder, icon }) => {
     <ClickAwayListener onClickAway={() => setIsOpenSelect(false)}>
       <div className="selectDropWrapper cursor position-relative">
         {icon}
-        <span className="selectDropp" onClick={openSelect}>
+        <span
+          className="selectDropp"
+          style={{ fontSize: "15px" }}
+          onClick={openSelect}
+        >
           {selectedItem.length > 14
             ? selectedItem.substr(0, 14) + "..."
             : selectedItem}{" "}
