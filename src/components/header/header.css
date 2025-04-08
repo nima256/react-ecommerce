@@ -89,7 +89,6 @@ header .header-tabs li {
 }
 
 header .header-tabs li span {
-  font-size: 16px;
   cursor: pointer;
 }
 
@@ -98,17 +97,6 @@ header .header-tabs li span img {
   width: 28px;
   height: 28px;
   margin-left: 10px;
-}
-
-header .header-tabs li span.badge {
-  font-size: 13px;
-  width: 18px;
-  height: 18px;
-  color: #fff;
-  font-weight: 400;
-  position: absolute;
-  top: -15px;
-  right: 18px;
 }
 
 .dropdownMenu {
@@ -120,6 +108,7 @@ header .header-tabs li span.badge {
   background: #fff;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);
   padding: 10px 0px !important;
+  z-index: 100;
 }
 
 .dropdownMenu li {
