@@ -1,0 +1,25 @@
+.catSliderSection {
+  width: 100% !important;
+  height: auto !important;
+  padding: 10px 0px !important;
+}
+
+.catSliderSection .slick-slide {
+  padding-right: 20px !important;
+}
+
+.cat_slider_main .item {
+  height: auto !important;
+  background: #f4f6fa !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.cat_slider_main .item .info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}

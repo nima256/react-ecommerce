@@ -28,7 +28,7 @@
   font-size: 15px;
 }
 
-.mr-3 {
+.nav .mr-3 {
   margin-right: 16px;
 }
 
@@ -41,7 +41,7 @@
   font-size: 35px;
 }
 
-.p-0 {
+.nav .p-0 {
   padding: 0 !important;
 }
 
@@ -89,23 +89,23 @@ nav .dropdown_menu li button:hover {
   visibility: inherit;
 }
 
-.megaMenu {
+.nav .megaMenu {
   height: auto !important;
   width: 90% !important;
   padding: 40px 45px !important;
 }
 
-.megaMenu .megaMenuImg {
+.nav .megaMenu .megaMenuImg {
   width: 300px;
   height: 300px;
   border-radius: 15px;
 }
 
-.megaMenu .col ul li {
+.nav .megaMenu .col ul li {
   margin-bottom: 10px !important;
   display: block;
 }
-.megaMenu .col ul li a {
+.nav .megaMenu .col ul li a {
   color: rgba(0, 0, 0, 0.8);
   font-size: 18px;
   text-decoration: none;
