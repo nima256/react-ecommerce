@@ -25,6 +25,7 @@
 .nav nav ul li button a {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.8) !important;
+  font-size: 15px;
 }
 
 .mr-3 {
