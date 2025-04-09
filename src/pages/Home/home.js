@@ -1,7 +1,11 @@
 import HomeSlider from "./slider/slider";
 
 const Home = () => {
-  return <HomeSlider />;
+  return (
+    <>
+      <HomeSlider />
+    </>
+  );
 };
 
 export default Home;
