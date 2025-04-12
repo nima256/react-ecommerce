@@ -46,11 +46,13 @@ const CatSlider = () => {
             {itemBg.length !== 0 &&
               itemBg.map((item, index) => {
                 return (
-                  <div className="item">
-                    <div className="info" style={{ background: item }}>
-                      <img src={categoryImg} alt="" className="categoryImg" />
-                      <h5>پیراهن</h5>
-                      <p dir="rtl">۲۸ عدد</p>
+                  <div>
+                    <div className="item" style={{ background: item }}>
+                      <div className="info">
+                        <img src={categoryImg} alt="" className="categoryImg" />
+                        <h5>پیراهن</h5>
+                        <p dir="rtl">۲۸ عدد</p>
+                      </div>
                     </div>
                   </div>
                 );
