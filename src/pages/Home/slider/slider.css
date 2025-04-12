@@ -21,22 +21,22 @@
 }
 
 .slick-arrow.slick-next {
-  left: 2% !important;
+  left: 96% !important;
 }
 
 .slick-arrow.slick-prev {
-  right: 2% !important;
+  left: 2% !important;
 }
 
 .slick-prev:before {
-  content: "\f105" !important;
+  content: "\f104" !important;
   font-family: FontAwesome !important;
   font-size: 30px !important;
   color: #000;
 }
 
 .slick-next:before {
-  content: "\f104" !important;
+  content: "\f105" !important;
   font-family: FontAwesome !important;
   font-size: 30px !important;
   color: #000;
