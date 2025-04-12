@@ -137,15 +137,6 @@ const CatSlider = () => {
           </Slider>
         </div>
       </div>
-
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
     </>
   );
 };
