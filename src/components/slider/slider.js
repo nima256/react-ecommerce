@@ -3,7 +3,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import "./slider.css";
 
-import Slide1 from "../../../assets/images/slide1.png";
+import Slide1 from "../../assets/images/slide1.png";
 
 import Button from "@mui/material/Button";
 import SendOutlinedIcon from "@mui/icons-material/SendOutlined";

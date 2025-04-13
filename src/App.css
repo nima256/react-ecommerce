@@ -36,3 +36,15 @@
 .transition {
   transition: all 0.3s ease-in-out;
 }
+
+.mr-auto {
+  margin-right: auto !important;
+}
+
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+
+.mt-0 {
+  margin-bottom: 0px;
+}
