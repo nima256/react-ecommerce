@@ -2,6 +2,7 @@ import "./home.css";
 import Banners from "../../components/banners/banners";
 import CatSlider from "../../components/catSlider/catSlider";
 import HomeSlider from "../../components/slider/slider";
+import Product from "../../components/product/product";
 
 const Home = () => {
   return (
@@ -11,7 +12,7 @@ const Home = () => {
       <Banners />
 
       <section className="homeProducts">
-        <div className="container-fluid">
+        <div className="container-fluid forPaddingLeft">
           <div className="d-flex align-items-center">
             <h2 className="hd mb-0 mt-0">محصولات پرطرفدار</h2>
             <ul className="list list-inline mr-auto filterTab">
@@ -34,6 +35,39 @@ const Home = () => {
                 <a className="cursor transition">کفش</a>
               </li>
             </ul>
+          </div>
+
+          <div className="productRow">
+            <div className="item">
+              <Product />
+            </div>
+            <div className="item">
+              <Product />
+            </div>
+            <div className="item">
+              <Product />
+            </div>
+            <div className="item">
+              <Product />
+            </div>
+            <div className="item">
+              <Product />
+            </div>
+            <div className="item">
+              <Product />
+            </div>
+            <div className="item">
+              <Product />
+            </div>
+            <div className="item">
+              <Product />
+            </div>
+            <div className="item">
+              <Product />
+            </div>
+            <div className="item">
+              <Product />
+            </div>
           </div>
         </div>
       </section>

@@ -18,3 +18,19 @@
   color: #3bb77e !important;
   transform: translateY(-10px);
 }
+
+.homeProducts .productRow {
+  display: flex;
+  padding: 30px 0px;
+  margin: 0px -15px;
+  flex-wrap: wrap;
+}
+
+.homeProducts .productRow .item {
+  width: 20%;
+  padding: 15px 15px;
+}
+
+.forPaddingLeft {
+  padding-left: 15px !important;
+}
