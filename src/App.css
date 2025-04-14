@@ -48,3 +48,11 @@
 .mt-0 {
   margin-bottom: 0px;
 }
+
+.dirRtl {
+  direction: rtl !important;
+}
+
+.pl-5 {
+  padding-left: 3rem !important;
+}

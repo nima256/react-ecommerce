@@ -21,6 +21,7 @@ import axios from "axios";
 
 const Header = () => {
   const [isOpenDropDown, setIsOpenDropDown] = useState(false);
+  const headerRef = useRef();
 
   const [categories, setCategories] = useState([
     "پیراهن",
@@ -53,9 +54,20 @@ const Header = () => {
     }
   };
 
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      let position = window.pageYOffset;
+      if (position > 100) {
+        headerRef.current.classList.add("fixed");
+      } else {
+        headerRef.current.classList.remove("fixed");
+      }
+    });
+  }, []);
+
   return (
     <>
-      <div className="headerWrapper">
+      <div className="headerWrapper" ref={headerRef}>
         <header>
           <div className="container-fluid">
             <div className="row">

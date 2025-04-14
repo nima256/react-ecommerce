@@ -67,7 +67,6 @@
 .productThumb:hover .imgWrapper .overlay {
   opacity: 1;
   transform: scale(1);
-  background: rgba(255, 255, 255, 0.5);
 }
 
 .productThumb .imgWrapper .overlay ul {
@@ -134,8 +133,8 @@
 }
 
 .productThumb .price {
-  font-size: 20px;
-  margin-left: 6px;
+  font-size: 18px;
+  margin-left: 8px;
 }
 
 .productThumb .oldPrice {
@@ -160,4 +159,8 @@
 .productThumb button svg {
   font-size: 17px;
   margin-right: 3px;
+}
+
+.slick-slide img {
+  display: inline !important;
 }

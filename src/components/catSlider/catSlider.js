@@ -35,6 +35,7 @@ const CatSlider = () => {
     slidesToScroll: 1,
     arrows: true,
     rtl: true,
+    autoplay: 2000,
   };
 
   return (
@@ -57,83 +58,6 @@ const CatSlider = () => {
                   </div>
                 );
               })}
-            {/* <div className="item">
-              <div className="info">
-                <img src={categoryImg} alt="" className="categoryImg" />
-                <h5>پیراهن</h5>
-                <p dir="rtl">۲۸ عدد</p>
-              </div>
-            </div>
-            <div className="item">
-              <div className="info">
-                <img src={categoryImg} alt="" className="categoryImg" />
-                <h5>تی شرت</h5>
-                <p dir="rtl">۲۸ عدد</p>
-              </div>
-            </div>
-            <div className="item">
-              <div className="info">
-                <img src={categoryImg} alt="" className="categoryImg" />
-                <h5>شلوار</h5>
-                <p dir="rtl">۲۸ عدد</p>{" "}
-              </div>
-            </div>
-            <div className="item">
-              <div className="info">
-                <img src={categoryImg} alt="" className="categoryImg" />
-                <h5>کفش</h5>
-                <p dir="rtl">۲۸ عدد</p>{" "}
-              </div>
-            </div>
-            <div className="item">
-              <div className="info">
-                <img src={categoryImg} alt="" className="categoryImg" />
-                <h5>کاپشن</h5>
-                <p dir="rtl">۲۸ عدد</p>{" "}
-              </div>
-            </div>
-            <div className="item">
-              <div className="info">
-                <img src={categoryImg} alt="" className="categoryImg" />
-                <h5>شلوارک</h5>
-                <p dir="rtl">۲۸ عدد</p>{" "}
-              </div>
-            </div>
-            <div className="item">
-              <div className="info">
-                <img src={categoryImg} alt="" className="categoryImg" />
-                <h5>تاب</h5>
-                <p dir="rtl">۲۸ عدد</p>{" "}
-              </div>
-            </div>
-            <div className="item">
-              <div className="info">
-                <img src={categoryImg} alt="" className="categoryImg" />
-                <h5>کفش</h5>
-                <p dir="rtl">۲۸ عدد</p>{" "}
-              </div>
-            </div>
-            <div className="item">
-              <div className="info">
-                <img src={categoryImg} alt="" className="categoryImg" />
-                <h5>کاپشن</h5>
-                <p dir="rtl">۲۸ عدد</p>{" "}
-              </div>
-            </div>
-            <div className="item">
-              <div className="info">
-                <img src={categoryImg} alt="" className="categoryImg" />
-                <h5>شلوارک</h5>
-                <p dir="rtl">۲۸ عدد</p>{" "}
-              </div>
-            </div>
-            <div className="item">
-              <div className="info">
-                <img src={categoryImg} alt="" className="categoryImg" />
-                <h5>تاب</h5>
-                <p dir="rtl">۲۸ عدد</p>{" "}
-              </div>
-            </div> */}
           </Slider>
         </div>
       </div>

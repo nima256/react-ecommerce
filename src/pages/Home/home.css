@@ -1,5 +1,4 @@
 .homeProducts {
-  margin-bottom: 200px;
   padding: 25px 0px;
 }
 .filterTab li {
@@ -28,9 +27,18 @@
 
 .homeProducts .productRow .item {
   width: 20%;
-  padding: 15px 15px;
+  padding: 15px 10px;
 }
 
 .forPaddingLeft {
   padding-left: 15px !important;
+}
+
+.homeProductsRow2 .prodSlider .item {
+  padding: 15px 0px !important;
+  padding-right: 12px !important;
+}
+
+.homeProductsRow2 .prodSlider .slick-current .productThumb {
+  box-shadow: 0px 3px 6px rgba(216, 7, 7), 0px 3px 6px rgba(247, 5, 5);
 }

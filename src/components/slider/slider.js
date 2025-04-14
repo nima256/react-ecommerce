@@ -18,6 +18,7 @@ const HomeSlider = () => {
     // fade: true,
     arrows: true,
     rtl: true,
+    autoplay: 3000,
   };
 
   return (

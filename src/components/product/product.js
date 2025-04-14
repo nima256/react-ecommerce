@@ -81,7 +81,7 @@ const Product = ({ tag }) => {
           </div>
         </Link>
 
-        <div className="info">
+        <div className="info dirRtl">
           <span className="d-block catName">لی</span>
           <h4 className="title">
             <Link>تسشینب نیسشتب نمسشیب نتسش یبنم تتنسب </Link>
