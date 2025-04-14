@@ -13,9 +13,9 @@ const Home = () => {
 
       <section className="homeProducts">
         <div className="container-fluid forPaddingLeft">
-          <div className="d-flex align-items-center">
+          <div className="d-flex align-items-center ">
             <h2 className="hd mb-0 mt-0">محصولات پرطرفدار</h2>
-            <ul className="list list-inline mr-auto filterTab">
+            <ul className="list list-inline mr-auto filterTab mb-0">
               <li className="list-inline-item">
                 <a className="cursor transition">همه</a>
               </li>
@@ -39,7 +39,16 @@ const Home = () => {
 
           <div className="productRow">
             <div className="item">
-              <Product />
+              <Product tag="oneInStock" />
+            </div>
+            <div className="item">
+              <Product tag="hot" />
+            </div>
+            <div className="item">
+              <Product tag="new" />
+            </div>
+            <div className="item">
+              <Product tag="best" />
             </div>
             <div className="item">
               <Product />
@@ -51,22 +60,13 @@ const Home = () => {
               <Product />
             </div>
             <div className="item">
-              <Product />
+              <Product tag="best" />
             </div>
             <div className="item">
               <Product />
             </div>
             <div className="item">
-              <Product />
-            </div>
-            <div className="item">
-              <Product />
-            </div>
-            <div className="item">
-              <Product />
-            </div>
-            <div className="item">
-              <Product />
+              <Product tag="new" />
             </div>
           </div>
         </div>

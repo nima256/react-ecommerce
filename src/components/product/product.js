@@ -7,14 +7,77 @@ import { Link } from "react-router-dom";
 import Rating from "@mui/material/Rating";
 import { Button } from "@mui/material";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
+import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
+import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
+import Fade from "@mui/material/Fade";
+import { styled } from "@mui/material/styles";
 
-const Product = () => {
+const Product = ({ tag }) => {
+  const LightTooltip = styled(({ className, ...props }) => (
+    <Tooltip {...props} classes={{ popper: className }} />
+  ))(({ theme }) => ({
+    [`& .${tooltipClasses.tooltip}`]: {
+      backgroundColor: "#3bb77e",
+      color: "#fff",
+      fontSize: 15,
+    },
+  }));
+
   return (
     <>
       <div className="productThumb">
+        {tag && (
+          <span className={`badge ${tag}`}>
+            {tag === "oneInStock"
+              ? "تک موجود"
+              : tag === "hot"
+              ? "داغ"
+              : tag === "new"
+              ? "جدید"
+              : tag === "best"
+              ? "بهترین"
+              : null}
+          </span>
+        )}
         <Link>
           <div className="imgWrapper">
             <img src={productImage} alt="" className="w-100 productImg" />
+
+            <div className="overlay transition">
+              <ul className="list list-inline mb-0">
+                <LightTooltip
+                  title="مقایسه"
+                  slots={{
+                    transition: Fade,
+                  }}
+                  slotProps={{
+                    transition: { timeout: 600 },
+                  }}
+                >
+                  <li className="list-inline-item">
+                    <a className="cursor">
+                      <CompareArrowsIcon />
+                    </a>
+                  </li>
+                </LightTooltip>
+                <LightTooltip
+                  title="دیدن سریع"
+                  slots={{
+                    transition: Fade,
+                  }}
+                  slotProps={{
+                    transition: { timeout: 600 },
+                  }}
+                >
+                  <li className="list-inline-item">
+                    <a className="cursor">
+                      <RemoveRedEyeOutlinedIcon />
+                    </a>
+                  </li>
+                </LightTooltip>
+              </ul>
+            </div>
           </div>
         </Link>
 
@@ -38,8 +101,8 @@ const Product = () => {
               </span>
             </div>
             <Button className="bg-g mr-auto transition">
-              <ShoppingCartOutlinedIcon />
               اضافه کردن
+              <ShoppingCartOutlinedIcon />
             </Button>
           </div>
         </div>

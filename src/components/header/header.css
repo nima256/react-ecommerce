@@ -3,6 +3,23 @@ header {
   height: auto;
   margin: auto;
   padding: 10px 0px;
+  background: #fff;
+}
+
+.headerWrapper {
+  position: sticky;
+  top: 0px;
+  z-index: 100000;
+  background: #fff;
+}
+
+.headerWrapper.fixed {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  width: 100%;
+  z-index: 10000;
+  background: #fff;
 }
 
 header .headerSearch {
