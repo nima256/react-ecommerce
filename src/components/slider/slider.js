@@ -7,6 +7,7 @@ import Slide1 from "../../assets/images/slide1.png";
 
 import Button from "@mui/material/Button";
 import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
+import NewsLetter from "../newsLetter/newsLetter";
 
 const HomeSlider = () => {
   const settings = {
@@ -47,15 +48,7 @@ const HomeSlider = () => {
           </div>
         </Slider>
 
-        <div className="newsLetterBanner">
-          <SendOutlinedIcon />
-          <input
-            dir="ltr"
-            type="text"
-            placeholder="آدرس ایمیل خود را وارد کنید"
-          />
-          <Button className="bg-g">تایید</Button>
-        </div>
+        <NewsLetter />
       </div>
     </section>
   );

@@ -42,3 +42,48 @@
 .topProductSection {
   padding: 35px 0px;
 }
+
+.newsLetterSection {
+  width: 100%;
+  height: auto;
+}
+
+.newsLetterSection .box {
+  background: url("../../assets/images/slide1.png");
+  width: 100%;
+  height: auto;
+  padding: 40px 80px;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.newsLetterSection .box .info {
+  width: 60%;
+}
+
+.newsLetterSection .box .info h2 {
+  font-size: 60px;
+  font-weight: 600;
+  line-height: 70px;
+  opacity: 0.8;
+}
+
+.newsLetterSection .box .info p {
+  font-size: 30px;
+  opacity: 0.8;
+}
+
+.newsLetterSection .box .img {
+  width: 40%;
+}
+
+.newsLetterSection .box .img img {
+  position: relative;
+  top: 80px;
+}
+
+.newsLetterSection .box .newsLetterBanner {
+  position: relative !important;
+  right: 0px !important;
+  bottom: inherit !important;
+}
