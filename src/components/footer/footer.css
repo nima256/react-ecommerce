@@ -1,0 +1,34 @@
+.footerWrapper {
+  padding: 45px 0px;
+  width: 100%;
+}
+
+.footerWrapper .footerBoxes .box {
+  background: #f4f6fa;
+  padding: 25px 25px;
+  border-radius: 15px;
+}
+
+.footerWrapper .footerBoxes .box .info {
+  padding-right: 25px;
+}
+
+.footerWrapper .footerBoxes .box img {
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+.footerWrapper .footerBoxes .box .info h4 {
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.footerWrapper .footerBoxes .box .info p {
+  margin-bottom: 0px;
+  font-size: 20px;
+  opacity: 0.8;
+}
+
+.footerWrapper .footerBoxes .box:hover img {
+  transform: translateY(-10px);
+}

@@ -10,6 +10,7 @@ import Slide1 from "../../assets/images/slide1.png";
 import imgOnTheSlide from "../../assets/images/category-image.png";
 import TopProducts from "../../components/topProducts/topProducts";
 import NewsLetter from "../../components/newsLetter/newsLetter";
+import Footer from "../../components/footer/footer";
 
 const Home = () => {
   const settings = {
@@ -182,6 +183,8 @@ const Home = () => {
           </div>
         </section>
       </div>
+
+      <Footer />
 
       <br />
       <br />
