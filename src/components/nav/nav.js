@@ -183,12 +183,12 @@ const Nav = () => {
                         </li>
                         <li>
                           <Button>
-                            <Link to={"/about"}>حفظ حریم خصوصی</Link>
+                            <Link to={"/about"}>حریم خصوصی</Link>
                           </Button>
                         </li>
                         <li>
                           <Button>
-                            <Link to={"/about"}>مقررات استفاده از خدمات</Link>
+                            <Link to={"/about"}>شرایط استفاده</Link>
                           </Button>
                         </li>
                         <li>

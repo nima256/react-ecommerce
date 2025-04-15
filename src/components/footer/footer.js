@@ -6,6 +6,25 @@ import BoxIcon3 from "../../assets/images/footerBoxIcon3.svg";
 import BoxIcon4 from "../../assets/images/footerBoxIcon4.svg";
 import BoxIcon5 from "../../assets/images/footerBoxIcon5.svg";
 
+import Myket from "../../assets/images/myket.svg";
+import sibApp from "../../assets/images/sib-app.svg";
+
+import eNamad from "../../assets/images/e-namad.png";
+import Kasbokar from "../../assets/images/kasbokar.webp";
+import Rezi from "../../assets/images/rezi.webp";
+import Sapra from "../../assets/images/sapra.webp";
+
+import Logo from "../../assets/images/Logo.jpg";
+import { Link } from "react-router-dom";
+
+import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
+import HeadphonesOutlinedIcon from "@mui/icons-material/HeadphonesOutlined";
+import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
+import WatchLaterOutlinedIcon from "@mui/icons-material/WatchLaterOutlined";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import TelegramIcon from "@mui/icons-material/Telegram";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+
 const Footer = () => {
   return (
     <>
@@ -71,6 +90,205 @@ const Footer = () => {
             </div>
           </div>
         </div>
+
+        <footer>
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-md-3 part1">
+                <Link to={"/"}>
+                  <img
+                    src={Logo}
+                    alt="لوگو وب سایت"
+                    style={{ width: "200px", height: "80px" }}
+                  />
+                </Link>
+                <br />
+                <br />
+                <p>تنشت نسنستب نشستیبم نستبش</p>
+                <br />
+                <p>
+                  <LocationOnOutlinedIcon />
+                  <strong>آدرس:</strong> تسنسیشنب شنسیتب منشسیب منسشتنمیب
+                  مشسنتیب مشسینب سشیمنبت
+                </p>
+                <p>
+                  <HeadphonesOutlinedIcon />
+                  <strong>با ما تماس بگیرید:</strong>
+                  <span dir="rtl">۰۹۱۲۱۲۳۱۲۳۴</span>
+                </p>
+                <p>
+                  <EmailOutlinedIcon />
+                  <strong>ایمیل:</strong> <span dir="rtl">email@gmail.com</span>
+                </p>
+                <p>
+                  <WatchLaterOutlinedIcon />
+                  <strong>ساعت کاری:</strong> از ساعت ۰۹:۰۰ تا ۲۰:۰۰
+                </p>
+              </div>
+
+              <div className="col-md-6 part2">
+                <div className="row">
+                  <div className="col">
+                    <h3>حساب کاربری</h3>
+                    <ul>
+                      <li>
+                        <Link to={""}>ثبت نام</Link>
+                      </li>
+                      <li>
+                        <Link to={""}>مشاهده سبد خرید</Link>
+                      </li>
+                      <li>
+                        <Link to={""}>پیگیری سفارش</Link>
+                      </li>
+                      <li>
+                        <Link to={""}>درخواست پشتیبانی</Link>
+                      </li>
+                      <li>
+                        <Link to={""}>مقایسه محصولات</Link>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="col">
+                    <h3>پرطرفدار ها</h3>
+                    <ul>
+                      <li>
+                        <Link to={""}>پیراهن</Link>
+                      </li>
+                      <li>
+                        <Link to={""}>شلوار</Link>
+                      </li>
+                      <li>
+                        <Link to={""}>کفش</Link>
+                      </li>
+                      <li>
+                        <Link to={""}>کاپشن</Link>
+                      </li>
+                      <li>
+                        <Link to={""}>شلوارک</Link>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="col">
+                    <h3>درباره وب سایت</h3>
+                    <ul>
+                      <li>
+                        <Link to={""}>حریم خصوصی</Link>
+                      </li>
+                      <li>
+                        <Link to={""}>شرایط استفاده</Link>
+                      </li>
+                      <li>
+                        <Link to={""}>درباره ما</Link>
+                      </li>
+                      <li>
+                        <Link to={""}>ارتباط با ما</Link>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="col">
+                    <h3>راهنمای خرید</h3>
+                    <ul>
+                      <li>
+                        <Link to={""}>طریقه تحویل سفارش</Link>
+                      </li>
+                      <li>
+                        <Link to={""}>نحوه ثبت سفارش</Link>
+                      </li>
+                      <li>
+                        <Link to={""}>شیوه‌های پرداخت</Link>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-md-3 part3">
+                <h3>نصب برنامه</h3>
+                <br />
+                <p>از طریق اپ استور یا گوگل پلی</p>
+                <div className="d-flex">
+                  <Link to={""}>
+                    <img src={Myket} alt="مایکت دانلود" />
+                  </Link>
+                  <Link to={""}>
+                    <img src={sibApp} className="mx-3" alt="مایکت دانلود" />
+                  </Link>
+                </div>
+
+                <br />
+
+                <p>نماد های معتبر</p>
+                <Link to={""}>
+                  <img className="namad mx-3" src={eNamad} alt="اینماد" />
+                </Link>
+                <Link to={""}>
+                  <img className="namad mx-3" src={Kasbokar} alt="کسب و کار" />
+                </Link>
+                <Link to={""}>
+                  <img className="namad mx-3" src={Rezi} alt="رضی" />
+                </Link>
+              </div>
+            </div>
+
+            <hr />
+
+            <div className="row lastStrip">
+              <div className="col-md-3">
+                <p>تمام حقوق اين وب‌ سایت برای خداوند متعال است</p>
+              </div>
+              <div className="col-md-6 d-flex">
+                <div className="m-auto d-flex align-items-center">
+                  <div className="phonum d-flex align-items-center mx-5">
+                    <span>
+                      <HeadphonesOutlinedIcon />
+                    </span>
+                    <div className="info mr-3">
+                      <h3 className="text-g mb-0" dir="ltr">
+                        ۰۲۸ - ۳۲۳۳۱۲۳۲
+                      </h3>
+                      <p className="mb-0 text-center">پاسخگو به سوالات شما</p>
+                    </div>
+                  </div>
+                  <div className="phonum d-flex align-items-center mx-5">
+                    <span>
+                      <HeadphonesOutlinedIcon />
+                    </span>
+                    <div className="info mr-3">
+                      <h3 className="text-g mb-0" dir="ltr">
+                        ۰۲۸ - ۳۲۳۳۱۲۳۲
+                      </h3>
+                      <p className="mb-0 text-center">پاسخگو به سوالات شما</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-md-3 part3">
+                <div className="d-flex align-items-center">
+                  <h5>ما را دنبال کنید</h5>
+                  <ul className="list list-inline">
+                    <li className="list-inline-item">
+                      <Link to={""}>
+                        <InstagramIcon />
+                      </Link>
+                    </li>
+                    <li className="list-inline-item">
+                      <Link to={""}>
+                        <TelegramIcon />
+                      </Link>
+                    </li>
+                    <li className="list-inline-item">
+                      <Link to={""}>
+                        <WhatsAppIcon />
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
       </div>
     </>
   );

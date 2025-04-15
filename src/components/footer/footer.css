@@ -30,5 +30,99 @@
 }
 
 .footerWrapper .footerBoxes .box:hover img {
-  transform: translateY(-10px);
+  transform: translateY(-5px);
+}
+
+footer {
+  padding: 60px 0px;
+  padding-bottom: 0px !important;
+}
+
+footer p,
+footer a {
+  font-size: 18px;
+}
+
+footer .part1 svg {
+  color: #3bb77e !important;
+}
+
+footer h3 {
+  color: #000;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+footer .part2 ul li {
+  list-style: none;
+  margin-bottom: 36px;
+}
+
+footer .part2 ul li a {
+  text-decoration: none;
+  color: #000;
+  opacity: 0.8;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+footer .part2 ul li a:hover {
+  color: #3bb77e !important;
+  opacity: 1;
+  padding-right: 5px;
+}
+
+footer .part3 .namad {
+  width: 90px;
+  height: 90px;
+}
+
+footer .lastStrip {
+  padding: 15px 0px;
+}
+
+footer .lastStrip .phonum svg {
+  font-size: 45px;
+  opacity: 0.8;
+}
+
+footer .lastStrip .phonum h3 {
+  font-size: 35px;
+}
+
+footer .lastStrip .phonum p {
+  font-size: 16px !important;
+  opacity: 0.8;
+}
+
+footer .lastStrip .part3 h5 {
+  margin-bottom: 0px;
+}
+
+footer .lastStrip .part3 ul {
+  margin-bottom: 0px;
+  padding-left: 25px;
+}
+
+footer .lastStrip .part3 ul li {
+  margin-right: 15px !important;
+}
+
+footer .lastStrip .part3 ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: #3bb77e;
+  border-radius: 50%;
+  transition: all 0.2s ease-in-out !important;
+}
+
+footer .lastStrip .part3 ul li a svg {
+  color: #fff !important;
+}
+
+footer .lastStrip .part3 ul li a:hover {
+  background: rgb(215, 65, 65);
 }

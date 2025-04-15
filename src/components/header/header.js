@@ -74,7 +74,7 @@ const Header = () => {
               <div className="col-sm-2">
                 <img
                   src={Logo}
-                  alt="Logo"
+                  alt="لوگو وب سایت"
                   style={{ width: "200px", height: "80px" }}
                 />
               </div>

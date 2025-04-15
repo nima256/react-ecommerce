@@ -61,6 +61,12 @@ const Home = () => {
               <Product tag="oneInStock" />
             </div>
             <div className="item">
+              <Product tag="oneInStock" />
+            </div>
+            <div className="item">
+              <Product tag="oneInStock" />
+            </div>
+            <div className="item">
               <Product tag="hot" />
             </div>
             <div className="item">
@@ -118,7 +124,7 @@ const Home = () => {
                 style={{ background: "red" }}
               />
             </div>
-            <div className="col-md-9 dirRtl">
+            <div className="col-md-9 dirRtl dailyPopularSells">
               <Slider {...settings} className="prodSlider">
                 <div className="item">
                   <Product tag="oneInStock" />
@@ -185,16 +191,6 @@ const Home = () => {
       </div>
 
       <Footer />
-
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
     </>
   );
 };

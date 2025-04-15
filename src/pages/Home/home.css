@@ -9,7 +9,7 @@
 .filterTab li a {
   color: #000;
   text-decoration: none;
-  font-size: 22px;
+  font-size: 19px;
   display: inline-block;
 }
 
@@ -41,6 +41,10 @@
 
 .topProductSection {
   padding: 35px 0px;
+}
+
+.dailyPopularSells .slick-slide {
+  width: 269px !important;
 }
 
 .newsLetterSection {

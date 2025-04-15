@@ -8,17 +8,29 @@ const Banners = () => {
         <div className="row">
           <div className="col">
             <div className="box">
-              <img src={Banner1} alt="" className="w-100 transition" />
+              <img
+                src={Banner1}
+                alt=""
+                className="w-100 transition bannersImg"
+              />
             </div>
           </div>
           <div className="col">
             <div className="box">
-              <img src={Banner1} alt="" className="w-100 transition" />
+              <img
+                src={Banner1}
+                alt=""
+                className="w-100 transition bannersImg"
+              />
             </div>
           </div>
           <div className="col">
             <div className="box">
-              <img src={Banner1} alt="" className="w-100 transition" />
+              <img
+                src={Banner1}
+                alt=""
+                className="w-100 transition bannersImg"
+              />
             </div>
           </div>
         </div>

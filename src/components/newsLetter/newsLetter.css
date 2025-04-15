@@ -23,13 +23,13 @@
 }
 
 .newsLetterBanner button {
-  padding: 11px 40px !important;
+  padding: 14px 39px !important;
   border-radius: 50px;
   color: #fff !important;
   position: absolute;
   top: 0px;
   left: 0px;
-  font-size: 22px !important;
+  font-size: 19px !important;
 }
 
 .newsLetterBanner svg {
