@@ -1,7 +1,7 @@
-import Logo from "../../assets/images/Logo.jpg";
-import compareIcon from "../../assets/images/comparison.svg";
-import cartIcon from "../../assets/images/cart-shopping.svg";
-import accountIcon from "../../assets/images/account.svg";
+import Logo from "../../assets/images/header/Logo.jpg";
+import compareIcon from "../../assets/images/header/comparison.svg";
+import cartIcon from "../../assets/images/header/cart-shopping.svg";
+import accountIcon from "../../assets/images/header/account.svg";
 
 import "../header/header.css";
 import Select from "../selectDrop/select";
@@ -24,45 +24,66 @@ const Header = () => {
   const headerRef = useRef();
 
   const [categories, setCategories] = useState([
-    "پیراهن",
-    "تی شرت",
-    "شلوار",
-    "کفش",
-    "کاپشن",
-    "شلوارک",
-    "تاب",
+    "کیس کامپیوتر",
+    "مادربرد",
+    "سی پی یو",
+    "خنک کننده سی پی یو",
+    "کارت گرافیک",
+    "رم",
+    "هارد اس اس دی",
+    "پاور",
+    "فن کیس",
+    "مانیتور",
+    "هارد اکسترنال",
+    "لپ تاپ",
+    "کیبورد گیمینگ",
+    "ماوس گیمینگ",
+    "هدست گیمینگ",
+    "میکروفن گیمینگ",
+    "دسته بازی گیمینگ",
+    "اسپیکر گیمینگ",
+    "ماوس پد گیمینگ",
+    "صندلی گیمینگ",
+    "میز گیمینگ",
   ]);
 
-  const countryList = [];
+  const [countryList, setCountryList] = useState([]);
 
   useEffect(() => {
-    getCountry("https://www.iran-locations-api.ir/api/v1/fa/states");
-  });
-
-  const getCountry = async (url) => {
-    try {
-      await axios.get(url).then((res) => {
-        if (res !== null) {
-          res.data.map((item) => {
-            countryList.push(item.name);
-            return null;
-          });
+    const getCountry = async () => {
+      try {
+        const res = await axios.get(
+          "https://www.iran-locations-api.ir/api/v1/fa/states"
+        );
+        if (res && res.data) {
+          const names = res.data.map((item) => item.name);
+          setCountryList(names);
         }
-      });
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+
+    getCountry();
+  }, []);
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      let position = window.pageYOffset;
-      if (position > 100) {
-        headerRef.current.classList.add("fixed");
-      } else {
-        headerRef.current.classList.remove("fixed");
+    const handleScroll = () => {
+      const position = window.pageYOffset;
+      if (headerRef.current) {
+        if (position > 100) {
+          headerRef.current.classList.add("fixed");
+        } else {
+          headerRef.current.classList.remove("fixed");
+        }
       }
-    });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (

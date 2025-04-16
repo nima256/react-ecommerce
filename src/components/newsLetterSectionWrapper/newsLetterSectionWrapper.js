@@ -1,6 +1,6 @@
 import "./newsLetterSectionWrapper.css";
 
-import imgOnTheSlide from "../../assets/images/category-image.png";
+import imgOnTheSlide from "../../assets/images/catSlider/category-image.png";
 import NewsLetter from "../../components/newsLetter/newsLetter";
 
 const NewsLetterSectionWrapper = () => {

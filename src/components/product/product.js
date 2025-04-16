@@ -1,6 +1,6 @@
 import "./product.css";
-import productImage from "../../assets/images/category-image.png";
-import Tooman from "../../assets/images/toman.svg";
+import productImage from "../../assets/images/catSlider/category-image.png";
+import Tooman from "../../assets/images/product/toman.svg";
 
 import { Link } from "react-router-dom";
 
@@ -13,7 +13,7 @@ import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 import Fade from "@mui/material/Fade";
 import { styled } from "@mui/material/styles";
 
-const Product = ({ tag }) => {
+const Product = (props) => {
   const LightTooltip = styled(({ className, ...props }) => (
     <Tooltip {...props} classes={{ popper: className }} />
   ))(({ theme }) => ({
@@ -27,15 +27,15 @@ const Product = ({ tag }) => {
   return (
     <>
       <div className="productThumb">
-        {tag && (
-          <span className={`badge ${tag}`}>
-            {tag === "oneInStock"
+        {props.tag && (
+          <span className={`badge ${props.tag}`}>
+            {props.tag === "oneInStock"
               ? "تک موجود"
-              : tag === "hot"
+              : props.tag === "hot"
               ? "داغ"
-              : tag === "new"
+              : props.tag === "new"
               ? "جدید"
-              : tag === "best"
+              : props.tag === "best"
               ? "بهترین"
               : null}
           </span>
@@ -84,7 +84,11 @@ const Product = ({ tag }) => {
         <div className="info dirRtl">
           <span className="d-block catName">لی</span>
           <h4 className="title">
-            <Link>تسشینب نیسشتب نمسشیب نتسش یبنم تتنسب </Link>
+            {props.title ? (
+              props.title
+            ) : (
+              <Link>تسشینب نیسشتب نمسشیب نتسش یبنم تتنسب</Link>
+            )}
           </h4>
           <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
           <span className="brand d-block text-g">
@@ -97,7 +101,8 @@ const Product = ({ tag }) => {
                 ۱,۱۲۹,۰۰۰ <img src={Tooman} alt="" className="toomanSvg" />
               </span>
               <span className="oldPrice">
-                ۳,۵۱۴,۰۰۰ <img src={Tooman} alt="" className="toomanSvg" />
+                ۳,۵۱۴,۰۰۰
+                <img src={Tooman} alt="" className="toomanSvg oldToomanSvg" />
               </span>
             </div>
             <Button className="bg-g mr-auto transition">

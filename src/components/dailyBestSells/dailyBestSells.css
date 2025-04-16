@@ -41,5 +41,10 @@
 }
 
 .dailyPopularSells .slick-slide {
-  width: 269px !important;
+  width: 318px !important;
+}
+
+.dailyPopularSells .item {
+  width: 318px !important;
+  padding: 15px 13px !important;
 }

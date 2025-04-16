@@ -1,20 +1,19 @@
 import "./footer.css";
 
-import BoxIcon1 from "../../assets/images/footerBoxIcon1.svg";
-import BoxIcon2 from "../../assets/images/footerBoxIcon2.svg";
-import BoxIcon3 from "../../assets/images/footerBoxIcon3.svg";
-import BoxIcon4 from "../../assets/images/footerBoxIcon4.svg";
-import BoxIcon5 from "../../assets/images/footerBoxIcon5.svg";
+import BoxIcon1 from "../../assets/images/footer/footerBoxIcon1.svg";
+import BoxIcon2 from "../../assets/images/footer/footerBoxIcon2.svg";
+import BoxIcon3 from "../../assets/images/footer/footerBoxIcon3.svg";
+import BoxIcon4 from "../../assets/images/footer/footerBoxIcon4.svg";
+import BoxIcon5 from "../../assets/images/footer/footerBoxIcon5.svg";
 
-import Myket from "../../assets/images/myket.svg";
-import sibApp from "../../assets/images/sib-app.svg";
+import Myket from "../../assets/images/footer/myket.svg";
+import sibApp from "../../assets/images/footer/sib-app.svg";
 
-import eNamad from "../../assets/images/e-namad.png";
-import Kasbokar from "../../assets/images/kasbokar.webp";
-import Rezi from "../../assets/images/rezi.webp";
-import Sapra from "../../assets/images/sapra.webp";
+import eNamad from "../../assets/images/footer/e-namad.png";
+import Kasbokar from "../../assets/images/footer/kasbokar.webp";
+import Rezi from "../../assets/images/footer/rezi.webp";
 
-import Logo from "../../assets/images/Logo.jpg";
+import Logo from "../../assets/images/header/Logo.jpg";
 import { Link } from "react-router-dom";
 
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
@@ -244,7 +243,7 @@ const Footer = () => {
             <hr />
 
             <div className="row lastStrip">
-              <div className="col-md-3">
+              <div className="col-md-3 d-flex align-items-center">
                 <p>تمام حقوق اين وب‌ سایت برای خداوند متعال است</p>
               </div>
               <div className="col-md-6 d-flex">
@@ -274,7 +273,7 @@ const Footer = () => {
                 </div>
               </div>
 
-              <div className="col-md-3 part3">
+              <div className="col-md-3 part3 d-flex align-items-center">
                 <div className="d-flex align-items-center">
                   <h5>ما را دنبال کنید</h5>
                   <ul className="list list-inline">

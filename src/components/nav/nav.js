@@ -1,5 +1,5 @@
 import "./nav.css";
-import MegaMenyImg from "../../assets/images/megaMenu.png";
+import MegaMenyImg from "../../assets/images/navMegaMenu/megaMenu.png";
 
 import Button from "@mui/material/Button";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
@@ -49,71 +49,68 @@ const Nav = () => {
                     <div className="dropdown_menu megaMenu">
                       <div className="row">
                         <div className="col">
-                          <h4 className="text-g">پیراهن و تی شرت</h4>
+                          <h4 className="text-g">لپ تاپ</h4>
                           <ul className="mt-3 mb-0">
                             <li>
-                              <Link to={""}>سلام</Link>
+                              <Link to={""}>ایسوس</Link>
                             </li>
                             <li>
-                              <Link to={""}>سلام</Link>
+                              <Link to={""}>لنوو</Link>
                             </li>
                             <li>
-                              <Link to={""}>سلام</Link>
+                              <Link to={""}>ایسر</Link>
                             </li>
                             <li>
-                              <Link to={""}>سلام</Link>
+                              <Link to={""}>اچ پی</Link>
                             </li>
                             <li>
-                              <Link to={""}>سلام</Link>
-                            </li>
-                            <li>
-                              <Link to={""}>سلام</Link>
+                              <Link to={""}>دل</Link>
                             </li>
                           </ul>
                         </div>
                         <div className="col">
-                          <h4 className="text-g">شلوار لی و کتان</h4>
+                          <h4 className="text-g">صندلی گیمینگ</h4>
                           <ul className="mt-3 mb-0">
                             <li>
-                              <Link to={""}>سلام</Link>
+                              <Link to={""}>ردراگون</Link>
                             </li>
                             <li>
-                              <Link to={""}>سلام</Link>
+                              <Link to={""}>ام اس آی</Link>
                             </li>
                             <li>
-                              <Link to={""}>سلام</Link>
+                              <Link to={""}>دی ایکس ریسر</Link>
                             </li>
                             <li>
-                              <Link to={""}>سلام</Link>
+                              <Link to={""}>ورتاگیر</Link>
                             </li>
                             <li>
-                              <Link to={""}>سلام</Link>
+                              <Link to={""}>اینگریم</Link>
                             </li>
                             <li>
-                              <Link to={""}>سلام</Link>
+                              <Link to={""}>ریزر</Link>
                             </li>
                           </ul>
                         </div>
                         <div className="col">
-                          <h4 className="text-g">عینک دودی و ساده</h4>
+                          <h4 className="text-g">کیس کامپیوتر</h4>
                           <ul className="mt-3 mb-0">
                             <li>
-                              <Link to={""}>سلام</Link>
+                              <Link to={""}>ایسوس</Link>
                             </li>
                             <li>
-                              <Link to={""}>سلام</Link>
+                              <Link to={""}>ام اس آی</Link>
                             </li>
                             <li>
-                              <Link to={""}>سلام</Link>
+                              <Link to={""}>کولر مستر</Link>
                             </li>
                             <li>
-                              <Link to={""}>سلام</Link>
+                              <Link to={""}>گیم مکس</Link>
                             </li>
                             <li>
-                              <Link to={""}>سلام</Link>
+                              <Link to={""}>لاجی کی</Link>
                             </li>
                             <li>
-                              <Link to={""}>سلام</Link>
+                              <Link to={""}>اف اس پی</Link>
                             </li>
                           </ul>
                         </div>

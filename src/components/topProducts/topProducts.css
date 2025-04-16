@@ -55,16 +55,27 @@
 }
 
 .topSelling_box .items .info .toomanSvg {
+  position: absolute;
+  top: -20px;
+  right: 50px;
   width: 20px;
   height: 32px;
 }
 
+.topSelling_box .items .info .oldToomanSvg {
+  position: absolute;
+  top: -20px;
+  right: 50px;
+}
+
 .topSelling_box .items .info .price {
+  position: relative !important;
   font-size: 18px;
   margin-left: 8px;
 }
 
 .topSelling_box .items .info .oldPrice {
+  position: relative !important;
   font-size: 16px;
   opacity: 0.6;
   color: #000;

@@ -84,6 +84,10 @@ nav .dropdown_menu li {
   font-weight: 400 !important;
 }
 
+.nav nav .dropdown_menu li button a {
+  font-weight: 400 !important;
+}
+
 nav .dropdown_menu li button:hover {
   background: #f1f1f1;
 }
@@ -101,17 +105,24 @@ nav .dropdown_menu li button:hover {
 }
 
 .nav .megaMenu .megaMenuImg {
-  width: 300px;
-  height: 300px;
+  width: 600px;
+  height: 327px;
   border-radius: 15px;
 }
 
 .nav .megaMenu .col ul li {
-  margin-bottom: 10px !important;
+  margin-bottom: 20px !important;
   display: block;
 }
 .nav .megaMenu .col ul li a {
   color: rgba(0, 0, 0, 0.8);
   font-size: 18px;
   text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav .megaMenu .col ul li a:hover {
+  color: #3bb77e !important;
+  opacity: 1;
+  padding-right: 5px;
 }

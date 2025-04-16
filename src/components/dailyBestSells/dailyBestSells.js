@@ -1,6 +1,6 @@
 import "./dailyBestSells.css";
 
-import Banner from "../../assets/images/category-image.png";
+import Banner from "../../assets/images/catSlider/category-image.png";
 import Slider from "react-slick";
 import Product from "../../components/product/product";
 
@@ -9,7 +9,7 @@ const DailyBestSells = () => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 3,
     slidesToScroll: 1,
     // fade: true,
     arrows: true,
@@ -48,22 +48,16 @@ const DailyBestSells = () => {
           <div className="col-md-9 dirRtl dailyPopularSells">
             <Slider {...settings} className="prodSlider">
               <div className="item">
-                <Product tag="oneInStock" />
+                <Product title="سلام" tag="oneInStock" />
               </div>
               <div className="item">
-                <Product tag="hot" />
+                <Product title="خدافزی" tag="oneInStock" />
               </div>
               <div className="item">
-                <Product tag="new" />
+                <Product title="شب بخیر" tag="oneInStock" />
               </div>
               <div className="item">
-                <Product tag="best" />
-              </div>
-              <div className="item">
-                <Product tag="new" />
-              </div>
-              <div className="item">
-                <Product tag="hot" />
+                <Product title="صبح بخیر" tag="oneInStock" />
               </div>
             </Slider>
           </div>
