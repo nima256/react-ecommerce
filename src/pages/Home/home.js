@@ -1,6 +1,6 @@
 import "./home.css";
 
-import Banners from "../../components/banners/banners";
+import Poster from "../../components/poster/poster";
 import CatSlider from "../../components/catSlider/catSlider";
 import HomeSlider from "../../components/mainSlider/slider";
 import Footer from "../../components/footer/footer";
@@ -14,7 +14,7 @@ const Home = () => {
     <>
       <HomeSlider />
       <CatSlider />
-      <Banners />
+      <Poster />
       <PopularProducts />
       <DailyBestSells />
       <TopProductSection />

@@ -1,5 +1,5 @@
 import "./product.css";
-import productImage from "../../assets/images/catSlider/category-image.png";
+import productImage from "../../assets/images/category-image.png";
 import Tooman from "../../assets/images/product/toman.svg";
 
 import { Link } from "react-router-dom";

@@ -1,35 +1,38 @@
-import "./banners.css";
-import Banner1 from "../../assets/images/banners/banner1.png";
+import "./poster.css";
 
-const Banners = () => {
+import Poster1 from "../../assets/images/poster/poster-headset.webp";
+import Poster2 from "../../assets/images/poster/poster-keyboard.webp";
+import Poster3 from "../../assets/images/poster/poster-mouse.webp";
+
+const Poster = () => {
   return (
-    <div className="bannerSection">
+    <div className="posterSection">
       <div className="container-fluid">
         <div className="row">
           <div className="col">
             <div className="box">
               <img
-                src={Banner1}
+                src={Poster1}
                 alt=""
-                className="w-100 transition bannersImg"
+                className="w-100 transition posterImg"
               />
             </div>
           </div>
           <div className="col">
             <div className="box">
               <img
-                src={Banner1}
+                src={Poster2}
                 alt=""
-                className="w-100 transition bannersImg"
+                className="w-100 transition posterImg"
               />
             </div>
           </div>
           <div className="col">
             <div className="box">
               <img
-                src={Banner1}
+                src={Poster3}
                 alt=""
-                className="w-100 transition bannersImg"
+                className="w-100 transition posterImg"
               />
             </div>
           </div>
@@ -39,4 +42,4 @@ const Banners = () => {
   );
 };
 
-export default Banners;
+export default Poster;

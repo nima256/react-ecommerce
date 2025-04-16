@@ -4,12 +4,14 @@
 }
 
 .newsLetterSection .box {
-  background: url("../../assets/images/slide1.png");
+  background: url("../../assets/images/newsLetterSectionWrapper/sliderInFooter.webp");
   width: 100%;
   height: auto;
   padding: 40px 80px;
   border-radius: 30px;
   overflow: hidden;
+  object-fit: fill;
+  background-repeat: no-repeat;
 }
 
 .newsLetterSection .box .info {

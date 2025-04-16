@@ -1,6 +1,6 @@
 import "./newsLetterSectionWrapper.css";
 
-import imgOnTheSlide from "../../assets/images/catSlider/category-image.png";
+import imgOnTheSlide from "../../assets/images/category-image.png";
 import NewsLetter from "../../components/newsLetter/newsLetter";
 
 const NewsLetterSectionWrapper = () => {
@@ -19,7 +19,7 @@ const NewsLetterSectionWrapper = () => {
               <NewsLetter />
             </div>
             <div className="img">
-              <img src={imgOnTheSlide} alt="اسلاید" className="w-100" />
+              <img className="w-100" />
             </div>
           </div>
         </div>

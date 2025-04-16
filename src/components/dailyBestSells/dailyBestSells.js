@@ -1,6 +1,6 @@
 import "./dailyBestSells.css";
 
-import Banner from "../../assets/images/catSlider/category-image.png";
+import Banner from "../../assets/images/category-image.png";
 import Slider from "react-slick";
 import Product from "../../components/product/product";
 

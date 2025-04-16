@@ -19,6 +19,7 @@
   padding: 10px 0px;
   position: relative;
   transition: all 0.2s ease-in-out;
+  border-radius: 10px;
 }
 
 .cat_slider_main .item .info {
@@ -30,8 +31,8 @@
 }
 
 .cat_slider_main .item .info .categoryImg {
-  width: 100px !important;
-  height: 100px !important;
+  width: 64px !important;
+  height: 92px !important;
 }
 
 .cat_slider_main .item .info h5 {

@@ -1,0 +1,21 @@
+.posterSection {
+  padding: 50px 0px;
+}
+
+.posterSection .box {
+  overflow: hidden;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.posterSection .box:hover {
+  transform: translateY(10px);
+}
+
+.posterSection .box:hover img {
+}
+
+.posterSection .box .posterImg {
+  height: 24rem !important;
+}

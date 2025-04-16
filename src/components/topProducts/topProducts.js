@@ -1,6 +1,6 @@
 import "./topProducts.css";
 
-import img1 from "../../assets/images/catSlider/category-image.png";
+import img1 from "../../assets/images/category-image.png";
 import Tooman from "../../assets/images/product/toman.svg";
 
 import { Link } from "react-router-dom";
