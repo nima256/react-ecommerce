@@ -126,3 +126,8 @@ footer .lastStrip .part3 ul li a svg {
 footer .lastStrip .part3 ul li a:hover {
   background: rgb(215, 65, 65);
 }
+
+footer .part3.ForApps ul li {
+  list-style: none;
+  margin-bottom: 28px;
+}

@@ -1,0 +1,45 @@
+.homeProducts {
+  padding: 25px 0px;
+}
+
+.homeProducts .productRow {
+  display: flex;
+  padding: 30px 0px;
+  margin: 0px -15px;
+  flex-wrap: wrap;
+}
+
+.homeProducts .productRow .item {
+  width: 20%;
+  padding: 15px 10px;
+}
+
+.homeProductsRow2 .prodSlider .item {
+  padding: 15px 0px !important;
+  padding-right: 12px !important;
+}
+
+.forPaddingLeft {
+  padding-left: 15px !important;
+}
+
+.filterTab li {
+  margin-left: 25px;
+  position: relative;
+  font-weight: 600;
+}
+.filterTab li a {
+  color: #000;
+  text-decoration: none;
+  font-size: 19px;
+  display: inline-block;
+}
+
+.filterTab li:hover a {
+  color: #3bb77e !important;
+  transform: translateY(-10px);
+}
+
+.dailyPopularSells .slick-slide {
+  width: 269px !important;
+}

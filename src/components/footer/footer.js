@@ -31,7 +31,7 @@ const Footer = () => {
       <div className="footerWrapper">
         <div className="footerBoxes">
           <div className="contaier-fluid">
-            <div className="row w-100">
+            <div className="row w-100 pr-1">
               <div className="col">
                 <div className="box d-flex align-items-center w-100">
                   <span>
@@ -113,7 +113,7 @@ const Footer = () => {
                 </p>
                 <p>
                   <HeadphonesOutlinedIcon />
-                  <strong>با ما تماس بگیرید:</strong>
+                  <strong>با ما تماس بگیرید: </strong>
                   <span dir="rtl">۰۹۱۲۱۲۳۱۲۳۴</span>
                 </p>
                 <p>
@@ -203,31 +203,41 @@ const Footer = () => {
                 </div>
               </div>
 
-              <div className="col-md-3 part3">
+              <div className="col-md-3 part3 ForApps">
                 <h3>نصب برنامه</h3>
-                <br />
-                <p>از طریق اپ استور یا گوگل پلی</p>
-                <div className="d-flex">
-                  <Link to={""}>
-                    <img src={Myket} alt="مایکت دانلود" />
-                  </Link>
-                  <Link to={""}>
-                    <img src={sibApp} className="mx-3" alt="مایکت دانلود" />
-                  </Link>
-                </div>
-
-                <br />
-
-                <p>نماد های معتبر</p>
-                <Link to={""}>
-                  <img className="namad mx-3" src={eNamad} alt="اینماد" />
-                </Link>
-                <Link to={""}>
-                  <img className="namad mx-3" src={Kasbokar} alt="کسب و کار" />
-                </Link>
-                <Link to={""}>
-                  <img className="namad mx-3" src={Rezi} alt="رضی" />
-                </Link>
+                <ul>
+                  <li>
+                    <p>از طریق اپ استور یا گوگل پلی</p>
+                  </li>
+                  <li>
+                    <div className="d-flex">
+                      <Link to={""}>
+                        <img src={Myket} alt="مایکت دانلود" />
+                      </Link>
+                      <Link to={""}>
+                        <img src={sibApp} className="mx-3" alt="مایکت دانلود" />
+                      </Link>
+                    </div>
+                  </li>
+                  <li>
+                    <p>نماد های معتبر</p>
+                  </li>
+                  <li>
+                    <Link to={""}>
+                      <img className="namad mx-3" src={eNamad} alt="اینماد" />
+                    </Link>
+                    <Link to={""}>
+                      <img
+                        className="namad mx-3"
+                        src={Kasbokar}
+                        alt="کسب و کار"
+                      />
+                    </Link>
+                    <Link to={""}>
+                      <img className="namad mx-3" src={Rezi} alt="رضی" />
+                    </Link>
+                  </li>
+                </ul>
               </div>
             </div>
 
