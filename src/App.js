@@ -4,7 +4,8 @@ import "./App.css";
 import Header from "./components/header/header";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./pages/Home/home";
-import About from "./pages/About/about";
+import Shop from "./pages/Shop/shop";
+import Footer from "./components/footer/footer";
 
 function App() {
   return (
@@ -12,8 +13,9 @@ function App() {
       <Header />
       <Routes>
         <Route exact={true} path="/" element={<Home />} />
-        <Route exact={true} path="/about" element={<About />} />
+        <Route exact={true} path="/shop" element={<Shop />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

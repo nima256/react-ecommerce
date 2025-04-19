@@ -1,0 +1,69 @@
+.shoppingPage {
+  width: 100%;
+  height: auto;
+  padding: 45px 0px;
+}
+
+.breadcrumb {
+  width: 100%;
+  height: auto;
+  padding: 45px 45px !important;
+  background: #d8f1e5 !important;
+  border-radius: 20px !important;
+  margin-bottom: 30px;
+}
+
+.breadcrumb h1 {
+  color: #000;
+  opacity: 0.8;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.shoppingPage .breadcrumb ul li {
+  margin: 0px;
+  margin-left: 20px !important;
+}
+
+.shoppingPage .breadcrumb ul li a {
+  color: #000;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.sidebarWrapper {
+  max-width: 20% !important;
+}
+
+.shoppingDataRightContent {
+  max-width: 80%;
+}
+
+.sidebarWrapper h3 {
+  font-size: 32px;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+}
+
+.sidebarWrapper h3::after {
+  content: "";
+  width: 100%;
+  height: 3px;
+  background: #f0f0f0;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+
+.sidebarWrapper h3::before {
+  content: "";
+  width: 20%;
+  height: 3px;
+  background: #b0e5c2;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  z-index: 10;
+}

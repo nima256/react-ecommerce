@@ -151,3 +151,7 @@ header .dropdownMenu li button svg {
 header .dropdownMenu li button:hover {
   background: #f1f1f1;
 }
+
+.forSpacingUnderHeader {
+  margin-bottom: 200px;
+}

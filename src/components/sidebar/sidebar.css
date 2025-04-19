@@ -1,0 +1,38 @@
+.sidebar .card {
+  padding: 25px !important;
+  border-radius: 10px !important;
+  margin-bottom: 30px;
+}
+
+.sidebar .card .catList .catItem {
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  border-radius: 4px;
+  margin: 10px 0px;
+  transition: all 0.3s ease-in-out;
+}
+
+.sidebar .card .catList .catItem h4 {
+  color: #000;
+  font-size: 18px;
+}
+
+.sidebar .card .catList .catItem .rounded-circle {
+  background: #bce3c9;
+  width: 40px;
+  height: 40px;
+  font-size: 19px;
+}
+
+.sidebar .card .catList .catItem:hover {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.sidebar .rangeSlider {
+  direction: rtl !important;
+}
+
+.priceRange span {
+  font-size: 18px;
+}

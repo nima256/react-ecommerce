@@ -197,6 +197,8 @@ const Header = () => {
 
         <Nav />
       </div>
+
+      <div className="forSpacingUnderHeader"></div>
     </>
   );
 };

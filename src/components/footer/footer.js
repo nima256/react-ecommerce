@@ -24,9 +24,32 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 
+import NewsLetter from "../../components/newsLetter/newsLetter";
+
 const Footer = () => {
   return (
     <>
+      <div className="newsLetterSectionWrapper p-1">
+        <section className="newsLetterSection">
+          <div className="container-fluid">
+            <div className="box d-flex align-items-center">
+              <div className="info">
+                <h2>
+                  تنسش سنشتیبنشس تشنسمیبت <br /> نمشتیب نمشسب نتشسمب
+                </h2>
+                <p>تنیمس نسمتینس نسن</p>
+                <br />
+                <br />
+                <NewsLetter />
+              </div>
+              <div className="img">
+                <img className="w-100" />
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
       <div className="footerWrapper">
         <div className="footerBoxes">
           <div className="contaier-fluid">
