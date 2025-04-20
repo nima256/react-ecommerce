@@ -23,6 +23,17 @@
   background: #3bb77e !important;
 }
 
+.btn-g {
+  background: #3bb77e !important;
+  padding: 10px 25px !important;
+  border-radius: 5px !important;
+  color: #fff !important;
+}
+
+.btn-g:hover {
+  background: #fdc040 !important;
+}
+
 .text-g {
   color: #3bb77e;
 }
@@ -61,6 +72,10 @@
   padding-right: 1rem !important;
 }
 
+.pr-4 {
+  padding-right: 1.5rem !important;
+}
+
 .mr-3 {
   margin-right: 1rem !important;
 }
@@ -75,4 +90,8 @@
 
 .pb-2 {
   padding-bottom: 0.5rem;
+}
+
+.mr-5 {
+  margin-right: 3rem;
 }

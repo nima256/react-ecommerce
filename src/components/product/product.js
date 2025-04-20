@@ -87,7 +87,7 @@ const Product = (props) => {
             {props.title ? (
               props.title
             ) : (
-              <Link>تسشینب نیسشتب نمسشیب نتسش یبنم تتنسب</Link>
+              <Link>دسته بازی ردراگون Saturn G807</Link>
             )}
           </h4>
           <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
@@ -106,7 +106,6 @@ const Product = (props) => {
               </span>
             </div>
             <Button className="bg-g mr-auto transition">
-              اضافه کردن
               <ShoppingCartOutlinedIcon />
             </Button>
           </div>

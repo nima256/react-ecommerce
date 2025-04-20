@@ -33,10 +33,12 @@
 
 .sidebarWrapper {
   max-width: 20% !important;
+  flex: 0 0 20% !important;
 }
 
 .shoppingDataRightContent {
-  max-width: 80%;
+  max-width: 80% !important;
+  flex: 0 0 80% !important;
 }
 
 .sidebarWrapper h3 {
@@ -66,4 +68,46 @@
   bottom: 0px;
   right: 0px;
   z-index: 10;
+}
+
+.sidebarWrapper .sidebar {
+  position: sticky !important;
+  top: 110px !important;
+}
+
+.productsForShop .productsForShopRow .item {
+  width: 300px;
+}
+
+.shoppingDataRightContent .topStrip {
+  padding: 0px 25px;
+}
+
+.shoppingDataRightContent .topStrip p {
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.shoppingDataRightContent .topStrip .tab_ {
+  width: 200px;
+}
+
+.shoppingDataRightContent .topStrip .tab_ .btn_ {
+  background: none !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  padding: 7px 20px !important;
+  color: rgba(0, 0, 0, 0.7) !important;
+  border-radius: 10px !important;
+  font-size: 15px !important;
+  width: 100%;
+  justify-content: flex-start !important;
+}
+
+.shoppingDataRightContent .topStrip .tab_ .btn_ svg {
+  opacity: 0.5;
+}
+
+.shoppingDataRightContent .topStrip .tab_ .dropdownMenu {
+  top: 100% !important;
+  z-index: 4984789;
 }

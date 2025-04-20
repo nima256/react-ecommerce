@@ -36,3 +36,55 @@
 .priceRange span {
   font-size: 18px;
 }
+
+.priceRange .min-price {
+  position: relative !important;
+}
+
+.priceRange .max-price {
+  position: relative !important;
+}
+
+.priceRange .toomanSvg {
+  position: absolute;
+  top: -20px;
+  width: 20px;
+  height: 32px;
+}
+
+.priceRange .maxToomanSvg {
+  position: absolute;
+  top: -20px;
+}
+
+.filters {
+  padding: 25px 0px;
+}
+
+.filters h5 {
+  font-weight: 600;
+}
+
+.filters ul {
+  max-height: 200px;
+  overflow-y: scroll;
+  margin-right: -11px;
+}
+
+.filters ul::-webkit-scrollbar {
+  width: 10px !important;
+}
+
+.filters ul::-webkit-scrollbar-thumb {
+  background: #ccc !important;
+}
+
+.filters ul::-webkit-scrollbar {
+  width: 7px !important;
+}
+
+.filters ul li {
+  width: 100%;
+  margin-bottom: 0px;
+  list-style: none;
+}

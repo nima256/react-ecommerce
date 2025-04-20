@@ -1,17 +1,23 @@
 import "./sidebar.css";
 
 import laptopLogo from "../../assets/images/sidebar/laptop.svg";
+import Tooman from "../../assets/images/product/toman.svg";
+import bannerImg from "../../assets/images/poster/poster-keyboard.webp";
 
 import { useState } from "react";
 
 import Slider from "@mui/material/Slider";
+import Checkbox from "@mui/material/Checkbox";
+import { Button } from "@mui/material";
+import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
+const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 function valuetext(value) {
   return `${value}°C`;
 }
 
 function Sidebar() {
-  const [value, setValue] = useState([20, 37]);
+  const [value, setValue] = useState([150, 856]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -74,6 +80,8 @@ function Sidebar() {
         <div dir="rtl" className="card border-0 shadow">
           <h3>فیلتر ها</h3>
           <Slider
+            min={0}
+            max={1000}
             color="success"
             className="rangeSlider"
             getAriaLabel={() => "Temperature range"}
@@ -85,13 +93,111 @@ function Sidebar() {
 
           <div className="d-flex pt-2 pb-2 priceRange">
             <span>
-              از: <strong className="text-success">۱۴۴</strong>
+              از: &nbsp;
+              <strong className="text-success min-price">
+                {value[0]} <img src={Tooman} alt="" className="toomanSvg" />
+              </strong>
             </span>
             <span className="mr-auto">
-              تا: <strong className="text-success">۱۴۴</strong>
+              تا: &nbsp;
+              <strong className="text-success max-price">
+                {value[1]}
+                <img src={Tooman} alt="" className="toomanSvg maxToomanSvg" />
+              </strong>
             </span>
           </div>
+
+          <div className="filters">
+            <h5>برند</h5>
+            <ul>
+              <li>
+                <Checkbox {...label} color="success" />
+                ایسوس (۵۶)
+              </li>
+              <li>
+                <Checkbox {...label} color="success" />
+                لنوو (۱۲)
+              </li>
+              <li>
+                <Checkbox {...label} color="success" />
+                ایسر (۲۴)
+              </li>
+              <li>
+                <Checkbox {...label} color="success" />
+                ایسوس (۵۶)
+              </li>
+              <li>
+                <Checkbox {...label} color="success" />
+                لنوو (۱۲)
+              </li>
+              <li>
+                <Checkbox {...label} color="success" />
+                ایسر (۲۴)
+              </li>
+              <li>
+                <Checkbox {...label} color="success" />
+                ایسوس (۵۶)
+              </li>
+              <li>
+                <Checkbox {...label} color="success" />
+                لنوو (۱۲)
+              </li>
+              <li>
+                <Checkbox {...label} color="success" />
+                ایسر (۲۴)
+              </li>
+            </ul>
+          </div>
+          <div className="filters">
+            <h5>نمیدونم</h5>
+            <ul>
+              <li>
+                <Checkbox {...label} color="success" />
+                فعلا (۲۴۵)
+              </li>
+              <li>
+                <Checkbox {...label} color="success" />
+                حله (۱۲۱)
+              </li>
+              <li>
+                <Checkbox {...label} color="success" />
+                باشه (۳۴)
+              </li>
+              <li>
+                <Checkbox {...label} color="success" />
+                فعلا (۲۴۵)
+              </li>
+              <li>
+                <Checkbox {...label} color="success" />
+                حله (۱۲۱)
+              </li>
+              <li>
+                <Checkbox {...label} color="success" />
+                باشه (۳۴)
+              </li>
+              <li>
+                <Checkbox {...label} color="success" />
+                فعلا (۲۴۵)
+              </li>
+              <li>
+                <Checkbox {...label} color="success" />
+                حله (۱۲۱)
+              </li>
+              <li>
+                <Checkbox {...label} color="success" />
+                باشه (۳۴)
+              </li>
+            </ul>
+          </div>
+          <div className="d-flex">
+            <Button className="btn btn-g">
+              <FilterAltOutlinedIcon />
+              اعمال فیلتر
+            </Button>
+          </div>
         </div>
+
+        <img src={bannerImg} alt="" className="w-100" />
       </div>
     </>
   );

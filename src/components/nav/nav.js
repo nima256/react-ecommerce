@@ -26,7 +26,7 @@ const Nav = () => {
                 <ul className="list list-inline mb-0">
                   <li className="list-inline-item">
                     <Button>
-                      <Link>خانه</Link>
+                      <Link to={"/"}>خانه</Link>
                     </Button>
                   </li>
                   <li className="list-inline-item">
@@ -36,7 +36,7 @@ const Nav = () => {
                   </li>
                   <li className="list-inline-item">
                     <Button>
-                      <Link>فروشگاه</Link>
+                      <Link to={"/shop"}>فروشگاه</Link>
                     </Button>
                   </li>
                   <li className="list-inline-item position-static">

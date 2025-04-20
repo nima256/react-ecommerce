@@ -116,7 +116,7 @@ header .header-tabs li span img {
   margin-left: 10px;
 }
 
-header .dropdownMenu {
+.dropdownMenu {
   position: absolute;
   top: 40px;
   left: 0px;
@@ -128,13 +128,13 @@ header .dropdownMenu {
   z-index: 100;
 }
 
-header .dropdownMenu li {
+.dropdownMenu li {
   width: 100%;
   list-style: none;
   margin: 0px !important;
 }
 
-header .dropdownMenu li button {
+.dropdownMenu li button {
   width: 100% !important;
   text-align: left !important;
   justify-content: flex-start !important;
@@ -143,12 +143,12 @@ header .dropdownMenu li button {
   padding: 10px 15px !important;
 }
 
-header .dropdownMenu li button svg {
+.dropdownMenu li button svg {
   opacity: 0.7;
   margin-left: 8px !important;
 }
 
-header .dropdownMenu li button:hover {
+.dropdownMenu li button:hover {
   background: #f1f1f1;
 }
 
