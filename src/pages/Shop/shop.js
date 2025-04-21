@@ -57,7 +57,7 @@ const Shop = () => {
                     <ClickAwayListener
                       onClickAway={() => setIsOpenDropDown(false)}
                     >
-                      <div className="tab_ position-relative">
+                      <div className="tab_ position-relative transition">
                         <Button
                           className="btn_"
                           onClick={() => setIsOpenDropDown(!isOpenDropDown)}
