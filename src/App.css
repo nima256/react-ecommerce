@@ -47,6 +47,14 @@
   color: #3bb77e;
 }
 
+.text-org {
+  color: #fdc040 !important;
+}
+
+p {
+  color: #7e7e7e !important;
+}
+
 .hd {
   font-size: 32px !important;
   font-weight: 600 !important;
@@ -103,4 +111,8 @@
 
 .mr-5 {
   margin-right: 3rem;
+}
+
+.text-lightt {
+  color: #8b8b8b !important;
 }

@@ -7,6 +7,7 @@ import Home from "./pages/Home/home";
 import Shop from "./pages/Shop/shop";
 import Footer from "./components/footer/footer";
 import NotFound from "./pages/NotFound/notFound";
+import ProductDetails from "./pages/ProductDetails/productDetails";
 
 function App() {
   return (
@@ -15,6 +16,11 @@ function App() {
       <Routes>
         <Route exact={true} path="/" element={<Home />} />
         <Route exact={true} path="/shop" element={<Shop />} />
+        <Route
+          exact={true}
+          path="/product/details"
+          element={<ProductDetails />}
+        />
         <Route exact={true} path="*" element={<NotFound />} />
       </Routes>
       <Footer />
