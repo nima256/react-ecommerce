@@ -38,12 +38,12 @@ ul.breadcrumb li a:hover {
 }
 
 .detailsPage .productInfo h1 {
-  font-size: 50px;
+  font-size: 25px;
   font-weight: bold;
   opacity: 0.8;
 }
 .detailsPage .productInfo .priceSec .priceLarge {
-  font-size: 45px;
+  font-size: 35px;
   font-weight: bold;
 }
 
@@ -53,7 +53,7 @@ ul.breadcrumb li a:hover {
 }
 
 .detailsPage .productInfo .priceSec .text-lightt.oldPrice {
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 600;
   text-decoration: line-through;
 }
@@ -65,4 +65,17 @@ ul.breadcrumb li a:hover {
   padding: 0px;
   overflow: hidden;
   border-radius: 15px;
+}
+
+.zoomSlider {
+  padding-top: 1px;
+}
+
+.zoomSlider .slick-slide {
+  border-radius: 10px;
+  padding-left: 20px !important;
+}
+
+.detailsContainer {
+  max-width: 90%;
 }
