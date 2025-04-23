@@ -13,18 +13,52 @@ import Rating from "@mui/material/Rating";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { useState } from "react";
+
+import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
+import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import CompareArrowsOutlinedIcon from "@mui/icons-material/CompareArrowsOutlined";
+import { Button } from "@mui/material";
+
+import Sidebar from "../../components/sidebar/sidebar";
 
 function ProductDetails() {
+  const [zoomImage, setZoomImage] = useState(productImage1);
+
   const settings = {
-    dots: false,
-    infinite: false,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
-    // fade: true,
     arrows: true,
-    dir: "rtl",
   };
+
+  const goto = (url) => {
+    setZoomImage(url);
+  };
+
+  // For number to be Persian Start
+  const [value, setValue] = useState(1);
+
+  const toPersianDigits = (num) =>
+    String(num).replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d]);
+
+  const handleInputChange = (e) => {
+    const val = e.target.value.replace(/[۰-۹]/g, (d) =>
+      "۰۱۲۳۴۵۶۷۸۹".indexOf(d)
+    );
+    if (!isNaN(val) && val !== "") {
+      setValue(Number(val));
+    }
+  };
+
+  const increment = () => setValue((prev) => prev + 1);
+  const decrement = () => {
+    if (value !== 1) {
+      setValue((prev) => Math.max(prev - 1, 0));
+    }
+  };
+  // For number to be Persian End
   return (
     <>
       <section className="detailsPage">
@@ -46,52 +80,64 @@ function ProductDetails() {
 
         <div className="container-fluid detailsContainer">
           <div className="row">
-            <div className="col part1">
+            <div className="col-md-9 part1">
               <div className="row" style={{ padding: "45px" }}>
                 {/* productZoom start */}
-
                 <div className="col-md-3">
                   <div className="productZoom">
-                    <InnerImageZoom src={productImage1} zoomType="hover" />
+                    <InnerImageZoom src={zoomImage} zoomType="hover" />
                   </div>
-
                   <Slider {...settings} className="zoomSlider">
                     <div className="item">
-                      <img src={productImage1} alt="" className="w-100" />
+                      <img
+                        src={productImage1}
+                        alt=""
+                        className="w-100"
+                        onClick={() => goto(productImage1)}
+                      />
                     </div>
                     <div className="item">
-                      <img src={productImage2} alt="" className="w-100" />
+                      <img
+                        src={productImage2}
+                        alt=""
+                        className="w-100"
+                        onClick={() => goto(productImage2)}
+                      />
                     </div>
                     <div className="item">
-                      <img src={productImage3} alt="" className="w-100" />
+                      <img
+                        src={productImage3}
+                        alt=""
+                        className="w-100"
+                        onClick={() => goto(productImage3)}
+                      />
                     </div>
                     <div className="item">
-                      <img src={productImage4} alt="" className="w-100" />
+                      <img
+                        src={productImage4}
+                        alt=""
+                        className="w-100"
+                        onClick={() => goto(productImage4)}
+                      />
                     </div>
                     <div className="item">
-                      <img src={productImage5} alt="" className="w-100" />
+                      <img
+                        src={productImage5}
+                        alt=""
+                        className="w-100"
+                        onClick={() => goto(productImage5)}
+                      />
                     </div>
                     <div className="item">
-                      <img src={productImage6} alt="" className="w-100" />
-                    </div>
-                    <div className="item">
-                      <img src={productImage6} alt="" className="w-100" />
-                    </div>
-                    <div className="item">
-                      <img src={productImage6} alt="" className="w-100" />
-                    </div>
-                    <div className="item">
-                      <img src={productImage6} alt="" className="w-100" />
-                    </div>
-                    <div className="item">
-                      <img src={productImage6} alt="" className="w-100" />
-                    </div>
-                    <div className="item">
-                      <img src={productImage6} alt="" className="w-100" />
+                      <img
+                        src={productImage6}
+                        alt=""
+                        className="w-100"
+                        onClick={() => goto(productImage6)}
+                      />
                     </div>
                   </Slider>
                 </div>
-
                 {/* productZoom end */}
 
                 {/* productInfo start */}
@@ -121,9 +167,41 @@ function ProductDetails() {
                     تسمنشیب تنمسشیبت نمشسیبتن مشسیبت نمشسیبت منستبنمستب منسبت
                     منسشبت نمسشبت منشستب منسشتب منسشیب
                   </p>
+
+                  <div className="addCarSection pt-4 pb-4 d-flex align-items-center">
+                    <div className="counterSec ml-3">
+                      <input
+                        type="text"
+                        value={toPersianDigits(value)}
+                        onChange={handleInputChange}
+                        style={{ textAlign: "center", width: "60px" }}
+                        inputMode="numeric"
+                        pattern="[0-9۰-۹]*"
+                        dir="rtl"
+                      />
+                      <span className="arrow plus" onClick={increment}>
+                        <KeyboardArrowUpOutlinedIcon />
+                      </span>
+                      <span className="arrow minus" onClick={decrement}>
+                        <KeyboardArrowDownOutlinedIcon />
+                      </span>
+                    </div>
+
+                    <Button className="btn-g btn-lg ml-3">
+                      <ShoppingCartOutlinedIcon />
+                    </Button>
+
+                    <Button className="move btn-border btn-lg ml-3">
+                      <CompareArrowsOutlinedIcon />
+                    </Button>
+                  </div>
                 </div>
                 {/* productInfo end */}
               </div>
+            </div>
+
+            <div className="col-md-3 rightpart sidebarWrapper">
+              <Sidebar />
             </div>
           </div>
         </div>

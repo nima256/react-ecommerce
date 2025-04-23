@@ -20,8 +20,7 @@ const HomeSlider = () => {
     slidesToScroll: 1,
     // fade: true,
     arrows: true,
-    rtl: true,
-    autoplay: 3000,
+    // autoplay: 3000,
   };
 
   return (

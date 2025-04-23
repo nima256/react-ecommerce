@@ -13,7 +13,6 @@ const DailyBestSells = () => {
     slidesToScroll: 1,
     // fade: true,
     arrows: true,
-    rtl: true,
     autoplay: 3000,
   };
 

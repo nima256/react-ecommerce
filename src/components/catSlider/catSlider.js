@@ -46,7 +46,6 @@ const CatSlider = () => {
     slidesToShow: 10,
     slidesToScroll: 1,
     arrows: true,
-    rtl: true,
     autoplay: 2000,
   };
 
