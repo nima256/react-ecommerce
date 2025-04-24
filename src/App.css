@@ -57,7 +57,7 @@
 }
 
 .btn-lg {
-  font-size: 22px !important;
+  font-size: 17px !important;
 }
 
 .btn-g:hover {
@@ -95,7 +95,11 @@ p {
 }
 
 .mt-0 {
-  margin-bottom: 0px;
+  margin-top: 0px !important;
+}
+
+.mt-5 {
+  margin-top: 3rem !important;
 }
 
 .dirRtl {
@@ -106,12 +110,24 @@ p {
   padding-left: 3rem !important;
 }
 
+.p-3 {
+  padding: 1rem !important;
+}
+
+.p-5 {
+  padding: 3rem !important;
+}
+
 .pr-1 {
   padding-right: 1rem !important;
 }
 
 .pr-4 {
   padding-right: 1.5rem !important;
+}
+
+.pr-5 {
+  padding-right: 3rem !important;
 }
 
 .mr-3 {
@@ -130,12 +146,24 @@ p {
   padding-top: 0.5rem;
 }
 
+.pt-3 {
+  padding-top: 1rem;
+}
+
 .pt-4 {
   padding-top: 1.5rem;
 }
 
+.pt-5 {
+  padding-top: 3rem;
+}
+
 .pb-2 {
   padding-bottom: 0.5rem;
+}
+
+.pb-2 {
+  padding-bottom: 1rem !important;
 }
 
 .pb-4 {

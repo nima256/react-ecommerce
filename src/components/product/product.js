@@ -13,6 +13,10 @@ import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 import Fade from "@mui/material/Fade";
 import { styled } from "@mui/material/styles";
 
+import { ThemeProvider } from "@mui/material/styles";
+import { cacheRtl, theme } from "./rtlTheme";
+import { CacheProvider } from "@emotion/react";
+
 const Product = (props) => {
   const LightTooltip = styled(({ className, ...props }) => (
     <Tooltip {...props} classes={{ popper: className }} />
@@ -90,7 +94,11 @@ const Product = (props) => {
               <Link>دسته بازی ردراگون Saturn G807</Link>
             )}
           </h4>
-          <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
+          <CacheProvider value={cacheRtl}>
+            <ThemeProvider theme={theme}>
+              <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
+            </ThemeProvider>
+          </CacheProvider>
           <span className="brand d-block text-g">
             از <Link className="text-g">اکبر کده</Link>
           </span>
