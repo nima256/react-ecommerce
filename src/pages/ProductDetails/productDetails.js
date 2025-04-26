@@ -10,9 +10,11 @@ import InnerImageZoom from "react-inner-image-zoom";
 import "react-inner-image-zoom/lib/styles.min.css";
 import { Link } from "react-router-dom";
 import Rating from "@mui/material/Rating";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+
 import { useRef, useState } from "react";
 
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
@@ -90,23 +92,7 @@ function ProductDetails() {
   return (
     <>
       <section className="detailsPage">
-        <div className="breadcrumbWrapper mb-4">
-          <div className="container-fluid">
-            <ul className="breadcrumb breadcrumb2 mb-0">
-              <li>
-                <Link>خانه</Link>
-              </li>
-              <li>
-                <Link>لپ تاپ</Link>
-              </li>
-              <li>
-                <Link>لپ تاپ ایسوس مدل X1502</Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="container detailsContainer pt-3 pb-3">
+        <div className="container detailsContainer pt-5 pb-3">
           <div className="row">
             {/* productZoom start */}
             <div className="col-md-4">

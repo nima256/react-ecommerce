@@ -35,7 +35,7 @@ const DailyBestSells = () => {
         </div>
         <br />
         <br />
-        <div className="row dirRtl">
+        <div className="row">
           <div className="col-md-3 pl-5">
             <img
               src={Banner}
@@ -44,7 +44,7 @@ const DailyBestSells = () => {
               style={{ background: "red" }}
             />
           </div>
-          <div className="col-md-9 dirRtl dailyPopularSells">
+          <div className="col-md-9 dailyPopularSells">
             <Slider {...settings} className="prodSlider">
               <div className="item">
                 <Product title="سلام" tag="oneInStock" />

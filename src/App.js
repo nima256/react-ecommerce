@@ -8,6 +8,7 @@ import Shop from "./pages/Shop/shop";
 import Footer from "./components/footer/footer";
 import NotFound from "./pages/NotFound/notFound";
 import ProductDetails from "./pages/ProductDetails/productDetails";
+import Cart from "./pages/cart/cart";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           path="/product/details"
           element={<ProductDetails />}
         />
+        <Route exact={true} path="/cart" element={<Cart />} />
         <Route exact={true} path="*" element={<NotFound />} />
       </Routes>
       <Footer />

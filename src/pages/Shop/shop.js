@@ -22,21 +22,6 @@ const Shop = () => {
     <>
       <section className="shoppingPage">
         <div className="container-fluid">
-          <div className="breadcrumb flex-column">
-            <h1>سلام</h1>
-            <ul className="list list-inline mb-0">
-              <li className="list-inline-item">
-                <Link to={"/"}>خانه</Link>
-              </li>
-              <li className="list-inline-item">
-                <Link to={"/"}>فروشگاه</Link>
-              </li>
-              <li className="list-inline-item">
-                <Link to={"/"}>لپ تاپ</Link>
-              </li>
-            </ul>
-          </div>
-
           <div className="shoppingData">
             <div className="row">
               <div className="col-md-3 sidebarWrapper">

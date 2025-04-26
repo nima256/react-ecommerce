@@ -4,33 +4,6 @@
   padding: 45px 0px;
 }
 
-.breadcrumb {
-  width: 100%;
-  height: auto;
-  padding: 45px 45px !important;
-  background: #d8f1e5 !important;
-  border-radius: 20px !important;
-  margin-bottom: 30px;
-}
-
-.breadcrumb h1 {
-  color: #000;
-  opacity: 0.8;
-  font-size: 50px;
-  font-weight: bold;
-}
-
-.shoppingPage .breadcrumb ul li {
-  margin: 0px;
-  margin-left: 20px !important;
-}
-
-.shoppingPage .breadcrumb ul li a {
-  color: #000;
-  text-decoration: none;
-  font-size: 20px;
-}
-
 .sidebarWrapper {
   max-width: 20% !important;
   flex: 0 0 20% !important;

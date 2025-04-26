@@ -1,0 +1,14 @@
+.cartSection {
+    width: 100%;
+    height: auto;
+    padding: 35px 0px;
+}
+
+.cartSection .clearCart {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.cartSection .clearCart svg {
+    font-size: 25px !important;
+}
