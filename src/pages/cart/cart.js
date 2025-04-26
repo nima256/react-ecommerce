@@ -1,6 +1,6 @@
 import "./cart.css";
 
-import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 
 function Cart() {
   return (
@@ -17,14 +17,30 @@ function Cart() {
                   </p>
                 </div>
 
-                <div className="mr-auto clearCart"><DeleteOutlineOutlinedIcon className='ml-1' />پاک کردن سبد خرید</div>
+                <div className="mr-auto clearCart d-flex align-items-center cursor">
+                  <DeleteOutlineOutlinedIcon className="ml-1" />
+                  پاک کردن سبد خرید
+                </div>
+              </div>
+
+              <div className="cartWrapper mt-4">
+                <div className="table-responsive">
+                  <table className="table">
+                    <thead>
+                      <tr>
+                        <th>محصول</th>
+                        <th>قیمت واحد</th>
+                        <th>تعداد</th>
+                        <th>جمع قیمت</th>
+                        <th>حذف</th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
               </div>
             </div>
 
-
-            <div className="col-md-5">
-                
-            </div>
+            <div className="col-md-5"></div>
           </div>
         </div>
       </section>

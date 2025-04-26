@@ -12,3 +12,8 @@
 .cartSection .clearCart svg {
     font-size: 25px !important;
 }
+
+
+.cartSection table thead {
+    background: #000 !important;
+}
