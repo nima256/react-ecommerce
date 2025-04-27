@@ -1,19 +1,36 @@
 .cartSection {
-    width: 100%;
-    height: auto;
-    padding: 35px 0px;
+  width: 100%;
+  height: auto;
+  padding: 35px 0px;
 }
 
 .cartSection .clearCart {
-    font-weight: 500;
-    font-size: 16px;
+  font-weight: 500;
+  font-size: 16px;
 }
 
 .cartSection .clearCart svg {
-    font-size: 25px !important;
+  font-size: 25px !important;
 }
 
+.cartSection table thead th {
+  background: #f1f1f1 !important;
+  overflow: hidden;
+  border-bottom: 0;
+}
 
-.cartSection table thead {
-    background: #000 !important;
+.cartSection table thead th:first-child {
+  border-top-right-radius: 10px !important;
+  border-bottom-right-radius: 10px !important;
+}
+
+.cartSection table thead th:last-child {
+  border-top-left-radius: 10px !important;
+  border-bottom-left-radius: 10px !important;
+}
+
+.cartSection table tbody td .img {
+    width: 150px;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }

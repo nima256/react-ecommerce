@@ -1,5 +1,7 @@
 import "./cart.css";
 
+import Image1 from '../../assets/images/productDetails/1.webp'
+
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 
 function Cart() {
@@ -35,6 +37,16 @@ function Cart() {
                         <th>حذف</th>
                       </tr>
                     </thead>
+
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div className="img">
+                            <img src={Image1} alt="" className='w-100' />
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
                   </table>
                 </div>
               </div>
