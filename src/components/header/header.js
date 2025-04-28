@@ -18,6 +18,7 @@ import ClickAwayListener from "@mui/material/ClickAwayListener";
 
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isOpenDropDown, setIsOpenDropDown] = useState(false);
@@ -131,22 +132,28 @@ const Header = () => {
 
                   <ul className="list list-inline mb-0 header-tabs">
                     <li className="list-inline-item">
-                      <span>
-                        <img src={compareIcon} alt="لوگو مقایسه" />
-                        <span class="d-flex align-items-center justify-content-center position-absolute top-100 start-100 translate-middle badge rounded-pill bg-g">
-                          ۵۵<span class="visually-hidden">unread messages</span>
+                      <Link to={""}>
+                        <span>
+                          <img src={compareIcon} alt="لوگو مقایسه" />
+                          <span class="d-flex align-items-center justify-content-center position-absolute top-100 start-100 translate-middle badge rounded-pill bg-g">
+                            ۵۵
+                            <span class="visually-hidden">unread messages</span>
+                          </span>
+                          مقایسه
                         </span>
-                        مقایسه
-                      </span>
+                      </Link>
                     </li>
                     <li className="list-inline-item">
-                      <span>
-                        <img src={cartIcon} alt="سبد خرید" />
-                        <span class="d-flex align-items-center justify-content-center position-absolute top-100 start-100 translate-middle badge rounded-pill bg-g">
-                          ۵۵<span class="visually-hidden">unread messages</span>
+                      <Link to={"/cart"}>
+                        <span>
+                          <img src={cartIcon} alt="سبد خرید" />
+                          <span class="d-flex align-items-center justify-content-center position-absolute top-100 start-100 translate-middle badge rounded-pill bg-g">
+                            ۵۵
+                            <span class="visually-hidden">unread messages</span>
+                          </span>
+                          سبد خرید
                         </span>
-                        سبد خرید
-                      </span>
+                      </Link>
                     </li>
                     <ClickAwayListener
                       onClickAway={() => setIsOpenDropDown(false)}

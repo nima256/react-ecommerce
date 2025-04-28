@@ -17,8 +17,6 @@ import Slider from "react-slick";
 
 import { useRef, useState } from "react";
 
-import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
-import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import CompareArrowsOutlinedIcon from "@mui/icons-material/CompareArrowsOutlined";
 import { Button } from "@mui/material";
@@ -27,6 +25,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import { cacheRtl, theme } from "./rtlTheme";
 import { CacheProvider } from "@emotion/react";
 import Product from "../../components/product/product";
+import QuantityBox from "../../components/quantityBox/quantityBox";
 
 function ProductDetails() {
   const [zoomImage, setZoomImage] = useState(productImage1);
@@ -221,32 +220,19 @@ function ProductDetails() {
                 نمسشبت منشستب منسشتب منسشیب
               </p>
 
-              <div className="addCarSection pt-4 pb-4 d-flex align-items-center">
-                <div className="counterSec ml-3">
-                  <input
-                    type="text"
-                    value={toPersianDigits(value)}
-                    onChange={handleInputChange}
-                    style={{ textAlign: "center", width: "60px" }}
-                    inputMode="numeric"
-                    pattern="[0-9۰-۹]*"
-                    dir="rtl"
-                  />
-                  <span className="arrow plus" onClick={increment}>
-                    <KeyboardArrowUpOutlinedIcon />
-                  </span>
-                  <span className="arrow minus" onClick={decrement}>
-                    <KeyboardArrowDownOutlinedIcon />
-                  </span>
+              <div className="d-flex align-items-center">
+                <div>
+                  <QuantityBox />
                 </div>
+                <div className="d-flex align-items-center">
+                  <Button className="btn-g btn-lg ml-3">
+                    <ShoppingCartOutlinedIcon />
+                  </Button>
 
-                <Button className="btn-g btn-lg ml-3">
-                  <ShoppingCartOutlinedIcon />
-                </Button>
-
-                <Button className="move btn-border btn-lg ml-3">
-                  <CompareArrowsOutlinedIcon />
-                </Button>
+                  <Button className="move btn-border btn-lg ml-3">
+                    <CompareArrowsOutlinedIcon />
+                  </Button>
+                </div>
               </div>
             </div>
             {/* productInfo end */}

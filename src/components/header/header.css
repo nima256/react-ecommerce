@@ -105,6 +105,16 @@ header .header-tabs li {
   margin-left: 47px;
 }
 
+header .header-tabs li a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+header .header-tabs li a:hover {
+  transition: all 0.2s ease-in-out;
+  color: #279a65;
+}
+
 header .header-tabs li span {
   cursor: pointer;
 }
