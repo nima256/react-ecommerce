@@ -115,8 +115,11 @@ header .part2 button.rounded-circle {
 .dropdownInfo h4 {
   font-size: 14px;
   font-weight: 500;
+  white-space: break-spaces;
+  line-height: 21px;
 }
 
 .dropdownInfo h4 b {
   font-weight: 600;
+  margin-left: 5px;
 }
