@@ -1,3 +1,16 @@
+::-webkit-scrollbar {
+  width: 5px !important;
+  height: 5px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0858f7 !important;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
 header {
   width: 100%;
   height: 70px;
@@ -94,6 +107,12 @@ header .part2 button.rounded-circle {
   opacity: 0.7;
 }
 
+.allMenuItemWrapper {
+  max-height: 400px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
 #account-menu li {
   font-size: 15px !important;
   padding: 12px 15px !important;
@@ -103,23 +122,45 @@ header .part2 button.rounded-circle {
   font-size: 20px !important;
 }
 
-.dropdown_list h4 {
-  font-size: 20px;
-  font-weight: 600;
+.dropdown_list .head {
+  padding-top: 14px !important;
+}
+
+.dropdown_list .head h4 {
+  font-size: 20px !important;
+  font-weight: 600 !important;
+}
+
+.dropdown_list li.MuiButtonBase-root {
+  background: #ebf6ff !important;
+  color: #000 !important;
+  padding: 10px 15px !important;
+}
+
+.dropdown_list li.MuiButtonBase-root:hover {
+  background: #e2e8ed;
 }
 
 .dropdownInfo {
   padding-right: 15px;
+  max-width: 200px;
 }
 
 .dropdownInfo h4 {
   font-size: 14px;
   font-weight: 500;
-  white-space: break-spaces;
+  white-space: wrap;
   line-height: 21px;
+  margin-top: 0px;
 }
 
 .dropdownInfo h4 b {
   font-weight: 600;
   margin-left: 5px;
+}
+
+.dropdownInfo p {
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 0px;
 }

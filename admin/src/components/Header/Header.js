@@ -78,6 +78,7 @@ function Header() {
             >
               <IoMdNotificationsOutline />
             </Button>
+
             <Menu
               anchorEl={notificationAnchorEl}
               className="dropdown_list"
@@ -93,27 +94,276 @@ function Header() {
               </div>
 
               <Divider className="mb-2" style={{ opacity: "0.5" }} />
+              <div className="allMenuItemWrapper">
+                <MenuItem onClick={handleCloseNotificationDrop}>
+                  <div className="d-flex">
+                    <div className="">
+                      <div className="userImg">
+                        <span className="rounded-circle">
+                          <img src={user} alt="" />
+                        </span>
+                      </div>
+                    </div>
 
-              <MenuItem onClick={handleCloseNotificationDrop}>
-                <div className="d-flex align-items-center">
-                  <div className="userImg">
-                    <span className="rounded-circle">
-                      <img src={user} alt="" />
-                    </span>
+                    <div className="dropdownInfo">
+                      <h4>
+                        <span>
+                          &nbsp;
+                          <b>اکبر</b>
+                          &nbsp;به سبد خرید خود اضافه کرافه کرافه کرافه کرافه
+                          کرافه کرافه کرافه کرد&nbsp;
+                          <b>لپ تاپ بمب</b>
+                        </span>
+                      </h4>
+                      <p className="text-sky mb-0">چند لحظه پیش</p>
+                    </div>
                   </div>
-                </div>
+                </MenuItem>
+                <MenuItem onClick={handleCloseNotificationDrop}>
+                  <div className="d-flex">
+                    <div className="">
+                      <div className="userImg">
+                        <span className="rounded-circle">
+                          <img src={user} alt="" />
+                        </span>
+                      </div>
+                    </div>
 
-                <div className="dropdownInfo">
-                  <h4>
-                    <span>
-                      &nbsp;
-                      <b>اکبر</b>
-                      &nbsp;به سبد خرید خود اضافه کرافه کرافه کرافه کرافه کرافه کرافه کرافه کرد&nbsp;
-                      <b>لپ تاپ بمب</b>
-                    </span>
-                  </h4>
-                </div>
-              </MenuItem>
+                    <div className="dropdownInfo">
+                      <h4>
+                        <span>
+                          &nbsp;
+                          <b>اکبر</b>
+                          &nbsp;به سبد خرید خود اضافه کرافه کرافه کرافه کرافه
+                          کرافه کرافه کرافه کرد&nbsp;
+                          <b>لپ تاپ بمب</b>
+                        </span>
+                      </h4>
+                      <p className="text-sky mb-0">چند لحظه پیش</p>
+                    </div>
+                  </div>
+                </MenuItem>
+                <MenuItem onClick={handleCloseNotificationDrop}>
+                  <div className="d-flex">
+                    <div className="">
+                      <div className="userImg">
+                        <span className="rounded-circle">
+                          <img src={user} alt="" />
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="dropdownInfo">
+                      <h4>
+                        <span>
+                          &nbsp;
+                          <b>اکبر</b>
+                          &nbsp;به سبد خرید خود اضافه کرافه کرافه کرافه کرافه
+                          کرافه کرافه کرافه کرد&nbsp;
+                          <b>لپ تاپ بمب</b>
+                        </span>
+                      </h4>
+                      <p className="text-sky mb-0">چند لحظه پیش</p>
+                    </div>
+                  </div>
+                </MenuItem>
+                <MenuItem onClick={handleCloseNotificationDrop}>
+                  <div className="d-flex">
+                    <div className="">
+                      <div className="userImg">
+                        <span className="rounded-circle">
+                          <img src={user} alt="" />
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="dropdownInfo">
+                      <h4>
+                        <span>
+                          &nbsp;
+                          <b>اکبر</b>
+                          &nbsp;به سبد خرید خود اضافه کرافه کرافه کرافه کرافه
+                          کرافه کرافه کرافه کرد&nbsp;
+                          <b>لپ تاپ بمب</b>
+                        </span>
+                      </h4>
+                      <p className="text-sky mb-0">چند لحظه پیش</p>
+                    </div>
+                  </div>
+                </MenuItem>
+                <MenuItem onClick={handleCloseNotificationDrop}>
+                  <div className="d-flex">
+                    <div className="">
+                      <div className="userImg">
+                        <span className="rounded-circle">
+                          <img src={user} alt="" />
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="dropdownInfo">
+                      <h4>
+                        <span>
+                          &nbsp;
+                          <b>اکبر</b>
+                          &nbsp;به سبد خرید خود اضافه کرافه کرافه کرافه کرافه
+                          کرافه کرافه کرافه کرد&nbsp;
+                          <b>لپ تاپ بمب</b>
+                        </span>
+                      </h4>
+                      <p className="text-sky mb-0">چند لحظه پیش</p>
+                    </div>
+                  </div>
+                </MenuItem>
+                <MenuItem onClick={handleCloseNotificationDrop}>
+                  <div className="d-flex">
+                    <div className="">
+                      <div className="userImg">
+                        <span className="rounded-circle">
+                          <img src={user} alt="" />
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="dropdownInfo">
+                      <h4>
+                        <span>
+                          &nbsp;
+                          <b>اکبر</b>
+                          &nbsp;به سبد خرید خود اضافه کرافه کرافه کرافه کرافه
+                          کرافه کرافه کرافه کرد&nbsp;
+                          <b>لپ تاپ بمب</b>
+                        </span>
+                      </h4>
+                      <p className="text-sky mb-0">چند لحظه پیش</p>
+                    </div>
+                  </div>
+                </MenuItem>
+                <MenuItem onClick={handleCloseNotificationDrop}>
+                  <div className="d-flex">
+                    <div className="">
+                      <div className="userImg">
+                        <span className="rounded-circle">
+                          <img src={user} alt="" />
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="dropdownInfo">
+                      <h4>
+                        <span>
+                          &nbsp;
+                          <b>اکبر</b>
+                          &nbsp;به سبد خرید خود اضافه کرافه کرافه کرافه کرافه
+                          کرافه کرافه کرافه کرد&nbsp;
+                          <b>لپ تاپ بمب</b>
+                        </span>
+                      </h4>
+                      <p className="text-sky mb-0">چند لحظه پیش</p>
+                    </div>
+                  </div>
+                </MenuItem>
+                <MenuItem onClick={handleCloseNotificationDrop}>
+                  <div className="d-flex">
+                    <div className="">
+                      <div className="userImg">
+                        <span className="rounded-circle">
+                          <img src={user} alt="" />
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="dropdownInfo">
+                      <h4>
+                        <span>
+                          &nbsp;
+                          <b>اکبر</b>
+                          &nbsp;به سبد خرید خود اضافه کرافه کرافه کرافه کرافه
+                          کرافه کرافه کرافه کرد&nbsp;
+                          <b>لپ تاپ بمب</b>
+                        </span>
+                      </h4>
+                      <p className="text-sky mb-0">چند لحظه پیش</p>
+                    </div>
+                  </div>
+                </MenuItem>
+                <MenuItem onClick={handleCloseNotificationDrop}>
+                  <div className="d-flex">
+                    <div className="">
+                      <div className="userImg">
+                        <span className="rounded-circle">
+                          <img src={user} alt="" />
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="dropdownInfo">
+                      <h4>
+                        <span>
+                          &nbsp;
+                          <b>اکبر</b>
+                          &nbsp;به سبد خرید خود اضافه کرافه کرافه کرافه کرافه
+                          کرافه کرافه کرافه کرد&nbsp;
+                          <b>لپ تاپ بمب</b>
+                        </span>
+                      </h4>
+                      <p className="text-sky mb-0">چند لحظه پیش</p>
+                    </div>
+                  </div>
+                </MenuItem>
+                <MenuItem onClick={handleCloseNotificationDrop}>
+                  <div className="d-flex">
+                    <div className="">
+                      <div className="userImg">
+                        <span className="rounded-circle">
+                          <img src={user} alt="" />
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="dropdownInfo">
+                      <h4>
+                        <span>
+                          &nbsp;
+                          <b>اکبر</b>
+                          &nbsp;به سبد خرید خود اضافه کرافه کرافه کرافه کرافه
+                          کرافه کرافه کرافه کرد&nbsp;
+                          <b>لپ تاپ بمب</b>
+                        </span>
+                      </h4>
+                      <p className="text-sky mb-0">چند لحظه پیش</p>
+                    </div>
+                  </div>
+                </MenuItem>
+                <MenuItem onClick={handleCloseNotificationDrop}>
+                  <div className="d-flex">
+                    <div className="">
+                      <div className="userImg">
+                        <span className="rounded-circle">
+                          <img src={user} alt="" />
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="dropdownInfo">
+                      <h4>
+                        <span>
+                          &nbsp;
+                          <b>اکبر</b>
+                          &nbsp;به سبد خرید خود اضافه کرافه کرافه کرافه کرافه
+                          کرافه کرافه کرافه کرد&nbsp;
+                          <b>لپ تاپ بمب</b>
+                        </span>
+                      </h4>
+                      <p className="text-sky mb-0">چند لحظه پیش</p>
+                    </div>
+                  </div>
+                </MenuItem>
+              </div>
+
+              <div className="ps-3 pe-3 w-100 pt-2 pb-1">
+                <Button className="btn-blue w-100">دیدن همه اعلان ها</Button>
+              </div>
             </Menu>
 
             <div className="myAccWrapper">
