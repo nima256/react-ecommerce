@@ -61,3 +61,44 @@
 .sidebar ul li button:hover {
   background: #f1f1f1;
 }
+
+.sidebar ul li button.act {
+  background: #f1f1f1;
+}
+
+.sidebar ul .submenu {
+  padding: 0px 45px !important;
+  position: relative;
+}
+
+.sidebar ul .submenu::before {
+  content: "";
+  width: 1px;
+  height: 95%;
+  position: absolute;
+  top: 0px;
+  right: 25px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.sidebar ul .submenu li {
+  width: 100%;
+  list-style: none;
+}
+
+.sidebar ul .submenu li a {
+  color: #5e5d72 !important;
+  text-decoration: none !important;
+  display: block;
+  padding: 6px 0px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+}
+a {
+  text-decoration: none !important;
+}
+
+.sidebar ul .submenu li a:hover {
+  color: #0858f7 !important;
+}

@@ -40,6 +40,17 @@ function Sidebar() {
                   <FaAngleLeft />
                 </span>
               </Button>
+              <ul className="submenu">
+                <li>
+                  <Link to={"#"}>لیست محصولات</Link>
+                </li>
+                <li>
+                  <Link to={"#"}>دیدن محصولات</Link>
+                </li>
+                <li>
+                  <Link to={"#"}>اضافه محصول</Link>
+                </li>
+              </ul>
             </Link>
           </li>
           <li>
