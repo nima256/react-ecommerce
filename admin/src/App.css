@@ -21,3 +21,26 @@ body {
   color: #fff !important;
   border-radius: 5px !important;
 }
+
+.main .sidebarWrapper {
+  width: 30%;
+  flex: 0 0 30%;
+  transition: all 0.3 ease-in-out;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: transparent !important;
+}
+
+.main .sidebarWrapper:hover ::-webkit-scrollbar {
+  width: 5px !important;
+  height: 5px !important;
+}
+
+.main .sidebarWrapper:hover ::-webkit-scrollbar-thumb {
+  background: #0858f7 !important;
+}
+
+.main .sidebarWrapper:hover ::-webkit-scrollbar-track {
+  background: transparent !important;
+}
