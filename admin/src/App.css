@@ -23,8 +23,8 @@ body {
 }
 
 .main .sidebarWrapper {
-  width: 30%;
-  flex: 0 0 30%;
+  width: 20%;
+  flex: 0 0 20%;
   transition: all 0.3 ease-in-out;
 }
 
