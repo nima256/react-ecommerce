@@ -25,7 +25,7 @@ function DashboardBox(props) {
 
   return (
     <>
-      <div
+      <Button
         className="dashboardBox"
         style={{
           backgroundImage: `linear-gradient(to left, ${props.color?.[0]} , ${props.color?.[1]})`,
@@ -52,7 +52,7 @@ function DashboardBox(props) {
           </div>
         </div>
 
-        <div className="d-flex align-items-center bottomEle">
+        <div className="d-flex align-items-center bottomEle w-100">
           <h6 className="text-white mb-0 mt-0">ماه گذشته</h6>
           <div className="me-auto">
             <Button className="me-auto toggleIcon" onClick={handleClick}>
@@ -76,25 +76,25 @@ function DashboardBox(props) {
               }}
             >
               <MenuItem onClick={handleClose}>
+                <IoTimeOutline />
                 روز گذشته
-                <IoTimeOutline />
               </MenuItem>
               <MenuItem onClick={handleClose}>
+                <IoTimeOutline />
                 هفته گذشته
-                <IoTimeOutline />
               </MenuItem>
               <MenuItem onClick={handleClose}>
+                <IoTimeOutline />
                 ماه گذشته
-                <IoTimeOutline />
               </MenuItem>
               <MenuItem onClick={handleClose}>
-                سال گذشته
                 <IoTimeOutline />
+                سال گذشته
               </MenuItem>
             </Menu>
           </div>
         </div>
-      </div>
+      </Button>
     </>
   );
 }

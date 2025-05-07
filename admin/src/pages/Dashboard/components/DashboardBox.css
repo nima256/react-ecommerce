@@ -1,51 +1,53 @@
 .dashboardBox {
-  width: 48%;
-  height: 200px;
-  border-radius: 20px;
-  overflow: hidden;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  position: relative;
-  color: #fff;
+  width: 48% !important;
+  height: 200px !important;
+  border-radius: 20px !important;
+  overflow: hidden !important;
+  padding: 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-around !important;
+  position: relative !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+  text-align: right !important;
 }
 
 .dashboardBox .col1 h4 {
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 20px !important;
+  font-weight: 600 !important;
 }
 
 .dashboardBox .col1 span {
   font-size: 35px !important;
-  font-weight: bold;
-  line-height: 45px;
+  font-weight: bold !important;
+  line-height: 45px !important;
 }
 
 .dashboardBox .icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 10px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 10px !important;
   background-image: linear-gradient(
     to bottom right,
     rgba(0, 0, 0, 0),
     rgba(0, 0, 0, 0.2)
-  );
+  ) !important; 
 }
 
 .dashboardBox .icon svg {
-  font-size: 30px;
-  opacity: 0.4;
-  color: #fff;
+  font-size: 30px !important;
+  opacity: 0.4 !important;
+  color: #fff !important;
 }
 
 .dashboardBox .toggleIcon {
-  font-size: 22px;
-  color: rgba(0, 0, 0, 0.5);
-  cursor: pointer;
+  font-size: 22px !important;
+  color: rgba(0, 0, 0, 0.5) !important;
+  cursor: pointer !important;
   min-width: 40px !important;
   width: 40px !important;
   height: 40px !important;
@@ -53,25 +55,25 @@
 }
 
 .dashboardBox .chart {
-  opacity: 0.1;
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
+  opacity: 0.1 !important;
+  position: absolute !important;
+  bottom: 20px !important;
+  right: 20px !important;
 }
 
 .dashboardBox .chart svg {
-  transform: rotate(180deg);
-  font-size: 110px;
-  color: #000;
+  transform: rotate(180deg) !important;
+  font-size: 110px !important;
+  color: #000 !important;
 }
 
 .dashboardBox .bottomEle {
-    position: relative;
-    top: 25px;
+    position: relative !important;
+    top: 25px !important;
 }
 
 .dropdown_menu .MuiButtonBase-root svg {
     color: #000 !important;
     font-size: 17px !important;
-    margin-right: 5px !important;
+    margin-left: 5px !important;
 }
