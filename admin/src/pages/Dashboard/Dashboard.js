@@ -12,23 +12,11 @@ import { IoTimeOutline } from "react-icons/io5";
 import { useState } from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import { Chart } from "react-google-charts";
+
+import { LineChart, lineElementClasses } from "@mui/x-charts/LineChart";
+import { dataset } from "./GDPperCapita";
 
 const ITEM_HEIGHT = 48;
-
-export const data = [
-  ["Year", "Sales", "Expenses"],
-  ["2004", 1000, 400],
-  ["2005", 1170, 460],
-  ["2006", 660, 1120],
-  ["2007", 1030, 540],
-];
-
-export const options = {
-  title: "Company Performance",
-  curveType: "function",
-  legend: { position: "bottom" },
-};
 
 function Dashboard() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -115,14 +103,68 @@ function Dashboard() {
                 ۱۲۴,۳۱۲,۶۴۲
               </h3>
               <p>۱۱۴,۴۱۲,۱۳۲ در ماه گذشته</p>
-              <Chart
-                chartType="LineChart"
-                width="100%"
-                height="200px"
-                data={data}
-                options={options}
-                legendToggle
-              />
+              <LineChart
+                dataset={dataset}
+                sx={{
+                  [`& .${lineElementClasses.root}`]: {
+                    strokeDasharray: "10 5",
+                    strokeWidth: 4,
+                  },
+                  "& .MuiAreaElement-series-Germany": {
+                    fill: "url('#myGradient')",
+                    filter: "none", // Remove the default filtering
+                  },
+                }}
+                xAxis={[
+                  {
+                    id: "Years",
+                    dataKey: "date",
+                    scaleType: "time",
+                    min: new Date(1990, 0, 1),
+                    max: new Date(2018, 0, 1),
+                    valueFormatter: (date) => date.getFullYear().toString(),
+                  },
+                ]}
+                yAxis={[
+                  {
+                    width: 40,
+                  },
+                ]}
+                series={[
+                  {
+                    id: "France",
+                    dataKey: "fr",
+                    stack: "total",
+                    area: true,
+                    showMark: false,
+                  },
+                  {
+                    id: "Germany",
+                    dataKey: "dl",
+                    stack: "total",
+                    area: true,
+                    showMark: false,
+                  },
+                  {
+                    id: "United Kingdom",
+                    dataKey: "gb",
+                    stack: "total",
+                    area: true,
+                    showMark: false,
+                  },
+                ]}
+                height={200}
+              >
+                <defs>
+                  <linearGradient
+                    id="myGradient"
+                    gradientTransform="rotate(90)"
+                  >
+                    <stop offset="5%" stopColor="gold" />
+                    <stop offset="95%" stopColor="red" />
+                  </linearGradient>
+                </defs>
+              </LineChart>
             </div>
           </div>
         </div>
