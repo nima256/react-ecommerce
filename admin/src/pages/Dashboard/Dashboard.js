@@ -1,26 +1,26 @@
 import DashboardBox from "./components/DashboardBox";
 import "./Dashboard.css";
-
 import { FaUserCircle } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import { MdShoppingBag } from "react-icons/md";
 import { GiStarsStack } from "react-icons/gi";
-
 import { Button } from "@mui/material";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { IoTimeOutline } from "react-icons/io5";
 import { useState } from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-
-import { LineChart, lineElementClasses } from "@mui/x-charts/LineChart";
-import { dataset } from "./GDPperCapita";
-
+import { LineChart } from "@mui/x-charts/LineChart";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import rtlPlugin from "stylis-plugin-rtl";
 import { prefixer } from "stylis";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
+import InputLabel from "@mui/material/InputLabel";
+import FormHelperText from "@mui/material/FormHelperText";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+
 const theme = createTheme({ direction: "rtl" });
 
 const cacheRtl = createCache({
@@ -32,6 +32,8 @@ const ITEM_HEIGHT = 48;
 
 function Dashboard() {
   const [anchorEl, setAnchorEl] = useState(null);
+  const [showBy, setShowBy] = useState("");
+
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -124,8 +126,57 @@ function Dashboard() {
                         data: [2, 5.5, 2, 8.5, 1.5, 5],
                       },
                     ]}
-                    height={300}
+                    height={200}
                   />
+                </ThemeProvider>
+              </CacheProvider>
+            </div>
+          </div>
+        </div>
+
+        <div className="card shadow border-0 p-3 mt-4">
+          <h3 className="hd">پرفروش ترین کالا ها</h3>
+
+          <div className="row cardFilters mt-3">
+            <div className="col-md-3">
+              <h4>نمایش توسط</h4>
+              <CacheProvider value={cacheRtl}>
+                <ThemeProvider theme={theme}>
+                  <Select
+                    value={showBy}
+                    onChange={(e) => setShowBy(e.target.value)}
+                    displayEmpty
+                    inputProps={{ "aria-label": "Without label" }}
+                    className="w-100"
+                  >
+                    <MenuItem value="">
+                      <em>هیچی</em>
+                    </MenuItem>
+                    <MenuItem value={10}>سلام</MenuItem>
+                    <MenuItem value={20}>سلام ۲ </MenuItem>
+                    <MenuItem value={30}>سلام ۳</MenuItem>
+                  </Select>
+                </ThemeProvider>
+              </CacheProvider>
+            </div>
+            <div className="col-md-3">
+              <h4>نمایش توسط</h4>
+              <CacheProvider value={cacheRtl}>
+                <ThemeProvider theme={theme}>
+                  <Select
+                    value={showBy}
+                    onChange={(e) => setShowBy(e.target.value)}
+                    displayEmpty
+                    inputProps={{ "aria-label": "Without label" }}
+                    className="w-100"
+                  >
+                    <MenuItem value="">
+                      <em>هیچی</em>
+                    </MenuItem>
+                    <MenuItem value={10}>سلام</MenuItem>
+                    <MenuItem value={20}>سلام ۲ </MenuItem>
+                    <MenuItem value={30}>سلام ۳</MenuItem>
+                  </Select>
                 </ThemeProvider>
               </CacheProvider>
             </div>

@@ -46,7 +46,24 @@
 }
 
 .graphBox p {
-    font-size: 14px;
-    color: #fff;
-    opacity: 0.7;
+  font-size: 14px;
+  color: #fff;
+  opacity: 0.7;
+}
+
+.card {
+  margin: 20px 0px !important;
+  border-radius: 10px !important;
+}
+
+.card .hd {
+  font-size: 20px;
+  font-weight: bold;
+  color: #403e57;
+}
+
+.cardFilters .col h4 {
+  font-size: 16px;
+  font-weight: 800;
+  color: #403e57;
 }
