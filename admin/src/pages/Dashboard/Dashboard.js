@@ -16,6 +16,18 @@ import MenuItem from "@mui/material/MenuItem";
 import { LineChart, lineElementClasses } from "@mui/x-charts/LineChart";
 import { dataset } from "./GDPperCapita";
 
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import rtlPlugin from "stylis-plugin-rtl";
+import { prefixer } from "stylis";
+import { CacheProvider } from "@emotion/react";
+import createCache from "@emotion/cache";
+const theme = createTheme({ direction: "rtl" });
+
+const cacheRtl = createCache({
+  key: "muirtl",
+  stylisPlugins: [prefixer, rtlPlugin],
+});
+
 const ITEM_HEIGHT = 48;
 
 function Dashboard() {
@@ -103,68 +115,19 @@ function Dashboard() {
                 ۱۲۴,۳۱۲,۶۴۲
               </h3>
               <p>۱۱۴,۴۱۲,۱۳۲ در ماه گذشته</p>
-              <LineChart
-                dataset={dataset}
-                sx={{
-                  [`& .${lineElementClasses.root}`]: {
-                    strokeDasharray: "10 5",
-                    strokeWidth: 4,
-                  },
-                  "& .MuiAreaElement-series-Germany": {
-                    fill: "url('#myGradient')",
-                    filter: "none", // Remove the default filtering
-                  },
-                }}
-                xAxis={[
-                  {
-                    id: "Years",
-                    dataKey: "date",
-                    scaleType: "time",
-                    min: new Date(1990, 0, 1),
-                    max: new Date(2018, 0, 1),
-                    valueFormatter: (date) => date.getFullYear().toString(),
-                  },
-                ]}
-                yAxis={[
-                  {
-                    width: 40,
-                  },
-                ]}
-                series={[
-                  {
-                    id: "France",
-                    dataKey: "fr",
-                    stack: "total",
-                    area: true,
-                    showMark: false,
-                  },
-                  {
-                    id: "Germany",
-                    dataKey: "dl",
-                    stack: "total",
-                    area: true,
-                    showMark: false,
-                  },
-                  {
-                    id: "United Kingdom",
-                    dataKey: "gb",
-                    stack: "total",
-                    area: true,
-                    showMark: false,
-                  },
-                ]}
-                height={200}
-              >
-                <defs>
-                  <linearGradient
-                    id="myGradient"
-                    gradientTransform="rotate(90)"
-                  >
-                    <stop offset="5%" stopColor="gold" />
-                    <stop offset="95%" stopColor="red" />
-                  </linearGradient>
-                </defs>
-              </LineChart>
+              <CacheProvider value={cacheRtl}>
+                <ThemeProvider theme={theme}>
+                  <LineChart
+                    xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
+                    series={[
+                      {
+                        data: [2, 5.5, 2, 8.5, 1.5, 5],
+                      },
+                    ]}
+                    height={300}
+                  />
+                </ThemeProvider>
+              </CacheProvider>
             </div>
           </div>
         </div>
