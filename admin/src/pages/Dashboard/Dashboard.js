@@ -16,8 +16,6 @@ import rtlPlugin from "stylis-plugin-rtl";
 import { prefixer } from "stylis";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
-import InputLabel from "@mui/material/InputLabel";
-import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
@@ -33,6 +31,7 @@ const ITEM_HEIGHT = 48;
 function Dashboard() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [showBy, setShowBy] = useState("");
+  const [CatBy, setCatBy] = useState("");
 
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -139,44 +138,49 @@ function Dashboard() {
 
           <div className="row cardFilters mt-3">
             <div className="col-md-3">
-              <h4>نمایش توسط</h4>
+              <h4>تعداد کالا</h4>
               <CacheProvider value={cacheRtl}>
                 <ThemeProvider theme={theme}>
-                  <Select
-                    value={showBy}
-                    onChange={(e) => setShowBy(e.target.value)}
-                    displayEmpty
-                    inputProps={{ "aria-label": "Without label" }}
-                    className="w-100"
-                  >
-                    <MenuItem value="">
-                      <em>هیچی</em>
-                    </MenuItem>
-                    <MenuItem value={10}>سلام</MenuItem>
-                    <MenuItem value={20}>سلام ۲ </MenuItem>
-                    <MenuItem value={30}>سلام ۳</MenuItem>
-                  </Select>
+                  <FormControl size="small" className="w-100">
+                    <Select
+                      value={showBy}
+                      onChange={(e) => setShowBy(e.target.value)}
+                      displayEmpty
+                      inputProps={{ "aria-label": "Without label" }}
+                      labelId="demo-select-small-label"
+                      className="w-100"
+                    >
+                      <MenuItem value="">
+                        <em>هیچی</em>
+                      </MenuItem>
+                      <MenuItem value={10}>سلام</MenuItem>
+                      <MenuItem value={20}>سلام ۲ </MenuItem>
+                      <MenuItem value={30}>سلام ۳</MenuItem>
+                    </Select>
+                  </FormControl>
                 </ThemeProvider>
               </CacheProvider>
             </div>
             <div className="col-md-3">
-              <h4>نمایش توسط</h4>
+              <h4>دسته بندی با</h4>
               <CacheProvider value={cacheRtl}>
                 <ThemeProvider theme={theme}>
-                  <Select
-                    value={showBy}
-                    onChange={(e) => setShowBy(e.target.value)}
-                    displayEmpty
-                    inputProps={{ "aria-label": "Without label" }}
-                    className="w-100"
-                  >
-                    <MenuItem value="">
-                      <em>هیچی</em>
-                    </MenuItem>
-                    <MenuItem value={10}>سلام</MenuItem>
-                    <MenuItem value={20}>سلام ۲ </MenuItem>
-                    <MenuItem value={30}>سلام ۳</MenuItem>
-                  </Select>
+                  <FormControl size="small" className="w-100">
+                    <Select
+                      value={CatBy}
+                      onChange={(e) => setCatBy(e.target.value)}
+                      displayEmpty
+                      inputProps={{ "aria-label": "Without label" }}
+                      className="w-100"
+                    >
+                      <MenuItem value="">
+                        <em>هیچی</em>
+                      </MenuItem>
+                      <MenuItem value={10}>سلام</MenuItem>
+                      <MenuItem value={20}>سلام ۲ </MenuItem>
+                      <MenuItem value={30}>سلام ۳</MenuItem>
+                    </Select>
+                  </FormControl>
                 </ThemeProvider>
               </CacheProvider>
             </div>
