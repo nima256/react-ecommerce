@@ -124,14 +124,14 @@ a {
 }
 
 .sidebar ul .submenuWrapper.colapse {
-  height: auto !important;
+  height: 120px !important;
   overflow: inherit;
   padding: 10px 0px;
 }
 
 .sidebar ul .submenuWrapper.colapse .submenu {
   opacity: 1 !important;
-  height: auto;
+  height: 120px;
 }
 
 .logoutWrapper {
