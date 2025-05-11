@@ -21,12 +21,16 @@ import Logout from "@mui/icons-material/Logout";
 import LockResetIcon from "@mui/icons-material/LockReset";
 
 import user from "../../assets/images/Header/user.png";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Divider } from "@mui/material";
+import { MyContext } from "../../App";
 
 function Header() {
   const [myAccAnchorEl, myAccSetAnchorEl] = useState(null);
   const myAccOpen = Boolean(myAccAnchorEl);
+
+  const context = useContext(MyContext);
+
   const handleOpenMyAccDrop = (event) => {
     myAccSetAnchorEl(event.currentTarget);
   };
@@ -56,8 +60,17 @@ function Header() {
           </div>
 
           <div className="col-sm-3 d-flex align-items-center part2">
-            <Button className="rounded-circle ms-3">
-              <MdMenuOpen />
+            <Button
+              className="rounded-circle ms-3"
+              onClick={() =>
+                context.setIsToggleSidebar(!context.isToggleSidebar)
+              }
+            >
+              {context.isToggleSidebar === false ? (
+                <MdMenuOpen />
+              ) : (
+                <MdOutlineMenu />
+              )}
             </Button>
             <SearchBox />
           </div>

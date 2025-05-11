@@ -635,6 +635,7 @@ function Dashboard() {
             <CacheProvider value={cacheRtl}>
               <ThemeProvider theme={theme}>
                 <div className="d-flex tableFooter">
+                  <p>نتیجه <b>۱۲</b> از <b>۶۰</b> محصول</p>
                   <Pagination
                     count={10}
                     color="primary"

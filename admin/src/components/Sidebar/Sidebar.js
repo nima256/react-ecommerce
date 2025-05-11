@@ -11,11 +11,14 @@ import { IoLogOutOutline } from "react-icons/io5";
 
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { MyContext } from "../../App";
 
 function Sidebar() {
   const [activeTab, setActiveTab] = useState(0);
   const [isToggleSubmenu, setIsToggleSubmenu] = useState(false);
+
+  const contex = useContext(MyContext);
 
   const isOpenSubmenu = (index) => {
     setActiveTab(index);

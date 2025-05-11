@@ -1,10 +1,17 @@
 .main .content {
   width: 80%;
   flex: 0 0 80%;
+  transition: all 0.3s ease-in-out !important;
+}
+
+.main .content.toggle {
+  width: 100%;
+  flex: 0 0 100%;
 }
 
 .right-content {
   padding: 90px 30px;
+  padding-bottom: 10px;
 }
 
 .dashboardBoxWrapper {
@@ -168,6 +175,12 @@ table td .imgWrapper {
 
 .tableFooter .pagination {
   margin-right: auto;
+}
+
+.tableFooter p {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 0px;
 }
 
 .css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {

@@ -28,6 +28,15 @@ body {
   transition: all 0.3 ease-in-out;
 }
 
+.main .sidebarWrapper.toggle {
+  width: 0%;
+  flex: 0 0 0%;
+}
+
+.main .sidebarWrapper.toggle .sidebar {
+  right: -100%;
+}
+
 .sidebar::-webkit-scrollbar-thumb {
   background: transparent !important;
 }
