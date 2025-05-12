@@ -117,7 +117,7 @@ function Dashboard() {
                 </div>
               </div>
 
-              <h3 className="text-white font-weight-bolder mt-3">
+              <h3 className="text-white fw-bolder mt-3">
                 ۱۲۴,۳۱۲,۶۴۲
               </h3>
               <p>۱۱۴,۴۱۲,۱۳۲ در ماه گذشته</p>

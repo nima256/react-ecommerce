@@ -6,35 +6,46 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import Header from "./components/Header/Header";
 import Sidebar from "./components/Sidebar/Sidebar";
 import { createContext, useEffect, useState } from "react";
+import Login from "./pages/Login/Login";
 
 const MyContext = createContext();
 
 function App() {
   const [isToggleSidebar, setIsToggleSidebar] = useState(false);
+  const [isLoginPage, setIsLoginPage] = useState(false);
 
-  const values = { isToggleSidebar, setIsToggleSidebar };
+  const values = {
+    isToggleSidebar,
+    setIsToggleSidebar,
+    isLoginPage,
+    setIsLoginPage,
+  };
 
   useEffect(() => {}, [isToggleSidebar]);
 
   return (
     <BrowserRouter>
       <MyContext.Provider value={values}>
-        <Header />
+        {isLoginPage !== true && <Header />}
+
         <div className="main d-flex">
-          <div
-            className={`sidebarWrapper ${
-              isToggleSidebar === true ? "toggle" : ""
-            }`}
-          >
-            <Sidebar />
-          </div>
+          {isLoginPage !== true && (
+            <div
+              className={`sidebarWrapper ${
+                isToggleSidebar === true ? "toggle" : ""
+              }`}
+            >
+              <Sidebar />
+            </div>
+          )}
 
           <div
-            className={`content ${isToggleSidebar === true ? "toggle" : ""}`}
+            className={`content ${isLoginPage === true && 'full'} ${isToggleSidebar === true ? "toggle" : ""}`}
           >
             <Routes>
               <Route path={"/"} exact={true} element={<Dashboard />} />
               <Route path={"/dashboard"} exact={true} element={<Dashboard />} />
+              <Route path={"/login"} exact={true} element={<Login />} />
             </Routes>
           </div>
         </div>

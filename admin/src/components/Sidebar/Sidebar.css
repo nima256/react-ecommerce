@@ -103,7 +103,7 @@
   font-weight: 500;
   transition: all 0.3s ease-in-out;
 }
-a {
+.sidebar ul .submenu a {
   text-decoration: none !important;
 }
 
