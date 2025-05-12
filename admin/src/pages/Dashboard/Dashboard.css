@@ -63,16 +63,28 @@
   border-radius: 10px !important;
 }
 
+body.dark .card {
+  background: #112143 !important;
+}
+
 .card .hd {
   font-size: 20px;
   font-weight: bold;
   color: #403e57;
 }
 
+body.dark .card .hd {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
 .cardFilters .col-md-3 h4 {
   font-size: 16px;
   font-weight: 800;
   color: #403e57;
+}
+
+body.dark .cardFilters .col-md-3 h4 {
+  color: rgba(255, 255, 255, 0.8) !important;
 }
 
 h1,
@@ -83,6 +95,32 @@ h5,
 h6,
 p {
   color: #403e57 !important;
+}
+
+body.dark
+  .muirtl-si86to-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input,
+body.dark .muirtl-lohd6h-MuiSvgIcon-root-MuiSelect-icon,
+body.dark .muirtl-d551zc-MuiSvgIcon-root-MuiSelect-icon ,
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4,
+body.dark h5,
+body.dark h6,
+body.dark p {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+body.dark .muirtl-1ll44ll-MuiOutlinedInput-notchedOutline {
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+body.dark .table {
+  background: #112143 !important;
+}
+
+body.dark .table tbody td {
+  background: #112143 !important;
 }
 
 .table thead th {

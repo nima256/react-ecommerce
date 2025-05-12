@@ -15,7 +15,7 @@ import { useContext, useState } from "react";
 import { MyContext } from "../../App";
 
 function Sidebar() {
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeTab, setActiveTab] = useState();
   const [isToggleSubmenu, setIsToggleSubmenu] = useState(false);
 
   const contex = useContext(MyContext);

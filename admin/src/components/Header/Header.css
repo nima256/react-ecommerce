@@ -23,6 +23,10 @@ header {
   backdrop-filter: blur(5px) !important;
 }
 
+body.dark header {
+  background: #112143 !important;
+}
+
 header .logo {
   text-decoration: none;
 }
@@ -35,6 +39,11 @@ header .logo span {
   color: #292929;
   font-weight: 900;
   font-size: 22px;
+}
+
+body.dark header .logo span {
+  color: #fff !important;
+  opacity: 0.8;
 }
 
 header button.rounded-circle {
@@ -53,6 +62,14 @@ header button.rounded-circle svg {
 
 header button.rounded-circle:hover svg {
   color: #0858f7 !important;
+}
+
+body.dark header button.rounded-circle {
+  background: #112755 !important;
+}
+
+body.dark header button.rounded-circle svg {
+  color: #fff !important;
 }
 
 header .part2 button.rounded-circle {
@@ -106,11 +123,28 @@ header .part2 button.rounded-circle {
   color: #292929;
 }
 
+body.dark .myAcc .userInfo h4 {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
 .myAcc .userInfo p {
   margin-top: 0px;
   font-size: 15px;
   color: #000;
   opacity: 0.7;
+}
+
+body.dark .myAcc .userInfo p {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+body.dark .MuiPaper-elevation {
+  background: #11254e;
+}
+
+body.dark .MuiPaper-elevation li *,
+body.dark .MuiPaper-elevation li {
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .allMenuItemWrapper {
@@ -137,10 +171,18 @@ header .part2 button.rounded-circle {
   font-weight: 600 !important;
 }
 
+body.dark .dropdown_list .head h4 {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
 .dropdown_list li.MuiButtonBase-root {
   background: #ebf6ff !important;
   color: #000 !important;
   padding: 10px 15px !important;
+}
+
+body.dark .dropdown_list li.MuiButtonBase-root {
+  background-color: #12254e !important;
 }
 
 .dropdown_list li.MuiButtonBase-root:hover {

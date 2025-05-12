@@ -13,12 +13,27 @@ const MyContext = createContext();
 function App() {
   const [isToggleSidebar, setIsToggleSidebar] = useState(false);
   const [isLoginPage, setIsLoginPage] = useState(false);
+  const [themeMode, setThemeMode] = useState(true);
+
+  useEffect(() => {
+    if (themeMode === true) {
+      document.body.classList.remove("dark");
+      document.body.classList.add("light");
+      localStorage.setItem("themeMode", "light");
+    } else {
+      document.body.classList.remove("light");
+      document.body.classList.add("dark");
+      localStorage.setItem("themeMode", "dark");
+    }
+  }, [themeMode]);
 
   const values = {
     isToggleSidebar,
     setIsToggleSidebar,
     isLoginPage,
     setIsLoginPage,
+    themeMode,
+    setThemeMode,
   };
 
   useEffect(() => {}, [isToggleSidebar]);
@@ -40,7 +55,9 @@ function App() {
           )}
 
           <div
-            className={`content ${isLoginPage === true && 'full'} ${isToggleSidebar === true ? "toggle" : ""}`}
+            className={`content ${isLoginPage === true && "full"} ${
+              isToggleSidebar === true ? "toggle" : ""
+            }`}
           >
             <Routes>
               <Route path={"/"} exact={true} element={<Dashboard />} />
