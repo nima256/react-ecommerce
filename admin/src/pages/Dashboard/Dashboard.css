@@ -100,7 +100,7 @@ p {
 body.dark
   .muirtl-si86to-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input,
 body.dark .muirtl-lohd6h-MuiSvgIcon-root-MuiSelect-icon,
-body.dark .muirtl-d551zc-MuiSvgIcon-root-MuiSelect-icon ,
+body.dark .muirtl-d551zc-MuiSvgIcon-root-MuiSelect-icon,
 body.dark h1,
 body.dark h2,
 body.dark h3,
@@ -121,6 +121,33 @@ body.dark .table {
 
 body.dark .table tbody td {
   background: #112143 !important;
+}
+
+body.dark table td {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+body.dark .table-bordered td,
+body.dark .table-bordered th {
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+}
+
+body.dark .muirtl-1bug3cd-MuiButtonBase-root-MuiPaginationItem-root {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+body.dark .muirtl-1bug3cd-MuiButtonBase-root-MuiPaginationItem-root:hover {
+  background: #0858f7 !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+body.dark
+  .muirtl-1bug3cd-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+  background: #0858f7 !important;
+}
+
+body.dark .muirtl-btxnvc-MuiPaginationItem-root {
+  color: rgba(255, 255, 255, 0.8) !important;
 }
 
 .table thead th {
