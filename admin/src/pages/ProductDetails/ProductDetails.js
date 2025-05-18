@@ -12,6 +12,7 @@ import image3 from "../../assets/images/productDetails/3.webp";
 import image4 from "../../assets/images/productDetails/4-1.jpg";
 import image5 from "../../assets/images/productDetails/5-1.jpg";
 import image6 from "../../assets/images/productDetails/6.webp";
+import UserImgCircle from "../../components/UserImgCircle/UserImgCircle";
 
 // rtl
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -224,7 +225,7 @@ function ProductDetails() {
 
             <br />
 
-            <h5 className="mt-4 mb-3">آنالیز نظرات</h5>
+            <h5 className="mt-4 mb-4">آنالیز نظرات</h5>
             <div className="ratingSection">
               <div className="ratingrow d-flex align-items-center">
                 <span className="col1">۵ ستاره</span>
@@ -290,6 +291,27 @@ function ProductDetails() {
                 </div>
 
                 <div className="col3">(۲)</div>
+              </div>
+            </div>
+
+            <br />
+
+            <h5 className="mt-4 mb-4">نظرات کاربران</h5>
+
+            <div className="reviewSection">
+              <div className="reviewRow">
+                <div className="row">
+                  <div className="col-sm-7">
+                    <div className="userInfo d-flex">
+                      <UserImgCircle lg={true} />
+
+                      <div className="info pe-2">
+                        <h5>علی علیی</h5>
+                        <span>۳۶ دقیقه پیش</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

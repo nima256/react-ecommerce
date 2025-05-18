@@ -112,6 +112,11 @@ header .part2 button.rounded-circle {
   width: 100%;
 }
 
+.userImg.lg {
+  width: 60px !important;
+  height: 60px !important;
+}
+
 .myAcc .userInfo {
   padding-right: 10px;
 }

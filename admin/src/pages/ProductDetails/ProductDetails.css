@@ -98,6 +98,7 @@ p {
 
 .ratingSection .ratingrow {
   width: 100%;
+  margin-bottom: 15px;
 }
 
 .ratingSection .ratingrow .col1 {
@@ -122,4 +123,18 @@ p {
 
 .muirtl-1txyin7-MuiLinearProgress-root {
     background: #000 !important;
+}
+
+.reviewSection {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.reviewSection .reviewRow {
+    width: 100%;
+    height: 100px;
+    background: #071739;
+    padding: 35px;
+    border-radius: 10px;
 }
