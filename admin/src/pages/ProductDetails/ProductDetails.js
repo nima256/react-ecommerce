@@ -29,6 +29,7 @@ import { prefixer } from "stylis";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 import { Button } from "@mui/material";
+import { useRef } from "react";
 
 const theme = (outerTheme) =>
   createTheme({
@@ -42,6 +43,9 @@ const cacheRtl = createCache({
 // rtl end
 
 function ProductDetails() {
+  const productSliderBig = useRef();
+  const productSliderSml = useRef();
+
   var productSliderSettings = {
     dots: false,
     infinite: false,
@@ -68,25 +72,33 @@ function ProductDetails() {
             <div className="col-md-4">
               <div className="sliderWrapper pt-3 pb-3 ps-4 pe-4">
                 <h5 className="mb-4">گالری محصول</h5>
-                <Slider {...productSliderSettings} className="sliderBig mb-2">
+                <Slider
+                  {...productSliderSettings}
+                  ref={productSliderBig}
+                  className="sliderBig mb-2"
+                >
                   <div className="item">
                     <img src={image1} alt="" className="w-100" />
                   </div>
                 </Slider>
-                <Slider {...productSliderSmlSettings} className="sliderSml">
-                  <div className="item">
+                <Slider
+                  {...productSliderSmlSettings}
+                  ref={productSliderSml}
+                  className="sliderSml"
+                >
+                  <div className="item" onClick={() => goToSlide(1)}>
                     <img src={image2} alt="" className="w-100" />
                   </div>
-                  <div className="item">
+                  <div className="item" onClick={() => goToSlide(2)}>
                     <img src={image3} alt="" className="w-100" />
                   </div>
-                  <div className="item">
+                  <div className="item" onClick={() => goToSlide(3)}>
                     <img src={image4} alt="" className="w-100" />
                   </div>
-                  <div className="item">
+                  <div className="item" onClick={() => goToSlide(4)}>
                     <img src={image5} alt="" className="w-100" />
                   </div>
-                  <div className="item">
+                  <div className="item" onClick={() => goToSlide(5)}>
                     <img src={image6} alt="" className="w-100" />
                   </div>
                 </Slider>
@@ -198,7 +210,7 @@ function ProductDetails() {
                   <div className="row mb-2">
                     <div className="col-sm-3 d-flex align-items-center">
                       <span className="icon">
-                        <FaComments  />
+                        <FaComments />
                       </span>
                       <span className="name">نظرات</span>
                     </div>
@@ -487,7 +499,16 @@ function ProductDetails() {
 
             <br />
 
-            <h5 className='mt-4 mb-4'>فرم پاسخ نظرات</h5>
+            <h5 className="mt-4 mb-4">فرم پاسخ نظرات</h5>
+            <form action="" className="reviewForm">
+              <textarea
+                name=""
+                id=""
+                placeholder="نظر خود را بنویسید..."
+              ></textarea>
+
+              <Button className="btn-blue btn-big w-100 mt-4">ارسال نظر</Button>
+            </form>
           </div>
         </div>
       </div>

@@ -30,6 +30,10 @@ body.dark {
   padding: 5px 25px !important;
 }
 
+.btn-big {
+  padding: 10px 30px !important;
+}
+
 .link {
   color: #5e5d72 !important;
   font-weight: 600;
