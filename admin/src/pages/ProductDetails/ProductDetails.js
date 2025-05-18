@@ -5,6 +5,14 @@ import Slider from "react-slick";
 import { MdBrandingWatermark } from "react-icons/md";
 import { MdCategory } from "react-icons/md";
 import LinearProgress from "@mui/material/LinearProgress";
+import Rating from "@mui/material/Rating";
+import { FaReply } from "react-icons/fa";
+import { FaTags } from "react-icons/fa";
+import { IoIosColorPalette } from "react-icons/io";
+import { FaDollarSign } from "react-icons/fa";
+import { FaBoxOpen } from "react-icons/fa";
+import { FaComments } from "react-icons/fa";
+import { IoTimeSharp } from "react-icons/io5";
 
 import image1 from "../../assets/images/productDetails/1.webp";
 import image2 from "../../assets/images/productDetails/2.webp";
@@ -20,6 +28,7 @@ import rtlPlugin from "stylis-plugin-rtl";
 import { prefixer } from "stylis";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
+import { Button } from "@mui/material";
 
 const theme = (outerTheme) =>
   createTheme({
@@ -131,7 +140,7 @@ function ProductDetails() {
                   <div className="row mb-2">
                     <div className="col-sm-3 d-flex align-items-center">
                       <span className="icon">
-                        <MdBrandingWatermark />
+                        <FaTags />
                       </span>
                       <span className="name">برچسب</span>
                     </div>
@@ -156,7 +165,7 @@ function ProductDetails() {
                   <div className="row mb-2">
                     <div className="col-sm-3 d-flex align-items-center">
                       <span className="icon">
-                        <MdBrandingWatermark />
+                        <IoIosColorPalette />
                       </span>
                       <span className="name">رنگ</span>
                     </div>
@@ -167,7 +176,7 @@ function ProductDetails() {
                   <div className="row mb-2">
                     <div className="col-sm-3 d-flex align-items-center">
                       <span className="icon">
-                        <MdBrandingWatermark />
+                        <FaDollarSign />
                       </span>
                       <span className="name">قیمت</span>
                     </div>
@@ -178,7 +187,7 @@ function ProductDetails() {
                   <div className="row mb-2">
                     <div className="col-sm-3 d-flex align-items-center">
                       <span className="icon">
-                        <MdBrandingWatermark />
+                        <FaBoxOpen />
                       </span>
                       <span className="name">موجودی</span>
                     </div>
@@ -189,7 +198,7 @@ function ProductDetails() {
                   <div className="row mb-2">
                     <div className="col-sm-3 d-flex align-items-center">
                       <span className="icon">
-                        <MdBrandingWatermark />
+                        <FaComments  />
                       </span>
                       <span className="name">نظرات</span>
                     </div>
@@ -200,7 +209,7 @@ function ProductDetails() {
                   <div className="row mb-2">
                     <div className="col-sm-3 d-flex align-items-center">
                       <span className="icon">
-                        <MdBrandingWatermark />
+                        <IoTimeSharp />
                       </span>
                       <span className="name">زمان انتشار</span>
                     </div>
@@ -251,7 +260,7 @@ function ProductDetails() {
                   </CacheProvider>
                 </div>
 
-                <div className="col3">(۲)</div>
+                <div className="col3">(۶)</div>
               </div>
               <div className="ratingrow d-flex align-items-center">
                 <span className="col1">۳ ستاره</span>
@@ -264,7 +273,7 @@ function ProductDetails() {
                   </CacheProvider>
                 </div>
 
-                <div className="col3">(۲)</div>
+                <div className="col3">(۱۲)</div>
               </div>
               <div className="ratingrow d-flex align-items-center">
                 <span className="col1">۲ ستاره</span>
@@ -277,7 +286,7 @@ function ProductDetails() {
                   </CacheProvider>
                 </div>
 
-                <div className="col3">(۲)</div>
+                <div className="col3">(۵)</div>
               </div>
               <div className="ratingrow d-flex align-items-center">
                 <span className="col1">۱ ستاره</span>
@@ -297,23 +306,188 @@ function ProductDetails() {
             <br />
 
             <h5 className="mt-4 mb-4">نظرات کاربران</h5>
-
             <div className="reviewSection">
-              <div className="reviewRow">
-                <div className="row">
-                  <div className="col-sm-7">
-                    <div className="userInfo d-flex">
-                      <UserImgCircle lg={true} />
+              <div className="reviewRow mb-3">
+                <div className="row ">
+                  <div className="col-md-7 d-flex">
+                    <div className="d-flex flex-column">
+                      <div className="userInfo d-flex align-items-center mb-3">
+                        <UserImgCircle lg={true} />
 
-                      <div className="info pe-2">
-                        <h5>علی علیی</h5>
-                        <span>۳۶ دقیقه پیش</span>
+                        <div className="info pe-3">
+                          <h5>علی علیی</h5>
+                          <span>۳۶ دقیقه پیش</span>
+                        </div>
                       </div>
+                      <CacheProvider value={cacheRtl}>
+                        <ThemeProvider theme={theme}>
+                          <Rating
+                            name="half-rating-read"
+                            defaultValue={2.5}
+                            precision={0.5}
+                            readOnly
+                          />
+                        </ThemeProvider>
+                      </CacheProvider>
                     </div>
                   </div>
+
+                  <div className="col-md-5 d-flex align-items-center">
+                    <div className="me-auto">
+                      <Button className="btn-blue btn-lg me-auto">
+                        <FaReply className="ms-2" />
+                        پاسخ
+                      </Button>
+                    </div>
+                  </div>
+                  <p className="mt-3">
+                    تشسنیم نسشتیب شسمی بشسنمیب سشنمی‌ب تسشی تشسنیم نسشتیب شسمی
+                    بشسنمیب سشنمیب تسشی تشسنیم نسشتیب شسمی بشسنمیب سشنمیب تسشی
+                    تشسنیم نسشتیب شسمی بشسنمیب سشنمیب تسشی تشسنیم نسشتیب شسمی
+                    بشسنمیب سشنمیب تسشی تشسنیم نسشتیب شسمی بشسنمیب سشنمیب تسشی
+                    تشسنیم نسشتیب شسمی بشسنمیب سشنمیب تسشی تشسنیم نسشتیب شسمی
+                    بشسنمیب سشنمیب تسشی تشسنیم نسشتیب شسمی بشسنمیب سشنمیب تسشی
+                    تشسنیم نسشتیب شسمی بشسنمیب سشنمیب تسشی
+                  </p>
+                </div>
+              </div>
+              <div className="reviewRow mb-3 reply">
+                <div className="row ">
+                  <div className="col-md-7 d-flex">
+                    <div className="d-flex flex-column">
+                      <div className="userInfo d-flex align-items-center mb-3">
+                        <UserImgCircle lg={true} />
+
+                        <div className="info pe-3">
+                          <h5>ممد ممدی</h5>
+                          <span>۱۶ دقیقه پیش</span>
+                        </div>
+                      </div>
+                      <CacheProvider value={cacheRtl}>
+                        <ThemeProvider theme={theme}>
+                          <Rating
+                            name="half-rating-read"
+                            defaultValue={4.5}
+                            precision={0.5}
+                            readOnly
+                          />
+                        </ThemeProvider>
+                      </CacheProvider>
+                    </div>
+                  </div>
+
+                  <div className="col-md-5 d-flex align-items-center">
+                    <div className="me-auto">
+                      <Button className="btn-blue btn-lg me-auto">
+                        <FaReply className="ms-2" />
+                        پاسخ
+                      </Button>
+                    </div>
+                  </div>
+                  <p className="mt-3">
+                    تشسنیم نسشتیب شسمی بشسنمیب سشنمی‌ب تسشی تشسنیم نسشتیب شسمی
+                    بشسنمیب سشنمیب تسشی تشسنیم نسشتیب شسمی بشسنمیب سشنمیب تسشی
+                    تشسنیم نسشتیب شسمی بشسنمیب سشنمیب تسشی تشسنیم نسشتیب شسمی
+                    بشسنمیب سشنمیب تسشی تشسنیم نسشتیب شسمی بشسنمیب سشنمیب تسشی
+                    تشسنیم نسشتیب شسمی بشسنمیب سشنمیب تسشی تشسنیم نسشتیب شسمی
+                    بشسنمیب سشنمیب تسشی تشسنیم نسشتیب شسمی بشسنمیب سشنمیب تسشی
+                    تشسنیم نسشتیب شسمی بشسنمیب سشنمیب تسشی
+                  </p>
+                </div>
+              </div>
+              <div className="reviewRow mb-3 reply">
+                <div className="row ">
+                  <div className="col-md-7 d-flex">
+                    <div className="d-flex flex-column">
+                      <div className="userInfo d-flex align-items-center mb-3">
+                        <UserImgCircle lg={true} />
+
+                        <div className="info pe-3">
+                          <h5>اکبر اکبری</h5>
+                          <span>۳۶ دقیقه پیش</span>
+                        </div>
+                      </div>
+                      <CacheProvider value={cacheRtl}>
+                        <ThemeProvider theme={theme}>
+                          <Rating
+                            name="half-rating-read"
+                            defaultValue={1.5}
+                            precision={0.5}
+                            readOnly
+                          />
+                        </ThemeProvider>
+                      </CacheProvider>
+                    </div>
+                  </div>
+
+                  <div className="col-md-5 d-flex align-items-center">
+                    <div className="me-auto">
+                      <Button className="btn-blue btn-lg me-auto">
+                        <FaReply className="ms-2" />
+                        پاسخ
+                      </Button>
+                    </div>
+                  </div>
+                  <p className="mt-3">
+                    تشسنیم نسشتیب شسمی بشسنمیب سشنمی‌ب تسشی تشسنیم نسشتیب شسمی
+                    بشسنمیب سشنمیب تسشی تشسنیم نسشتیب شسمی بشسنمیب سشنمیب تسشی
+                    تشسنیم نسشتیب شسمی بشسنمیب سشنمیب تسشی تشسنیم نسشتیب شسمی
+                    بشسنمیب سشنمیب تسشی تشسنیم نسشتیب شسمی بشسنمیب سشنمیب تسشی
+                    تشسنیم نسشتیب شسمی بشسنمیب سشنمیب تسشی تشسنیم نسشتیب شسمی
+                    بشسنمیب سشنمیب تسشی تشسنیم نسشتیب شسمی بشسنمیب سشنمیب تسشی
+                    تشسنیم نسشتیب شسمی بشسنمیب سشنمیب تسشی
+                  </p>
+                </div>
+              </div>
+              <div className="reviewRow mb-3">
+                <div className="row ">
+                  <div className="col-md-7 d-flex">
+                    <div className="d-flex flex-column">
+                      <div className="userInfo d-flex align-items-center mb-3">
+                        <UserImgCircle lg={true} />
+
+                        <div className="info pe-3">
+                          <h5>احمد احمدی</h5>
+                          <span>۳۶ دقیقه پیش</span>
+                        </div>
+                      </div>
+                      <CacheProvider value={cacheRtl}>
+                        <ThemeProvider theme={theme}>
+                          <Rating
+                            name="half-rating-read"
+                            defaultValue={0.5}
+                            precision={0.5}
+                            readOnly
+                          />
+                        </ThemeProvider>
+                      </CacheProvider>
+                    </div>
+                  </div>
+
+                  <div className="col-md-5 d-flex align-items-center">
+                    <div className="me-auto">
+                      <Button className="btn-blue btn-lg me-auto">
+                        <FaReply className="ms-2" />
+                        پاسخ
+                      </Button>
+                    </div>
+                  </div>
+                  <p className="mt-3">
+                    تشسنیم نسشتیب شسمی بشسنمیب سشنمی‌ب تسشی تشسنیم نسشتیب شسمی
+                    بشسنمیب سشنمیب تسشی تشسنیم نسشتیب شسمی بشسنمیب سشنمیب تسشی
+                    تشسنیم نسشتیب شسمی بشسنمیب سشنمیب تسشی تشسنیم نسشتیب شسمی
+                    بشسنمیب سشنمیب تسشی تشسنیم نسشتیب شسمی بشسنمیب سشنمیب تسشی
+                    تشسنیم نسشتیب شسمی بشسنمیب سشنمیب تسشی تشسنیم نسشتیب شسمی
+                    بشسنمیب سشنمیب تسشی تشسنیم نسشتیب شسمی بشسنمیب سشنمیب تسشی
+                    تشسنیم نسشتیب شسمی بشسنمیب سشنمیب تسشی
+                  </p>
                 </div>
               </div>
             </div>
+
+            <br />
+
+            <h5 className='mt-4 mb-4'>فرم پاسخ نظرات</h5>
           </div>
         </div>
       </div>

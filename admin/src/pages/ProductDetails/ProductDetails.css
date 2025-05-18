@@ -1,7 +1,3 @@
-body.dark * {
-  color: rgba(255, 255, 255, 0.8) !important;
-}
-
 .sliderSml .slick-slide {
   padding-right: 5px !important;
 }
@@ -26,7 +22,10 @@ h4 {
   border-radius: 10px !important;
 }
 
-body.dark span {
+body.dark .ratingSection span,
+body.dark .productInfo span,
+body.dark .ratingrow .col3,
+body.dark .reviewSection .info span {
   color: rgba(255, 255, 255, 0.7);
 }
 
@@ -44,6 +43,9 @@ body.dark span {
   flex: 0 0 82%;
   font-weight: 600;
   font-size: 15px;
+}
+
+body.dark .productDetailsSection .productInfo .name {
   color: rgba(255, 255, 255, 0.8) !important;
 }
 
@@ -74,12 +76,15 @@ body.dark span {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  background: #1b2b4d !important;
+  background: #f1f1f1 !important;
   border-radius: 5px !important;
   font-size: 13px !important;
   padding: 5px 10px !important;
   margin-left: 15px !important;
   text-align: center !important;
+}
+body.dark .tags .spanWrapepr {
+  background: #1b2b4d !important;
 }
 
 .tags li span:first-child {
@@ -118,23 +123,44 @@ p {
 }
 
 .muirtl-l16vtb-MuiLinearProgress-bar1 {
-    background: #edb213 !important;
+  background: #edb213 !important;
 }
 
 .muirtl-1txyin7-MuiLinearProgress-root {
-    background: #000 !important;
+  background: #000 !important;
 }
 
 .reviewSection {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .reviewSection .reviewRow {
-    width: 100%;
-    height: 100px;
-    background: #071739;
-    padding: 35px;
-    border-radius: 10px;
+  width: 100%;
+  height: auto;
+  background: #f1f1f1;
+  padding: 35px;
+  border-radius: 10px;
+}
+
+body.dark .reviewSection .reviewRow {
+  background: #071739;
+}
+
+.userInfo h5 {
+  margin-bottom: 0px !important;
+}
+
+.MuiRating-iconEmpty {
+  color: red;
+}
+
+body.dark .muirtl-9xw0na-MuiRating-icon {
+  color: #503f3f !important;
+}
+
+.reviewSection .reviewRow.reply {
+  width: 90%;
+  margin-right: auto;
 }
