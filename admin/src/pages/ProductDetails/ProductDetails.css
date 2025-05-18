@@ -1,0 +1,125 @@
+body.dark * {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.sliderSml .slick-slide {
+  padding-right: 5px !important;
+}
+
+.sliderSml .slick-slide .item {
+  border-radius: 7px !important;
+  overflow: hidden !important;
+}
+
+.sliderSml *,
+.sliderBig * {
+  transition: all 0.2s ease-in-out !important;
+}
+
+h4 {
+  line-height: 32px !important;
+}
+
+.sliderBig .item {
+  z-index: 100 !important;
+  overflow: hidden !important;
+  border-radius: 10px !important;
+}
+
+body.dark span {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.productDetailsSection .productInfo .icon {
+  width: 18%;
+  flex: 0 0 18%;
+}
+
+.productDetailsSection .productInfo .icon {
+  font-size: 25px;
+}
+
+.productDetailsSection .productInfo .name {
+  width: 82%;
+  flex: 0 0 82%;
+  font-weight: 600;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.productDetailsSection .productInfo .row {
+  margin-bottom: 10px !important;
+}
+
+.productDetailsSection .productInfo .row .col-sm-9 {
+  display: flex;
+  align-items: center;
+}
+
+.productDetailsSection .productInfo .row .col-sm-9 span {
+  opacity: 0.8;
+  font-size: 15px !important;
+  padding-right: 20px;
+}
+
+.tags {
+  margin-bottom: 0px !important;
+}
+
+.tags li {
+  margin-right: 0px !important;
+}
+
+.tags .spanWrapepr {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #1b2b4d !important;
+  border-radius: 5px !important;
+  font-size: 13px !important;
+  padding: 5px 10px !important;
+  margin-left: 15px !important;
+  text-align: center !important;
+}
+
+.tags li span:first-child {
+  padding-right: 0px !important;
+}
+
+p {
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 25px;
+}
+
+.ratingSection {
+  width: 500px;
+}
+
+.ratingSection .ratingrow {
+  width: 100%;
+}
+
+.ratingSection .ratingrow .col1 {
+  width: 15%;
+  flex: 0 0 15%;
+}
+
+.ratingSection .ratingrow .col2 {
+  width: 50%;
+  flex: 0 0 50%;
+}
+
+.ratingSection .ratingrow .col3 {
+  width: 25%;
+  flex: 0 0 25%;
+  padding-right: 20px;
+}
+
+.muirtl-l16vtb-MuiLinearProgress-bar1 {
+    background: #edb213 !important;
+}
+
+.muirtl-1txyin7-MuiLinearProgress-root {
+    background: #000 !important;
+}

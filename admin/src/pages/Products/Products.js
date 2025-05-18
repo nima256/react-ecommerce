@@ -1,4 +1,4 @@
-import './Product.css'
+import "./Product.css";
 import DashboardBox from "../Dashboard/components/DashboardBox";
 import { FaUserCircle } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
@@ -23,6 +23,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import rtlPlugin from "stylis-plugin-rtl";
 import { prefixer } from "stylis";
 import createCache from "@emotion/cache";
+import { Link } from "react-router-dom";
 const theme = createTheme({ direction: "rtl" });
 
 const cacheRtl = createCache({
@@ -236,9 +237,11 @@ const Products = () => {
                   <td>۶۴,۰۰۰,۰۰۰</td>
                   <td>
                     <div className="actions d-flex align-items-center justify-content-evenly">
-                      <Button className="secondary" color="secondary">
-                        <FaEye />
-                      </Button>
+                      <Link to={"/product/details"}>
+                        <Button className="secondary" color="secondary">
+                          <FaEye />
+                        </Button>
+                      </Link>
                       <Button className="success" color="success">
                         <FaPencilAlt />
                       </Button>
@@ -278,9 +281,11 @@ const Products = () => {
                   <td>۶۴,۰۰۰,۰۰۰</td>
                   <td>
                     <div className="actions d-flex align-items-center justify-content-evenly">
-                      <Button className="secondary" color="secondary">
-                        <FaEye />
-                      </Button>
+                      <Link to={"/product/details"}>
+                        <Button className="secondary" color="secondary">
+                          <FaEye />
+                        </Button>
+                      </Link>
                       <Button className="success" color="success">
                         <FaPencilAlt />
                       </Button>
@@ -320,9 +325,11 @@ const Products = () => {
                   <td>۶۴,۰۰۰,۰۰۰</td>
                   <td>
                     <div className="actions d-flex align-items-center justify-content-evenly">
-                      <Button className="secondary" color="secondary">
-                        <FaEye />
-                      </Button>
+                      <Link to={"/product/details"}>
+                        <Button className="secondary" color="secondary">
+                          <FaEye />
+                        </Button>
+                      </Link>
                       <Button className="success" color="success">
                         <FaPencilAlt />
                       </Button>
@@ -362,9 +369,11 @@ const Products = () => {
                   <td>۶۴,۰۰۰,۰۰۰</td>
                   <td>
                     <div className="actions d-flex align-items-center justify-content-evenly">
-                      <Button className="secondary" color="secondary">
-                        <FaEye />
-                      </Button>
+                      <Link to={"/product/details"}>
+                        <Button className="secondary" color="secondary">
+                          <FaEye />
+                        </Button>
+                      </Link>
                       <Button className="success" color="success">
                         <FaPencilAlt />
                       </Button>
@@ -404,9 +413,11 @@ const Products = () => {
                   <td>۶۴,۰۰۰,۰۰۰</td>
                   <td>
                     <div className="actions d-flex align-items-center justify-content-evenly">
-                      <Button className="secondary" color="secondary">
-                        <FaEye />
-                      </Button>
+                      <Link to={"/product/details"}>
+                        <Button className="secondary" color="secondary">
+                          <FaEye />
+                        </Button>
+                      </Link>
                       <Button className="success" color="success">
                         <FaPencilAlt />
                       </Button>
@@ -446,9 +457,11 @@ const Products = () => {
                   <td>۶۴,۰۰۰,۰۰۰</td>
                   <td>
                     <div className="actions d-flex align-items-center justify-content-evenly">
-                      <Button className="secondary" color="secondary">
-                        <FaEye />
-                      </Button>
+                      <Link to={"/product/details"}>
+                        <Button className="secondary" color="secondary">
+                          <FaEye />
+                        </Button>
+                      </Link>
                       <Button className="success" color="success">
                         <FaPencilAlt />
                       </Button>
@@ -488,9 +501,11 @@ const Products = () => {
                   <td>۶۴,۰۰۰,۰۰۰</td>
                   <td>
                     <div className="actions d-flex align-items-center justify-content-evenly">
-                      <Button className="secondary" color="secondary">
-                        <FaEye />
-                      </Button>
+                      <Link to={"/product/details"}>
+                        <Button className="secondary" color="secondary">
+                          <FaEye />
+                        </Button>
+                      </Link>
                       <Button className="success" color="success">
                         <FaPencilAlt />
                       </Button>
@@ -530,9 +545,11 @@ const Products = () => {
                   <td>۶۴,۰۰۰,۰۰۰</td>
                   <td>
                     <div className="actions d-flex align-items-center justify-content-evenly">
-                      <Button className="secondary" color="secondary">
-                        <FaEye />
-                      </Button>
+                      <Link to={"/product/details"}>
+                        <Button className="secondary" color="secondary">
+                          <FaEye />
+                        </Button>
+                      </Link>
                       <Button className="success" color="success">
                         <FaPencilAlt />
                       </Button>
@@ -572,9 +589,11 @@ const Products = () => {
                   <td>۶۴,۰۰۰,۰۰۰</td>
                   <td>
                     <div className="actions d-flex align-items-center justify-content-evenly">
-                      <Button className="secondary" color="secondary">
-                        <FaEye />
-                      </Button>
+                      <Link to={"/product/details"}>
+                        <Button className="secondary" color="secondary">
+                          <FaEye />
+                        </Button>
+                      </Link>
                       <Button className="success" color="success">
                         <FaPencilAlt />
                       </Button>
@@ -614,9 +633,11 @@ const Products = () => {
                   <td>۶۴,۰۰۰,۰۰۰</td>
                   <td>
                     <div className="actions d-flex align-items-center justify-content-evenly">
-                      <Button className="secondary" color="secondary">
-                        <FaEye />
-                      </Button>
+                      <Link to={"/product/details"}>
+                        <Button className="secondary" color="secondary">
+                          <FaEye />
+                        </Button>
+                      </Link>
                       <Button className="success" color="success">
                         <FaPencilAlt />
                       </Button>
