@@ -29,9 +29,14 @@ const cacheRtl = createCache({
 
 function ProductUpload() {
   const [category, setCategory] = useState("");
+  const [company, setCompany] = useState("");
 
   const handleChangeCategory = (event) => {
     setCategory(event.target.value);
+  };
+
+  const handleChangeCompany = (event) => {
+    setCompany(event.target.value);
   };
 
   return (
@@ -53,44 +58,63 @@ function ProductUpload() {
 
                 <div className="row">
                   <div className="col">
-                    <h6>دسته بندی</h6>
-                    <CacheProvider value={cacheRtl}>
-                      <ThemeProvider theme={theme}>
-                        <Select
-                          value={category}
-                          onChange={handleChangeCategory}
-                          displayEmpty
-                          className="w-100"
-                        >
-                          <MenuItem value="">
-                            <em>انتخاب کنید</em>
-                          </MenuItem>
-                          <MenuItem value={"laptop"}>لپ تاپ</MenuItem>
-                          <MenuItem value={"keyboard"}>کیبورد</MenuItem>
-                          <MenuItem value={"mouse"}>ماوس</MenuItem>
-                        </Select>
-                      </ThemeProvider>
-                    </CacheProvider>
+                    <div class="form-group">
+                      <h6>دسته بندی</h6>
+                      <CacheProvider value={cacheRtl}>
+                        <ThemeProvider theme={theme}>
+                          <Select
+                            value={category}
+                            onChange={handleChangeCategory}
+                            displayEmpty
+                            className="w-100"
+                          >
+                            <MenuItem value="">
+                              <em>انتخاب کنید</em>
+                            </MenuItem>
+                            <MenuItem value={"laptop"}>لپ تاپ</MenuItem>
+                            <MenuItem value={"keyboard"}>کیبورد</MenuItem>
+                            <MenuItem value={"mouse"}>ماوس</MenuItem>
+                          </Select>
+                        </ThemeProvider>
+                      </CacheProvider>
+                    </div>
                   </div>
                   <div className="col">
-                    <h6>شرکت</h6>
-                    <CacheProvider value={cacheRtl}>
-                      <ThemeProvider theme={theme}>
-                        <Select
-                          value={category}
-                          onChange={handleChangeCategory}
-                          displayEmpty
-                          className="w-100"
-                        >
-                          <MenuItem value="">
-                            <em>انتخاب کنید</em>
-                          </MenuItem>
-                          <MenuItem value={"laptop"}>لپ تاپ</MenuItem>
-                          <MenuItem value={"keyboard"}>کیبورد</MenuItem>
-                          <MenuItem value={"mouse"}>ماوس</MenuItem>
-                        </Select>
-                      </ThemeProvider>
-                    </CacheProvider>
+                    <div class="form-group">
+                      <h6>شرکت</h6>
+                      <CacheProvider value={cacheRtl}>
+                        <ThemeProvider theme={theme}>
+                          <Select
+                            value={company}
+                            onChange={handleChangeCompany}
+                            displayEmpty
+                            className="w-100"
+                          >
+                            <MenuItem value="">
+                              <em>انتخاب کنید</em>
+                            </MenuItem>
+                            <MenuItem value={"laptop"}>ایسوس</MenuItem>
+                            <MenuItem value={"keyboard"}>لنوو</MenuItem>
+                            <MenuItem value={"mouse"}>اچ پی</MenuItem>
+                          </Select>
+                        </ThemeProvider>
+                      </CacheProvider>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <h6>قیمت عادی</h6>
+                      <input type="text" />
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <h6>قیمت بعد تخفیف</h6>
+                      <input type="text" />
+                    </div>
                   </div>
                 </div>
               </div>
