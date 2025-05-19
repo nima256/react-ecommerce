@@ -56,29 +56,39 @@ function ProductUpload() {
                     <h6>دسته بندی</h6>
                     <CacheProvider value={cacheRtl}>
                       <ThemeProvider theme={theme}>
-                        <FormControl
-                          variant="standard"
-                          sx={{ m: 1, minWidth: 120 }}
+                        <Select
+                          value={category}
+                          onChange={handleChangeCategory}
+                          displayEmpty
+                          className="w-100"
                         >
-                          <InputLabel id="demo-simple-select-helper-label">
-                            دسته بندی
-                          </InputLabel>
-                          <Select
-                            labelId="demo-simple-select-helper-label"
-                            id="demo-simple-select-helper"
-                            value={category}
-                            label="دسته بندی"
-                            onChange={handleChangeCategory}
-                            className="w-100"
-                          >
-                            <MenuItem value="">
-                              <em>None</em>
-                            </MenuItem>
-                            <MenuItem value={10}>Ten</MenuItem>
-                            <MenuItem value={20}>Twenty</MenuItem>
-                            <MenuItem value={30}>Thirty</MenuItem>
-                          </Select>
-                        </FormControl>
+                          <MenuItem value="">
+                            <em>انتخاب کنید</em>
+                          </MenuItem>
+                          <MenuItem value={"laptop"}>لپ تاپ</MenuItem>
+                          <MenuItem value={"keyboard"}>کیبورد</MenuItem>
+                          <MenuItem value={"mouse"}>ماوس</MenuItem>
+                        </Select>
+                      </ThemeProvider>
+                    </CacheProvider>
+                  </div>
+                  <div className="col">
+                    <h6>شرکت</h6>
+                    <CacheProvider value={cacheRtl}>
+                      <ThemeProvider theme={theme}>
+                        <Select
+                          value={category}
+                          onChange={handleChangeCategory}
+                          displayEmpty
+                          className="w-100"
+                        >
+                          <MenuItem value="">
+                            <em>انتخاب کنید</em>
+                          </MenuItem>
+                          <MenuItem value={"laptop"}>لپ تاپ</MenuItem>
+                          <MenuItem value={"keyboard"}>کیبورد</MenuItem>
+                          <MenuItem value={"mouse"}>ماوس</MenuItem>
+                        </Select>
                       </ThemeProvider>
                     </CacheProvider>
                   </div>

@@ -29,3 +29,7 @@ body.dark .form .form-group textarea {
   border: 1px solid #253557 !important;
   color: rgba(255, 255, 255, 0.8);
 }
+
+body.dark .muirtl-w76bbz-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
