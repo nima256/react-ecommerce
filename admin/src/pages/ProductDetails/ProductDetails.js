@@ -86,19 +86,19 @@ function ProductDetails() {
                   ref={productSliderSml}
                   className="sliderSml"
                 >
-                  <div className="item" onClick={() => goToSlide(1)}>
+                  <div className="item">
                     <img src={image2} alt="" className="w-100" />
                   </div>
-                  <div className="item" onClick={() => goToSlide(2)}>
+                  <div className="item">
                     <img src={image3} alt="" className="w-100" />
                   </div>
-                  <div className="item" onClick={() => goToSlide(3)}>
+                  <div className="item">
                     <img src={image4} alt="" className="w-100" />
                   </div>
-                  <div className="item" onClick={() => goToSlide(4)}>
+                  <div className="item">
                     <img src={image5} alt="" className="w-100" />
                   </div>
-                  <div className="item" onClick={() => goToSlide(5)}>
+                  <div className="item">
                     <img src={image6} alt="" className="w-100" />
                   </div>
                 </Slider>

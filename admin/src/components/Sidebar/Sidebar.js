@@ -21,8 +21,12 @@ function Sidebar() {
   const contex = useContext(MyContext);
 
   const isOpenSubmenu = (index) => {
-    setActiveTab(index);
-    setIsToggleSubmenu(!isToggleSubmenu);
+    if (activeTab === index) {
+      setIsToggleSubmenu(!isToggleSubmenu);
+    } else {
+      setActiveTab(index);
+      setIsToggleSubmenu(true);
+    }
   };
 
   return (
@@ -30,7 +34,7 @@ function Sidebar() {
       <div className="sidebar">
         <ul>
           <li>
-            <Link to={"/"}>
+            <Link to={"/dashboard"}>
               <Button
                 className={`w-100 ${activeTab === 0 ? "active" : ""}`}
                 onClick={() => isOpenSubmenu(0)}
@@ -39,16 +43,13 @@ function Sidebar() {
                   <MdOutlineDashboard />
                 </span>
                 داشبورد
-                <span className="arrow">
-                  <FaAngleLeft />
-                </span>
               </Button>
             </Link>
           </li>
           <li>
             <Button
               className={`w-100 ${
-                activeTab === 1 && isToggleSubmenu === true ? "active" : ""
+                activeTab === 1 && isToggleSubmenu ? "active" : ""
               }`}
               onClick={() => isOpenSubmenu(1)}
             >
@@ -69,13 +70,13 @@ function Sidebar() {
             >
               <ul className="submenu">
                 <li>
-                  <Link to={"#"}>لیست محصولات</Link>
+                  <Link to={"/products"}>لیست محصولات</Link>
                 </li>
                 <li>
-                  <Link to={"#"}>دیدن محصولات</Link>
+                  <Link to={"/product/detail"}>دیدن محصولات</Link>
                 </li>
                 <li>
-                  <Link to={"#"}>اضافه محصول</Link>
+                  <Link to={"/product/upload"}>اضافه محصول</Link>
                 </li>
               </ul>
             </div>

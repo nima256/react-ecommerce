@@ -1,0 +1,193 @@
+.card {
+  margin: 20px 0px !important;
+  border-radius: 10px !important;
+}
+
+body.dark .card {
+  background: #112143 !important;
+}
+
+.card .hd {
+  font-size: 20px;
+  font-weight: bold;
+  color: #403e57;
+}
+
+body.dark .card .hd {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.cardFilters .col-md-3 h4 {
+  font-size: 16px;
+  font-weight: 800;
+  color: #403e57;
+}
+
+body.dark .cardFilters .col-md-3 h4 {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  color: #403e57 !important;
+}
+
+body.dark
+  .muirtl-si86to-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input,
+body.dark .muirtl-lohd6h-MuiSvgIcon-root-MuiSelect-icon,
+body.dark .muirtl-d551zc-MuiSvgIcon-root-MuiSelect-icon,
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4,
+body.dark h5,
+body.dark h6,
+body.dark p {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+body.dark .muirtl-1ll44ll-MuiOutlinedInput-notchedOutline {
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+body.dark .table {
+  background: #112143 !important;
+}
+
+body.dark .table tbody td {
+  background: #112143 !important;
+}
+
+body.dark table td {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+body.dark .table-bordered td,
+body.dark .table-bordered th {
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+}
+
+body.dark .muirtl-1bug3cd-MuiButtonBase-root-MuiPaginationItem-root {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+body.dark .muirtl-1bug3cd-MuiButtonBase-root-MuiPaginationItem-root:hover {
+  background: #0858f7 !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+body.dark
+  .muirtl-1bug3cd-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+  background: #0858f7 !important;
+}
+
+body.dark .muirtl-btxnvc-MuiPaginationItem-root {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.table thead th {
+  color: #fff !important;
+  background: #1866ee !important;
+  border-color: rgba(255, 255, 255, 0.1);
+  font-size: 15px !important;
+}
+
+.table tbody td {
+  font-size: 14px !important;
+  color: #403e57 !important;
+  font-weight: 500;
+}
+
+.table tbody .actions button {
+  min-width: 32px !important;
+  width: 32px !important;
+  height: 32px !important;
+  margin: 0px 3px !important;
+}
+
+.table tbody .actions button.secondary {
+  background: rgba(203, 60, 231, 0.2) !important;
+}
+.table tbody .actions button.success {
+  background: rgba(26, 159, 83, 0.2) !important;
+}
+.table tbody .actions button.error {
+  background: rgba(241, 17, 51, 0.2) !important;
+}
+
+.table tbody .actions button svg {
+  font-size: 32px !important;
+}
+
+table.v-align td {
+  vertical-align: middle !important;
+}
+
+.table td .old,
+.table td .new {
+  display: block;
+  width: 100%;
+}
+
+table td .imgWrapper {
+  width: 30%;
+  flex: 0 0 30%;
+}
+
+table td .info {
+  width: 70%;
+  flex: 0 0 70%;
+}
+
+table td .info h6 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+table td .info p {
+  font-size: 14px;
+  line-height: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 0px;
+}
+
+table td .productBox {
+  width: 150px;
+}
+
+table td .productBox .info {
+  width: 100%;
+}
+
+table td .imgWrapper {
+  width: 50px;
+}
+
+.tableFooter {
+  padding-bottom: 20px;
+}
+
+.tableFooter .pagination {
+  margin-right: auto;
+}
+
+.tableFooter p {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 0px;
+}
+
+.css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+  background: #0858f7 !important;
+}

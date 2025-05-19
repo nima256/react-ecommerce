@@ -66,7 +66,8 @@ function App() {
               <Route path={"/dashboard"} exact={true} element={<Dashboard />} />
               <Route path={"/login"} exact={true} element={<Login />} />
               <Route path={"/products"} exact={true} element={<Products />} />
-              <Route path={"/product/details"} exact={true} element={<ProductDetails />} />
+              <Route path={"/product/detail"} exact={true} element={<ProductDetails />} />
+              <Route path={"/product/upload"} exact={true} element={<ProductDetails />} />
             </Routes>
           </div>
         </div>
