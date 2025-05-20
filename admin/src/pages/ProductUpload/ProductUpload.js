@@ -119,7 +119,12 @@ function ProductUpload() {
                 </div>
               </div>
             </div>
-            <div className="col-sm-5"></div>
+
+
+
+            <div className="card p-4 mt-0">
+              
+            </div>
           </div>
         </form>
       </div>

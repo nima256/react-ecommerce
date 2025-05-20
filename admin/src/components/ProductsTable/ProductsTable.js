@@ -101,7 +101,7 @@ function ProductsTable() {
             <tbody>
               <tr>
                 <td>#۱</td>
-                <td style={{ width: "220px" }}>
+                <td>
                   <div className="d-flex align-items-center productBox">
                     <div className="imgWrapper">
                       <div className="img">
@@ -117,6 +117,54 @@ function ProductsTable() {
                     </div>
                   </div>
                 </td>
+
+                <td>
+                  <div className="categoryBox">لپ تاپ</div>
+                </td>
+                <td>ایسوس</td>
+                <td>
+                  <del className="old">۳۲,۰۰۰,۰۰۰</del>
+                  <span className="new text-danger">۳۲,۰۰۰,۰۰۰</span>
+                </td>
+                <td>۱۲</td>
+                <td>(۱۶) ۴.۹</td>
+                <td>۱۲</td>
+                <td>۶۴,۰۰۰,۰۰۰</td>
+                <td>
+                  <div className="actions d-flex align-items-center justify-content-evenly">
+                    <Link to={"/product/details"}>
+                      <Button className="secondary" color="secondary">
+                        <FaEye />
+                      </Button>
+                    </Link>
+                    <Button className="success" color="success">
+                      <FaPencilAlt />
+                    </Button>
+                    <Button className="error">
+                      <MdDelete color="error" />
+                    </Button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>#۱</td>
+                <td>
+                  <div className="d-flex align-items-center productBox">
+                    <div className="imgWrapper">
+                      <div className="img">
+                        <img src={pImg} alt="" className="w-100" />
+                      </div>
+                    </div>
+                    <div className="info">
+                      <h6>لپ تاپ ایسوس مدل سلام خدافز</h6>
+                      <p>
+                        تی سیتس تی شمسیب تمنشسیب تشسیتمن شسیت تمن شسیتمن منت
+                        شسیتنم منستش منتس
+                      </p>
+                    </div>
+                  </div>
+                </td>
+
                 <td>لپ تاپ</td>
                 <td>ایسوس</td>
                 <td>
@@ -145,7 +193,7 @@ function ProductsTable() {
               </tr>
               <tr>
                 <td>#۱</td>
-                <td style={{ width: "220px" }}>
+                <td>
                   <div className="d-flex align-items-center productBox">
                     <div className="imgWrapper">
                       <div className="img">
@@ -161,6 +209,7 @@ function ProductsTable() {
                     </div>
                   </div>
                 </td>
+
                 <td>لپ تاپ</td>
                 <td>ایسوس</td>
                 <td>
@@ -189,7 +238,7 @@ function ProductsTable() {
               </tr>
               <tr>
                 <td>#۱</td>
-                <td style={{ width: "220px" }}>
+                <td>
                   <div className="d-flex align-items-center productBox">
                     <div className="imgWrapper">
                       <div className="img">
@@ -205,6 +254,7 @@ function ProductsTable() {
                     </div>
                   </div>
                 </td>
+
                 <td>لپ تاپ</td>
                 <td>ایسوس</td>
                 <td>
@@ -233,7 +283,7 @@ function ProductsTable() {
               </tr>
               <tr>
                 <td>#۱</td>
-                <td style={{ width: "220px" }}>
+                <td>
                   <div className="d-flex align-items-center productBox">
                     <div className="imgWrapper">
                       <div className="img">
@@ -249,6 +299,7 @@ function ProductsTable() {
                     </div>
                   </div>
                 </td>
+
                 <td>لپ تاپ</td>
                 <td>ایسوس</td>
                 <td>
@@ -277,7 +328,7 @@ function ProductsTable() {
               </tr>
               <tr>
                 <td>#۱</td>
-                <td style={{ width: "220px" }}>
+                <td>
                   <div className="d-flex align-items-center productBox">
                     <div className="imgWrapper">
                       <div className="img">
@@ -293,6 +344,7 @@ function ProductsTable() {
                     </div>
                   </div>
                 </td>
+
                 <td>لپ تاپ</td>
                 <td>ایسوس</td>
                 <td>
@@ -321,7 +373,7 @@ function ProductsTable() {
               </tr>
               <tr>
                 <td>#۱</td>
-                <td style={{ width: "220px" }}>
+                <td>
                   <div className="d-flex align-items-center productBox">
                     <div className="imgWrapper">
                       <div className="img">
@@ -337,6 +389,7 @@ function ProductsTable() {
                     </div>
                   </div>
                 </td>
+
                 <td>لپ تاپ</td>
                 <td>ایسوس</td>
                 <td>
@@ -365,7 +418,7 @@ function ProductsTable() {
               </tr>
               <tr>
                 <td>#۱</td>
-                <td style={{ width: "220px" }}>
+                <td>
                   <div className="d-flex align-items-center productBox">
                     <div className="imgWrapper">
                       <div className="img">
@@ -381,6 +434,7 @@ function ProductsTable() {
                     </div>
                   </div>
                 </td>
+
                 <td>لپ تاپ</td>
                 <td>ایسوس</td>
                 <td>
@@ -409,7 +463,7 @@ function ProductsTable() {
               </tr>
               <tr>
                 <td>#۱</td>
-                <td style={{ width: "220px" }}>
+                <td>
                   <div className="d-flex align-items-center productBox">
                     <div className="imgWrapper">
                       <div className="img">
@@ -425,6 +479,7 @@ function ProductsTable() {
                     </div>
                   </div>
                 </td>
+
                 <td>لپ تاپ</td>
                 <td>ایسوس</td>
                 <td>
@@ -453,51 +508,7 @@ function ProductsTable() {
               </tr>
               <tr>
                 <td>#۱</td>
-                <td style={{ width: "220px" }}>
-                  <div className="d-flex align-items-center productBox">
-                    <div className="imgWrapper">
-                      <div className="img">
-                        <img src={pImg} alt="" className="w-100" />
-                      </div>
-                    </div>
-                    <div className="info">
-                      <h6>لپ تاپ ایسوس مدل سلام خدافز</h6>
-                      <p>
-                        تی سیتس تی شمسیب تمنشسیب تشسیتمن شسیت تمن شسیتمن منت
-                        شسیتنم منستش منتس
-                      </p>
-                    </div>
-                  </div>
-                </td>
-                <td>لپ تاپ</td>
-                <td>ایسوس</td>
                 <td>
-                  <del className="old">۳۲,۰۰۰,۰۰۰</del>
-                  <span className="new text-danger">۳۲,۰۰۰,۰۰۰</span>
-                </td>
-                <td>۱۲</td>
-                <td>(۱۶) ۴.۹</td>
-                <td>۱۲</td>
-                <td>۶۴,۰۰۰,۰۰۰</td>
-                <td>
-                  <div className="actions d-flex align-items-center justify-content-evenly">
-                    <Link to={"/product/details"}>
-                      <Button className="secondary" color="secondary">
-                        <FaEye />
-                      </Button>
-                    </Link>
-                    <Button className="success" color="success">
-                      <FaPencilAlt />
-                    </Button>
-                    <Button className="error">
-                      <MdDelete color="error" />
-                    </Button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>#۱</td>
-                <td style={{ width: "220px" }}>
                   <div className="d-flex align-items-center productBox">
                     <div className="imgWrapper">
                       <div className="img">

@@ -1,0 +1,187 @@
+@media only screen and (min-width: 320px) and (max-width: 992px) {
+  .res-hide {
+    display: none !important;
+  }
+
+  header {
+    padding: 15px 0px;
+    height: auto;
+  }
+
+  header .part1,
+  header .part3 {
+    padding: 0px !important;
+  }
+  header .part1 {
+    max-width: 40% !important;
+    flex: 0 0 40% !important;
+  }
+  header .logo img {
+    width: 35px !important;
+  }
+  header .logo span {
+    font-size: 18px !important;
+  }
+  header .part3 {
+    max-width: 60% !important;
+    flex: 0 0 60% !important;
+  }
+
+  .main .sidebarWrapper {
+    width: 80% !important;
+    height: 100vh !important;
+    position: fixed;
+    top: 0px;
+    right: -100%;
+    z-index: 10000;
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .main .sidebarWrapper .sidebar {
+    width: 100% !important;
+    position: relative !important;
+    top: 0px !important;
+    max-height: inherit !important;
+  }
+
+  .sidebarWrapper.open {
+    right: 0px !important;
+    opacity: 1 !important;
+  }
+
+  .sidebarOverlay {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10000;
+    width: 100%;
+    height: 100%;
+  }
+
+  .sidebarOverlay.open {
+    display: block !important;
+  }
+
+  .main .content {
+    width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+
+  .right-content {
+    padding: 90px 9px !important;
+    padding-bottom: 0px !important;
+  }
+
+  .dashboardBoxWrapper {
+    white-space: nowrap !important;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    display: block !important;
+    margin-bottom: 20px !important;
+  }
+
+  .dashboardBoxWrapper::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .dashboardBoxWrapper .dashboardBox {
+    display: inline-block !important;
+    width: 270px !important;
+    height: 160px !important;
+    margin-left: 10px !important;
+  }
+
+  .topPart2 {
+    padding-right: 15px !important;
+  }
+
+  table td .productBox {
+    width: 194px !important;
+  }
+
+  table td .productBox .info {
+    width: 70% !important;
+  }
+
+  .categoryBox {
+    width: max-content !important;
+  }
+
+  .tableFooter {
+    flex-direction: column !important;
+  }
+
+  .tableFooter nav {
+    margin-top: 25px;
+  }
+
+  .tableFooter nav ul {
+    white-space: nowrap !important;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    display: block !important;
+    margin-bottom: 20px !important;
+  }
+
+  .tableFooter nav ul li {
+    display: inline-block !important;
+    width: max-content !important;
+    height: auto !important;
+    margin-left: 15px !important;
+  }
+
+  .productInfo .col-sm-3 {
+    max-width: 200px !important;
+    flex: 0 0 200px !important;
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 575px) {
+  header .row {
+    margin: auto !important;
+  }
+  header button.rounded-circle {
+    width: 33px !important;
+    min-width: 33px !important;
+    height: 33px !important;
+    margin-left: 5px !important;
+  }
+
+  .userImg {
+    width: 35px !important;
+    height: 35px !important;
+  }
+
+  .myAccWrapper button {
+    padding: 0px !important;
+    min-width: 35px !important;
+    width: 35px !important;
+  }
+
+  .form .col {
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+
+  .loginSection {
+    height: auto !important;
+  }
+
+  .ratingSection {
+    width: 288px !important;
+  }
+
+  .ratingSection .ratingrow .col1 {
+    width: 20% !important;
+    flex: 0 0 20% !important;
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 727px) {
+  .form .col {
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+}

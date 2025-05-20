@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./App.css";
+import "./resposive.css";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Header from "./components/Header/Header";
 import Sidebar from "./components/Sidebar/Sidebar";
@@ -17,6 +18,8 @@ function App() {
   const [isToggleSidebar, setIsToggleSidebar] = useState(false);
   const [isLoginPage, setIsLoginPage] = useState(false);
   const [themeMode, setThemeMode] = useState(true);
+  const [windowWidth, setWindowsWidth] = useState(window.innerWidth);
+  const [isOpenNav, setIsOpenNav] = useState(false);
 
   useEffect(() => {
     if (themeMode === true) {
@@ -30,6 +33,22 @@ function App() {
     }
   }, [themeMode]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowsWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const openNav = () => {
+    setIsOpenNav(!isOpenNav);
+  };
+
   const values = {
     isToggleSidebar,
     setIsToggleSidebar,
@@ -37,6 +56,10 @@ function App() {
     setIsLoginPage,
     themeMode,
     setThemeMode,
+    windowWidth,
+    openNav,
+    isOpenNav,
+    setIsOpenNav,
   };
 
   useEffect(() => {}, [isToggleSidebar]);
@@ -48,13 +71,22 @@ function App() {
 
         <div className="main d-flex">
           {isLoginPage !== true && (
-            <div
-              className={`sidebarWrapper ${
-                isToggleSidebar === true ? "toggle" : ""
-              }`}
-            >
-              <Sidebar />
-            </div>
+            <>
+              <div
+                className={`sidebarOverlay d-none ${
+                  isOpenNav === true && "open"
+                }`}
+                onClick={() => setIsOpenNav(false)}
+              ></div>
+              <div
+                className={`sidebarWrapper 
+                ${isToggleSidebar === true ? "toggle" : ""} 
+                ${isOpenNav === true ? "open" : ""}
+              `}
+              >
+                <Sidebar />
+              </div>
+            </>
           )}
 
           <div
@@ -67,8 +99,16 @@ function App() {
               <Route path={"/dashboard"} exact={true} element={<Dashboard />} />
               <Route path={"/login"} exact={true} element={<Login />} />
               <Route path={"/products"} exact={true} element={<Products />} />
-              <Route path={"/product/detail"} exact={true} element={<ProductDetails />} />
-              <Route path={"/product/upload"} exact={true} element={<ProductUpload />} />
+              <Route
+                path={"/product/detail"}
+                exact={true}
+                element={<ProductDetails />}
+              />
+              <Route
+                path={"/product/upload"}
+                exact={true}
+                element={<ProductUpload />}
+              />
             </Routes>
           </div>
         </div>

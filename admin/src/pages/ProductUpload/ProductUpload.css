@@ -25,11 +25,16 @@
 
 body.dark .form .form-group input,
 body.dark .form .form-group textarea {
-  background: #2b3c5f !important;
+  background: #112143 !important;
   border: 1px solid #253557 !important;
   color: rgba(255, 255, 255, 0.7);
 }
 
-body.dark .muirtl-w76bbz-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+body.dark
+  .muirtl-w76bbz-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
   color: rgba(255, 255, 255, 0.7) !important;
+}
+
+body.dark .muirtl-1ll44ll-MuiOutlinedInput-notchedOutline {
+  border-color: #253557 !important;
 }

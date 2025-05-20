@@ -47,11 +47,11 @@ body.dark header .logo span {
 }
 
 header button.rounded-circle {
-  min-width: 40px !important;
-  width: 40px !important;
-  height: 40px !important;
-  background: #f0f5ff !important;
-  color: #0858f7 !important;
+  min-width: 40px;
+  width: 40px;
+  height: 40px;
+  background: #f0f5ff;
+  color: #0858f7;
 }
 
 header button.rounded-circle svg {

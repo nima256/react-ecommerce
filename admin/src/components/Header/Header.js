@@ -12,6 +12,7 @@ import { CiDark } from "react-icons/ci";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { MdOutlineEmail } from "react-icons/md";
 import { IoMdNotificationsOutline } from "react-icons/io";
+import { IoMdMenu } from "react-icons/io";
 
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -28,21 +29,33 @@ import { MyContext } from "../../App";
 function Header() {
   const [myAccAnchorEl, myAccSetAnchorEl] = useState(null);
   const myAccOpen = Boolean(myAccAnchorEl);
+  const [notificationAnchorEl, notificationSetAnchorEl] = useState(null);
+  const notificationOpen = Boolean(notificationAnchorEl);
 
   const context = useContext(MyContext);
 
   const handleOpenMyAccDrop = (event) => {
-    myAccSetAnchorEl(event.currentTarget);
+    if (myAccOpen) {
+      myAccSetAnchorEl(null);
+    } else {
+      myAccSetAnchorEl(event.currentTarget);
+      notificationSetAnchorEl(null);
+    }
   };
+
   const handleCloseMyAccDrop = () => {
     myAccSetAnchorEl(null);
   };
 
-  const [notificationAnchorEl, notificationSetAnchorEl] = useState(null);
-  const notificationOpen = Boolean(notificationAnchorEl);
   const handleOpenNotificationDrop = (event) => {
-    notificationSetAnchorEl(event.currentTarget);
+    if (notificationOpen) {
+      notificationSetAnchorEl(null);
+    } else {
+      notificationSetAnchorEl(event.currentTarget);
+      myAccSetAnchorEl(null);
+    }
   };
+
   const handleCloseNotificationDrop = () => {
     notificationSetAnchorEl(null);
   };
@@ -59,21 +72,23 @@ function Header() {
             </Link>
           </div>
 
-          <div className="col-sm-3 d-flex align-items-center part2">
-            <Button
-              className="rounded-circle ms-3"
-              onClick={() =>
-                context.setIsToggleSidebar(!context.isToggleSidebar)
-              }
-            >
-              {context.isToggleSidebar === false ? (
-                <MdMenuOpen />
-              ) : (
-                <MdOutlineMenu />
-              )}
-            </Button>
-            <SearchBox />
-          </div>
+          {context.windowWidth > 992 && (
+            <div className="col-sm-3 d-flex align-items-center part2">
+              <Button
+                className="rounded-circle ms-3"
+                onClick={() =>
+                  context.setIsToggleSidebar(!context.isToggleSidebar)
+                }
+              >
+                {context.isToggleSidebar === false ? (
+                  <MdMenuOpen />
+                ) : (
+                  <MdOutlineMenu />
+                )}
+              </Button>
+              <SearchBox />
+            </div>
+          )}
 
           <div className="col-sm-7 d-flex align-items-center justify-content-end part3">
             <Button
@@ -82,17 +97,22 @@ function Header() {
             >
               <MdOutlineLightMode />
             </Button>
-            <Button className="rounded-circle ms-3">
+            <Button className="rounded-circle ms-3 res-hide">
               <MdOutlineShoppingCart />
             </Button>
-            <Button className="rounded-circle ms-3">
-              <MdOutlineEmail />
-            </Button>
+
             <Button
               className="rounded-circle ms-3"
               onClick={handleOpenNotificationDrop}
             >
               <IoMdNotificationsOutline />
+            </Button>
+
+            <Button
+              className="rounded-circle ms-3"
+              onClick={() => context.openNav()}
+            >
+              <IoMdMenu />
             </Button>
 
             <Menu
@@ -393,7 +413,7 @@ function Header() {
                   </span>
                 </div>
 
-                <div className="userInfo">
+                <div className="userInfo res-hide">
                   <h4>علی علیی</h4>
                   <p dir="ltr" className="mb-0">
                     @jskadl45
