@@ -192,32 +192,19 @@ table td .imgWrapper {
   background: #0858f7 !important;
 }
 
-.eye {
-  background-color: #fbe5ff !important;
-  color: #be0ee1 !important;
+.pending {
+  background: #f6caff !important;
+  color: #a808c3 !important;
+  border-radius: 6px;
+  padding: 0 7px 1px;
 }
 
-body.dark .eye {
+.download {
+  background-color: #dcedfd !important;
+  color: #2b77e5 !important;
+}
+
+body.dark .download {
   color: #fff !important;
-  background: #de2fff !important;
-}
-
-.pencil {
-  background-color: #ddfbe9 !important;
-  color: #1a9f53 !important;
-}
-
-body.dark .pencil {
-  color: #fff !important;
-  background: #27bf68 !important;
-}
-
-.delete {
-  background-color: #ffdfe4 !important;
-  color: #f11133 !important;
-}
-
-body.dark .delete {
-  color: #fff !important;
-  background: #ff304f !important;
+  background: #4094f1 !important;
 }

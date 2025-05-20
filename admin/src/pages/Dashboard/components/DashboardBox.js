@@ -43,8 +43,8 @@ function DashboardBox(props) {
 
         <div className="d-flex w-100">
           <div className="col1">
-            <h4 className="text-white mb-0">تمام کاربران</h4>
-            <span className="text-white">۲۷۷</span>
+            <h4 className="text-white mb-0">{props.title}</h4>
+            <span className="text-white">{props.num}</span>
           </div>
 
           <div className="me-auto">

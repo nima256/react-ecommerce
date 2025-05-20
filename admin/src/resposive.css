@@ -136,6 +136,11 @@
     max-width: 200px !important;
     flex: 0 0 200px !important;
   }
+
+  .orderStatus {
+    display: block;
+    width: max-content !important;
+  }
 }
 
 @media only screen and (min-width: 320px) and (max-width: 575px) {

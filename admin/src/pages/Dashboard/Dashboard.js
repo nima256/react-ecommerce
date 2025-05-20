@@ -44,21 +44,30 @@ function Dashboard() {
           <div className="col-md-8">
             <div className="dashboardBoxWrapper d-flex">
               <DashboardBox
+                title="تمام کاربران"
+                num="۵۴"
                 color={["#1da256", "#48d483"]}
                 icon={<FaUserCircle />}
                 grow={true}
               />
               <DashboardBox
+                title="تمام سفارشات"
+                num="۱۱۲"
                 color={["#c012e2", "#eb64fe"]}
                 icon={<FaShoppingCart />}
               />
               <DashboardBox
+                title="تمام محصولات"
+                num="۶۴۲"
                 color={["#2c78e5", "#60aff5"]}
                 icon={<MdShoppingBag />}
               />
               <DashboardBox
+                title="تمام نظرات"
+                num="۵"
                 color={["#e1950e", "#f3cd29"]}
                 icon={<GiStarsStack />}
+                grow={true}
               />
             </div>
           </div>

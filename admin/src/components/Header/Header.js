@@ -13,6 +13,7 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 import { MdOutlineEmail } from "react-icons/md";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { IoMdMenu } from "react-icons/io";
+import { MdOutlineDarkMode } from "react-icons/md";
 
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -95,7 +96,7 @@ function Header() {
               className="rounded-circle ms-3"
               onClick={() => context.setThemeMode(!context.themeMode)}
             >
-              <MdOutlineLightMode />
+              {context.themeMode ? <MdOutlineLightMode /> : <MdOutlineDarkMode />}
             </Button>
             <Button className="rounded-circle ms-3 res-hide">
               <MdOutlineShoppingCart />

@@ -44,7 +44,7 @@ function ProductUpload() {
       <div className="right-content w-100">
         <form action="" className="form">
           <div className="row">
-            <div className="col-sm-7">
+            <div className="col-sm-12">
               <div className="card p-4">
                 <h5 className="mb-4">اطلاعات اصلی</h5>
                 <div className="form-group">
@@ -116,14 +116,14 @@ function ProductUpload() {
                       <input type="text" />
                     </div>
                   </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <h6>وزن</h6>
+                      <input type="text" />
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-
-
-
-            <div className="card p-4 mt-0">
-              
             </div>
           </div>
         </form>
