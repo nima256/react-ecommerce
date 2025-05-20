@@ -12,6 +12,7 @@ import Products from "./pages/Products/Products";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import ProductUpload from "./pages/ProductUpload/ProductUpload";
 import Orders from "./pages/Orders/Orders";
+import OrderDetails from "./pages/OrdersDetails/OrderDetails";
 
 const MyContext = createContext();
 
@@ -111,6 +112,11 @@ function App() {
                 element={<ProductUpload />}
               />
               <Route path={"/orders"} exact={true} element={<Orders />} />
+              <Route
+                path={"/orders/detail"}
+                exact={true}
+                element={<OrderDetails />}
+              />
             </Routes>
           </div>
         </div>
