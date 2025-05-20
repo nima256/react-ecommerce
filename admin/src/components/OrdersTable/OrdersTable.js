@@ -113,7 +113,9 @@ function OrdersTable() {
                   <span className="new">۳۲,۰۰۰,۰۰۰</span>
                 </td>
                 <td>
-                  <span className="orderStatus pending">در انتظار تایید</span>
+                  <span className="orderStatusForTable orderStatus pendingOrder">
+                    در انتظار تایید
+                  </span>
                 </td>
                 <td>۱۴۰۴/۰۵/۲۱</td>
                 <td>
@@ -149,7 +151,9 @@ function OrdersTable() {
                   <span className="new">۳۲,۰۰۰,۰۰۰</span>
                 </td>
                 <td>
-                  <span className="pending">در انتظار تایید</span>
+                  <span className="orderStatusForTable shippingOrder">
+                    در حال ارسال
+                  </span>
                 </td>
                 <td>۱۴۰۴/۰۵/۲۱</td>
                 <td>
@@ -185,7 +189,7 @@ function OrdersTable() {
                   <span className="new">۳۲,۰۰۰,۰۰۰</span>
                 </td>
                 <td>
-                  <span className="pending">در انتظار تایید</span>
+                  <span className="orderStatusForTable cancelledOrder">لغو شده</span>
                 </td>
                 <td>۱۴۰۴/۰۵/۲۱</td>
                 <td>
@@ -221,223 +225,9 @@ function OrdersTable() {
                   <span className="new">۳۲,۰۰۰,۰۰۰</span>
                 </td>
                 <td>
-                  <span className="pending">در انتظار تایید</span>
-                </td>
-                <td>۱۴۰۴/۰۵/۲۱</td>
-                <td>
-                  <div className="actions d-flex align-items-center justify-content-evenly">
-                    <Link to={"/product/details"}>
-                      <Button className="eye">
-                        <FaEye />
-                      </Button>
-                    </Link>
-                    <Button className="download">
-                      <FaDownload />
-                    </Button>
-                    <Button className="delete">
-                      <MdDelete />
-                    </Button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>#۱</td>
-                <td>
-                  <div className="d-flex align-items-center productBox">
-                    <div className="info">
-                      <h6>اکبر پلاتینی</h6>
-                    </div>
-                  </div>
-                </td>
-
-                <td>
-                  <div className="categoryBox">۲ عدد</div>
-                </td>
-                <td>
-                  <span className="new">۳۲,۰۰۰,۰۰۰</span>
-                </td>
-                <td>
-                  <span className="pending">در انتظار تایید</span>
-                </td>
-                <td>۱۴۰۴/۰۵/۲۱</td>
-                <td>
-                  <div className="actions d-flex align-items-center justify-content-evenly">
-                    <Link to={"/product/details"}>
-                      <Button className="eye">
-                        <FaEye />
-                      </Button>
-                    </Link>
-                    <Button className="download">
-                      <FaDownload />
-                    </Button>
-                    <Button className="delete">
-                      <MdDelete />
-                    </Button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>#۱</td>
-                <td>
-                  <div className="d-flex align-items-center productBox">
-                    <div className="info">
-                      <h6>اکبر پلاتینی</h6>
-                    </div>
-                  </div>
-                </td>
-
-                <td>
-                  <div className="categoryBox">۲ عدد</div>
-                </td>
-                <td>
-                  <span className="new">۳۲,۰۰۰,۰۰۰</span>
-                </td>
-                <td>
-                  <span className="pending">در انتظار تایید</span>
-                </td>
-                <td>۱۴۰۴/۰۵/۲۱</td>
-                <td>
-                  <div className="actions d-flex align-items-center justify-content-evenly">
-                    <Link to={"/product/details"}>
-                      <Button className="eye">
-                        <FaEye />
-                      </Button>
-                    </Link>
-                    <Button className="download">
-                      <FaDownload />
-                    </Button>
-                    <Button className="delete">
-                      <MdDelete />
-                    </Button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>#۱</td>
-                <td>
-                  <div className="d-flex align-items-center productBox">
-                    <div className="info">
-                      <h6>اکبر پلاتینی</h6>
-                    </div>
-                  </div>
-                </td>
-
-                <td>
-                  <div className="categoryBox">۲ عدد</div>
-                </td>
-                <td>
-                  <span className="new">۳۲,۰۰۰,۰۰۰</span>
-                </td>
-                <td>
-                  <span className="pending">در انتظار تایید</span>
-                </td>
-                <td>۱۴۰۴/۰۵/۲۱</td>
-                <td>
-                  <div className="actions d-flex align-items-center justify-content-evenly">
-                    <Link to={"/product/details"}>
-                      <Button className="eye">
-                        <FaEye />
-                      </Button>
-                    </Link>
-                    <Button className="download">
-                      <FaDownload />
-                    </Button>
-                    <Button className="delete">
-                      <MdDelete />
-                    </Button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>#۱</td>
-                <td>
-                  <div className="d-flex align-items-center productBox">
-                    <div className="info">
-                      <h6>اکبر پلاتینی</h6>
-                    </div>
-                  </div>
-                </td>
-
-                <td>
-                  <div className="categoryBox">۲ عدد</div>
-                </td>
-                <td>
-                  <span className="new">۳۲,۰۰۰,۰۰۰</span>
-                </td>
-                <td>
-                  <span className="pending">در انتظار تایید</span>
-                </td>
-                <td>۱۴۰۴/۰۵/۲۱</td>
-                <td>
-                  <div className="actions d-flex align-items-center justify-content-evenly">
-                    <Link to={"/product/details"}>
-                      <Button className="eye">
-                        <FaEye />
-                      </Button>
-                    </Link>
-                    <Button className="download">
-                      <FaDownload />
-                    </Button>
-                    <Button className="delete">
-                      <MdDelete />
-                    </Button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>#۱</td>
-                <td>
-                  <div className="d-flex align-items-center productBox">
-                    <div className="info">
-                      <h6>اکبر پلاتینی</h6>
-                    </div>
-                  </div>
-                </td>
-
-                <td>
-                  <div className="categoryBox">۲ عدد</div>
-                </td>
-                <td>
-                  <span className="new">۳۲,۰۰۰,۰۰۰</span>
-                </td>
-                <td>
-                  <span className="pending">در انتظار تایید</span>
-                </td>
-                <td>۱۴۰۴/۰۵/۲۱</td>
-                <td>
-                  <div className="actions d-flex align-items-center justify-content-evenly">
-                    <Link to={"/product/details"}>
-                      <Button className="eye">
-                        <FaEye />
-                      </Button>
-                    </Link>
-                    <Button className="download">
-                      <FaDownload />
-                    </Button>
-                    <Button className="delete">
-                      <MdDelete />
-                    </Button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>#۱</td>
-                <td>
-                  <div className="d-flex align-items-center productBox">
-                    <div className="info">
-                      <h6>اکبر پلاتینی</h6>
-                    </div>
-                  </div>
-                </td>
-
-                <td>
-                  <div className="categoryBox">۲ عدد</div>
-                </td>
-                <td>
-                  <span className="new">۳۲,۰۰۰,۰۰۰</span>
-                </td>
-                <td>
-                  <span className="pending">در انتظار تایید</span>
+                  <span className="orderStatusForTable recievedOrder">
+                    تکمیل شده
+                  </span>
                 </td>
                 <td>۱۴۰۴/۰۵/۲۱</td>
                 <td>

@@ -192,11 +192,29 @@ table td .imgWrapper {
   background: #0858f7 !important;
 }
 
-.pending {
-  background: #f6caff !important;
-  color: #a808c3 !important;
+.orderStatusForTable {
   border-radius: 6px;
   padding: 0 7px 1px;
+}
+
+.pendingOrder {
+  background: #f6caff !important;
+  color: #a808c3 !important;
+}
+
+.shippingOrder {
+  background: #c1e1fc !important;
+  color: #2262d3 !important;
+}
+
+.cancelledOrder {
+  background: #ffc4cd !important;
+  color: #e00b2b !important;
+}
+
+.recievedOrder {
+  background: #bdf5d3;
+  color: #187d44;
 }
 
 .download {
