@@ -12,6 +12,7 @@ import Products from "./pages/Products/Products";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import ProductUpload from "./pages/ProductUpload/ProductUpload";
 import Orders from "./pages/Orders/Orders";
+import { fetchDataFromApi } from "./utils/api";
 
 const MyContext = createContext();
 
@@ -21,6 +22,9 @@ function App() {
   const [themeMode, setThemeMode] = useState(true);
   const [windowWidth, setWindowsWidth] = useState(window.innerWidth);
   const [isOpenNav, setIsOpenNav] = useState(false);
+
+  const [progress, setProgress] = useState(0);
+  const [catData, setCatData] = useState([]);
 
   useEffect(() => {
     if (themeMode === true) {
@@ -41,10 +45,20 @@ function App() {
 
     window.addEventListener("resize", handleResize);
 
+    fetchCategory();
+
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const fetchCategory = () => {
+    setProgress(30);
+    fetchDataFromApi("/api/category").then((res) => {
+      setCatData(res);
+      setProgress(100);
+    });
+  };
 
   const openNav = () => {
     setIsOpenNav(!isOpenNav);
