@@ -15,6 +15,7 @@ import Orders from "./pages/Orders/Orders";
 import { fetchDataFromApi } from "./utils/api";
 import OrderDetails from "./pages/OrdersDetails/OrderDetails";
 import Categories from "./pages/Categories/Categories";
+import LoadingBar from "react-top-loading-bar";
 
 const MyContext = createContext();
 
@@ -77,6 +78,8 @@ function App() {
     openNav,
     isOpenNav,
     setIsOpenNav,
+    progress,
+    setProgress,
   };
 
   useEffect(() => {}, [isToggleSidebar]);
@@ -84,6 +87,13 @@ function App() {
   return (
     <BrowserRouter>
       <MyContext.Provider value={values}>
+        <LoadingBar
+          color="#f11964"
+          progress={progress}
+          onLoaderFinished={() => setProgress(0)}
+          className="topLoadingBar"
+        />
+
         {isLoginPage !== true && <Header />}
 
         <div className="main d-flex">

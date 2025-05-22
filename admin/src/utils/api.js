@@ -13,10 +13,7 @@ const params = {
 
 export const fetchDataFromApi = async (url) => {
   try {
-    const { data } = await axios.get(
-      apiUrl + url,
-      params
-    );
+    const { data } = await axios.get(apiUrl + url, params);
   } catch (error) {
     console.log(error);
     return error;
@@ -24,9 +21,11 @@ export const fetchDataFromApi = async (url) => {
 };
 
 export const uploadImage = async (url, formData) => {
-  const { res } = await axios.post(
-    apiUrl + url,
-    formData
-  );
+  const { res } = await axios.post(apiUrl + url, formData);
+  return res;
+};
+
+export const deleteData = async (url) => {
+  const { res } = await axios.delete(`${apiUrl}${url}`, params);
   return res;
 };
