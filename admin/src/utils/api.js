@@ -1,5 +1,6 @@
 import axios from "axios";
-require("dotenv/config");
+
+const apiUrl = process.env.REACT_APP_API_URL;
 
 const token = localStorage.getItem("token");
 
@@ -13,7 +14,7 @@ const params = {
 export const fetchDataFromApi = async (url) => {
   try {
     const { data } = await axios.get(
-      process.env.REACT_APP_BASE_URL + url,
+      apiUrl + url,
       params
     );
   } catch (error) {
@@ -24,7 +25,7 @@ export const fetchDataFromApi = async (url) => {
 
 export const uploadImage = async (url, formData) => {
   const { res } = await axios.post(
-    process.env.REACT_APP_BASE_URL + url,
+    apiUrl + url,
     formData
   );
   return res;

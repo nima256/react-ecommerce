@@ -129,21 +129,21 @@ const Footer = () => {
                 <p>تنشت نسنستب نشستیبم نستبش</p>
                 <br />
                 <p>
-                  <LocationOnOutlinedIcon />
-                  <strong>آدرس:</strong> تسنسیشنب شنسیتب منشسیب منسشتنمیب
+                  <LocationOnOutlinedIcon />&nbsp;
+                  <strong>آدرس:</strong>  تسنسیشنب شنسیتب منشسیب منسشتنمیب
                   مشسنتیب مشسینب سشیمنبت
                 </p>
                 <p>
-                  <HeadphonesOutlinedIcon />
+                  <HeadphonesOutlinedIcon />&nbsp;
                   <strong>با ما تماس بگیرید: </strong>
                   <span dir="rtl">۰۹۱۲۱۲۳۱۲۳۴</span>
                 </p>
                 <p>
-                  <EmailOutlinedIcon />
+                  <EmailOutlinedIcon />&nbsp;
                   <strong>ایمیل:</strong> <span dir="rtl">email@gmail.com</span>
                 </p>
                 <p>
-                  <WatchLaterOutlinedIcon />
+                  <WatchLaterOutlinedIcon />&nbsp;
                   <strong>ساعت کاری:</strong> از ساعت ۰۹:۰۰ تا ۲۰:۰۰
                 </p>
               </div>

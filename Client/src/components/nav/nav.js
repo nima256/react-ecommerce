@@ -25,26 +25,26 @@ const Nav = () => {
               <nav>
                 <ul className="list list-inline mb-0">
                   <li className="list-inline-item">
-                    <Button>
-                      <Link to={"/"}>خانه</Link>
-                    </Button>
+                    <Link to={"/"}>
+                      <Button>خانه</Button>
+                    </Link>
                   </li>
                   <li className="list-inline-item">
-                    <Button>
-                      <Link>درباره ما</Link>
-                    </Button>
+                    <Link to={""}>
+                      <Button>درباره ما</Button>
+                    </Link>
                   </li>
                   <li className="list-inline-item">
-                    <Button>
-                      <Link to={"/shop"}>فروشگاه</Link>
-                    </Button>
+                    <Link to={"/shop"}>
+                      <Button>فروشگاه</Button>
+                    </Link>
                   </li>
                   <li className="list-inline-item position-static">
-                    <Button>
-                      <Link>
+                    <Link>
+                      <Button>
                         منو بزرگ <ArrowDropDownIcon />
-                      </Link>
-                    </Button>
+                      </Button>
+                    </Link>
 
                     <div className="dropdown_menu megaMenu">
                       <div className="row">
@@ -125,81 +125,81 @@ const Nav = () => {
                     </div>
                   </li>
                   <li className="list-inline-item">
-                    <Button>
-                      <Link>بلاگ</Link>
-                    </Button>
+                    <Link>
+                      <Button>بلاگ</Button>
+                    </Link>
                   </li>
                   <li className="list-inline-item">
-                    <Button>
-                      <Link>
+                    <Link>
+                      <Button>
                         صفحه ها <ArrowDropDownIcon />
-                      </Link>
-                    </Button>
+                      </Button>
+                    </Link>
 
                     <div className="dropdown_menu ">
                       <ul className="p-0">
                         <li>
-                          <Button>
-                            <Link to={"/about"}>درباره ما</Link>
-                          </Button>
+                          <Link to={"/about"}>
+                            <Button>درباره ما</Button>
+                          </Link>
                         </li>
                         <li>
-                          <Button>
-                            <Link to={"/about"}>ارتباط با ما</Link>
-                          </Button>
+                          <Link to={"/about"}>
+                            <Button>ارتباط با ما</Button>
+                          </Link>
                         </li>
                         <li>
-                          <Button>
-                            <Link to={"/about"}>حساب من</Link>
-                          </Button>
+                          <Link to={"/about"}>
+                            <Button>حساب من</Button>
+                          </Link>
                         </li>
                         <li>
-                          <Button>
-                            <Link to={"/about"}>ورود</Link>
-                          </Button>
+                          <Link to={"/about"}>
+                            <Button>ورود</Button>
+                          </Link>
                         </li>
                         <li>
-                          <Button>
-                            <Link to={"/about"}>ثبت نام</Link>
-                          </Button>
+                          <Link to={"/about"}>
+                            <Button>ثبت نام</Button>
+                          </Link>
                         </li>
                         <li>
-                          <Button>
-                            <Link to={"/about"}>فراموشی رمز عبور</Link>
-                          </Button>
+                          <Link to={"/about"}>
+                            <Button>فراموشی رمز عبور</Button>
+                          </Link>
                         </li>
                         <li>
-                          <Button>
-                            <Link to={"/about"}>بازنشانی پسورد</Link>
-                          </Button>
+                          <Link to={"/about"}>
+                            <Button>بازنشانی پسورد</Button>
+                          </Link>
                         </li>
                         <li>
-                          <Button>
-                            <Link to={"/about"}>آموزش خرید</Link>
-                          </Button>
+                          <Link to={"/about"}>
+                            <Button>آموزش خرید</Button>
+                          </Link>
                         </li>
                         <li>
-                          <Button>
-                            <Link to={"/about"}>حریم خصوصی</Link>
-                          </Button>
+                          <Link to={"/about"}>
+                            <Button>حریم خصوصی</Button>
+                          </Link>
                         </li>
                         <li>
-                          <Button>
-                            <Link to={"/about"}>شرایط استفاده</Link>
-                          </Button>
+                          <Link to={"/about"}>
+                            <Button>شرایط استفاده</Button>
+                          </Link>
                         </li>
                         <li>
-                          <Button>
-                            <Link to={"/about"}>صفحه ۴۰۴</Link>
-                          </Button>
+                          <Link to={"/about"}>
+                            <Button>صفحه ۴۰۴</Button>
+                          </Link>
                         </li>
                       </ul>
                     </div>
                   </li>
                   <li className="list-inline-item">
-                    <Button>
-                      <Link>ارتباط با ما</Link>
-                    </Button>
+                    <Link>
+                      <Button>ارتباط با ما</Button>
+                    </Link>
                   </li>
                 </ul>
               </nav>

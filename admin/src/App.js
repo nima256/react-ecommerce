@@ -12,11 +12,8 @@ import Products from "./pages/Products/Products";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import ProductUpload from "./pages/ProductUpload/ProductUpload";
 import Orders from "./pages/Orders/Orders";
-<<<<<<< HEAD
 import { fetchDataFromApi } from "./utils/api";
-=======
 import OrderDetails from "./pages/OrdersDetails/OrderDetails";
->>>>>>> 9abc8b5f07881ebe9e5205584d366c078d8a4c38
 
 const MyContext = createContext();
 

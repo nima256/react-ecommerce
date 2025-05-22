@@ -17,14 +17,14 @@
 }
 
 .nav nav ul li button {
-  color: #3bb77e !important;
+  color: rgba(0, 0, 0, 0.7) !important;
   font-size: 17px;
   padding: 21px 25px !important;
 }
 
 .nav nav ul li button a {
   text-decoration: none;
-  color: rgba(0, 0, 0, 0.8) !important;
+  color: rgba(0, 0, 0, 0.7) !important;
   font-size: 15px;
 }
 
@@ -71,7 +71,7 @@ nav .dropdown_menu li {
   margin: 0px !important;
 }
 
-.nav nav .dropdown_menu li button {
+.nav nav .dropdown_menu li a button {
   width: 100% !important;
   text-align: left !important;
   justify-content: flex-start !important;
@@ -80,15 +80,15 @@ nav .dropdown_menu li {
   padding: 10px 15px !important;
 }
 
-.nav nav .dropdown_menu li button a {
+.nav nav .dropdown_menu li a {
   font-weight: 400 !important;
 }
 
-.nav nav .dropdown_menu li button a {
+.nav nav .dropdown_menu li a {
   font-weight: 400 !important;
 }
 
-nav .dropdown_menu li button:hover {
+nav .dropdown_menu li a button:hover {
   background: #f1f1f1;
 }
 
@@ -115,7 +115,7 @@ nav .dropdown_menu li button:hover {
   display: block;
 }
 .nav .megaMenu .col ul li a {
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(0, 0, 0, 0.7);
   font-size: 18px;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
