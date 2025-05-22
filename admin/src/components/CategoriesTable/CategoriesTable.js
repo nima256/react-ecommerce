@@ -1,4 +1,4 @@
-import "./CategoryList.css";
+import "./CategoriesTable.css";
 
 import MenuItem from "@mui/material/MenuItem";
 import { CacheProvider } from "@emotion/react";
@@ -23,7 +23,7 @@ const cacheRtl = createCache({
   stylisPlugins: [prefixer, rtlPlugin],
 });
 
-function CategoryList() {
+function CategoriesTable() {
   const [showBy, setShowBy] = useState("");
 
   const [CatBy, setCatBy] = useState("");
@@ -273,4 +273,4 @@ function CategoryList() {
   );
 }
 
-export default CategoryList;
+export default CategoriesTable;

@@ -14,6 +14,7 @@ import ProductUpload from "./pages/ProductUpload/ProductUpload";
 import Orders from "./pages/Orders/Orders";
 import { fetchDataFromApi } from "./utils/api";
 import OrderDetails from "./pages/OrdersDetails/OrderDetails";
+import Categories from "./pages/Categories/Categories";
 
 const MyContext = createContext();
 
@@ -115,6 +116,11 @@ function App() {
               <Route path={"/dashboard"} exact={true} element={<Dashboard />} />
               <Route path={"/login"} exact={true} element={<Login />} />
               <Route path={"/products"} exact={true} element={<Products />} />
+              <Route
+                path={"/categories"}
+                exact={true}
+                element={<Categories />}
+              />
               <Route
                 path={"/product/detail"}
                 exact={true}
