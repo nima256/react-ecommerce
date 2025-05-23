@@ -12,11 +12,12 @@ app.use(bodyParser.json());
 app.use(express.json());
 
 // Routes
-
 const categoryRoutes = require("./routes/categories");
+const imageUploadRoutes = require('./helper/imageUpload.js')
 
 app.use("/uploads", express.static("uploads"));
 app.use("/api/category", categoryRoutes);
+app.use("/api/imageUpload", imageUploadRoutes);
 
 // DB
 mongoose

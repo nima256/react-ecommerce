@@ -154,7 +154,9 @@ body.dark .sidebar ul .submenu li a:hover {
 }
 
 .sidebar ul .submenuWrapper.colapsed {
-  height: 0px !important;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
 }
 
 .sidebar ul .submenuWrapper.colapsed .submenu {
@@ -162,14 +164,19 @@ body.dark .sidebar ul .submenu li a:hover {
 }
 
 .sidebar ul .submenuWrapper.colapse {
-  height: 120px !important;
-  overflow: inherit;
-  padding: 10px 0px;
+  max-height: 300px; /* or auto */
+  overflow: hidden;
+  transition: max-height 0.3s ease;
 }
 
 .sidebar ul .submenuWrapper.colapse .submenu {
   opacity: 1 !important;
   height: 120px;
+}
+
+.sidebar ul .submenuWrapper.colapse .submenu.catSubmenu {
+  opacity: 1 !important;
+  height: 150px !important;
 }
 
 .logoutWrapper {

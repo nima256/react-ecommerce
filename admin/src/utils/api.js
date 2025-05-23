@@ -26,7 +26,41 @@ export const uploadImage = async (url, formData) => {
   return res;
 };
 
+export const postData = async (url, formData) => {
+  try {
+    const response = await fetch(apiUrl + url, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": `application/json`,
+      },
+
+      body: JSON.stringify(formData),
+    });
+
+    if (response.OK) {
+      const data = await response.json();
+      return data;
+    } else {
+      const errorData = await response.json();
+      return errorData;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const editData = async (url) => {
+  const { res } = await axios.put(`${apiUrl}${url}`, params);
+  return { res };
+};
+
 export const deleteData = async (url) => {
   const { res } = await axios.delete(`${apiUrl}${url}`, params);
+  return res;
+};
+
+export const deleteImages = async (url, image) => {
+  const { res } = await axios.delete(`${apiUrl}${url}`, image);
   return res;
 };

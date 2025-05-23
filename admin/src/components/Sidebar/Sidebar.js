@@ -79,63 +79,53 @@ function Sidebar() {
             </div>
           </li>
           <li>
-            <Link to={"/orders"}>
-              <Button
-                className={`w-100 ${activeTab === 2 ? "active" : ""}`}
-                onClick={() => isOpenSubmenu(2)}
-              >
-                <span className="icon">
-                  <IoCartOutline />
-                </span>
-                سفارشات
-              </Button>
-            </Link>
+            <Button
+              className={`w-100 ${
+                activeTab === 2 && isToggleSubmenu ? "active" : ""
+              }`}
+              onClick={() => isOpenSubmenu(2)}
+            >
+              <span className="icon">
+                <AiOutlineProduct />
+              </span>
+              دسته بندی ها
+              <span className="arrow">
+                <FaAngleLeft />
+              </span>
+            </Button>
+            <div
+              className={`submenuWrapper ${
+                activeTab === 2 && isToggleSubmenu === true
+                  ? "colapse"
+                  : "colapsed"
+              }`}
+            >
+              <ul className="submenu catSubmenu">
+                <li>
+                  <Link to={"/categories"}>لیست دسته بندی ها</Link>
+                </li>
+                <li>
+                  <Link to={"/categories/add"}>اضافه دسته بندی</Link>
+                </li>
+                <li>
+                  <Link to={"/product/detail"}>لیست زیر دسته بندی ها</Link>
+                </li>
+                <li>
+                  <Link to={"/product/detail"}>اضافه زیر دسته بندی</Link>
+                </li>
+              </ul>
+            </div>
           </li>
           <li>
-            <Link to={""}>
+            <Link to={"/orders"}>
               <Button
                 className={`w-100 ${activeTab === 3 ? "active" : ""}`}
                 onClick={() => isOpenSubmenu(3)}
               >
                 <span className="icon">
-                  <MdOutlineMessage />
+                  <IoCartOutline />
                 </span>
-                پیام ها
-                <span className="arrow">
-                  <FaAngleLeft />
-                </span>
-              </Button>
-            </Link>
-          </li>
-          <li>
-            <Link to={""}>
-              <Button
-                className={`w-100 ${activeTab === 4 ? "active" : ""}`}
-                onClick={() => isOpenSubmenu(4)}
-              >
-                <span className="icon">
-                  <IoMdNotificationsOutline />
-                </span>
-                اعلانات
-                <span className="arrow">
-                  <FaAngleLeft />
-                </span>
-              </Button>
-            </Link>
-          </li>
-          <li>
-            <Link to={""}>
-              <Button
-                className={`w-100 ${activeTab === 5 ? "active" : ""}`}
-                onClick={() => isOpenSubmenu(5)}
-              >
-                <span className="icon">
-                  <IoSettingsOutline />
-                </span>
-                تنظیمات
-                <span className="arrow">
-                  <FaAngleLeft />
-                </span>
+                سفارشات
               </Button>
             </Link>
           </li>

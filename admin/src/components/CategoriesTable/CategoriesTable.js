@@ -40,7 +40,7 @@ function CategoriesTable() {
       <div className="card shadow border-0 p-3 mt-4">
         <div className="d-flex">
           <h3 className="hd">لیست دسته بندی ها</h3>
-          <Link to={"/category/add"} className="me-auto">
+          <Link to={"/categories/add"} className="me-auto">
             <Button className="btn-blue">افزودن دسته بندی</Button>
           </Link>
         </div>
@@ -79,7 +79,7 @@ function CategoriesTable() {
                       <td>{cat?.name}</td>
                       <td>{cat?.color}</td>
                       <td>
-                        <div className="actions d-flex align-items-center justify-content-evenly">
+                        <div className="actions d-flex align-items-center">
                           <Link to={`/category/edit/${cat?._id}`}>
                             <Button className="pencil">
                               <FaPencilAlt />

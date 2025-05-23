@@ -14,8 +14,10 @@ import ProductUpload from "./pages/ProductUpload/ProductUpload";
 import Orders from "./pages/Orders/Orders";
 import { fetchDataFromApi } from "./utils/api";
 import OrderDetails from "./pages/OrdersDetails/OrderDetails";
-import Categories from "./pages/Categories/Categories";
+import Categories from "./pages/Categories/CategoryList/Categories";
 import LoadingBar from "react-top-loading-bar";
+import AddCategory from "./pages/Categories/AddCategory/AddCategory";
+import { Alert, Snackbar } from "@mui/material";
 
 const MyContext = createContext();
 
@@ -28,6 +30,12 @@ function App() {
 
   const [progress, setProgress] = useState(0);
   const [catData, setCatData] = useState([]);
+
+  const [alertBox, setAlertBox] = useState({
+    msg: "",
+    error: false,
+    open: false,
+  });
 
   useEffect(() => {
     if (themeMode === true) {
@@ -67,6 +75,16 @@ function App() {
     setIsOpenNav(!isOpenNav);
   };
 
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setAlertBox({
+      open: false,
+    });
+  };
+
   const values = {
     isToggleSidebar,
     setIsToggleSidebar,
@@ -80,6 +98,9 @@ function App() {
     setIsOpenNav,
     progress,
     setProgress,
+    alertBox,
+    setAlertBox,
+    fetchCategory,
   };
 
   useEffect(() => {}, [isToggleSidebar]);
@@ -93,6 +114,22 @@ function App() {
           onLoaderFinished={() => setProgress(0)}
           className="topLoadingBar"
         />
+
+        <Snackbar
+          open={alertBox.open}
+          autoHideDuration={6000}
+          onClose={handleClose}
+        >
+          <Alert
+            onClose={handleClose}
+            autoHideDuration={6000}
+            severity={alertBox.error === false ? "success" : "error"}
+            variant="filled"
+            sx={{ width: "100%" }}
+          >
+            {alertBox.msg}
+          </Alert>
+        </Snackbar>
 
         {isLoginPage !== true && <Header />}
 
@@ -127,11 +164,6 @@ function App() {
               <Route path={"/login"} exact={true} element={<Login />} />
               <Route path={"/products"} exact={true} element={<Products />} />
               <Route
-                path={"/categories"}
-                exact={true}
-                element={<Categories />}
-              />
-              <Route
                 path={"/product/detail"}
                 exact={true}
                 element={<ProductDetails />}
@@ -146,6 +178,16 @@ function App() {
                 path={"/orders/detail"}
                 exact={true}
                 element={<OrderDetails />}
+              />
+              <Route
+                path={"/categories"}
+                exact={true}
+                element={<Categories />}
+              />
+              <Route
+                path={"/categories/add"}
+                exact={true}
+                element={<AddCategory />}
               />
             </Routes>
           </div>
