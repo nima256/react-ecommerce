@@ -10,7 +10,7 @@ import { deleteData, fetchDataFromApi } from "../../utils/api";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function CategoriesTable() {
-  const [CatData, setCatData] = useState([]);
+  const [catData, setCatData] = useState([]);
   const context = useContext(MyContext);
 
   useEffect(() => {
@@ -20,7 +20,8 @@ function CategoriesTable() {
       setCatData(res);
       context.setProgress(100);
     });
-  }, [context]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const deleteCat = (id) => {
     context.setProgress(30);
@@ -31,6 +32,8 @@ function CategoriesTable() {
       });
     });
   };
+
+  console.log(catData);
 
   return (
     <>
@@ -53,10 +56,10 @@ function CategoriesTable() {
             </thead>
 
             <tbody>
-              {CatData?.categoryList?.length !== 0 &&
-                CatData?.categoryList?.map((cat, index) => {
+              {catData?.categoryList?.length !== 0 &&
+                catData?.categoryList?.map((cat, index) => {
                   return (
-                    <tr>
+                    <tr key={cat._id}>
                       <td>
                         <div
                           className="imgWrapper"
