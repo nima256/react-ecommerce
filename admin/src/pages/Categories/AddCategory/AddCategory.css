@@ -9,8 +9,8 @@
   height: 150px !important;
   position: relative;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
 .imgUploadBox .uploadBox .box {
@@ -32,7 +32,8 @@ body.dark .imgUploadBox .uploadBox * {
 
 .imgUploadBox .uploadBox .remove {
   position: absolute;
-  top: -7px;
+  top: -20px;
+  right: -7px;
 }
 
 .imgUploadBox .uploadBox .remove svg {

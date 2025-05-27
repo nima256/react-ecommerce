@@ -1,22 +1,20 @@
-import "./AddCategory.css";
-
 import { IoCloseSharp } from "react-icons/io5";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { FaRegImages } from "react-icons/fa";
 import { Button, CircularProgress } from "@mui/material";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import { useContext, useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { MyContext } from "../../../App";
 import {
   deleteData,
   deleteImages,
+  editData,
   fetchDataFromApi,
-  postData,
   uploadImage,
 } from "../../../utils/api";
 
-function AddCategory() {
+function EditCategory() {
   const [isLoading, setIsLoading] = useState(false);
   const [uploading, setUploding] = useState(false);
   const [formFields, setFormFields] = useState({
@@ -33,10 +31,26 @@ function AddCategory() {
 
   const formData = new FormData();
 
+  let { id } = useParams();
+
+  const [category, setCategory] = useState([]);
+
   const history = useNavigate();
 
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    fetchDataFromApi(`/api/category/${id}`).then((res) => {
+      context.setProgress(20);
+      setCategory(res);
+      setPreviews(res.images);
+      setFormFields({
+        name: res.name,
+        slug: res.name,
+        color: res.color,
+      });
+      context.setProgress(100);
+    });
   }, []);
 
   const changeInput = (e) => {
@@ -96,7 +110,7 @@ function AddCategory() {
           context.setAlertBox({
             open: true,
             error: false,
-            msg: " عکس با موفقیت آپلود شد",
+            msg: "عکس با موفقیت آپلود شد",
           });
         }, 200);
       }
@@ -128,7 +142,7 @@ function AddCategory() {
     }
   };
 
-  const addCat = (e) => {
+  const editCat = (e) => {
     e.preventDefault();
 
     const appendedArray = [...previews, ...uniqueArrayRef.current];
@@ -143,7 +157,7 @@ function AddCategory() {
     ) {
       setIsLoading(true);
 
-      postData("/api/category/create", formFields).then((res) => {
+      editData(`/api/category/${id}`, formFields).then((res) => {
         setIsLoading(false);
         context.fetchCategory();
 
@@ -155,7 +169,7 @@ function AddCategory() {
       context.setAlertBox({
         open: true,
         error: true,
-        msg: "لطفا تمام اطلاعات را پر کنید",
+        msg: " لطفا تمام اطلاعات را پر کنید",
       });
       return false;
     }
@@ -164,7 +178,7 @@ function AddCategory() {
   return (
     <>
       <div className="right-content w-100">
-        <form className="form" onSubmit={addCat}>
+        <form className="form" onSubmit={editCat}>
           <div className="row">
             <div className="col-sm-9">
               <div className="card p-4 mt-0">
@@ -259,4 +273,4 @@ function AddCategory() {
   );
 }
 
-export default AddCategory;
+export default EditCategory;

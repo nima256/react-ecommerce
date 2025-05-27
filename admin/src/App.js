@@ -18,6 +18,7 @@ import Categories from "./pages/Categories/CategoryList/Categories";
 import LoadingBar from "react-top-loading-bar";
 import AddCategory from "./pages/Categories/AddCategory/AddCategory";
 import { Alert, Snackbar } from "@mui/material";
+import EditCategory from "./pages/Categories/EditCategory/EditCategory";
 
 const MyContext = createContext();
 
@@ -188,6 +189,11 @@ function App() {
                 path={"/categories/add"}
                 exact={true}
                 element={<AddCategory />}
+              />
+              <Route
+                path={"/categories/edit/:id"}
+                exact={true}
+                element={<EditCategory />}
               />
             </Routes>
           </div>

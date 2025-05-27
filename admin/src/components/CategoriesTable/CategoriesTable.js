@@ -78,7 +78,7 @@ function CategoriesTable() {
                       <td>{cat?.color}</td>
                       <td>
                         <div className="actions d-flex align-items-center">
-                          <Link to={`/category/edit/${cat?._id}`}>
+                          <Link to={`/categories/edit/${cat?._id}`}>
                             <Button className="pencil">
                               <FaPencilAlt />
                             </Button>

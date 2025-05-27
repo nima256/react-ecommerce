@@ -50,9 +50,24 @@ export const postData = async (url, formData) => {
   }
 };
 
-export const editData = async (url) => {
-  const { res } = await axios.put(`${apiUrl}${url}`, params);
-  return { res };
+export const editData = async (url, formData) => {
+  const response = await fetch(apiUrl + url, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": `application/json`,
+    },
+
+    body: JSON.stringify(formData),
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    return data;
+  } else {
+    const errorData = await response.json();
+    return errorData;
+  }
 };
 
 export const deleteData = async (url) => {
