@@ -33,8 +33,6 @@ function CategoriesTable() {
     });
   };
 
-  console.log(catData);
-
   return (
     <>
       <div className="card shadow border-0 p-3 mt-4">

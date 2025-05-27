@@ -52,21 +52,18 @@ function AddCategory() {
   const onChageFile = async (e, apiEndPoint) => {
     const formData = new FormData();
     const img_arr = [];
-    const selectedImages = [];
 
     try {
       const files = e.target.files;
       setUploding(true);
 
-      for (let i = 0; i < files.length; i++) {
-        const file = files[i];
+      for (let file of files) {
         if (
           file &&
           ["image/jpeg", "image/jpg", "image/png", "image/webp"].includes(
             file.type
           )
         ) {
-          selectedImages.push(file);
           formData.append("images", file);
         } else {
           context.setAlertBox({
@@ -89,15 +86,9 @@ function AddCategory() {
           });
         });
 
-        const uniqueArray = img_arr.filter(
-          (item, index) => img_arr.indexOf(item) === index
-        );
-
-        // Save to refs
-        imgArrRef.current = img_arr;
-        uniqueArrayRef.current = uniqueArray;
-
+        const uniqueArray = img_arr.filter((item) => !previews.includes(item));
         const appendedArray = [...previews, ...uniqueArray];
+
         setPreviews(appendedArray);
 
         setTimeout(() => {
@@ -116,20 +107,24 @@ function AddCategory() {
   };
 
   const removeImg = async (index, imgUrl) => {
-    const imgIndex = previews.indexOf(imgUrl);
+    try {
+      await deleteImages(`/api/category/deleteImage?img=${imgUrl}`);
 
-    deleteImages(`/api/category/deleteImage?img=${imgUrl}`).then((res) => {
+      const newPreviews = previews.filter((img) => img !== imgUrl);
+      setPreviews(newPreviews);
+
       context.setAlertBox({
         open: true,
         error: false,
         msg: "تصویر حذف شد",
       });
-    });
-
-    if (imgIndex > -1) {
-      const newPreviews = [...previews];
-      newPreviews.splice(index, 1);
-      setPreviews(newPreviews);
+    } catch (error) {
+      console.error("Error deleting image:", error);
+      context.setAlertBox({
+        open: true,
+        error: true,
+        msg: "خطا در حذف تصویر",
+      });
     }
   };
 

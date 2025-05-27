@@ -15,7 +15,6 @@ cloudinary.config({
 const { Category } = require("../models/category");
 const { ImageUpload } = require("../models/imageUpload");
 
-var imagesArr = [];
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "uploads");
@@ -27,8 +26,11 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+var imagesArr = [];
+
 router.post("/upload", upload.array("images"), async (req, res) => {
   imagesArr = [];
+
   try {
     for (let i = 0; i < req?.files?.length; i++) {
       const options = {
@@ -37,24 +39,25 @@ router.post("/upload", upload.array("images"), async (req, res) => {
         overwrite: false,
       };
 
-      const img = await cloudinary.uploader.upload(
+      const result = await cloudinary.uploader.upload(
         req.files[i].path,
-        options,
-        function (error, result) {
-          imagesArr.push(result.secure_url);
-          fs.unlinkSync(`uploads/${req.files[i].filename}`);
-        }
+        options
       );
 
-      let imageUploaded = new ImageUpload({
-        images: imagesArr,
-      });
-
-      imageUploaded = await imageUploaded.save();
-      return res.status(200).json(imagesArr);
+      imagesArr.push(result.secure_url);
+      fs.unlinkSync(`uploads/${req.files[i].filename}`);
     }
+
+    const imageUploaded = new ImageUpload({
+      images: imagesArr,
+    });
+
+    await imageUploaded.save();
+
+    return res.status(200).json(imagesArr);
   } catch (error) {
     console.log(error);
+    return res.status(500).json({ error: "خطا در آپلود تصویر" });
   }
 });
 
@@ -187,6 +190,8 @@ router.delete("/deleteImage", async (req, res) => {
   const imageName = image.split(".")[0];
 
   const response = await cloudinary.uploader.destroy(imageName);
+
+  await ImageUpload.deleteMany({ images: imgUrl });
 
   if (response) {
     res.status(200).send(response);

@@ -38,7 +38,7 @@ export const postData = async (url, formData) => {
       body: JSON.stringify(formData),
     });
 
-    if (response.OK) {
+    if (response.ok) {
       const data = await response.json();
       return data;
     } else {
