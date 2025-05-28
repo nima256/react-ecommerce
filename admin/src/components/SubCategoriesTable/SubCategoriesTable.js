@@ -22,12 +22,17 @@ function SubCategoriesTable() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const deleteCat = (id) => {
+  const deleteSubCat = (id) => {
     context.setProgress(30);
     deleteData(`/api/category/${id}`).then((res) => {
       context.setProgress(100);
       fetchDataFromApi("/api/category").then((res) => {
         setCatData(res);
+        context.setProgress({
+          open: true,
+          error: false,
+          msg: "زیر دسته بندی حذف شد.",
+        });
       });
     });
   };
@@ -81,8 +86,12 @@ function SubCategoriesTable() {
                                   className="badge text-bg-primary mx-1"
                                   key={key}
                                 >
-                                  {subCat.name}
-                                  <IoCloseSharp className="cursor" />
+                                  {subCat.name} &nbsp;
+                                  <IoCloseSharp
+                                    className="cursor"
+                                    style={{ cursor: "pointer" }}
+                                    onClick={() => deleteSubCat(subCat._id)}
+                                  />
                                 </span>
                               );
                             })}
