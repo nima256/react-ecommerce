@@ -19,39 +19,54 @@ import ClickAwayListener from "@mui/material/ClickAwayListener";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { fetchDataFromApi } from "../../utils/api";
 
 const Header = () => {
   const [isOpenDropDown, setIsOpenDropDown] = useState(false);
   const headerRef = useRef();
 
-  const [categories, setCategories] = useState([
-    "کیس کامپیوتر",
-    "مادربرد",
-    "سی پی یو",
-    "خنک کننده سی پی یو",
-    "کارت گرافیک",
-    "رم",
-    "هارد اس اس دی",
-    "پاور",
-    "فن کیس",
-    "مانیتور",
-    "هارد اکسترنال",
-    "لپ تاپ",
-    "کیبورد گیمینگ",
-    "ماوس گیمینگ",
-    "هدست گیمینگ",
-    "میکروفن گیمینگ",
-    "دسته بازی گیمینگ",
-    "اسپیکر گیمینگ",
-    "ماوس پد گیمینگ",
-    "صندلی گیمینگ",
-    "میز گیمینگ",
-  ]);
+  // const [categories, setCategories] = useState([
+  //   "کیس کامپیوتر",
+  //   "مادربرد",
+  //   "سی پی یو",
+  //   "خنک کننده سی پی یو",
+  //   "کارت گرافیک",
+  //   "رم",
+  //   "هارد اس اس دی",
+  //   "پاور",
+  //   "فن کیس",
+  //   "مانیتور",
+  //   "هارد اکسترنال",
+  //   "لپ تاپ",
+  //   "کیبورد گیمینگ",
+  //   "ماوس گیمینگ",
+  //   "هدست گیمینگ",
+  //   "میکروفن گیمینگ",
+  //   "دسته بازی گیمینگ",
+  //   "اسپیکر گیمینگ",
+  //   "ماوس پد گیمینگ",
+  //   "صندلی گیمینگ",
+  //   "میز گیمینگ",
+  // ]);
+
+  const [categories, setCategories] = useState([]);
 
   const [countryList, setCountryList] = useState([]);
 
   useEffect(() => {
     const getCountry = async () => {
+      const handleScroll = () => {
+        const position = window.pageYOffset;
+        if (headerRef.current) {
+          if (position > 100) {
+            headerRef.current.classList.add("fixed");
+          } else {
+            headerRef.current.classList.remove("fixed");
+          }
+        }
+      };
+
+      window.addEventListener("scroll", handleScroll);
       try {
         const res = await axios.get(
           "https://www.iran-locations-api.ir/api/v1/fa/states"
@@ -63,28 +78,17 @@ const Header = () => {
       } catch (error) {
         console.log(error.message);
       }
+
+      fetchDataFromApi("/api/category/").then((res) => {
+        setCategories(res);
+      });
+
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
     };
 
     getCountry();
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const position = window.pageYOffset;
-      if (headerRef.current) {
-        if (position > 100) {
-          headerRef.current.classList.add("fixed");
-        } else {
-          headerRef.current.classList.remove("fixed");
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
   }, []);
 
   return (
