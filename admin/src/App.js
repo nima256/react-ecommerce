@@ -19,6 +19,8 @@ import LoadingBar from "react-top-loading-bar";
 import AddCategory from "./pages/Categories/AddCategory/AddCategory";
 import { Alert, Snackbar } from "@mui/material";
 import EditCategory from "./pages/Categories/EditCategory/EditCategory";
+import SubCategoryList from "./pages/Categories/SubCategoryList/SubCategoryList";
+import AddSubCategory from "./pages/Categories/AddSubCategory/AddSubCategory";
 
 const MyContext = createContext();
 
@@ -194,6 +196,16 @@ function App() {
                 path={"/categories/edit/:id"}
                 exact={true}
                 element={<EditCategory />}
+              />
+              <Route
+                path={"/subCategories"}
+                exact={true}
+                element={<SubCategoryList />}
+              />
+              <Route
+                path={"/subCategories/add"}
+                exact={true}
+                element={<AddSubCategory />}
               />
             </Routes>
           </div>

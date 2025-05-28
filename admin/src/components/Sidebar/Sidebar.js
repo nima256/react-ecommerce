@@ -108,10 +108,10 @@ function Sidebar() {
                   <Link to={"/categories/add"}>اضافه دسته بندی</Link>
                 </li>
                 <li>
-                  <Link to={"/product/detail"}>لیست زیر دسته بندی ها</Link>
+                  <Link to={"/subCategories"}>لیست زیر دسته بندی ها</Link>
                 </li>
                 <li>
-                  <Link to={"/product/detail"}>اضافه زیر دسته بندی</Link>
+                  <Link to={"/subCategories/add"}>اضافه زیر دسته بندی</Link>
                 </li>
               </ul>
             </div>
