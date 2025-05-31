@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import "./product.css";
 import productImage from "../../assets/images/category-image.png";
 import Tooman from "../../assets/images/product/toman.svg";
@@ -60,7 +61,7 @@ const Product = (props) => {
                   }}
                 >
                   <li className="list-inline-item">
-                    <a className="cursor">
+                    <a href="#" className="cursor">
                       <CompareArrowsIcon />
                     </a>
                   </li>

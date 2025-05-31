@@ -17,7 +17,6 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 
 import { useEffect, useRef, useState } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import { fetchDataFromApi } from "../../utils/api";
 
@@ -51,44 +50,28 @@ const Header = () => {
 
   const [categories, setCategories] = useState([]);
 
-  const [countryList, setCountryList] = useState([]);
+  useEffect(() => {
+    const handleScroll = () => {
+      const position = window.pageYOffset;
+      if (headerRef.current) {
+        if (position > 100) {
+          headerRef.current.classList.add("fixed");
+        } else {
+          headerRef.current.classList.remove("fixed");
+        }
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
-    const getCountry = async () => {
-      const handleScroll = () => {
-        const position = window.pageYOffset;
-        if (headerRef.current) {
-          if (position > 100) {
-            headerRef.current.classList.add("fixed");
-          } else {
-            headerRef.current.classList.remove("fixed");
-          }
-        }
-      };
-
-      window.addEventListener("scroll", handleScroll);
-      try {
-        const res = await axios.get(
-          "https://www.iran-locations-api.ir/api/v1/fa/states"
-        );
-        if (res && res.data) {
-          const names = res.data.map((item) => item.name);
-          setCountryList(names);
-        }
-      } catch (error) {
-        console.log(error.message);
-      }
-
-      fetchDataFromApi("/api/category/").then((res) => {
-        setCategories(res);
-      });
-
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
-    };
-
-    getCountry();
+    fetchDataFromApi("/api/category").then((res) => {
+      setCategories(res);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -108,11 +91,14 @@ const Header = () => {
               {/* Header Search Start */}
               <div className="col-sm-5 d-flex align-items-center">
                 <div className="headerSearch d-flex align-items-center">
-                  <Select
-                    data={categories}
-                    placeholder={"همه دسته بندی ها"}
-                    icon={false}
-                  />
+                  {categories?.categoryList?.length !== 0 &&
+                    categories?.categoryList !== undefined && (
+                      <Select
+                        data={categories?.categoryList}
+                        placeholder={"همه دسته بندی ها"}
+                        icon={false}
+                      />
+                    )}
 
                   <div className="search">
                     <input type="text" placeholder="جستجو کالا..." />
@@ -124,24 +110,14 @@ const Header = () => {
 
               <div className="col-sm-5 d-flex align-items-center">
                 <div className="mr-auto d-flex align-items-center">
-                  <div className="countryWrapper">
-                    <Select
-                      data={countryList}
-                      placeholder={"مکان شما"}
-                      icon={
-                        <LocationOnOutlinedIcon style={{ opacity: "0.5" }} />
-                      }
-                    />
-                  </div>
-
                   <ul className="list list-inline mb-0 header-tabs">
                     <li className="list-inline-item">
                       <Link to={""}>
                         <span>
                           <img src={compareIcon} alt="لوگو مقایسه" />
-                          <span class="d-flex align-items-center justify-content-center position-absolute top-100 start-100 translate-middle badge rounded-pill bg-g">
+                          <span className="d-flex align-items-center justify-content-center position-absolute top-100 start-100 translate-middle badge rounded-pill bg-g">
                             ۵۵
-                            <span class="visually-hidden">unread messages</span>
+                            <span className="visually-hidden">unread messages</span>
                           </span>
                           مقایسه
                         </span>
@@ -151,9 +127,9 @@ const Header = () => {
                       <Link to={"/cart"}>
                         <span>
                           <img src={cartIcon} alt="سبد خرید" />
-                          <span class="d-flex align-items-center justify-content-center position-absolute top-100 start-100 translate-middle badge rounded-pill bg-g">
+                          <span className="d-flex align-items-center justify-content-center position-absolute top-100 start-100 translate-middle badge rounded-pill bg-g">
                             ۵۵
-                            <span class="visually-hidden">unread messages</span>
+                            <span className="visually-hidden">unread messages</span>
                           </span>
                           سبد خرید
                         </span>

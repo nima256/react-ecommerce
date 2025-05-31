@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../selectDrop/select.css";
 
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
@@ -9,8 +9,15 @@ const Select = ({ data, placeholder, icon }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [selectedItem, setSelectedItem] = useState(placeholder);
 
-  const [listData, setListData] = useState(data);
-  const [listData2, setListData2] = useState(data);
+  const [listData, setListData] = useState([]);
+  const [listData2, setListData2] = useState([]);
+
+  useEffect(() => {
+    if (data?.length !== 0) {
+      setListData(data);
+      setListData2(data);
+    }
+  }, [data]);
 
   const openSelect = () => {
     setIsOpenSelect(!isOpenSelect);
@@ -66,14 +73,14 @@ const Select = ({ data, placeholder, icon }) => {
               >
                 {placeholder}
               </li>
-              {listData.map((item, index) => {
+              {listData?.map((item, index) => {
                 return (
                   <li
                     key={index + 1}
                     onClick={() => closeSelect(index + 1, item)}
                     className={`${selectedIndex === index + 1 ? "active" : ""}`}
                   >
-                    {item}
+                    {item.name}
                   </li>
                 );
               })}
