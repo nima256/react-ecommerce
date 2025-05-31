@@ -26,7 +26,6 @@ function AddSubCategory() {
   });
   const [categoryVal, setCategoryValue] = useState("");
   const [catData, setCatData] = useState([]);
-  console.log(catData);
 
   const context = useContext(MyContext);
 
@@ -79,7 +78,6 @@ function AddSubCategory() {
     setCategoryValue(event.target.value);
     setFormFields(() => ({
       ...formFields,
-      name: event.target.value,
     }));
   };
 
@@ -109,7 +107,7 @@ function AddSubCategory() {
                       catData?.categoryList?.map((cat, index) => {
                         return (
                           <MenuItem
-                            value={cat.id}
+                            value={cat._id}
                             key={index}
                             onClick={() => selectCat(cat.name, cat._id)}
                           >

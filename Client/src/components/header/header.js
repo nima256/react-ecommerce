@@ -62,16 +62,13 @@ const Header = () => {
       }
     };
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
-  useEffect(() => {
     fetchDataFromApi("/api/category").then((res) => {
       setCategories(res);
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
@@ -117,7 +114,9 @@ const Header = () => {
                           <img src={compareIcon} alt="لوگو مقایسه" />
                           <span className="d-flex align-items-center justify-content-center position-absolute top-100 start-100 translate-middle badge rounded-pill bg-g">
                             ۵۵
-                            <span className="visually-hidden">unread messages</span>
+                            <span className="visually-hidden">
+                              unread messages
+                            </span>
                           </span>
                           مقایسه
                         </span>
@@ -129,7 +128,9 @@ const Header = () => {
                           <img src={cartIcon} alt="سبد خرید" />
                           <span className="d-flex align-items-center justify-content-center position-absolute top-100 start-100 translate-middle badge rounded-pill bg-g">
                             ۵۵
-                            <span className="visually-hidden">unread messages</span>
+                            <span className="visually-hidden">
+                              unread messages
+                            </span>
                           </span>
                           سبد خرید
                         </span>
@@ -182,7 +183,8 @@ const Header = () => {
           </div>
         </header>
 
-        <Nav />
+        {categories?.categoryList?.length !== 0 &&
+          categories?.categoryList !== undefined && <Nav data={categories?.categoryList} />}
       </div>
 
       <div className="forSpacingUnderHeader"></div>

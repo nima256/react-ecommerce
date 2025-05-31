@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import "./nav.css";
 import MegaMenyImg from "../../assets/images/navMegaMenu/megaMenu.png";
 
@@ -5,10 +6,18 @@ import Button from "@mui/material/Button";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 import HeadphonesOutlinedIcon from "@mui/icons-material/HeadphonesOutlined";
+import { MdKeyboardArrowDown } from "react-icons/md";
 
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-const Nav = () => {
+const Nav = (props) => {
+  const [navData, setNavData] = useState([]);
+
+  useEffect(() => {
+    setNavData(props.data);
+  }, []);
+
   return (
     <>
       <div className="nav d-flex align-items-center">
@@ -29,6 +38,35 @@ const Nav = () => {
                       <Button>خانه</Button>
                     </Link>
                   </li>
+                  {navData !== undefined &&
+                    navData?.length !== 0 &&
+                    navData.map((item, index) => {
+                      return (
+                        <li className="list-inline-item" key={index}>
+                          <Link>
+                            <Button>
+                              {item.name}
+                              {item?.children?.length !== 0 && (
+                                <MdKeyboardArrowDown className={`rotateIcon`} />
+                              )}
+                            </Button>
+                          </Link>
+                          {item?.children?.length !== 0 && (
+                            <div className="dropdown_menu">
+                              <ul className="mt-4 mb-0">
+                                {item?.children.map((item_, index_) => {
+                                  return (
+                                    <li key={index_}>
+                                      <Link to={``}>{item_.name}</Link>
+                                    </li>
+                                  );
+                                })}
+                              </ul>
+                            </div>
+                          )}
+                        </li>
+                      );
+                    })}
                   <li className="list-inline-item">
                     <Link to={""}>
                       <Button>درباره ما</Button>

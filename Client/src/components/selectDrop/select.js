@@ -52,7 +52,7 @@ const Select = ({ data, placeholder, icon }) => {
         >
           {selectedItem.length > 14
             ? selectedItem.substr(0, 14) + "..."
-            : selectedItem}{" "}
+            : selectedItem}
           <ArrowDropDownIcon className="dropDownArrow" />
         </span>
 
@@ -77,7 +77,7 @@ const Select = ({ data, placeholder, icon }) => {
                 return (
                   <li
                     key={index + 1}
-                    onClick={() => closeSelect(index + 1, item)}
+                    onClick={() => closeSelect(index + 1, item.name)}
                     className={`${selectedIndex === index + 1 ? "active" : ""}`}
                   >
                     {item.name}
