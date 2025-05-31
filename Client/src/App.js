@@ -16,6 +16,9 @@ function App() {
       <Header />
       <Routes>
         <Route exact={true} path="/" element={<Home />} />
+        <Route exact={true} path="/category/:id" element={<Home />} />
+        <Route exact={true} path="/category/subCat/:id" element={<Home />} />
+        <Route exact={true} path="/product/:id" element={<Home />} />
         <Route exact={true} path="/shop" element={<Shop />} />
         <Route
           exact={true}

@@ -43,7 +43,7 @@ const Nav = (props) => {
                     navData.map((item, index) => {
                       return (
                         <li className="list-inline-item" key={index}>
-                          <Link>
+                          <Link to={`/category/${item?._id}`}>
                             <Button>
                               {item.name}
                               {item?.children?.length !== 0 && (
@@ -53,11 +53,23 @@ const Nav = (props) => {
                           </Link>
                           {item?.children?.length !== 0 && (
                             <div className="dropdown_menu">
-                              <ul className="mt-4 mb-0">
+                              <ul className="mb-0 ps-0">
                                 {item?.children.map((item_, index_) => {
                                   return (
-                                    <li key={index_}>
-                                      <Link to={``}>{item_.name}</Link>
+                                    <li key={index_} style={{ width: "100%" }}>
+                                      <Link
+                                        to={`/category/subCat/${item?._id}`}
+                                      >
+                                        <Button
+                                          style={{
+                                            width: "100%",
+                                            textAlign: "right",
+                                            justifyContent: "flex-start",
+                                          }}
+                                        >
+                                          {item_.name}
+                                        </Button>
+                                      </Link>
                                     </li>
                                   );
                                 })}
@@ -86,72 +98,33 @@ const Nav = (props) => {
 
                     <div className="dropdown_menu megaMenu">
                       <div className="row">
-                        <div className="col">
-                          <h4 className="text-g">لپ تاپ</h4>
-                          <ul className="mt-3 mb-0">
-                            <li>
-                              <Link to={""}>ایسوس</Link>
-                            </li>
-                            <li>
-                              <Link to={""}>لنوو</Link>
-                            </li>
-                            <li>
-                              <Link to={""}>ایسر</Link>
-                            </li>
-                            <li>
-                              <Link to={""}>اچ پی</Link>
-                            </li>
-                            <li>
-                              <Link to={""}>دل</Link>
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="col">
-                          <h4 className="text-g">صندلی گیمینگ</h4>
-                          <ul className="mt-3 mb-0">
-                            <li>
-                              <Link to={""}>ردراگون</Link>
-                            </li>
-                            <li>
-                              <Link to={""}>ام اس آی</Link>
-                            </li>
-                            <li>
-                              <Link to={""}>دی ایکس ریسر</Link>
-                            </li>
-                            <li>
-                              <Link to={""}>ورتاگیر</Link>
-                            </li>
-                            <li>
-                              <Link to={""}>اینگریم</Link>
-                            </li>
-                            <li>
-                              <Link to={""}>ریزر</Link>
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="col">
-                          <h4 className="text-g">کیس کامپیوتر</h4>
-                          <ul className="mt-3 mb-0">
-                            <li>
-                              <Link to={""}>ایسوس</Link>
-                            </li>
-                            <li>
-                              <Link to={""}>ام اس آی</Link>
-                            </li>
-                            <li>
-                              <Link to={""}>کولر مستر</Link>
-                            </li>
-                            <li>
-                              <Link to={""}>گیم مکس</Link>
-                            </li>
-                            <li>
-                              <Link to={""}>لاجی کی</Link>
-                            </li>
-                            <li>
-                              <Link to={""}>اف اس پی</Link>
-                            </li>
-                          </ul>
-                        </div>
+                        {navData !== undefined &&
+                          navData?.length !== 0 &&
+                          navData?.map((item, index) => {
+                            return (
+                              <div className="col" key={index}>
+                                <Link to={`/category/${item?._id}`}>
+                                  <h4 className="text-g">{item?.name}</h4>
+                                </Link>
+
+                                {item?.children?.length !== 0 && (
+                                  <ul className="mt-3 mb-0">
+                                    {item?.children?.map((item_, index_) => {
+                                      return (
+                                        <li key={index_}>
+                                          <Link
+                                            to={`/category/subCat/${item_?._id}`}
+                                          >
+                                            {item_?.name}
+                                          </Link>
+                                        </li>
+                                      );
+                                    })}
+                                  </ul>
+                                )}
+                              </div>
+                            );
+                          })}
                         <div className="col">
                           <img
                             src={MegaMenyImg}
