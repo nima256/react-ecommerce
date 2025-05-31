@@ -16,13 +16,16 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import LogoutIcon from "@mui/icons-material/Logout";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchDataFromApi } from "../../utils/api";
+import { MyContext } from "../../App";
 
 const Header = () => {
   const [isOpenDropDown, setIsOpenDropDown] = useState(false);
   const headerRef = useRef();
+
+  const context = useContext(MyContext);
 
   // const [categories, setCategories] = useState([
   //   "کیس کامپیوتر",
@@ -63,13 +66,14 @@ const Header = () => {
     };
     window.addEventListener("scroll", handleScroll);
 
-    fetchDataFromApi("/api/category").then((res) => {
-      setCategories(res);
-    });
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  useEffect(() => {
+    setCategories(context.categories);
+  }, [context.categories]);
 
   return (
     <>
@@ -184,7 +188,9 @@ const Header = () => {
         </header>
 
         {categories?.categoryList?.length !== 0 &&
-          categories?.categoryList !== undefined && <Nav data={categories?.categoryList} />}
+          categories?.categoryList !== undefined && (
+            <Nav data={categories?.categoryList} />
+          )}
       </div>
 
       <div className="forSpacingUnderHeader"></div>

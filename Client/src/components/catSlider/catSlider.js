@@ -1,6 +1,6 @@
 import "./catSlider.css";
 import Slider from "react-slick";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import Case from "../../assets/images/catSlider/computer-case.svg";
 import Motherboard from "../../assets/images/catSlider/motherboard.svg";
@@ -18,8 +18,10 @@ import Controller from "../../assets/images/catSlider/controller.svg";
 import Speaker from "../../assets/images/catSlider/speaker.svg";
 import Chair from "../../assets/images/catSlider/chair.svg";
 import Desk from "../../assets/images/catSlider/desk.svg";
+import { MyContext } from "../../App";
+import { Link } from "react-router-dom";
 
-const CatSlider = () => {
+const CatSlider = (props) => {
   const [categories, setCategories] = useState([
     { title: "کیس کامپیوتر", bg: "#fffceb", img: Case },
     { title: "مادربرد", bg: "#ecffec", img: Motherboard },
@@ -38,6 +40,7 @@ const CatSlider = () => {
     { title: "صندلی گیمینمگ", bg: "#ecffec", img: Chair },
     { title: "میز گیمینگ", bg: "#fff3ff", img: Desk },
   ]);
+  const context = useContext(MyContext);
 
   const settings = {
     dots: true,
@@ -49,22 +52,32 @@ const CatSlider = () => {
     autoplay: 2000,
   };
 
+  useEffect(() => {
+    setCategories(context.categories);
+  }, [context.categories]);
+
   return (
     <>
       <div className="catSliderSection">
         <div className="container-fluid cat-container">
           <h2 className="hd">دسته بندی ها پر طرفدار</h2>
           <Slider {...settings} className="cat_slider_main">
-            {categories.length !== 0 &&
-              categories.map((item, index) => {
+            {props?.data?.length !== 0 &&
+              props?.data?.map((cat, index) => {
                 return (
-                  <div>
-                    <div className="item" style={{ background: item.bg }}>
-                      <div className="info">
-                        <img src={item.img} alt="" className="categoryImg" />
-                        <h5>{item.title}</h5>
-                        <p dir="rtl">۲۸ عدد</p>
-                      </div>
+                  <div key={index}>
+                    <div className="item" style={{ background: cat?.color }}>
+                      <Link to={""}>
+                        <div className="info">
+                          <img
+                            src={cat?.images[0]}
+                            alt=""
+                            className="categoryImg"
+                          />
+                          <h5>{cat?.name}</h5>
+                          <p dir="rtl">۲۸ عدد</p>
+                        </div>
+                      </Link>
                     </div>
                   </div>
                 );

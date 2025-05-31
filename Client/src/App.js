@@ -9,28 +9,48 @@ import Footer from "./components/footer/footer";
 import NotFound from "./pages/NotFound/notFound";
 import ProductDetails from "./pages/ProductDetails/productDetails";
 import Cart from "./pages/cart/cart";
+import { createContext, useEffect, useState } from "react";
+import { fetchDataFromApi } from "./utils/api";
+
+const MyContext = createContext();
 
 function App() {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    fetchDataFromApi("/api/category").then((res) => {
+      setCategories(res);
+    });
+  }, []);
+
+  const values = {
+    categories,
+  };
+
   return (
     <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route exact={true} path="/" element={<Home />} />
-        <Route exact={true} path="/category/:id" element={<Home />} />
-        <Route exact={true} path="/category/subCat/:id" element={<Home />} />
-        <Route exact={true} path="/product/:id" element={<Home />} />
-        <Route exact={true} path="/shop" element={<Shop />} />
-        <Route
-          exact={true}
-          path="/product/details"
-          element={<ProductDetails />}
-        />
-        <Route exact={true} path="/cart" element={<Cart />} />
-        <Route exact={true} path="*" element={<NotFound />} />
-      </Routes>
-      <Footer />
+      <MyContext.Provider value={values}>
+        {categories?.categoryList?.length !== 0 && <Header />}
+
+        <Routes>
+          <Route exact={true} path="/" element={<Home />} />
+          <Route exact={true} path="/category/:id" element={<Home />} />
+          <Route exact={true} path="/category/subCat/:id" element={<Home />} />
+          <Route exact={true} path="/product/:id" element={<Home />} />
+          <Route exact={true} path="/shop" element={<Shop />} />
+          <Route
+            exact={true}
+            path="/product/details"
+            element={<ProductDetails />}
+          />
+          <Route exact={true} path="/cart" element={<Cart />} />
+          <Route exact={true} path="*" element={<NotFound />} />
+        </Routes>
+        <Footer />
+      </MyContext.Provider>
     </BrowserRouter>
   );
 }
 
 export default App;
+export { MyContext };

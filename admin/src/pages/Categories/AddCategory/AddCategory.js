@@ -31,8 +31,6 @@ function AddCategory() {
 
   const [previews, setPreviews] = useState([]);
 
-  const formData = new FormData();
-
   const history = useNavigate();
 
   useEffect(() => {
@@ -46,7 +44,6 @@ function AddCategory() {
     }));
   };
 
-  const imgArrRef = useRef([]);
   const uniqueArrayRef = useRef([]);
 
   const onChageFile = async (e, apiEndPoint) => {
@@ -60,9 +57,13 @@ function AddCategory() {
       for (let file of files) {
         if (
           file &&
-          ["image/jpeg", "image/jpg", "image/png", "image/webp"].includes(
-            file.type
-          )
+          [
+            "image/jpeg",
+            "image/jpg",
+            "image/png",
+            "image/webp",
+            "image/svg+xml",
+          ].includes(file.type)
         ) {
           formData.append("images", file);
         } else {
