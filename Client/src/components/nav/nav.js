@@ -43,7 +43,7 @@ const Nav = (props) => {
                     navData.map((item, index) => {
                       return (
                         <li className="list-inline-item" key={index}>
-                          <Link to={`/category/${item?._id}`}>
+                          <Link to={`/category/${item?.id}`}>
                             <Button>
                               {item.name}
                               {item?.children?.length !== 0 && (
@@ -58,7 +58,7 @@ const Nav = (props) => {
                                   return (
                                     <li key={index_} style={{ width: "100%" }}>
                                       <Link
-                                        to={`/category/subCat/${item?._id}`}
+                                        to={`/category/subCat/${item?.id}`}
                                       >
                                         <Button
                                           style={{
@@ -103,7 +103,7 @@ const Nav = (props) => {
                           navData?.map((item, index) => {
                             return (
                               <div className="col" key={index}>
-                                <Link to={`/category/${item?._id}`}>
+                                <Link to={`/category/${item?.id}`}>
                                   <h4 className="text-g">{item?.name}</h4>
                                 </Link>
 
@@ -113,7 +113,7 @@ const Nav = (props) => {
                                       return (
                                         <li key={index_}>
                                           <Link
-                                            to={`/category/subCat/${item_?._id}`}
+                                            to={`/category/subCat/${item_?.id}`}
                                           >
                                             {item_?.name}
                                           </Link>

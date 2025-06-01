@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const slugify = require("slugify");
 const multer = require("multer");
 const fs = require("fs");
 const cloudinary = require("cloudinary").v2;
@@ -110,6 +109,7 @@ const createCategories = (categories, parentId = null) => {
   for (let cat of category) {
     categoryList.push({
       _id: cat._id,
+      id: cat._id,
       name: cat.name,
       images: cat.images,
       color: cat.color,
