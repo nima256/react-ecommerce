@@ -14,14 +14,15 @@ const Home = () => {
   const context = useContext(MyContext);
 
   useEffect(() => {
-    setCategories(context.categories);
+    context.categories?.categoryList?.length > 0 &&
+      setCategories(context.categories);
   }, [context.categories]);
 
   return (
     <>
       <HomeSlider />
-      {categories?.categoryList?.length !== 0 && (
-        <CatSlider data={categories?.categoryList} />
+      {context.categories?.categoryList?.length > 0 && (
+        <CatSlider data={context.categories?.categoryList} />
       )}
       <Poster />
       <PopularProducts />

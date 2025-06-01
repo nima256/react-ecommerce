@@ -40,6 +40,8 @@ const CatSlider = (props) => {
     { title: "صندلی گیمینمگ", bg: "#ecffec", img: Chair },
     { title: "میز گیمینگ", bg: "#fff3ff", img: Desk },
   ]);
+  const [catData, setCatData] = useState([]);
+
   const context = useContext(MyContext);
 
   const settings = {
@@ -53,8 +55,8 @@ const CatSlider = (props) => {
   };
 
   useEffect(() => {
-    setCategories(context.categories);
-  }, [context.categories]);
+    setCatData(props.data);
+  }, [props.data]);
 
   return (
     <>
@@ -62,12 +64,12 @@ const CatSlider = (props) => {
         <div className="container-fluid cat-container">
           <h2 className="hd">دسته بندی ها پر طرفدار</h2>
           <Slider {...settings} className="cat_slider_main">
-            {props?.data?.length !== 0 &&
-              props?.data?.map((cat, index) => {
+            {catData?.length > 0 &&
+              catData?.map((cat, index) => {
                 return (
                   <div key={index}>
                     <div className="item" style={{ background: cat?.color }}>
-                      <Link to={""}>
+                      <Link to={`/category/${cat._id}`}>
                         <div className="info">
                           <img
                             src={cat?.images[0]}
