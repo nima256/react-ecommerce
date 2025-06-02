@@ -14,13 +14,13 @@ import { FaBoxOpen } from "react-icons/fa";
 import { FaComments } from "react-icons/fa";
 import { IoTimeSharp } from "react-icons/io5";
 
-import image1 from "../../assets/images/productDetails/1.webp";
-import image2 from "../../assets/images/productDetails/2.webp";
-import image3 from "../../assets/images/productDetails/3.webp";
-import image4 from "../../assets/images/productDetails/4-1.jpg";
-import image5 from "../../assets/images/productDetails/5-1.jpg";
-import image6 from "../../assets/images/productDetails/6.webp";
-import UserImgCircle from "../../components/UserImgCircle/UserImgCircle";
+import image1 from "../../../assets/images/productDetails/1.webp";
+import image2 from "../../../assets/images/productDetails/2.webp";
+import image3 from "../../../assets/images/productDetails/3.webp";
+import image4 from "../../../assets/images/productDetails/4-1.jpg";
+import image5 from "../../../assets/images/productDetails/5-1.jpg";
+import image6 from "../../../assets/images/productDetails/6.webp";
+import UserImgCircle from "../../../components/UserImgCircle/UserImgCircle";
 
 // rtl
 import { createTheme, ThemeProvider } from "@mui/material/styles";

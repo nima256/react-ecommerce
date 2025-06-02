@@ -1,9 +1,9 @@
 import "./Orders.css";
-import DashboardBox from "../Dashboard/components/DashboardBox";
+import DashboardBox from "../../Dashboard/components/DashboardBox";
 import { FaUserCircle } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import { MdShoppingBag } from "react-icons/md";
-import OrdersTable from "../../components/OrdersTable/OrdersTable";
+import OrdersTable from "../../../components/OrdersTable/OrdersTable";
 
 function Orders() {
   return (

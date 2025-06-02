@@ -24,7 +24,7 @@ const productSchema = mongoose.Schema(
       type: Number,
       default: 0,
     },
-    oldPrice: {
+    offerPrice: {
       type: Number,
       default: 0,
     },

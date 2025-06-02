@@ -49,3 +49,8 @@ body.dark
 .muirtl-sc8y68-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
   background: #f1f1f1 !important;
 }
+
+.imageBoxForRightContent {
+  padding-left: 30px;
+  padding-right: 30px;
+}

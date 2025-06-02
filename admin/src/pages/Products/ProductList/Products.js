@@ -1,10 +1,10 @@
 import "./Product.css";
 
-import DashboardBox from "../Dashboard/components/DashboardBox";
+import DashboardBox from "../../Dashboard/components/DashboardBox";
 import { FaShoppingBag } from "react-icons/fa";
 import { MdWidgets } from "react-icons/md";
 import { FaBuildingCircleCheck } from "react-icons/fa6";
-import ProductsTable from "../../components/ProductsTable/ProductsTable";
+import ProductsTable from "../../../components/ProductsTable/ProductsTable";
 
 const Products = () => {
   return (

@@ -8,12 +8,12 @@ import Header from "./components/Header/Header";
 import Sidebar from "./components/Sidebar/Sidebar";
 import { createContext, useEffect, useState } from "react";
 import Login from "./pages/Login/Login";
-import Products from "./pages/Products/Products";
-import ProductDetails from "./pages/ProductDetails/ProductDetails";
-import ProductUpload from "./pages/ProductUpload/ProductUpload";
-import Orders from "./pages/Orders/Orders";
+import Products from "./pages/Products/ProductList/Products";
+import ProductDetails from "./pages/Products/ProductDetails/ProductDetails";
+import ProductUpload from "./pages/Products/ProductUpload/ProductUpload";
+import Orders from "./pages/Orders/OrdersList/Orders";
 import { fetchDataFromApi } from "./utils/api";
-import OrderDetails from "./pages/OrdersDetails/OrderDetails";
+import OrderDetails from "./pages/Orders/OrdersDetails/OrderDetails";
 import Categories from "./pages/Categories/CategoryList/Categories";
 import LoadingBar from "react-top-loading-bar";
 import AddCategory from "./pages/Categories/AddCategory/AddCategory";
@@ -104,6 +104,7 @@ function App() {
     alertBox,
     setAlertBox,
     fetchCategory,
+    catData,
   };
 
   useEffect(() => {}, [isToggleSidebar]);
