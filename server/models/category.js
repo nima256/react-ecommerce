@@ -13,7 +13,14 @@ const categorySchema = mongoose.Schema(
     },
     images: [
       {
-        type: String,
+        url: {
+          type: String,
+          required: true,
+        },
+        fileId: {
+          type: String,
+          required: true,
+        },
       },
     ],
     color: {

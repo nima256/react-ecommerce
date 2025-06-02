@@ -30,6 +30,7 @@ function App() {
   const [themeMode, setThemeMode] = useState(true);
   const [windowWidth, setWindowsWidth] = useState(window.innerWidth);
   const [isOpenNav, setIsOpenNav] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
 
   const [progress, setProgress] = useState(0);
   const [catData, setCatData] = useState([]);
@@ -79,13 +80,12 @@ function App() {
   };
 
   const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
+    if (reason === "clickaway") return;
 
-    setAlertBox({
+    setAlertBox((prev) => ({
+      ...prev,
       open: false,
-    });
+    }));
   };
 
   const values = {
@@ -108,6 +108,19 @@ function App() {
 
   useEffect(() => {}, [isToggleSidebar]);
 
+  useEffect(() => {
+    if (alertBox.open) {
+      setShowAlert(true);
+    } else {
+      // Delay unmounting Alert to allow transition
+      const timeout = setTimeout(() => {
+        setShowAlert(false);
+      }, 300); // match MUI Snackbar's close animation duration
+
+      return () => clearTimeout(timeout);
+    }
+  }, [alertBox.open]);
+
   return (
     <BrowserRouter>
       <MyContext.Provider value={values}>
@@ -120,18 +133,19 @@ function App() {
 
         <Snackbar
           open={alertBox.open}
-          autoHideDuration={6000}
+          autoHideDuration={4000}
           onClose={handleClose}
         >
-          <Alert
-            onClose={handleClose}
-            autoHideDuration={6000}
-            severity={alertBox.error === false ? "success" : "error"}
-            variant="filled"
-            sx={{ width: "100%" }}
-          >
-            {alertBox.msg}
-          </Alert>
+          {showAlert && (
+            <Alert
+              onClose={handleClose}
+              severity={alertBox.error ? "error" : "success"}
+              variant="filled"
+              sx={{ width: "100%" }}
+            >
+              {alertBox.msg}
+            </Alert>
+          )}
         </Snackbar>
 
         {isLoginPage !== true && <Header />}

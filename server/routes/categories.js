@@ -2,112 +2,74 @@ const express = require("express");
 const router = express.Router();
 const multer = require("multer");
 const fs = require("fs");
-const cloudinary = require("cloudinary").v2;
+const ImageKit = require("imagekit");
 
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_SECRET,
-  secure: true,
+const imageKit = new ImageKit({
+  publicKey: process.env.IMAGE_KIT_PUBLIC,
+  privateKey: process.env.IMAGE_KIT_PRIVATE,
+  urlEndpoint: process.env.IMAGE_KIT_URL_ENDPOINT,
 });
 
 const { Category } = require("../models/category");
 const { ImageUpload } = require("../models/imageUpload");
 
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "uploads");
-  },
-  filename: function (req, file, cb) {
-    cb(null, `${Date.now()}_${file.originalname}`);
-  },
+  destination: (req, file, cb) => cb(null, "uploads"),
+  filename: (req, file, cb) => cb(null, `${Date.now()}_${file.originalname}`),
 });
 
-const upload = multer({ storage: storage });
+const upload = multer({ storage });
 
-var imagesArr = [];
+let imagesArr = [];
 
 router.post("/upload", upload.array("images"), async (req, res) => {
   imagesArr = [];
-
   try {
-    for (let i = 0; i < req?.files?.length; i++) {
-      const options = {
-        use_filename: true,
-        unique_filename: false,
-        overwrite: false,
-      };
-
-      const result = await cloudinary.uploader.upload(
-        req.files[i].path,
-        options
-      );
-
-      imagesArr.push(result.secure_url);
-      fs.unlinkSync(`uploads/${req.files[i].filename}`);
+    for (const file of req.files) {
+      const fileData = fs.readFileSync(file.path);
+      const result = await imageKit.upload({
+        file: fileData,
+        fileName: `${Date.now()}-${file.originalname}`,
+        folder: "/categories",
+      });
+      imagesArr.push({ url: result.url, fileId: result.fileId });
+      fs.unlinkSync(file.path);
     }
 
-    const imageUploaded = new ImageUpload({
-      images: imagesArr,
-    });
-
+    const imageUploaded = new ImageUpload({ images: imagesArr });
     await imageUploaded.save();
 
-    return res.status(200).json(imagesArr);
+    res.status(200).json(imagesArr);
   } catch (error) {
-    console.log(error);
-    return res.status(500).json({ error: "خطا در آپلود تصویر" });
+    console.error(error);
+    res.status(500).json({ error: "خطا در آپلود تصویر" });
   }
 });
 
 router.post("/create", async (req, res) => {
-  let catObj = [];
-
-  if (imagesArr.length > 0) {
-    catObj = {
-      name: req.body.name,
-      images: imagesArr,
-      color: req.body.color,
-      slug: req.body.name,
-    };
-  } else {
-    catObj = {
+  try {
+    const catObj = {
       name: req.body.name,
       slug: req.body.name,
+      images: imagesArr.length ? imagesArr : [],
+      color: req.body.color || undefined,
+      parentId: req.body.parentId || undefined,
     };
+
+    const category = new Category(catObj);
+    const savedCategory = await category.save();
+
+    imagesArr = [];
+    res.status(201).json(savedCategory);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
-
-  if (req.body.parentId) {
-    catObj.parentId = req.body.parentId;
-  }
-
-  let category = new Category(catObj);
-
-  if (!category) {
-    res.status(500).json({
-      error: err,
-      success: false,
-    });
-  }
-
-  category = await category.save();
-
-  imagesArr = [];
-
-  res.status(201).json(category);
 });
 
 const createCategories = (categories, parentId = null) => {
-  const categoryList = [];
-  let category;
-  if (parentId == null) {
-    category = categories.filter((cat) => cat.parentId == undefined);
-  } else {
-    category = categories.filter((cat) => cat.parentId == parentId);
-  }
-
-  for (let cat of category) {
-    categoryList.push({
+  return categories
+    .filter((cat) => String(cat.parentId || null) === String(parentId))
+    .map((cat) => ({
       _id: cat._id,
       id: cat._id,
       name: cat.name,
@@ -115,139 +77,121 @@ const createCategories = (categories, parentId = null) => {
       color: cat.color,
       slug: cat.slug,
       children: createCategories(categories, cat._id),
-    });
-  }
-
-  return categoryList;
+    }));
 };
 
 router.get("/", async (req, res) => {
   try {
     const categoryList = await Category.find();
-    if (!categoryList) {
-      res.status(500).json({ success: false });
-    }
-
-    if (categoryList) {
-      const categoryData = createCategories(categoryList);
-
-      return res.status(200).json({
-        categoryList: categoryData,
-      });
-    }
+    const categoryData = createCategories(categoryList);
+    res.status(200).json({ categoryList: categoryData });
   } catch (error) {
-    console.log(error);
+    console.error(error);
+    res.status(500).json({ error: "خطا در دریافت دسته‌بندی‌ها" });
   }
 });
 
 router.get("/get/count", async (req, res) => {
-  const categoryCount = await Category.countDocuments({ parentId: undefined });
-  if (!categoryCount) {
+  try {
+    const count = await Category.countDocuments({ parentId: undefined });
+    res.send({ categoryCount: count });
+  } catch {
     res.status(500).json({ success: false });
-  } else {
-    res.send({
-      categoryCount: categoryCount,
-    });
   }
 });
 
 router.get("/subCat/get/count", async (req, res) => {
-  const category = await Category.find();
-
-  if (!category) {
+  try {
+    const categories = await Category.find();
+    const subCatCount = categories.filter(
+      (cat) => cat.parentId !== undefined
+    ).length;
+    res.send({ categoryCount: subCatCount });
+  } catch {
     res.status(500).json({ success: false });
-  } else {
-    const subCatList = [];
-    for (let cat of category) {
-      if (cat.parentId !== undefined) {
-        subCatList.push(cat);
-      }
-    }
-
-    res.send({
-      categoryCount: subCatList.length,
-    });
   }
 });
 
 router.get("/:id", async (req, res) => {
-  categoryEditId = req.params.id;
-
-  const category = await Category.findById(req.params.id);
-
-  if (!category) {
-    res.status(500).json({ message: "دسته بندی مورد نظر شما پیدا نشد" });
+  try {
+    const category = await Category.findById(req.params.id);
+    if (!category)
+      return res.status(404).json({ message: "دسته بندی پیدا نشد" });
+    res.status(200).send(category);
+  } catch {
+    res.status(500).json({ message: "خطا در دریافت اطلاعات دسته بندی" });
   }
-  return res.status(200).send(category);
 });
 
 router.delete("/deleteImage", async (req, res) => {
   const imgUrl = req.query.img;
+  try {
+    const imageDoc = await ImageUpload.findOne({ "images.url": imgUrl });
+    if (!imageDoc) return res.status(404).json({ message: "تصویر پیدا نشد" });
 
-  const urlArr = imgUrl.split("/");
-  const image = urlArr[urlArr.length - 1];
+    const imageObj = imageDoc.images.find((img) => img.url === imgUrl);
+    await imageKit.deleteFile(imageObj.fileId);
 
-  const imageName = image.split(".")[0];
+    await ImageUpload.updateOne(
+      { _id: imageDoc._id },
+      { $pull: { images: { url: imgUrl } } }
+    );
 
-  const response = await cloudinary.uploader.destroy(imageName);
-
-  await ImageUpload.deleteMany({ images: imgUrl });
-
-  if (response) {
-    res.status(200).send(response);
+    res.status(200).json({ success: true });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "خطا در حذف تصویر" });
   }
 });
 
 router.delete("/:id", async (req, res) => {
-  const category = await Category.findById(req.params.id);
-  const images = category.images;
+  try {
+    const category = await Category.findById(req.params.id);
+    if (!category)
+      return res.status(404).json({ message: "دسته بندی پیدا نشد" });
 
-  for (img of images) {
-    const imgUrl = img;
-    const urlArr = imgUrl.split("/");
-    const image = urlArr[urlArr.length - 1];
+    for (const image of category.images) {
+      if (image?.fileId) {
+        try {
+          await imageKit.deleteFile(image.fileId);
+        } catch (err) {
+          console.warn(`خطا در حذف فایل ${image.fileId}:`, err.message);
+        }
+      }
+    }
 
-    const imageName = image.split(".")[0];
-
-    cloudinary.uploader.destroy(imageName);
+    await Category.findByIdAndDelete(req.params.id);
+    res
+      .status(200)
+      .json({ success: true, message: "دسته بندی و تصاویر آن پاک شدند" });
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ success: false, message: "خطا در حذف دسته بندی یا تصاویر" });
   }
-
-  const deletedCat = await Category.findByIdAndDelete(req.params.id);
-
-  if (!deletedCat) {
-    res.status(404).json({
-      message: "دسته بندی پیدا نشد",
-      success: false,
-    });
-  }
-
-  res.status(200).json({
-    success: true,
-    message: "دسته بندی پاک شد",
-  });
 });
 
 router.put("/:id", async (req, res) => {
-  const category = await Category.findByIdAndUpdate(
-    req.params.id,
-    {
-      name: req.body.name,
-      images: req.body.images,
-      color: req.body.color,
-    },
-    { new: true }
-  );
+  try {
+    const category = await Category.findByIdAndUpdate(
+      req.params.id,
+      {
+        name: req.body.name,
+        images: req.body.images,
+        color: req.body.color,
+      },
+      { new: true }
+    );
 
-  if (!category) {
-    return res.status(500).json({
-      message: "آپدیت دسته بندی انجام نشد",
-      success: false,
-    });
+    if (!category)
+      return res.status(404).json({ message: "دسته بندی پیدا نشد" });
+
+    imagesArr = [];
+    res.send(category);
+  } catch (error) {
+    res.status(500).json({ message: "خطا در آپدیت دسته بندی" });
   }
-
-  imagesArr = [];
-
-  res.send(category);
 });
 
 module.exports = router;

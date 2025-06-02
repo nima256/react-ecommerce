@@ -1,12 +1,18 @@
 const mongoose = require("mongoose");
 
-const imageUploadSchema = mongoose.Schema({
-  images: [
-    {
-      type: String,
-      reuqired: true,
-    },
-  ],
+const ImageSchema = new mongoose.Schema({
+  url: {
+    type: String,
+    required: true,
+  },
+  fileId: {
+    type: String,
+    required: true,
+  },
+});
+
+const imageUploadSchema = new mongoose.Schema({
+  images: [ImageSchema],
 });
 
 imageUploadSchema.virtual("id").get(function () {

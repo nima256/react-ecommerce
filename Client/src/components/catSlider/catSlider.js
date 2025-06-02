@@ -72,7 +72,7 @@ const CatSlider = (props) => {
                       <Link to={`/category/${cat.id}`}>
                         <div className="info">
                           <img
-                            src={cat?.images[0]}
+                            src={cat?.images[0].url}
                             alt=""
                             className="categoryImg"
                           />

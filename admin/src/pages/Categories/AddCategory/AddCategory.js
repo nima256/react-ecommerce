@@ -104,8 +104,26 @@ function AddCategory() {
     } catch (error) {
       console.error(error);
       setUploding(false);
+      const errorMsg =
+        error?.response?.data?.error || "خطای ناشناخته‌ای رخ داده است";
+      context.setAlertBox({
+        open: true,
+        error: true,
+        msg: errorMsg,
+      });
     }
   };
+
+  useEffect(() => {
+    // This works in modern browsers
+    const isPageRefresh =
+      window.performance &&
+      performance.getEntriesByType("navigation")[0]?.type === "reload";
+
+    if (isPageRefresh) {
+      deleteData("/api/imageUpload/deleteAllImages");
+    }
+  }, []);
 
   const removeImg = async (index, imgUrl) => {
     try {
@@ -151,6 +169,12 @@ function AddCategory() {
         deleteData("/api/imageUpload/deleteAllImages");
 
         history("/categories");
+
+        context.setAlertBox({
+          open: true,
+          error: false,
+          msg: "دسته بندی با موفقیت اضافه شد",
+        });
       });
     } else {
       context.setAlertBox({
@@ -208,7 +232,7 @@ function AddCategory() {
                               alt={"image"}
                               effect="blur"
                               className="w-100"
-                              src={img}
+                              src={img.url}
                             />
                           </div>
                         </div>

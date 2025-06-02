@@ -6,13 +6,13 @@ const router = express.Router();
 const multer = require("multer");
 const fs = require("fs");
 const mongoose = require("mongoose");
-const cloudinary = require("cloudinary").v2;
 
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_SECRET,
-  secure: true,
+const ImageKit = require("imagekit");
+
+const imageKit = new ImageKit({
+  publicKey: process.env.IMAGE_KIT_PUBLIC,
+  privateKey: process.env.IMAGE_KIT_PRIVATE,
+  urlEndpoint: process.env.IMAGE_KIT_URL_ENDPOINT,
 });
 
 var imagesArr = [];
@@ -33,18 +33,16 @@ router.post("/upload", upload.array("images"), async (req, res) => {
 
   try {
     for (let i = 0; i < req?.files?.length; i++) {
-      const options = {
-        use_filename: true,
-        unique_filename: false,
-        overwrite: false,
-      };
+      const file = fs.readFileSync(req.files[i].path);
+      const upload = await imageKit.upload({
+        file: fileBuffer,
+        fileName: req.files[i].filename,
+      });
 
-      const result = await cloudinary.uploader.upload(
-        req.files[i].path,
-        options
-      );
-
-      imagesArr.push(result.secure_url);
+      imagesArr.push({
+        url: upload.url,
+        fileId: upload.fileId,
+      });
       fs.unlinkSync(`uploads/${req.files[i].filename}`);
     }
 
@@ -278,18 +276,22 @@ router.get("/:id", async (req, res) => {
 router.delete("/deleteImage", async (req, res) => {
   const imgUrl = req.query.img;
 
-  const urlArr = imgUrl.split("/");
-  const image = urlArr[urlArr.length - 1];
+  try {
+    const result = await imageKit.listFiles({ searchQuery: `url="${imgUrl}"` });
 
-  const imageName = image.split("0")[0];
-
-  const response = await cloudinary.uploader.destroy(
-    imageName,
-    (error, result) => {}
-  );
-
-  if (response) {
-    res.status(200).send(response);
+    if (result.length > 0) {
+      const fileId = result[0].fileId;
+      await imageKit.deleteFile(fileId);
+      return res.status(200).json({ success: true, message: "تصویر حذف شد" });
+    } else {
+      return res
+        .status(404)
+        .json({ success: false, message: "تصویر یافت نشد" });
+    }
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ success: false, message: "خطا در حذف تصویر" });
   }
 });
 
@@ -305,7 +307,18 @@ router.delete("/:id", async (req, res) => {
     const imageName = image.split(".")[0];
 
     if (imageName) {
-      cloudinary.uploader.destroy(imageName, (error, result) => {});
+      for (const img of images) {
+        try {
+          const result = await imageKit.listFiles({
+            searchQuery: `url="${img}"`,
+          });
+          if (result.length > 0) {
+            await imageKit.deleteFile(result[0].fileId);
+          }
+        } catch (err) {
+          console.log(`خطا در حذف تصویر ${img}`, err);
+        }
+      }
     }
   }
 
@@ -359,7 +372,7 @@ router.put("/:id", async (req, res) => {
   res.status(200).json({
     message: "محصول آپدیت شد",
     success: true,
-  })
+  });
 });
 
 module.exports = router;

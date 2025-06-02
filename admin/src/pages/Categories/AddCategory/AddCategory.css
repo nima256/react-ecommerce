@@ -84,3 +84,13 @@ body.dark .imgUploadBox .uploadBox {
   text-align: center;
   opacity: 0.5;
 }
+
+.css-vab54s-MuiAlert-icon {
+  margin-right: 0px !important;
+  margin-left: 12px !important;
+}
+
+.css-rgppqo-MuiAlert-action {
+  margin-right: auto !important;
+  margin-left: -8px !important;
+}

@@ -27,6 +27,11 @@ function CategoriesTable() {
     context.setProgress(30);
     deleteData(`/api/category/${id}`).then((res) => {
       context.setProgress(100);
+      context.setAlertBox({
+        open: true,
+        error: false,
+        msg: "دسته بندی با موفقیت حذف شد",
+      });
       fetchDataFromApi("/api/category").then((res) => {
         setCatData(res);
       });
@@ -68,7 +73,7 @@ function CategoriesTable() {
                               alt={"image"}
                               effect="blur"
                               className="w-100"
-                              src={cat?.images[0]}
+                              src={cat?.images[0].url}
                             />
                           </div>
                         </div>

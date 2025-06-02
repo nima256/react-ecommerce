@@ -72,7 +72,7 @@ function SubCategoriesTable() {
                                 alt={"image"}
                                 effect="blur"
                                 className="w-100"
-                                src={item?.images[0]}
+                                src={item?.images[0].url}
                               />
                             </div>
                           </div>
