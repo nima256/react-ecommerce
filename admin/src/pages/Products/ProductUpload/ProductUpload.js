@@ -22,6 +22,7 @@ import { CircularProgress } from "@mui/material";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import { MyContext } from "../../../App";
 import {
+  deleteData,
   deleteImages,
   fetchDataFromApi,
   uploadImage,
@@ -42,10 +43,14 @@ function ProductUpload() {
   const [category, setCategory] = useState("");
   const [subCategoryVal, setSubCategoryVal] = useState("");
   const [subCategoryData, setSubCategoryData] = useState("");
+  const [isFeaturedVal, setIsFeaturedVal] = useState("");
   const [company, setCompany] = useState("");
   const [previews, setPreviews] = useState([]);
   const [uploading, setUploding] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [productWeightVal, setProductWeightVal] = useState([]);
+  const [productWeightData, setProductWeightData] = useState([]);
+  const [catData, setCatData] = useState([]);
   const [formFields, setFormFields] = useState({
     name: "",
     subCat: "",
@@ -60,9 +65,6 @@ function ProductUpload() {
     countInStock: null,
     rating: 0,
     isFeatured: null,
-    discount: null,
-    productRam: [],
-    size: [],
     productWeight: [],
   });
 
@@ -74,6 +76,22 @@ function ProductUpload() {
 
   const handleChangeSubCategory = (event) => {
     setSubCategoryVal(event.target.value);
+  };
+
+  const handleChangeisFeaturedVal = (event) => {
+    setIsFeaturedVal(event.target.value);
+    setFormFields(() => ({
+      ...formFields,
+      isFeatured: event.target.value,
+    }));
+  };
+
+  const handleChangeProductWeightVal = (event) => {
+    setProductWeightVal(event.target.value);
+    setFormFields(() => ({
+      ...formFields,
+      productWeight: event.target.value,
+    }));
   };
 
   const handleChangeCompany = (event) => {
@@ -205,6 +223,24 @@ function ProductUpload() {
     setSubCategoryData(subCatArr);
   }, [context.catData]);
 
+  useEffect(() => {
+    setCatData(context.catData);
+
+    fetchDataFromApi("api/imageUpload").then((res) => {
+      res?.map((item) => {
+        item?.images?.map((img) => {
+          deleteImages(`/api/category/deleteImage?img=${img}`).then((res) => {
+            deleteData("/api/imageUpload/deleteAllImages");
+          });
+        });
+      });
+    });
+
+    fetchDataFromApi("/api/productWeight").then((res) => {
+      setProductWeightData(res);
+    });
+  }, []);
+
   return (
     <>
       <div className="right-content pb-0 w-100">
@@ -246,7 +282,7 @@ function ProductUpload() {
                             className="w-100"
                           >
                             <MenuItem value="">
-                              <em>انتخاب کنید</em>
+                              <em value="">انتخاب کنید</em>
                             </MenuItem>
                             {context.catData?.categoryList?.length !== 0 &&
                               context.catData?.categoryList?.map(
@@ -281,7 +317,7 @@ function ProductUpload() {
                             className="w-100"
                           >
                             <MenuItem value="">
-                              <em>انتخاب کنید</em>
+                              <em value="">انتخاب کنید</em>
                             </MenuItem>
                             {subCategoryData?.length !== 0 &&
                               subCategoryData?.map((subCat, index) => {
@@ -297,6 +333,28 @@ function ProductUpload() {
                                   </MenuItem>
                                 );
                               })}
+                          </Select>
+                        </ThemeProvider>
+                      </CacheProvider>
+                    </div>
+                  </div>
+                  <div className="col">
+                    <div class="form-group">
+                      <h6>محصول ویژه است؟</h6>
+                      <CacheProvider value={cacheRtl}>
+                        <ThemeProvider theme={theme}>
+                          <Select
+                            value={isFeaturedVal}
+                            onChange={handleChangeisFeaturedVal}
+                            displayEmpty
+                            className="w-100"
+                          >
+                            <MenuItem value={null}>
+                              <em value={null}>انتخاب کنید</em>
+                            </MenuItem>
+
+                            <MenuItem value={true}>بله</MenuItem>
+                            <MenuItem value={false}>خیر</MenuItem>
                           </Select>
                         </ThemeProvider>
                       </CacheProvider>
@@ -340,14 +398,63 @@ function ProductUpload() {
                   </div>
                   <div class="col">
                     <div class="form-group">
-                      <h6>قیمت بعد تخفیف</h6>
-                      <input type="text" name="offerPrice" value={formFields.offerPrice} onChange={inputChange} />
+                      <h6>موجودی کالا</h6>
+                      <input
+                        type="text"
+                        name="countInStock"
+                        value={formFields.countInStock}
+                        onChange={inputChange}
+                      />
                     </div>
                   </div>
                   <div class="col">
                     <div class="form-group">
+                      <h6>برند</h6>
+                      <input
+                        type="text"
+                        name="brand"
+                        value={formFields.brand}
+                        onChange={inputChange}
+                      />
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <h6>قیمت بعد تخفیف</h6>
+                      <input
+                        type="text"
+                        name="offerPrice"
+                        value={formFields.offerPrice}
+                        onChange={inputChange}
+                      />
+                    </div>
+                  </div>
+                  <div className="col">
+                    <div class="form-group">
                       <h6>وزن</h6>
-                      <input type="text" />
+                      <CacheProvider value={cacheRtl}>
+                        <ThemeProvider theme={theme}>
+                          <Select
+                            value={productWeightVal}
+                            onChange={handleChangeProductWeightVal}
+                            displayEmpty
+                            className="w-100"
+                          >
+                            <MenuItem value={null}>
+                              <em value={null}>انتخاب کنید</em>
+                            </MenuItem>
+
+                            {productWeightData?.length !== 0 &&
+                              productWeightData?.map((item, index) => {
+                                return (
+                                  <MenuItem value={item.productWeight}>
+                                    item.productWeight
+                                  </MenuItem>
+                                );
+                              })}
+                          </Select>
+                        </ThemeProvider>
+                      </CacheProvider>
                     </div>
                   </div>
                 </div>

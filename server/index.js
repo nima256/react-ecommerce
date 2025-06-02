@@ -13,11 +13,13 @@ app.use(express.json());
 
 // Routes
 const categoryRoutes = require("./routes/categories");
-const imageUploadRoutes = require('./helper/imageUpload.js')
+const imageUploadRoutes = require("./helper/imageUpload.js");
+const productWeightRoutes = require("./routes/productWeight.js");
 
 app.use("/uploads", express.static("uploads"));
 app.use("/api/category", categoryRoutes);
 app.use("/api/imageUpload", imageUploadRoutes);
+app.use("/api/productWeight", productWeightRoutes);
 
 // DB
 mongoose
