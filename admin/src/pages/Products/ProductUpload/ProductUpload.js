@@ -48,8 +48,6 @@ function ProductUpload() {
   const [previews, setPreviews] = useState([]);
   const [uploading, setUploding] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [productWeightVal, setProductWeightVal] = useState([]);
-  const [productWeightData, setProductWeightData] = useState([]);
   const [catData, setCatData] = useState([]);
   const [formFields, setFormFields] = useState({
     name: "",
@@ -65,7 +63,7 @@ function ProductUpload() {
     countInStock: null,
     rating: 0,
     isFeatured: null,
-    productWeight: [],
+    weight: "",
   });
 
   const context = useContext(MyContext);
@@ -86,106 +84,8 @@ function ProductUpload() {
     }));
   };
 
-  const handleChangeProductWeightVal = (event) => {
-    setProductWeightVal(event.target.value);
-    setFormFields(() => ({
-      ...formFields,
-      productWeight: event.target.value,
-    }));
-  };
-
   const handleChangeCompany = (event) => {
     setCompany(event.target.value);
-  };
-
-  const removeImg = async (index, imgUrl) => {
-    try {
-      await deleteImages(`/api/category/deleteImage?img=${imgUrl}`);
-
-      const newPreviews = previews.filter((img) => img !== imgUrl);
-      setPreviews(newPreviews);
-
-      context.setAlertBox({
-        open: true,
-        error: false,
-        msg: "تصویر حذف شد",
-      });
-    } catch (error) {
-      console.error("Error deleting image:", error);
-      context.setAlertBox({
-        open: true,
-        error: true,
-        msg: "خطا در حذف تصویر",
-      });
-    }
-  };
-
-  const onChageFile = async (e, apiEndPoint) => {
-    const formData = new FormData();
-    const img_arr = [];
-
-    try {
-      const files = e.target.files;
-      setUploding(true);
-
-      for (let file of files) {
-        if (
-          file &&
-          [
-            "image/jpeg",
-            "image/jpg",
-            "image/png",
-            "image/webp",
-            "image/svg+xml",
-          ].includes(file.type)
-        ) {
-          formData.append("images", file);
-        } else {
-          context.setAlertBox({
-            open: true,
-            error: true,
-            msg: "لطفا فرمت مناسبی برای آپلود عکس انتخاب کنید",
-          });
-          setUploding(false);
-          return;
-        }
-      }
-
-      await uploadImage(apiEndPoint, formData);
-      const response = await fetchDataFromApi("/api/imageUpload");
-
-      if (response?.length) {
-        response.forEach((item) => {
-          item?.images?.forEach((img) => {
-            img_arr.push(img);
-          });
-        });
-
-        const uniqueArray = img_arr.filter((item) => !previews.includes(item));
-        const appendedArray = [...previews, ...uniqueArray];
-
-        setPreviews(appendedArray);
-
-        setTimeout(() => {
-          setUploding(false);
-          context.setAlertBox({
-            open: true,
-            error: false,
-            msg: " عکس با موفقیت آپلود شد",
-          });
-        }, 200);
-      }
-    } catch (error) {
-      console.error(error);
-      setUploding(false);
-      const errorMsg =
-        error?.response?.data?.error || "خطای ناشناخته‌ای رخ داده است";
-      context.setAlertBox({
-        open: true,
-        error: true,
-        msg: errorMsg,
-      });
-    }
   };
 
   const inputChange = (e) => {
@@ -208,6 +108,20 @@ function ProductUpload() {
     }));
   };
 
+  // useEffect(() => {
+  //   setCatData(context.catData);
+
+  //   fetchDataFromApi("/api/imageUpload").then((res) => {
+  //     res?.map((item) => {
+  //       item?.images?.map((img) => {
+  //         deleteImages(`/api/category/deleteImage?img=${img}`).then((res) => {
+  //           deleteData("/api/imageUpload/deleteAllImages");
+  //         });
+  //       });
+  //     });
+  //   });
+  // }, []);
+
   useEffect(() => {
     const subCatArr = [];
 
@@ -223,23 +137,27 @@ function ProductUpload() {
     setSubCategoryData(subCatArr);
   }, [context.catData]);
 
-  useEffect(() => {
-    setCatData(context.catData);
+  const removeImg = async (index, imgUrl) => {
+    try {
+      await deleteImages(`/api/category/deleteImage?img=${imgUrl}`);
 
-    fetchDataFromApi("api/imageUpload").then((res) => {
-      res?.map((item) => {
-        item?.images?.map((img) => {
-          deleteImages(`/api/category/deleteImage?img=${img}`).then((res) => {
-            deleteData("/api/imageUpload/deleteAllImages");
-          });
-        });
+      const newPreviews = previews.filter((img) => img !== imgUrl);
+      setPreviews(newPreviews);
+
+      context.setAlertBox({
+        open: true,
+        error: false,
+        msg: "تصویر حذف شد",
       });
-    });
-
-    fetchDataFromApi("/api/productWeight").then((res) => {
-      setProductWeightData(res);
-    });
-  }, []);
+    } catch (error) {
+      console.error("Error deleting image:", error);
+      context.setAlertBox({
+        open: true,
+        error: true,
+        msg: "خطا در حذف تصویر",
+      });
+    }
+  };
 
   return (
     <>
@@ -429,32 +347,15 @@ function ProductUpload() {
                       />
                     </div>
                   </div>
-                  <div className="col">
+                  <div class="col">
                     <div class="form-group">
                       <h6>وزن</h6>
-                      <CacheProvider value={cacheRtl}>
-                        <ThemeProvider theme={theme}>
-                          <Select
-                            value={productWeightVal}
-                            onChange={handleChangeProductWeightVal}
-                            displayEmpty
-                            className="w-100"
-                          >
-                            <MenuItem value={null}>
-                              <em value={null}>انتخاب کنید</em>
-                            </MenuItem>
-
-                            {productWeightData?.length !== 0 &&
-                              productWeightData?.map((item, index) => {
-                                return (
-                                  <MenuItem value={item.productWeight}>
-                                    item.productWeight
-                                  </MenuItem>
-                                );
-                              })}
-                          </Select>
-                        </ThemeProvider>
-                      </CacheProvider>
+                      <input
+                        type="text"
+                        name="weight"
+                        value={formFields.weight}
+                        onChange={inputChange}
+                      />
                     </div>
                   </div>
                 </div>
@@ -477,10 +378,7 @@ function ProductUpload() {
                     previews?.map((img, index) => {
                       return (
                         <div className="uploadBox" key={index}>
-                          <span
-                            className="remove"
-                            onClick={() => removeImg(index, img)}
-                          >
+                          <span className="remove">
                             <IoCloseSharp />
                           </span>
                           <div className="box">
@@ -503,14 +401,7 @@ function ProductUpload() {
                       </div>
                     ) : (
                       <>
-                        <input
-                          type="file"
-                          multiple
-                          name="images"
-                          onChange={(e) =>
-                            onChageFile(e, "/api/category/upload")
-                          }
-                        />
+                        <input type="file" multiple name="images" />
                         <div className="info">
                           <FaRegImages />
                           <h5>آپلود عکس</h5>

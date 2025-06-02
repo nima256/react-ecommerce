@@ -61,12 +61,10 @@ const productSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    productWeight: [
-      {
-        type: String,
-        default: null,
-      },
-    ],
+    weight: {
+      type: String,
+      default: null,
+    },
     dateCreated: {
       type: Date,
       default: Data.now,
