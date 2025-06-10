@@ -61,7 +61,7 @@ router.post("/upload", upload.array("images"), async (req, res) => {
 });
 
 router.post("/create", async (req, res) => {
-  const category = await Category.findById(req.body.category);
+  const category = await Category.findById(req.body.catId);
   if (!category) {
     return res.status(404).send("دسته بندی پیدا نشد");
   }
@@ -86,11 +86,11 @@ router.post("/create", async (req, res) => {
     catId: req.body.catId,
     subCatId: req.body.subCatId,
     subCat: req.body.subCat,
-    category: req.body.category,
+    category: category,
     countInStock: req.body.countInStock,
     rating: req.body.rating,
     isFeatured: req.body.isFeatured,
-    productWeight: req.body.productWeight,
+    weight: req.body.weight,
   });
 
   product = await product.save();

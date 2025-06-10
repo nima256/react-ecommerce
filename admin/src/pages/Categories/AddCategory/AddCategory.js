@@ -44,8 +44,6 @@ function AddCategory() {
     }));
   };
 
-  const uniqueArrayRef = useRef([]);
-
   const onChageFile = async (e, apiEndPoint) => {
     const formData = new FormData();
     const img_arr = [];
@@ -150,7 +148,7 @@ function AddCategory() {
   const addCat = (e) => {
     e.preventDefault();
 
-    const appendedArray = [...previews, ...uniqueArrayRef.current];
+    const appendedArray = [...previews];
 
     formFields.slug = formFields.name;
     formFields.images = appendedArray;

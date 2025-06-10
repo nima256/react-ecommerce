@@ -7,7 +7,7 @@ import { FaPencilAlt } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import pImg from "../../assets/images/category-image.png";
 import Pagination from "@mui/material/Pagination";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import rtlPlugin from "stylis-plugin-rtl";
 import { prefixer } from "stylis";
@@ -16,6 +16,8 @@ import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 
 import "./ProductsTable.css";
+import { MyContext } from "../../App";
+import { deleteData, fetchDataFromApi } from "../../utils/api";
 
 const theme = createTheme({ direction: "rtl" });
 const cacheRtl = createCache({
@@ -27,10 +29,38 @@ function ProductsTable() {
   const [showBy, setShowBy] = useState("");
 
   const [CatBy, setCatBy] = useState("");
+
+  const [productData, setProductData] = useState([]);
+  const context = useContext(MyContext);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    context.setProgress(20);
+    fetchDataFromApi("/api/category").then((res) => {
+      setProductData(res);
+      context.setProgress(100);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const deleteCat = (id) => {
+    context.setProgress(30);
+    deleteData(`/api/category/${id}`).then((res) => {
+      context.setProgress(100);
+      context.setAlertBox({
+        open: true,
+        error: false,
+        msg: "دسته بندی با موفقیت حذف شد",
+      });
+      fetchDataFromApi("/api/category").then((res) => {
+        setProductData(res);
+      });
+    });
+  };
   return (
     <>
       <div className="card shadow border-0 p-3 mt-4">
-        <h3 className="hd">پرفروش ترین کالا ها</h3>
+        <h3 className="hd">تمام محصولات</h3>
         <div className="row cardFilters mt-3">
           <div className="col-md-3">
             <h4>تعداد کالا</h4>

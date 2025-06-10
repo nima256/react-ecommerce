@@ -25,8 +25,10 @@ import {
   deleteData,
   deleteImages,
   fetchDataFromApi,
+  postData,
   uploadImage,
 } from "../../../utils/api";
+import { useNavigate } from "react-router-dom";
 
 const theme = createTheme({
   direction: "rtl",
@@ -43,16 +45,15 @@ function ProductUpload() {
   const [subCategoryVal, setSubCategoryVal] = useState("");
   const [subCategoryData, setSubCategoryData] = useState("");
   const [isFeaturedVal, setIsFeaturedVal] = useState("");
-  const [company, setCompany] = useState("");
   const [previews, setPreviews] = useState([]);
   const [uploading, setUploding] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [catData, setCatData] = useState([]);
   const [formFields, setFormFields] = useState({
     name: "",
+    images: [],
     subCat: "",
     description: "",
-    brand: "",
     price: null,
     offerPrice: null,
     subCatId: "",
@@ -62,8 +63,9 @@ function ProductUpload() {
     countInStock: null,
     rating: 0,
     isFeatured: null,
-    weight: "",
+    weight: null,
   });
+  const history = useNavigate();
 
   const context = useContext(MyContext);
 
@@ -81,10 +83,6 @@ function ProductUpload() {
       ...formFields,
       isFeatured: event.target.value,
     }));
-  };
-
-  const handleChangeCompany = (event) => {
-    setCompany(event.target.value);
   };
 
   const inputChange = (e) => {
@@ -192,7 +190,6 @@ function ProductUpload() {
   };
 
   useEffect(() => {
-    // This works in modern browsers
     const isPageRefresh =
       window.performance &&
       performance.getEntriesByType("navigation")[0]?.type === "reload";
@@ -224,279 +221,286 @@ function ProductUpload() {
     }
   };
 
+  const addProduct = (e) => {
+    e.preventDefault();
+
+    const appendedArray = [...previews];
+
+    formFields.images = appendedArray;
+
+    if (
+      formFields.name !== "" &&
+      formFields.description !== "" &&
+      formFields.price !== null &&
+      formFields.weight !== null &&
+      formFields.images.length > 0
+    ) {
+      setIsLoading(true);
+
+      postData("/api/product/create", formFields).then((res) => {
+        setIsLoading(false);
+        context.fetchProduct();
+
+        deleteData("/api/imageUpload/deleteAllImages");
+
+        history("/products");
+
+        context.setAlertBox({
+          open: true,
+          error: false,
+          msg: "محصول با موفقیت اضافه شد",
+        });
+      });
+    } else {
+      context.setAlertBox({
+        open: true,
+        error: true,
+        msg: "لطفا تمام اطلاعات را پر کنید",
+      });
+      return false;
+    }
+  };
+
   return (
     <>
-      <div className="right-content pb-0 w-100">
-        <form action="" className="form">
-          <div className="row">
-            <div className="col-sm-12">
-              <div className="card p-4">
-                <h5 className="mb-4">اطلاعات اصلی</h5>
-                <div className="form-group">
-                  <h6>عنوان</h6>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formFields.name}
-                    onChange={inputChange}
-                  />
-                </div>
-                <div className="form-group">
-                  <h6>توضیحات</h6>
-                  <textarea
-                    rows={5}
-                    cols={10}
-                    value={formFields.description}
-                    name="description"
-                    onChange={inputChange}
-                  ></textarea>
-                </div>
+      <div className="">
+        <form className="form" onSubmit={addProduct}>
+          <div className="right-content pb-0 w-100">
+            <div className="row">
+              <div className="col-sm-12">
+                <div className="card p-4">
+                  <h5 className="mb-4">اطلاعات اصلی</h5>
+                  <div className="form-group">
+                    <h6>عنوان</h6>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formFields.name}
+                      onChange={inputChange}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <h6>توضیحات</h6>
+                    <textarea
+                      rows={5}
+                      cols={10}
+                      value={formFields.description}
+                      name="description"
+                      onChange={inputChange}
+                    ></textarea>
+                  </div>
 
-                <div className="row">
-                  <div className="col">
-                    <div className="form-group">
-                      <h6>دسته بندی</h6>
-                      <CacheProvider value={cacheRtl}>
-                        <ThemeProvider theme={theme}>
-                          <Select
-                            value={category}
-                            onChange={handleChangeCategory}
-                            displayEmpty
-                            className="w-100"
-                          >
-                            <MenuItem value="">
-                              <em value="">انتخاب کنید</em>
-                            </MenuItem>
-                            {context.catData?.categoryList?.length !== 0 &&
-                              context.catData?.categoryList?.map(
-                                (cat, index) => {
+                  <div className="row">
+                    <div className="col">
+                      <div className="form-group">
+                        <h6>دسته بندی</h6>
+                        <CacheProvider value={cacheRtl}>
+                          <ThemeProvider theme={theme}>
+                            <Select
+                              value={category}
+                              onChange={handleChangeCategory}
+                              displayEmpty
+                              className="w-100"
+                            >
+                              <MenuItem value="">
+                                <em value="">انتخاب کنید</em>
+                              </MenuItem>
+                              {context.catData?.categoryList?.length !== 0 &&
+                                context.catData?.categoryList?.map(
+                                  (cat, index) => {
+                                    return (
+                                      <MenuItem
+                                        value={cat._id}
+                                        key={index}
+                                        onClick={() =>
+                                          selectCat(cat.name, cat._id)
+                                        }
+                                      >
+                                        {cat.name}
+                                      </MenuItem>
+                                    );
+                                  }
+                                )}
+                            </Select>
+                          </ThemeProvider>
+                        </CacheProvider>
+                      </div>
+                    </div>
+                    <div className="col">
+                      <div className="form-group">
+                        <h6>زیر دسته بندی</h6>
+                        <CacheProvider value={cacheRtl}>
+                          <ThemeProvider theme={theme}>
+                            <Select
+                              value={subCategoryVal}
+                              onChange={handleChangeSubCategory}
+                              displayEmpty
+                              className="w-100"
+                            >
+                              <MenuItem value="">
+                                <em value="">انتخاب کنید</em>
+                              </MenuItem>
+                              {subCategoryData?.length !== 0 &&
+                                subCategoryData?.map((subCat, index) => {
                                   return (
                                     <MenuItem
-                                      value={cat._id}
+                                      value={subCat._id}
                                       key={index}
                                       onClick={() =>
-                                        selectCat(cat.name, cat._id)
+                                        selectSubCat(subCat.name, subCat._id)
                                       }
                                     >
-                                      {cat.name}
+                                      {subCat.name}
                                     </MenuItem>
                                   );
-                                }
-                              )}
-                          </Select>
-                        </ThemeProvider>
-                      </CacheProvider>
+                                })}
+                            </Select>
+                          </ThemeProvider>
+                        </CacheProvider>
+                      </div>
                     </div>
-                  </div>
-                  <div className="col">
-                    <div className="form-group">
-                      <h6>زیر دسته بندی</h6>
-                      <CacheProvider value={cacheRtl}>
-                        <ThemeProvider theme={theme}>
-                          <Select
-                            value={subCategoryVal}
-                            onChange={handleChangeSubCategory}
-                            displayEmpty
-                            className="w-100"
-                          >
-                            <MenuItem value="">
-                              <em value="">انتخاب کنید</em>
-                            </MenuItem>
-                            {subCategoryData?.length !== 0 &&
-                              subCategoryData?.map((subCat, index) => {
-                                return (
-                                  <MenuItem
-                                    value={subCat._id}
-                                    key={index}
-                                    onClick={() =>
-                                      selectSubCat(subCat.name, subCat._id)
-                                    }
-                                  >
-                                    {subCat.name}
-                                  </MenuItem>
-                                );
-                              })}
-                          </Select>
-                        </ThemeProvider>
-                      </CacheProvider>
-                    </div>
-                  </div>
-                  <div className="col">
-                    <div className="form-group">
-                      <h6>محصول ویژه است؟</h6>
-                      <CacheProvider value={cacheRtl}>
-                        <ThemeProvider theme={theme}>
-                          <Select
-                            value={isFeaturedVal}
-                            onChange={handleChangeisFeaturedVal}
-                            displayEmpty
-                            className="w-100"
-                          >
-                            <MenuItem value={null}>
-                              <em value={null}>انتخاب کنید</em>
-                            </MenuItem>
+                    <div className="col">
+                      <div className="form-group">
+                        <h6>محصول ویژه است؟</h6>
+                        <CacheProvider value={cacheRtl}>
+                          <ThemeProvider theme={theme}>
+                            <Select
+                              value={isFeaturedVal}
+                              onChange={handleChangeisFeaturedVal}
+                              displayEmpty
+                              className="w-100"
+                            >
+                              <MenuItem value={null}>
+                                <em value={null}>انتخاب کنید</em>
+                              </MenuItem>
 
-                            <MenuItem value={true}>بله</MenuItem>
-                            <MenuItem value={false}>خیر</MenuItem>
-                          </Select>
-                        </ThemeProvider>
-                      </CacheProvider>
+                              <MenuItem value={true}>بله</MenuItem>
+                              <MenuItem value={false}>خیر</MenuItem>
+                            </Select>
+                          </ThemeProvider>
+                        </CacheProvider>
+                      </div>
                     </div>
                   </div>
-                  <div className="col">
-                    <div className="form-group">
-                      <h6>شرکت</h6>
-                      <CacheProvider value={cacheRtl}>
-                        <ThemeProvider theme={theme}>
-                          <Select
-                            value={company}
-                            onChange={handleChangeCompany}
-                            displayEmpty
-                            className="w-100"
-                          >
-                            <MenuItem value="">
-                              <em>انتخاب کنید</em>
-                            </MenuItem>
-                            <MenuItem value={"laptop"}>ایسوس</MenuItem>
-                            <MenuItem value={"keyboard"}>لنوو</MenuItem>
-                            <MenuItem value={"mouse"}>اچ پی</MenuItem>
-                          </Select>
-                        </ThemeProvider>
-                      </CacheProvider>
-                    </div>
-                  </div>
-                </div>
 
-                <div className="row">
-                  <div className="col">
-                    <div className="form-group">
-                      <h6>قیمت</h6>
-                      <input
-                        type="number"
-                        name="price"
-                        value={formFields.price}
-                        onChange={inputChange}
-                      />
+                  <div className="row">
+                    <div className="col">
+                      <div className="form-group">
+                        <h6>قیمت</h6>
+                        <input
+                          type="number"
+                          name="price"
+                          value={formFields.price}
+                          onChange={inputChange}
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div className="col">
-                    <div className="form-group">
-                      <h6>قیمت بعد تخفیف</h6>
-                      <input
-                        type="number"
-                        name="offerPrice"
-                        value={formFields.offerPrice}
-                        onChange={inputChange}
-                      />
+                    <div className="col">
+                      <div className="form-group">
+                        <h6>قیمت بعد تخفیف</h6>
+                        <input
+                          type="number"
+                          name="offerPrice"
+                          value={formFields.offerPrice}
+                          onChange={inputChange}
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div className="col">
-                    <div className="form-group">
-                      <h6>موجودی کالا</h6>
-                      <input
-                        type="number"
-                        name="countInStock"
-                        value={formFields.countInStock}
-                        onChange={inputChange}
-                      />
+                    <div className="col">
+                      <div className="form-group">
+                        <h6>موجودی کالا</h6>
+                        <input
+                          type="number"
+                          name="countInStock"
+                          value={formFields.countInStock}
+                          onChange={inputChange}
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div className="col">
-                    <div className="form-group">
-                      <h6>برند</h6>
-                      <input
-                        type="text"
-                        name="brand"
-                        value={formFields.brand}
-                        onChange={inputChange}
-                      />
-                    </div>
-                  </div>
-                  <div className="col">
-                    <div className="form-group">
-                      <h6>وزن</h6>
-                      <input
-                        type="number"
-                        name="weight"
-                        value={formFields.weight}
-                        onChange={inputChange}
-                      />
+                    <div className="col">
+                      <div className="form-group">
+                        <h6>وزن</h6>
+                        <input
+                          type="number"
+                          name="weight"
+                          value={formFields.weight}
+                          onChange={inputChange}
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </form>
-      </div>
-      <div className="imageBoxForRightContent w-100">
-        <form action="" className="form">
-          <div className="row">
-            <div className="col-sm-12">
-              <div className="card p-4 mt-0">
-                <div className="imagesUploadSec">
-                  <h5 className="mb-3">تصویر دسته بندی</h5>
-                </div>
-
-                <div className="imgUploadBox d-flex align-item-center">
-                  {previews?.length !== 0 &&
-                    previews?.map((img, index) => {
-                      return (
-                        <div className="uploadBox" key={index}>
-                          <span
-                            className="remove"
-                            onClick={() => removeImg(index, img)}
-                          >
-                            <IoCloseSharp />
-                          </span>
-                          <div className="box">
-                            <LazyLoadImage
-                              alt={"image"}
-                              effect="blur"
-                              className="w-100"
-                              src={img.url}
-                            />
-                          </div>
-                        </div>
-                      );
-                    })}
-
-                  <div className="uploadBox">
-                    {uploading === true ? (
-                      <div className="progressBar text-center align-items-center justify-content-center flex-column">
-                        <CircularProgress />
-                        <span>در حال آپلود</span>
-                      </div>
-                    ) : (
-                      <>
-                        <input
-                          type="file"
-                          multiple
-                          name="images"
-                          onChange={(e) =>
-                            onChageFile(e, "/api/product/upload")
-                          }
-                        />
-                        <div className="info">
-                          <FaRegImages />
-                          <h5>آپلود عکس</h5>
-                        </div>
-                      </>
-                    )}
+          <div className="imageBoxForRightContent w-100">
+            <div className="row">
+              <div className="col-sm-12">
+                <div className="card p-4 mt-0">
+                  <div className="imagesUploadSec">
+                    <h5 className="mb-3">تصویر دسته بندی</h5>
                   </div>
+
+                  <div className="imgUploadBox d-flex align-item-center">
+                    {previews?.length !== 0 &&
+                      previews?.map((img, index) => {
+                        return (
+                          <div className="uploadBox" key={index}>
+                            <span
+                              className="remove"
+                              onClick={() => removeImg(index, img)}
+                            >
+                              <IoCloseSharp />
+                            </span>
+                            <div className="box">
+                              <LazyLoadImage
+                                alt={"image"}
+                                effect="blur"
+                                className="w-100"
+                                src={img.url}
+                              />
+                            </div>
+                          </div>
+                        );
+                      })}
+
+                    <div className="uploadBox">
+                      {uploading === true ? (
+                        <div className="progressBar text-center align-items-center justify-content-center flex-column">
+                          <CircularProgress />
+                          <span>در حال آپلود</span>
+                        </div>
+                      ) : (
+                        <>
+                          <input
+                            type="file"
+                            multiple
+                            name="images"
+                            onChange={(e) =>
+                              onChageFile(e, "/api/product/upload")
+                            }
+                          />
+                          <div className="info">
+                            <FaRegImages />
+                            <h5>آپلود عکس</h5>
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  </div>
+
+                  <br />
+
+                  <Button type="submit" className="btn-blue btn-lg w-100">
+                    <FaCloudUploadAlt />
+                    &nbsp;
+                    {isLoading === true ? (
+                      <CircularProgress color="inherit" className="loader" />
+                    ) : (
+                      "انتشار"
+                    )}
+                  </Button>
                 </div>
-
-                <br />
-
-                <Button type="submit" className="btn-blue btn-lg w-100">
-                  <FaCloudUploadAlt />
-                  &nbsp;
-                  {isLoading === true ? (
-                    <CircularProgress color="inherit" className="loader" />
-                  ) : (
-                    "انتشار"
-                  )}
-                </Button>
               </div>
             </div>
           </div>

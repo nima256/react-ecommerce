@@ -34,6 +34,7 @@ function App() {
 
   const [progress, setProgress] = useState(0);
   const [catData, setCatData] = useState([]);
+  const [productData, setProductData] = useState([]);
 
   const [alertBox, setAlertBox] = useState({
     msg: "",
@@ -74,6 +75,27 @@ function App() {
       setProgress(100);
     });
   };
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowsWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    fetchProduct();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const fetchProduct = () => {
+    setProgress(30);
+    fetchDataFromApi("/api/product").then((res) => {
+      setProductData(res);
+      setProgress(100);
+    });
+  };
 
   const openNav = () => {
     setIsOpenNav(!isOpenNav);
@@ -105,6 +127,8 @@ function App() {
     setAlertBox,
     fetchCategory,
     catData,
+    fetchProduct,
+    productData,
   };
 
   useEffect(() => {}, [isToggleSidebar]);
