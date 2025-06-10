@@ -35,8 +35,9 @@ router.post("/upload", upload.array("images"), async (req, res) => {
     for (let i = 0; i < req?.files?.length; i++) {
       const file = fs.readFileSync(req.files[i].path);
       const upload = await imageKit.upload({
-        file: fileBuffer,
+        file: file,
         fileName: req.files[i].filename,
+        folder: "/products",
       });
 
       imagesArr.push({
@@ -273,22 +274,44 @@ router.get("/:id", async (req, res) => {
 router.delete("/deleteImage", async (req, res) => {
   const imgUrl = req.query.img;
 
-  try {
-    const result = await imageKit.listFiles({ searchQuery: `url="${imgUrl}"` });
+  if (!imgUrl) {
+    return res.status(400).json({ message: "URL تصویر مورد نیاز است." });
+  }
 
-    if (result.length > 0) {
-      const fileId = result[0].fileId;
-      await imageKit.deleteFile(fileId);
-      return res.status(200).json({ success: true, message: "تصویر حذف شد" });
-    } else {
+  try {
+    const imageDoc = await ImageUpload.findOne({ "images.url": imgUrl });
+
+    if (!imageDoc) {
+      return res.status(404).json({ message: "تصویر پیدا نشد." });
+    }
+
+    const imageObj = imageDoc.images.find((img) => img.url === imgUrl);
+
+    if (!imageObj) {
       return res
         .status(404)
-        .json({ success: false, message: "تصویر یافت نشد" });
+        .json({ message: "تصویر با این URL در سند یافت نشد." });
     }
+
+    await imageKit.deleteFile(imageObj.fileId);
+
+    const updateResult = await ImageUpload.updateOne(
+      { _id: imageDoc._id },
+      { $pull: { images: { url: imgUrl } } }
+    );
+    const updatedImageDoc = await ImageUpload.findById(imageDoc._id);
+
+    if (updatedImageDoc && updatedImageDoc.images.length === 0) {
+      await ImageUpload.deleteOne({ _id: updatedImageDoc._id });
+      return res
+        .status(200)
+        .json({ success: true, message: "تصویر و سند مربوطه حذف شد." });
+    }
+
+    res.status(200).json({ success: true, message: "تصویر حذف شد." });
   } catch (error) {
-    return res
-      .status(500)
-      .json({ success: false, message: "خطا در حذف تصویر" });
+    console.error("خطا در حذف تصویر:", error);
+    res.status(500).json({ error: "خطا در حذف تصویر." });
   }
 });
 

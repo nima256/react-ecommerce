@@ -127,9 +127,9 @@ function AddCategory() {
 
   const removeImg = async (index, imgUrl) => {
     try {
-      await deleteImages(`/api/category/deleteImage?img=${imgUrl}`);
+      await deleteImages(`/api/category/deleteImage?img=${imgUrl.url}`);
 
-      const newPreviews = previews.filter((img) => img !== imgUrl);
+      const newPreviews = previews.filter((img) => img.url !== imgUrl.url);
       setPreviews(newPreviews);
 
       context.setAlertBox({

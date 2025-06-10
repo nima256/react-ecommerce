@@ -67,18 +67,19 @@ const productSchema = mongoose.Schema(
     },
     dateCreated: {
       type: Date,
-      default: Data.now,
+      default: Date.now,
     },
   },
   { timesstamps: true }
 );
 
-categorySchema.virtual("id").get(function () {
+productSchema.virtual("id").get(function () {
   return this._id.toHexString();
 });
 
-categorySchema.set("toJSON", {
+productSchema.set("toJSON", {
   virtual: true,
 });
 
 exports.Product = mongoose.model("Product", productSchema);
+ 

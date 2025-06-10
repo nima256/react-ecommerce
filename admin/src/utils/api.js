@@ -9,6 +9,7 @@ const params = {
     Authorization: `Bearer ${token}`,
     "Content-Type": `application/json`,
   },
+  timeout: 120000,
 };
 
 export const fetchDataFromApi = async (url) => {
@@ -75,7 +76,7 @@ export const deleteData = async (url) => {
   return res;
 };
 
-export const deleteImages = async (url, image) => {
-  const { res } = await axios.delete(`${apiUrl}${url}`, image);
+export const deleteImages = async (url) => {
+  const { res } = await axios.delete(`${apiUrl}${url}`);
   return res;
 };

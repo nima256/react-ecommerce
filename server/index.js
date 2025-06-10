@@ -13,10 +13,13 @@ app.use(express.json());
 
 // Routes
 const categoryRoutes = require("./routes/categories");
+const productRoutes = require("./routes/product.js");
 const imageUploadRoutes = require("./helper/imageUpload.js");
+
 
 app.use("/uploads", express.static("uploads"));
 app.use("/api/category", categoryRoutes);
+app.use("/api/product", productRoutes);
 app.use("/api/imageUpload", imageUploadRoutes);
 
 // DB

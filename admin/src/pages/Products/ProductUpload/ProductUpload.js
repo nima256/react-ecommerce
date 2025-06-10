@@ -28,10 +28,9 @@ import {
   uploadImage,
 } from "../../../utils/api";
 
-const theme = (outerTheme) =>
-  createTheme({
-    direction: "rtl",
-  });
+const theme = createTheme({
+  direction: "rtl",
+});
 
 const cacheRtl = createCache({
   key: "muirtl",
@@ -108,20 +107,6 @@ function ProductUpload() {
     }));
   };
 
-  // useEffect(() => {
-  //   setCatData(context.catData);
-
-  //   fetchDataFromApi("/api/imageUpload").then((res) => {
-  //     res?.map((item) => {
-  //       item?.images?.map((img) => {
-  //         deleteImages(`/api/category/deleteImage?img=${img}`).then((res) => {
-  //           deleteData("/api/imageUpload/deleteAllImages");
-  //         });
-  //       });
-  //     });
-  //   });
-  // }, []);
-
   useEffect(() => {
     const subCatArr = [];
 
@@ -137,11 +122,91 @@ function ProductUpload() {
     setSubCategoryData(subCatArr);
   }, [context.catData]);
 
+  // For image
+  const onChageFile = async (e, apiEndPoint) => {
+    const formData = new FormData();
+    const img_arr = [];
+
+    try {
+      const files = e.target.files;
+      setUploding(true);
+
+      for (let file of files) {
+        if (
+          file &&
+          [
+            "image/jpeg",
+            "image/jpg",
+            "image/png",
+            "image/webp",
+            "image/svg+xml",
+          ].includes(file.type)
+        ) {
+          formData.append("images", file);
+        } else {
+          context.setAlertBox({
+            open: true,
+            error: true,
+            msg: "لطفا فرمت مناسبی برای آپلود عکس انتخاب کنید",
+          });
+          setUploding(false);
+          return;
+        }
+      }
+
+      await uploadImage(apiEndPoint, formData);
+      const response = await fetchDataFromApi("/api/imageUpload");
+
+      if (response?.length) {
+        response.forEach((item) => {
+          item?.images?.forEach((img) => {
+            img_arr.push(img);
+          });
+        });
+
+        const uniqueArray = img_arr.filter((item) => !previews.includes(item));
+        const appendedArray = [...previews, ...uniqueArray];
+
+        setPreviews(appendedArray);
+
+        setTimeout(() => {
+          setUploding(false);
+          context.setAlertBox({
+            open: true,
+            error: false,
+            msg: " عکس با موفقیت آپلود شد",
+          });
+        }, 200);
+      }
+    } catch (error) {
+      console.error(error);
+      setUploding(false);
+      const errorMsg =
+        error?.response?.data?.error || "خطای ناشناخته‌ای رخ داده است";
+      context.setAlertBox({
+        open: true,
+        error: true,
+        msg: errorMsg,
+      });
+    }
+  };
+
+  useEffect(() => {
+    // This works in modern browsers
+    const isPageRefresh =
+      window.performance &&
+      performance.getEntriesByType("navigation")[0]?.type === "reload";
+
+    if (isPageRefresh) {
+      deleteData("/api/imageUpload/deleteAllImages");
+    }
+  }, []);
+
   const removeImg = async (index, imgUrl) => {
     try {
-      await deleteImages(`/api/category/deleteImage?img=${imgUrl}`);
+      await deleteImages(`/api/product/deleteImage?img=${imgUrl.url}`);
 
-      const newPreviews = previews.filter((img) => img !== imgUrl);
+      const newPreviews = previews.filter((img) => img.url !== imgUrl.url);
       setPreviews(newPreviews);
 
       context.setAlertBox({
@@ -189,7 +254,7 @@ function ProductUpload() {
 
                 <div className="row">
                   <div className="col">
-                    <div class="form-group">
+                    <div className="form-group">
                       <h6>دسته بندی</h6>
                       <CacheProvider value={cacheRtl}>
                         <ThemeProvider theme={theme}>
@@ -224,7 +289,7 @@ function ProductUpload() {
                     </div>
                   </div>
                   <div className="col">
-                    <div class="form-group">
+                    <div className="form-group">
                       <h6>زیر دسته بندی</h6>
                       <CacheProvider value={cacheRtl}>
                         <ThemeProvider theme={theme}>
@@ -257,7 +322,7 @@ function ProductUpload() {
                     </div>
                   </div>
                   <div className="col">
-                    <div class="form-group">
+                    <div className="form-group">
                       <h6>محصول ویژه است؟</h6>
                       <CacheProvider value={cacheRtl}>
                         <ThemeProvider theme={theme}>
@@ -279,7 +344,7 @@ function ProductUpload() {
                     </div>
                   </div>
                   <div className="col">
-                    <div class="form-group">
+                    <div className="form-group">
                       <h6>شرکت</h6>
                       <CacheProvider value={cacheRtl}>
                         <ThemeProvider theme={theme}>
@@ -302,31 +367,42 @@ function ProductUpload() {
                   </div>
                 </div>
 
-                <div class="row">
-                  <div class="col">
-                    <div class="form-group">
-                      <h6>قیمت عادی</h6>
+                <div className="row">
+                  <div className="col">
+                    <div className="form-group">
+                      <h6>قیمت</h6>
                       <input
-                        type="text"
+                        type="number"
                         name="price"
                         value={formFields.price}
                         onChange={inputChange}
                       />
                     </div>
                   </div>
-                  <div class="col">
-                    <div class="form-group">
+                  <div className="col">
+                    <div className="form-group">
+                      <h6>قیمت بعد تخفیف</h6>
+                      <input
+                        type="number"
+                        name="offerPrice"
+                        value={formFields.offerPrice}
+                        onChange={inputChange}
+                      />
+                    </div>
+                  </div>
+                  <div className="col">
+                    <div className="form-group">
                       <h6>موجودی کالا</h6>
                       <input
-                        type="text"
+                        type="number"
                         name="countInStock"
                         value={formFields.countInStock}
                         onChange={inputChange}
                       />
                     </div>
                   </div>
-                  <div class="col">
-                    <div class="form-group">
+                  <div className="col">
+                    <div className="form-group">
                       <h6>برند</h6>
                       <input
                         type="text"
@@ -336,22 +412,11 @@ function ProductUpload() {
                       />
                     </div>
                   </div>
-                  <div class="col">
-                    <div class="form-group">
-                      <h6>قیمت بعد تخفیف</h6>
-                      <input
-                        type="text"
-                        name="offerPrice"
-                        value={formFields.offerPrice}
-                        onChange={inputChange}
-                      />
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="form-group">
+                  <div className="col">
+                    <div className="form-group">
                       <h6>وزن</h6>
                       <input
-                        type="text"
+                        type="number"
                         name="weight"
                         value={formFields.weight}
                         onChange={inputChange}
@@ -368,7 +433,7 @@ function ProductUpload() {
         <form action="" className="form">
           <div className="row">
             <div className="col-sm-12">
-              <div className="card p-4">
+              <div className="card p-4 mt-0">
                 <div className="imagesUploadSec">
                   <h5 className="mb-3">تصویر دسته بندی</h5>
                 </div>
@@ -378,7 +443,10 @@ function ProductUpload() {
                     previews?.map((img, index) => {
                       return (
                         <div className="uploadBox" key={index}>
-                          <span className="remove">
+                          <span
+                            className="remove"
+                            onClick={() => removeImg(index, img)}
+                          >
                             <IoCloseSharp />
                           </span>
                           <div className="box">
@@ -401,7 +469,14 @@ function ProductUpload() {
                       </div>
                     ) : (
                       <>
-                        <input type="file" multiple name="images" />
+                        <input
+                          type="file"
+                          multiple
+                          name="images"
+                          onChange={(e) =>
+                            onChageFile(e, "/api/product/upload")
+                          }
+                        />
                         <div className="info">
                           <FaRegImages />
                           <h5>آپلود عکس</h5>
