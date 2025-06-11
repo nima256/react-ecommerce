@@ -57,9 +57,7 @@ const Nav = (props) => {
                                 {item?.children.map((item_, index_) => {
                                   return (
                                     <li key={index_} style={{ width: "100%" }}>
-                                      <Link
-                                        to={`/category/subCat/${item?.id}`}
-                                      >
+                                      <Link to={`/category/subCat/${item?.id}`}>
                                         <Button
                                           style={{
                                             width: "100%",
@@ -100,31 +98,33 @@ const Nav = (props) => {
                       <div className="row">
                         {navData !== undefined &&
                           navData?.length !== 0 &&
-                          navData?.map((item, index) => {
-                            return (
-                              <div className="col" key={index}>
-                                <Link to={`/category/${item?.id}`}>
-                                  <h4 className="text-g">{item?.name}</h4>
-                                </Link>
+                          navData
+                            ?.filter((item, idx) => idx < 6)
+                            .map((item, index) => {
+                              return (
+                                <div className="col" key={index}>
+                                  <Link to={`/category/${item?.id}`}>
+                                    <h4 className="text-g">{item?.name}</h4>
+                                  </Link>
 
-                                {item?.children?.length !== 0 && (
-                                  <ul className="mt-3 mb-0">
-                                    {item?.children?.map((item_, index_) => {
-                                      return (
-                                        <li key={index_}>
-                                          <Link
-                                            to={`/category/subCat/${item_?.id}`}
-                                          >
-                                            {item_?.name}
-                                          </Link>
-                                        </li>
-                                      );
-                                    })}
-                                  </ul>
-                                )}
-                              </div>
-                            );
-                          })}
+                                  {item?.children?.length !== 0 && (
+                                    <ul className="mt-3 mb-0">
+                                      {item?.children?.map((item_, index_) => {
+                                        return (
+                                          <li key={index_}>
+                                            <Link
+                                              to={`/category/subCat/${item_?.id}`}
+                                            >
+                                              {item_?.name}
+                                            </Link>
+                                          </li>
+                                        );
+                                      })}
+                                    </ul>
+                                  )}
+                                </div>
+                              );
+                            })}
                         <div className="col">
                           <img
                             src={MegaMenyImg}

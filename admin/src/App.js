@@ -146,11 +146,14 @@ function App() {
     }
   }, [alertBox.open]);
 
+  const colorForLoadingBar = themeMode ? "black" : "white";
+
   return (
     <BrowserRouter>
       <MyContext.Provider value={values}>
         <LoadingBar
-          color="#f11964"
+          color={colorForLoadingBar}
+          height={3}
           progress={progress}
           onLoaderFinished={() => setProgress(0)}
           className="topLoadingBar"

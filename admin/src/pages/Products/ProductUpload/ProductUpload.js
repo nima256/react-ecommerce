@@ -49,6 +49,7 @@ function ProductUpload() {
   const [uploading, setUploding] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [catData, setCatData] = useState([]);
+  const formData = new FormData();
   const [formFields, setFormFields] = useState({
     name: "",
     images: [],
@@ -122,7 +123,6 @@ function ProductUpload() {
 
   // For image
   const onChageFile = async (e, apiEndPoint) => {
-    const formData = new FormData();
     const img_arr = [];
 
     try {
@@ -230,10 +230,16 @@ function ProductUpload() {
 
     if (
       formFields.name !== "" &&
+      formFields.images.length > 0 &&
+      formFields.subCat !== "" &&
       formFields.description !== "" &&
       formFields.price !== null &&
-      formFields.weight !== null &&
-      formFields.images.length > 0
+      formFields.subCatId !== "" &&
+      formFields.catName !== "" &&
+      formFields.catId !== "" &&
+      formFields.countInStock !== null &&
+      formFields.isFeatured !== null &&
+      formFields.weight !== null
     ) {
       setIsLoading(true);
 

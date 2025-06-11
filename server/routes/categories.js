@@ -106,7 +106,7 @@ router.get("/subCat/get/count", async (req, res) => {
     const subCatCount = categories.filter(
       (cat) => cat.parentId !== undefined
     ).length;
-    res.send({ categoryCount: subCatCount });
+    res.send({ subCategoryCount: subCatCount });
   } catch {
     res.status(500).json({ success: false });
   }
