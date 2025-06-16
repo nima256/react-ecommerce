@@ -40,7 +40,7 @@ const Nav = (props) => {
                   </li>
                   {navData !== undefined &&
                     navData?.length !== 0 &&
-                    navData.map((item, index) => {
+                    navData?.filter((item,idx) => idx < 3).map((item, index) => {
                       return (
                         <li className="list-inline-item" key={index}>
                           <Link to={`/category/${item?.id}`}>
