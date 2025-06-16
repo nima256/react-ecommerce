@@ -29,6 +29,13 @@ const Product = (props) => {
     },
   }));
 
+  const toPersianDigits = (num) => {
+    if (typeof num !== "string") num = num.toString();
+    const persianDigits = "۰۱۲۳۴۵۶۷۸۹";
+    const withCommas = num.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return withCommas.replace(/\d/g, (digit) => persianDigits[digit]);
+  };
+
   return (
     <>
       <div className="productThumb">
@@ -87,33 +94,37 @@ const Product = (props) => {
         </Link>
 
         <div className="info dirRtl">
-          <span className="d-block catName">لی</span>
-          <h4 className="title">
-            {props.title ? (
-              props.title
-            ) : (
-              <Link>دسته بازی ردراگون Saturn G807</Link>
-            )}
-          </h4>
+          <span className="d-block catName">{props.data?.catName}</span>
+          <h4 className="title">{props.data?.name}</h4>
           <CacheProvider value={cacheRtl}>
             <ThemeProvider theme={theme}>
-              <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
+              <Rating
+                name="read-only"
+                defaultValue={2.5}
+                precision={0.5}
+                readOnly
+              />
             </ThemeProvider>
           </CacheProvider>
-          <span className="brand d-block text-g">
-            از <Link className="text-g">اکبر کده</Link>
-          </span>
 
           <div className="d-flex align-items-center mt-3">
-            <div className="d-flex align-items-center">
-              <span className="price text-g font-weight-bold">
-                ۱,۱۲۹,۰۰۰ <img src={Tooman} alt="" className="toomanSvg" />
-              </span>
-              <span className="oldPrice">
-                ۳,۵۱۴,۰۰۰
-                <img src={Tooman} alt="" className="toomanSvg oldToomanSvg" />
-              </span>
-            </div>
+            {props.data?.offerPrice ? (
+              <div className="d-flex align-items-center">
+                <span className="price text-g font-weight-bold">
+                  ۱,۱۲۹,۰۰۰ <img src={Tooman} alt="" className="toomanSvg" />
+                </span>
+                <span className="oldPrice">
+                  ۳,۵۱۴,۰۰۰ <img src={Tooman} alt="" className="toomanSvg oldToomanSvg" />
+                </span>
+              </div>
+            ) : (
+              <div className="d-flex align-items-center">
+                <span className="price text-g font-weight-bold">
+                  ۱,۱۲۹,۰۰۰ <img src={Tooman} alt="" className="toomanSvg" />
+                </span>
+              </div>
+            )}
+
             <Button className="bg-g mr-auto transition">
               <ShoppingCartOutlinedIcon />
             </Button>

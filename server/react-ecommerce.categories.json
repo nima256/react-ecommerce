@@ -1,0 +1,448 @@
+[{
+  "_id": {
+    "$oid": "683d9365947cd957508f7c90"
+  },
+  "name": "کیس کامپیوتر",
+  "slug": "کیس کامپیوتر",
+  "images": [
+    {
+      "url": "https://ik.imagekit.io/gm3v3vuxiu/categories/1748865888153-computer-case_Jc9xJksP2.svg",
+      "fileId": "683d9362b13a10253712c988",
+      "_id": {
+        "$oid": "683d9365947cd957508f7c91"
+      }
+    }
+  ],
+  "color": "#fffceb",
+  "createdAt": {
+    "$date": "2025-06-02T12:04:53.454Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-02T12:04:53.454Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "683d9378947cd957508f7ca4"
+  },
+  "name": "مادربرد",
+  "slug": "مادربرد",
+  "images": [
+    {
+      "url": "https://ik.imagekit.io/gm3v3vuxiu/categories/1748865908163-motherboard_Zz6rC2AvS.svg",
+      "fileId": "683d9375b13a102537135228",
+      "_id": {
+        "$oid": "683d9378947cd957508f7ca5"
+      }
+    }
+  ],
+  "color": "#ecffec",
+  "createdAt": {
+    "$date": "2025-06-02T12:05:12.496Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-02T12:05:12.496Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "683d938b947cd957508f7cbb"
+  },
+  "name": "سی پی یو",
+  "slug": "سی پی یو",
+  "images": [
+    {
+      "url": "https://ik.imagekit.io/gm3v3vuxiu/categories/1748865927093-cpu_k3a-HJ7EFx.svg",
+      "fileId": "683d9388b13a10253713c553",
+      "_id": {
+        "$oid": "683d938b947cd957508f7cbc"
+      }
+    }
+  ],
+  "color": "#feefea",
+  "createdAt": {
+    "$date": "2025-06-02T12:05:31.692Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-02T12:05:31.692Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "683d939c947cd957508f7cd5"
+  },
+  "name": "کارت گرافیک",
+  "slug": "کارت گرافیک",
+  "images": [
+    {
+      "url": "https://ik.imagekit.io/gm3v3vuxiu/categories/1748865943959-gpu_9bpHqUVGB.svg",
+      "fileId": "683d939ab13a10253714021b",
+      "_id": {
+        "$oid": "683d939c947cd957508f7cd6"
+      }
+    }
+  ],
+  "color": "#fff3eb",
+  "createdAt": {
+    "$date": "2025-06-02T12:05:48.601Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-02T12:05:48.601Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "683d93ab947cd957508f7cf2"
+  },
+  "name": "رم",
+  "slug": "رم",
+  "images": [
+    {
+      "url": "https://ik.imagekit.io/gm3v3vuxiu/categories/1748865958670-ram_M-CA8y4Lvu.svg",
+      "fileId": "683d93a8b13a102537146728",
+      "_id": {
+        "$oid": "683d93ab947cd957508f7cf3"
+      }
+    }
+  ],
+  "color": "#fff3ff",
+  "createdAt": {
+    "$date": "2025-06-02T12:06:03.063Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-02T12:06:03.063Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "683d93b9947cd957508f7d12"
+  },
+  "name": "پاور",
+  "slug": "پاور",
+  "images": [
+    {
+      "url": "https://ik.imagekit.io/gm3v3vuxiu/categories/1748865973835-power_4DdEgYZpt.svg",
+      "fileId": "683d93b7b13a10253714e0d0",
+      "_id": {
+        "$oid": "683d93b9947cd957508f7d13"
+      }
+    }
+  ],
+  "color": "#f2fce4",
+  "createdAt": {
+    "$date": "2025-06-02T12:06:17.971Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-02T12:06:17.971Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "683d93c8947cd957508f7d35"
+  },
+  "name": "مانیتور",
+  "slug": "مانیتور",
+  "images": [
+    {
+      "url": "https://ik.imagekit.io/gm3v3vuxiu/categories/1748865989019-monitor_FEzdNW39o.svg",
+      "fileId": "683d93c6b13a1025371543b0",
+      "_id": {
+        "$oid": "683d93c8947cd957508f7d36"
+      }
+    }
+  ],
+  "color": "#feefea",
+  "createdAt": {
+    "$date": "2025-06-02T12:06:32.963Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-02T12:06:32.963Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "683d93d9947cd957508f7d5b"
+  },
+  "name": "لپ تاپ",
+  "slug": "لپ تاپ",
+  "images": [
+    {
+      "url": "https://ik.imagekit.io/gm3v3vuxiu/categories/1748866005380-laptop_0bU6opKu90.svg",
+      "fileId": "683d93d6b13a10253715a236",
+      "_id": {
+        "$oid": "683d93d9947cd957508f7d5c"
+      }
+    }
+  ],
+  "color": "#fffceb",
+  "createdAt": {
+    "$date": "2025-06-02T12:06:49.410Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-02T12:06:49.410Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "683d93eb947cd957508f7d84"
+  },
+  "name": "کیبورد گیمینگ",
+  "slug": "کیبورد گیمینگ",
+  "images": [
+    {
+      "url": "https://ik.imagekit.io/gm3v3vuxiu/categories/1748866022714-keyboard_A0a51i95k.svg",
+      "fileId": "683d93e8b13a10253715e943",
+      "_id": {
+        "$oid": "683d93eb947cd957508f7d85"
+      }
+    }
+  ],
+  "color": "#feefea",
+  "createdAt": {
+    "$date": "2025-06-02T12:07:07.957Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-02T12:07:07.957Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "683d93fd947cd957508f7db0"
+  },
+  "name": "ماوس گیمینگ",
+  "slug": "ماوس گیمینگ",
+  "images": [
+    {
+      "url": "https://ik.imagekit.io/gm3v3vuxiu/categories/1748866040853-mouse_dKEG6trg5.svg",
+      "fileId": "683d93fab13a102537163402",
+      "_id": {
+        "$oid": "683d93fd947cd957508f7db1"
+      }
+    }
+  ],
+  "color": "#ecffec",
+  "createdAt": {
+    "$date": "2025-06-02T12:07:25.183Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-02T12:07:25.183Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "683d9411947cd957508f7ddf"
+  },
+  "name": "هدست گیمینگ",
+  "slug": "هدست گیمینگ",
+  "images": [
+    {
+      "url": "https://ik.imagekit.io/gm3v3vuxiu/categories/1748866057277-headset_beadUavgJ.svg",
+      "fileId": "683d940bb13a1025371699d6",
+      "_id": {
+        "$oid": "683d9411947cd957508f7de0"
+      }
+    }
+  ],
+  "color": "#fffceb",
+  "createdAt": {
+    "$date": "2025-06-02T12:07:45.953Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-02T12:07:45.953Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "683d9424947cd957508f7e11"
+  },
+  "name": "میکروفن گیمینگ",
+  "slug": "میکروفن گیمینگ",
+  "images": [
+    {
+      "url": "https://ik.imagekit.io/gm3v3vuxiu/categories/1748866079361-microphone_XZBa6UbIc.svg",
+      "fileId": "683d9420b13a10253716fb6d",
+      "_id": {
+        "$oid": "683d9424947cd957508f7e12"
+      }
+    }
+  ],
+  "color": "#ecffec",
+  "createdAt": {
+    "$date": "2025-06-02T12:08:04.985Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-02T12:08:04.985Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "683d9436947cd957508f7e46"
+  },
+  "name": "دسته بازی گیمینگ",
+  "slug": "دسته بازی گیمینگ",
+  "images": [
+    {
+      "url": "https://ik.imagekit.io/gm3v3vuxiu/categories/1748866098279-controller_vhQfpF7U5.svg",
+      "fileId": "683d9433b13a102537182482",
+      "_id": {
+        "$oid": "683d9436947cd957508f7e47"
+      }
+    }
+  ],
+  "color": "#feefea",
+  "createdAt": {
+    "$date": "2025-06-02T12:08:22.448Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-02T12:08:22.448Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "683d9446947cd957508f7e7e"
+  },
+  "name": "اسپیکر گیمینگ",
+  "slug": "اسپیکر گیمینگ",
+  "images": [
+    {
+      "url": "https://ik.imagekit.io/gm3v3vuxiu/categories/1748866113901-speaker_8gpMtDl_O.svg",
+      "fileId": "683d9443b13a10253719665c",
+      "_id": {
+        "$oid": "683d9446947cd957508f7e7f"
+      }
+    }
+  ],
+  "color": "#fff3eb",
+  "createdAt": {
+    "$date": "2025-06-02T12:08:38.281Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-02T12:08:38.281Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "683d9457947cd957508f7eb9"
+  },
+  "name": "صندلی گیمینمگ",
+  "slug": "صندلی گیمینمگ",
+  "images": [
+    {
+      "url": "https://ik.imagekit.io/gm3v3vuxiu/categories/1748866131493-chair_NDDn4LAin.svg",
+      "fileId": "683d9455b13a1025371aa801",
+      "_id": {
+        "$oid": "683d9457947cd957508f7eba"
+      }
+    }
+  ],
+  "color": "#ecffec",
+  "createdAt": {
+    "$date": "2025-06-02T12:08:55.725Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-02T12:08:55.725Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "683d946a947cd957508f7ef7"
+  },
+  "name": "میز گیمینگ",
+  "slug": "میز گیمینگ",
+  "images": [
+    {
+      "url": "https://ik.imagekit.io/gm3v3vuxiu/categories/1748866150441-desk_y89ILIghG.svg",
+      "fileId": "683d9468b13a1025371c243a",
+      "_id": {
+        "$oid": "683d946a947cd957508f7ef8"
+      }
+    }
+  ],
+  "color": "#fff3ff",
+  "createdAt": {
+    "$date": "2025-06-02T12:09:14.951Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-02T12:09:14.951Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "683d94b3947cd957508f7f64"
+  },
+  "name": "کیس کامپیوتر گیم مکس",
+  "slug": "کیس کامپیوتر گیم مکس",
+  "images": [],
+  "parentId": "683d9365947cd957508f7c90",
+  "createdAt": {
+    "$date": "2025-06-02T12:10:27.872Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-02T12:10:27.872Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "683d9542947cd957508f7fbb"
+  },
+  "name": "asdf",
+  "slug": "asdf",
+  "images": [],
+  "parentId": "683d939c947cd957508f7cd5",
+  "createdAt": {
+    "$date": "2025-06-02T12:12:50.322Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-02T12:12:50.322Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "683d9564947cd957508f8126"
+  },
+  "name": "سیبش",
+  "slug": "سیبش",
+  "images": [],
+  "parentId": "683d9424947cd957508f7e11",
+  "createdAt": {
+    "$date": "2025-06-02T12:13:24.118Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-02T12:13:24.118Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "683d9569947cd957508f817d"
+  },
+  "name": "سشیببی",
+  "slug": "سشیببی",
+  "images": [],
+  "parentId": "683d93fd947cd957508f7db0",
+  "createdAt": {
+    "$date": "2025-06-02T12:13:29.350Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-02T12:13:29.350Z"
+  },
+  "__v": 0
+}]
