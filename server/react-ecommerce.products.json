@@ -1,0 +1,75 @@
+[{
+  "_id": {
+    "$oid": "684847f7aae12b6d8fdbe14a"
+  },
+  "name": "asdf",
+  "description": "sadf",
+  "images": [
+    "{\n  url: 'https://ik.imagekit.io/gm3v3vuxiu/products/1749567464432_motherboard_ylzPCx8DX.svg',\n  fileId: '684847eab13a102537ee3399',\n  _id: new ObjectId('684847ebaae12b6d8fdbe142')\n}"
+  ],
+  "price": 12,
+  "offerPrice": 123,
+  "catName": "کیس کامپیوتر",
+  "catId": "683d9365947cd957508f7c90",
+  "subCatId": "683d94b3947cd957508f7f64",
+  "subCat": "کیس کامپیوتر گیم مکس",
+  "category": {
+    "$oid": "683d9365947cd957508f7c90"
+  },
+  "countInStock": 123,
+  "rating": 0,
+  "isFeatured": false,
+  "weight": "123",
+  "dateCreated": "6:27.29PM Tuesday 10th of June, 2025",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "684965a7d23fbcc11c5f53eb"
+  },
+  "name": "تست",
+  "description": "تست",
+  "images": [
+    "{\n  url: 'https://ik.imagekit.io/gm3v3vuxiu/products/1749640610052_cpu_Va7_wv9UM.svg',\n  fileId: '684965a3b13a102537722996',\n  _id: new ObjectId('684965a4d23fbcc11c5f53e3')\n}"
+  ],
+  "price": 456,
+  "offerPrice": null,
+  "catName": "مادربرد",
+  "catId": "683d9378947cd957508f7ca4",
+  "subCatId": "683d9569947cd957508f817d",
+  "subCat": "سشیببی",
+  "category": {
+    "$oid": "683d9378947cd957508f7ca4"
+  },
+  "countInStock": 12,
+  "rating": 0,
+  "isFeatured": true,
+  "weight": "9",
+  "dateCreated": "2:22.54PM Wednesday 11th of June, 2025",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6849684ad23fbcc11c5f5423"
+  },
+  "name": "سشیبسشیب",
+  "description": "سشیبشسیب",
+  "images": [
+    "{\n  url: 'https://ik.imagekit.io/gm3v3vuxiu/products/1749641284931_monitor_JMuHcRf3z.svg',\n  fileId: '68496846b13a10253783e33f',\n  _id: new ObjectId('68496847d23fbcc11c5f541b')\n}"
+  ],
+  "price": 56456456,
+  "offerPrice": 45644,
+  "catName": "کیبورد گیمینگ",
+  "catId": "683d93eb947cd957508f7d84",
+  "subCatId": "683d9542947cd957508f7fbb",
+  "subCat": "asdf",
+  "category": {
+    "$oid": "683d93eb947cd957508f7d84"
+  },
+  "countInStock": 4,
+  "rating": 0,
+  "isFeatured": false,
+  "weight": "5",
+  "dateCreated": "2:22.54PM Wednesday 11th of June, 2025",
+  "__v": 0
+}]

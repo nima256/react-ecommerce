@@ -182,6 +182,14 @@ router.get("/", async (req, res) => {
         "category"
       );
     } else if (
+      req.query.catId !== "" &&
+      req.query.catId !== null &&
+      req.query.catId !== undefined
+    ) {
+      productList = await Product.find({ catId: req.query.catId }).populate(
+        "category"
+      );
+    } else if (
       req.query.subCatId !== "" &&
       req.query.subCatId !== null &&
       req.query.subCatId !== undefined

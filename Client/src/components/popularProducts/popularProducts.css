@@ -34,3 +34,16 @@
   color: #3bb77e !important;
   transform: translateY(-10px);
 }
+
+.filters_Products button {
+  font-size: 17px !important;
+  color: rgba(0, 0, 0, 0.8) !important;
+}
+
+.muirtl-1qltlow-MuiTabs-indicator {
+  background-color: #3bb77e !important;
+}
+
+.filters_Products .MuiButtonBase-root svg {
+  font-size: 30px !important;
+}
