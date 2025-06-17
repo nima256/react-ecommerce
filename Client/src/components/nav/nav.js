@@ -40,6 +40,32 @@ const Nav = (props) => {
                   </li>
                   {navData !== undefined &&
                     navData?.length !== 0 &&
+<<<<<<< HEAD
+                    navData?.filter((item,idx) => idx < 3).map((item, index) => {
+                      return (
+                        <li className="list-inline-item" key={index}>
+                          <Link to={`/category/${item?.id}`}>
+                            <Button>
+                              {item.name}
+                              {item?.children?.length !== 0 && (
+                                <MdKeyboardArrowDown className={`rotateIcon`} />
+                              )}
+                            </Button>
+                          </Link>
+                          {item?.children?.length !== 0 && (
+                            <div className="dropdown_menu">
+                              <ul className="mb-0 ps-0">
+                                {item?.children.map((item_, index_) => {
+                                  return (
+                                    <li key={index_} style={{ width: "100%" }}>
+                                      <Link to={`/category/subCat/${item?.id}`}>
+                                        <Button
+                                          style={{
+                                            width: "100%",
+                                            textAlign: "right",
+                                            justifyContent: "flex-start",
+                                          }}
+=======
                     navData
                       ?.filter((item, idx) => idx < 3)
                       .map((item, index) => {
@@ -66,6 +92,7 @@ const Nav = (props) => {
                                       >
                                         <Link
                                           to={`/category/subCat/${item?.id}`}
+>>>>>>> 5c7c7e0e52ef3bf0a21ffe006ac3dcdb425b93eb
                                         >
                                           <Button
                                             style={{
