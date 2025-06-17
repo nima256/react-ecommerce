@@ -30,11 +30,18 @@ const Product = (props) => {
   }));
 
   const toPersianDigits = (num) => {
-    if (typeof num !== "string") num = num.toString();
+    if (num === null || num === undefined || isNaN(num)) return "";
     const persianDigits = "۰۱۲۳۴۵۶۷۸۹";
-    const withCommas = num.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    const withCommas = num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     return withCommas.replace(/\d/g, (digit) => persianDigits[digit]);
   };
+
+  function extractImageUrl(str) {
+    if (!str || typeof str !== "string") return null;
+
+    const match = str.match(/url:\s*'([^']+)'/); // extract value between url: '...'
+    return match ? match[1] : null;
+  }
 
   return (
     <>
@@ -54,7 +61,15 @@ const Product = (props) => {
         )}
         <Link>
           <div className="imgWrapper">
-            <img src={productImage} alt="" className="w-100 productImg" />
+            <img
+              src={
+                props.data?.images?.[0]
+                  ? extractImageUrl(props.data?.images[0])
+                  : ""
+              }
+              alt=""
+              className="w-100 productImg"
+            />
 
             <div className="overlay transition">
               <ul className="list list-inline mb-0">
@@ -110,17 +125,31 @@ const Product = (props) => {
           <div className="d-flex align-items-center mt-3">
             {props.data?.offerPrice ? (
               <div className="d-flex align-items-center">
-                <span className="price text-g font-weight-bold">
-                  ۱,۱۲۹,۰۰۰ <img src={Tooman} alt="" className="toomanSvg" />
-                </span>
-                <span className="oldPrice">
-                  ۳,۵۱۴,۰۰۰ <img src={Tooman} alt="" className="toomanSvg oldToomanSvg" />
-                </span>
+                <div className="priceWrapper">
+                  <span className="price text-g font-weight-bold">
+                    {/* <span>۱,۱۲۹,۰۰۰</span> */}
+                    <span>{toPersianDigits(props.data?.offerPrice)}</span>
+                    <img src={Tooman} alt="" className="toomanSvg" />
+                  </span>
+                </div>
+                <div className="priceWrapper">
+                  <span className="oldPrice">
+                    {/* <span>۳,۵۱۴,۰۰۰</span> */}
+                    <span>{toPersianDigits(props.data?.price)}</span>
+                    <img
+                      src={Tooman}
+                      alt=""
+                      className="toomanSvg oldToomanSvg"
+                    />
+                  </span>
+                </div>
               </div>
             ) : (
               <div className="d-flex align-items-center">
                 <span className="price text-g font-weight-bold">
-                  ۱,۱۲۹,۰۰۰ <img src={Tooman} alt="" className="toomanSvg" />
+                  {/* <span>۱,۱۲۹,۰۰۰</span> */}
+                  <span>{toPersianDigits(props.data?.price)}</span>
+                  <img src={Tooman} alt="" className="toomanSvg" />
                 </span>
               </div>
             )}
