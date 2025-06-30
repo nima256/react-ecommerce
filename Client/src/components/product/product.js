@@ -17,8 +17,24 @@ import { styled } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material/styles";
 import { cacheRtl, theme } from "./rtlTheme";
 import { CacheProvider } from "@emotion/react";
+import { useContext, useEffect, useState } from "react";
+import { MyContext } from "../../App";
 
 const Product = (props) => {
+  const [productData, setProductData] = useState();
+  const [isAdded, setIsAdded] = useState(false);
+
+  const context = useContext(MyContext);
+
+  useEffect(() => {
+    setProductData(props.data);
+  }, [props.data]);
+
+  const addToCart = (item) => {
+    context.addToCart(item);
+    setIsAdded(true);
+  };
+
   const LightTooltip = styled(({ className, ...props }) => (
     <Tooltip {...props} classes={{ popper: className }} />
   ))(({ theme }) => ({
@@ -39,7 +55,7 @@ const Product = (props) => {
   function extractImageUrl(str) {
     if (!str || typeof str !== "string") return null;
 
-    const match = str.match(/url:\s*'([^']+)'/); // extract value between url: '...'
+    const match = str.match(/url:\s*'([^']+)'/);
     return match ? match[1] : null;
   }
 
@@ -59,12 +75,12 @@ const Product = (props) => {
               : null}
           </span>
         )}
-        <Link>
+        <Link to={`/product/${productData?.id}`}>
           <div className="imgWrapper">
             <img
               src={
-                props.data?.images?.[0]
-                  ? extractImageUrl(props.data?.images[0])
+                productData?.images?.[0]
+                  ? extractImageUrl(productData?.images[0])+'?im=Resize=(420,420)'
                   : ""
               }
               alt=""
@@ -109,8 +125,8 @@ const Product = (props) => {
         </Link>
 
         <div className="info dirRtl">
-          <span className="d-block catName">{props.data?.catName}</span>
-          <h4 className="title">{props.data?.name}</h4>
+          <span className="d-block catName">{productData?.catName}</span>
+          <h4 className="title">{productData?.name}</h4>
           <CacheProvider value={cacheRtl}>
             <ThemeProvider theme={theme}>
               <Rating
@@ -123,19 +139,19 @@ const Product = (props) => {
           </CacheProvider>
 
           <div className="d-flex align-items-center mt-3">
-            {props.data?.offerPrice ? (
+            {productData?.offerPrice ? (
               <div className="d-flex align-items-center">
                 <div className="priceWrapper">
                   <span className="price text-g font-weight-bold">
                     {/* <span>۱,۱۲۹,۰۰۰</span> */}
-                    <span>{toPersianDigits(props.data?.offerPrice)}</span>
+                    <span>{toPersianDigits(productData?.offerPrice)}</span>
                     <img src={Tooman} alt="" className="toomanSvg" />
                   </span>
                 </div>
                 <div className="priceWrapper">
                   <span className="oldPrice">
                     {/* <span>۳,۵۱۴,۰۰۰</span> */}
-                    <span>{toPersianDigits(props.data?.price)}</span>
+                    <span>{toPersianDigits(productData?.price)}</span>
                     <img
                       src={Tooman}
                       alt=""
@@ -148,7 +164,7 @@ const Product = (props) => {
               <div className="d-flex align-items-center">
                 <span className="price text-g font-weight-bold">
                   {/* <span>۱,۱۲۹,۰۰۰</span> */}
-                  <span>{toPersianDigits(props.data?.price)}</span>
+                  <span>{toPersianDigits(productData?.price)}</span>
                   <img src={Tooman} alt="" className="toomanSvg" />
                 </span>
               </div>

@@ -41,7 +41,9 @@ const PopularProducts = () => {
   useEffect(() => {
     if (selectedCat) {
       setIsLoading(true);
-      fetchDataFromApi(`/api/product?catId=${selectedCat}`).then((res) => {
+      fetchDataFromApi(
+        `/api/product?catId=${selectedCat}&page=1&perPage=10`
+      ).then((res) => {
         setFilterData(res.products);
         setIsLoading(false);
       });
@@ -49,7 +51,13 @@ const PopularProducts = () => {
   }, [selectedCat]);
 
   const filterProducts = (id) => {
-    setSelectedCat(id);
+    setIsLoading(true);
+    fetchDataFromApi(`/api/product?catId=${id}&page=1&perPage=10`).then(
+      (res) => {
+        setFilterData(res.products);
+        setIsLoading(false);
+      }
+    );
   };
 
   return (
@@ -88,7 +96,7 @@ const PopularProducts = () => {
           {filterData?.length !== 0 &&
             filterData?.map((item, index) => {
               return (
-                <div className="item">
+                <div className="item" key={index}>
                   <Product tag="oneInStock" data={item} />
                 </div>
               );

@@ -55,7 +55,7 @@ const Footer = () => {
           <div className="contaier-fluid">
             <div className="row w-100 pr-1">
               <div className="col">
-                <div className="box d-flex align-items-center w-100">
+                <div className="box d-flex align-items-center w-100 cursor">
                   <span>
                     <img src={BoxIcon1} alt="آیکون" />
                   </span>
@@ -66,7 +66,7 @@ const Footer = () => {
                 </div>
               </div>
               <div className="col">
-                <div className="box d-flex align-items-center w-100">
+                <div className="box d-flex align-items-center w-100 cursor">
                   <span>
                     <img src={BoxIcon2} alt="آیکون" />
                   </span>
@@ -77,7 +77,7 @@ const Footer = () => {
                 </div>
               </div>
               <div className="col">
-                <div className="box d-flex align-items-center w-100">
+                <div className="box d-flex align-items-center w-100 cursor">
                   <span>
                     <img src={BoxIcon3} alt="آیکون" />
                   </span>
@@ -88,7 +88,7 @@ const Footer = () => {
                 </div>
               </div>
               <div className="col">
-                <div className="box d-flex align-items-center w-100">
+                <div className="box d-flex align-items-center w-100 cursor">
                   <span>
                     <img src={BoxIcon4} alt="آیکون" />
                   </span>
@@ -99,7 +99,7 @@ const Footer = () => {
                 </div>
               </div>
               <div className="col">
-                <div className="box d-flex align-items-center w-100">
+                <div className="box d-flex align-items-center w-100 cursor">
                   <span>
                     <img src={BoxIcon5} alt="آیکون" />
                   </span>
