@@ -267,7 +267,7 @@ function ProductsTable() {
                       <td>۶۴,۰۰۰,۰۰۰</td>
                       <td>
                         <div className="actions d-flex align-items-center justify-content-evenly">
-                          <Link to={"/product/detail"}>
+                          <Link to={`/product/details/${item?._id}`}>
                             <Button className="eye">
                               <FaEye />
                             </Button>

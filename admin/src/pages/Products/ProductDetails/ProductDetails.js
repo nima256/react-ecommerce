@@ -29,7 +29,7 @@ import { prefixer } from "stylis";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 import { Button } from "@mui/material";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 const theme = (outerTheme) =>
   createTheme({
@@ -63,6 +63,10 @@ function ProductDetails() {
     slidesToScroll: 1,
     arrows: false,
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>

@@ -210,11 +210,6 @@ function App() {
               <Route path={"/login"} exact={true} element={<Login />} />
               <Route path={"/products"} exact={true} element={<Products />} />
               <Route
-                path={"/product/detail"}
-                exact={true}
-                element={<ProductDetails />}
-              />
-              <Route
                 path={"/product/upload"}
                 exact={true}
                 element={<ProductUpload />}
@@ -223,6 +218,11 @@ function App() {
                 path={"/product/edit/:id"}
                 exact={true}
                 element={<ProductEdit />}
+              />
+              <Route
+                path={"/product/details/:id"}
+                exact={true}
+                element={<ProductDetails />}
               />
               <Route path={"/orders"} exact={true} element={<Orders />} />
               <Route
