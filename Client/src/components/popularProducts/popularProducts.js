@@ -106,6 +106,8 @@ const PopularProducts = () => {
           {filterData?.length !== 0 &&
             filterData
               ?.filter((cat, index) => index < 10)
+              ?.slice(0)
+              ?.reverse()
               .map((item, index) => {
                 return (
                   <div className="item" key={index}>

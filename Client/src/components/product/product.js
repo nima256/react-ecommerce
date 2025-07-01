@@ -25,18 +25,11 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 const Product = (props) => {
   const [productData, setProductData] = useState();
-  const [isAdded, setIsAdded] = useState(false);
-
   const context = useContext(MyContext);
 
   useEffect(() => {
     setProductData(props.data);
   }, [props.data]);
-
-  const addToCart = (item) => {
-    context.addToCart(item);
-    setIsAdded(true);
-  };
 
   const LightTooltip = styled(({ className, ...props }) => (
     <Tooltip {...props} classes={{ popper: className }} />
@@ -144,7 +137,7 @@ const Product = (props) => {
           {props.isLoading ? (
             <Skeleton width={80} />
           ) : (
-            <h4 className="title">{productData?.name}</h4>
+            <h4 className="title">{productData?.name.substr(0,25)+'...'}</h4>
           )}
           {props.isLoading ? (
             <Skeleton width={150} />

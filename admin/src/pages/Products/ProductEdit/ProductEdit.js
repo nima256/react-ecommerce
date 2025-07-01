@@ -1,11 +1,17 @@
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormHelperText from "@mui/material/FormHelperText";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import { useContext, useEffect, useState } from "react";
+import "./ProductEdit.css";
 
-import "./ProductUpload.css";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { MyContext } from "../../../App";
+import {
+  deleteData,
+  deleteImages,
+  editData,
+  fetchDataFromApi,
+  uploadImage,
+} from "../../../utils/api";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import rtlPlugin from "stylis-plugin-rtl";
@@ -13,21 +19,11 @@ import { prefixer } from "stylis";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 import { Button } from "@mui/material";
-import { useRef } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { FaRegImages } from "react-icons/fa";
 import { CircularProgress } from "@mui/material";
 import { FaCloudUploadAlt } from "react-icons/fa";
-import { MyContext } from "../../../App";
-import {
-  deleteData,
-  deleteImages,
-  fetchDataFromApi,
-  postData,
-  uploadImage,
-} from "../../../utils/api";
-import { useNavigate } from "react-router-dom";
 
 const theme = createTheme({
   direction: "rtl",
@@ -38,19 +34,20 @@ const cacheRtl = createCache({
   stylisPlugins: [prefixer, rtlPlugin],
 });
 
-function ProductUpload() {
-  const [category, setCategory] = useState("");
-  const [subCategoryVal, setSubCategoryVal] = useState("");
-  const [subCategoryData, setSubCategoryData] = useState("");
-  const [isFeaturedVal, setIsFeaturedVal] = useState("");
-  const [previews, setPreviews] = useState([]);
-  const [uploading, setUploding] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+function ProductEdit() {
+  const [categoryVal, setCategoryVal] = useState("");
+  const [subCatVal, setSubCatVal] = useState("");
+  const [isFeaturedValue, setIsFeaturedValue] = useState("");
   const [catData, setCatData] = useState([]);
-  const formData = new FormData();
+  const [subCatData, setSubCatData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [uploading, setUploding] = useState(false);
+  const [product, setProduct] = useState([]);
+  const [previews, setPreviews] = useState([]);
+  let { id } = useParams();
+  const history = useNavigate();
   const [formFields, setFormFields] = useState({
     name: "",
-    images: [],
     subCat: "",
     description: "",
     price: null,
@@ -64,20 +61,93 @@ function ProductUpload() {
     isFeatured: null,
     weight: null,
   });
-  const history = useNavigate();
 
   const context = useContext(MyContext);
 
+  const formData = new FormData();
+
+  useEffect(() => {
+    const isPageRefresh =
+      window.performance &&
+      performance.getEntriesByType("navigation")[0]?.type === "reload";
+
+    if (isPageRefresh) {
+      deleteData("/api/imageUpload/deleteAllImages");
+    }
+  }, []);
+
+  useEffect(() => {
+    const subCatArr = [];
+
+    context.catData?.categoryList?.length !== 0 &&
+      context.catData?.categoryList?.map((cat, index) => {
+        if (cat?.children.length !== 0) {
+          cat?.children?.map((subCat) => {
+            subCatArr.push(subCat);
+          });
+        }
+      });
+
+    setSubCatData(subCatArr);
+  }, [context.catData]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
+    setCatData(context.catData);
+
+    fetchDataFromApi("/api/imageUpload").then((res) => {
+      res?.map((item) => {
+        item?.images?.map((img) => {
+          deleteImages(`/api/category/deleteImage?img=${img}`).then((res) => {
+            deleteData("/api/imageUpload/deleteAllImages");
+          });
+        });
+      });
+    });
+
+    fetchDataFromApi(`/api/product/${id}`).then((res) => {
+      setProduct(res);
+      setFormFields({
+        name: res.name,
+        subCat: res.subCat,
+        description: res.description,
+        price: res.price,
+        offerPrice: res.offerPrice,
+        subCatId: res.subCatId,
+        catName: res.catName,
+        catId: res.catId,
+        category: res.category,
+        countInStock: res.countInStock,
+        rating: res.rating,
+        isFeatured: res.isFeatured,
+        weight: res.weight,
+      });
+      setPreviews(res.images);
+      context.setProgress(100);
+    });
+  }, []);
+
   const handleChangeCategory = (event) => {
-    setCategory(event.target.value);
+    setCategoryVal(event.target.value);
+    setFormFields(() => ({
+      ...formFields,
+      category: event.target.value,
+    }));
   };
 
   const handleChangeSubCategory = (event) => {
-    setSubCategoryVal(event.target.value);
+    setSubCatVal(event.target.value);
+    setFormFields(() => ({
+      ...formFields,
+      subCat: event.target.value,
+    }));
+
+    formFields.subCatId = event.target.value;
   };
 
-  const handleChangeisFeaturedVal = (event) => {
-    setIsFeaturedVal(event.target.value);
+  const handleChangeisFeaturedValue = (event) => {
+    setIsFeaturedValue(event.target.value);
     setFormFields(() => ({
       ...formFields,
       isFeatured: event.target.value,
@@ -104,22 +174,9 @@ function ProductUpload() {
     }));
   };
 
-  useEffect(() => {
-    const subCatArr = [];
+  let img_arr = [];
+  let uniqueArray = [];
 
-    context.catData?.categoryList?.length !== 0 &&
-      context.catData?.categoryList?.map((cat, index) => {
-        if (cat?.children.length !== 0) {
-          cat?.children?.map((subCat) => {
-            subCatArr.push(subCat);
-          });
-        }
-      });
-
-    setSubCategoryData(subCatArr);
-  }, [context.catData]);
-
-  // For image
   const onChageFile = async (e, apiEndPoint) => {
     const img_arr = [];
 
@@ -187,16 +244,6 @@ function ProductUpload() {
     }
   };
 
-  useEffect(() => {
-    const isPageRefresh =
-      window.performance &&
-      performance.getEntriesByType("navigation")[0]?.type === "reload";
-
-    if (isPageRefresh) {
-      deleteData("/api/imageUpload/deleteAllImages");
-    }
-  }, []);
-
   const removeImg = async (index, imgUrl) => {
     try {
       await deleteImages(`/api/product/deleteImage?img=${imgUrl.url}`);
@@ -219,10 +266,26 @@ function ProductUpload() {
     }
   };
 
-  const addProduct = (e) => {
+  const editProduct = (e) => {
     e.preventDefault();
 
-    const appendedArray = [...previews];
+    const appendedArray = [...previews, ...uniqueArray];
+
+    img_arr = [];
+
+    formData.append("name", formFields.name);
+    formData.append("subCat", formFields.subCat);
+    formData.append("description", formFields.description);
+    formData.append("price", formFields.price);
+    formData.append("offerPrice", formFields.offerPrice);
+    formData.append("subCatId", formFields.subCatId);
+    formData.append("catName", formFields.catName);
+    formData.append("catId", formFields.catId);
+    formData.append("category", formFields.category);
+    formData.append("countInStock", formFields.countInStock);
+    formData.append("rating", formFields.rating);
+    formData.append("isFeatured", formFields.isFeatured);
+    formData.append("weight", formFields.weight);
 
     formFields.images = appendedArray;
 
@@ -241,9 +304,8 @@ function ProductUpload() {
     ) {
       setIsLoading(true);
 
-      postData("/api/product/create", formFields).then((res) => {
+      editData(`/api/product/${id}`, formFields).then((res) => {
         setIsLoading(false);
-        context.fetchProduct();
 
         deleteData("/api/imageUpload/deleteAllImages");
 
@@ -252,7 +314,7 @@ function ProductUpload() {
         context.setAlertBox({
           open: true,
           error: false,
-          msg: "محصول با موفقیت اضافه شد",
+          msg: "محصول با موفقیت ویرایش شد",
         });
       });
     } else {
@@ -265,10 +327,17 @@ function ProductUpload() {
     }
   };
 
+  function extractImageUrl(str) {
+    if (!str || typeof str !== "string") return null;
+
+    const match = str.match(/url:\s*'([^']+)'/); // extract value between url: '...'
+    return match ? match[1] : null;
+  }
+
   return (
     <>
       <div className="">
-        <form className="form" onSubmit={addProduct}>
+        <form className="form" onSubmit={editProduct}>
           <div className="right-content pb-0 w-100">
             <div className="row">
               <div className="col-sm-12">
@@ -301,7 +370,7 @@ function ProductUpload() {
                         <CacheProvider value={cacheRtl}>
                           <ThemeProvider theme={theme}>
                             <Select
-                              value={category}
+                              value={categoryVal}
                               onChange={handleChangeCategory}
                               displayEmpty
                               className="w-100"
@@ -336,7 +405,7 @@ function ProductUpload() {
                         <CacheProvider value={cacheRtl}>
                           <ThemeProvider theme={theme}>
                             <Select
-                              value={subCategoryVal}
+                              value={subCatVal}
                               onChange={handleChangeSubCategory}
                               displayEmpty
                               className="w-100"
@@ -344,8 +413,8 @@ function ProductUpload() {
                               <MenuItem value="">
                                 <em value="">انتخاب کنید</em>
                               </MenuItem>
-                              {subCategoryData?.length !== 0 &&
-                                subCategoryData?.map((subCat, index) => {
+                              {subCatData?.length !== 0 &&
+                                subCatData?.map((subCat, index) => {
                                   return (
                                     <MenuItem
                                       value={subCat._id}
@@ -369,8 +438,8 @@ function ProductUpload() {
                         <CacheProvider value={cacheRtl}>
                           <ThemeProvider theme={theme}>
                             <Select
-                              value={isFeaturedVal}
-                              onChange={handleChangeisFeaturedVal}
+                              value={isFeaturedValue}
+                              onChange={handleChangeisFeaturedValue}
                               displayEmpty
                               className="w-100"
                             >
@@ -448,6 +517,7 @@ function ProductUpload() {
                   <div className="imgUploadBox d-flex align-item-center">
                     {previews?.length !== 0 &&
                       previews?.map((img, index) => {
+                        console.log();
                         return (
                           <div className="uploadBox" key={index}>
                             <span
@@ -461,7 +531,7 @@ function ProductUpload() {
                                 alt={"image"}
                                 effect="blur"
                                 className="w-100"
-                                src={img.url}
+                                src={extractImageUrl(img)}
                               />
                             </div>
                           </div>
@@ -514,4 +584,4 @@ function ProductUpload() {
   );
 }
 
-export default ProductUpload;
+export default ProductEdit;
