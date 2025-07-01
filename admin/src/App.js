@@ -21,6 +21,7 @@ import { Alert, Snackbar } from "@mui/material";
 import EditCategory from "./pages/Categories/EditCategory/EditCategory";
 import SubCategoryList from "./pages/Categories/SubCategoryList/SubCategoryList";
 import AddSubCategory from "./pages/Categories/AddSubCategory/AddSubCategory";
+import ProductEdit from "./pages/Products/ProductEdit/ProductEdit";
 
 const MyContext = createContext();
 
@@ -217,6 +218,11 @@ function App() {
                 path={"/product/upload"}
                 exact={true}
                 element={<ProductUpload />}
+              />
+              <Route
+                path={"/product/edit/:id"}
+                exact={true}
+                element={<ProductEdit />}
               />
               <Route path={"/orders"} exact={true} element={<Orders />} />
               <Route

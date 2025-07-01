@@ -272,7 +272,7 @@ function ProductsTable() {
                               <FaEye />
                             </Button>
                           </Link>
-                          <Link to={`/product/edit/${item?.id}`}>
+                          <Link to={`/product/edit/${item?._id}`}>
                             <Button className="pencil">
                               <FaPencilAlt />
                             </Button>
