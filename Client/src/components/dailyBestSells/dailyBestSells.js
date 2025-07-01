@@ -3,24 +3,40 @@ import "./dailyBestSells.css";
 import Banner from "../../assets/images/category-image.png";
 import Slider from "react-slick";
 import Product from "../../components/product/product";
+import { useEffect, useState } from "react";
+import { fetchDataFromApi } from "../../utils/api";
 
 const DailyBestSells = () => {
+  const [featuredProducts, setFeaturedProducts] = useState([]);
+  const [homeSlider, setHomeSlider] = useState([]);
+
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
-    // fade: true,
     arrows: true,
-    autoplay: 3000,
+    autoplay: 2000,
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
+    fetchDataFromApi(`/api/product/featured`).then((res) => {
+      setFeaturedProducts(res);
+    });
+
+    fetchDataFromApi("/api/homeBanner").then((res) => {
+      setHomeSlider(res);
+    });
+  }, []);
 
   return (
     <section className="homeProducts homeProductsRow2 pt-0">
       <div className="container-fluid forPaddingLeft">
         <div className="d-flex align-items-center ">
-          <h2 className="hd mb-0 mt-0">بهترین فروش روزانه</h2>
+          <h2 className="hd mb-0 mt-0">محصولات ویژه</h2>
           <ul className="list list-inline mr-auto filterTab mb-0">
             <li className="list-inline-item">
               <a className="cursor transition">ویژه</a>
@@ -46,18 +62,14 @@ const DailyBestSells = () => {
           </div>
           <div className="col-md-9 dailyPopularSells">
             <Slider {...settings} className="prodSlider">
-              <div className="item">
-                <Product title="سلام" tag="oneInStock" />
-              </div>
-              <div className="item">
-                <Product title="خدافزی" tag="oneInStock" />
-              </div>
-              <div className="item">
-                <Product title="شب بخیر" tag="oneInStock" />
-              </div>
-              <div className="item">
-                <Product title="صبح بخیر" tag="oneInStock" />
-              </div>
+              {featuredProducts?.length !== 0 &&
+                featuredProducts?.map((item, index) => {
+                  return (
+                    <div className="item" key={index}>
+                      <Product data={item} />
+                    </div>
+                  );
+                })}
             </Slider>
           </div>
         </div>

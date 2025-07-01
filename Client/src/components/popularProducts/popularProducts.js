@@ -39,7 +39,7 @@ const PopularProducts = () => {
   }, [context.categories]);
 
   useEffect(() => {
-    if (selectedCat) {
+    if (selectedCat !== undefined) {
       setIsLoading(true);
       fetchDataFromApi(
         `/api/product?catId=${selectedCat}&page=1&perPage=10`
@@ -50,14 +50,23 @@ const PopularProducts = () => {
     }
   }, [selectedCat]);
 
+  const allProducts = () => {
+    setIsLoading(true);
+    fetchDataFromApi(
+      `/api/product?catId=${selectedCat}&page=1&perPage=10`
+    ).then((res) => {
+      setFilterData(res.products);
+      setIsLoading(false);
+    });
+  };
+
   const filterProducts = (id) => {
     setIsLoading(true);
-    fetchDataFromApi(`/api/product?catId=${id}&page=1&perPage=10`).then(
-      (res) => {
-        setFilterData(res.products);
-        setIsLoading(false);
-      }
-    );
+    fetchDataFromApi(`/api/product?catId=${id}`).then((res) => {
+      console.log(res);
+      setFilterData(res.products);
+      setIsLoading(false);
+    });
   };
 
   return (
@@ -76,6 +85,7 @@ const PopularProducts = () => {
                     scrollButtons="auto"
                     aria-label="scrollable auto tabs example"
                   >
+                    <Tab label={"همه محصولات"} onClick={allProducts} />
                     {context.categories?.categoryList?.map((cat) => {
                       return (
                         <Tab
@@ -94,13 +104,19 @@ const PopularProducts = () => {
 
         <div className="productRow">
           {filterData?.length !== 0 &&
-            filterData?.map((item, index) => {
-              return (
-                <div className="item" key={index}>
-                  <Product tag="oneInStock" data={item} />
-                </div>
-              );
-            })}
+            filterData
+              ?.filter((cat, index) => index < 10)
+              .map((item, index) => {
+                return (
+                  <div className="item" key={index}>
+                    <Product
+                      tag="oneInStock"
+                      data={item}
+                      isLoading={isLoading}
+                    />
+                  </div>
+                );
+              })}
         </div>
       </div>
     </section>
