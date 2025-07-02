@@ -7,7 +7,7 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import { IoTimeOutline } from "react-icons/io5";
 import Menu from "@mui/material/Menu";
 import { LineChart } from "@mui/x-charts/LineChart";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import { CacheProvider } from "@emotion/react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -17,7 +17,9 @@ import { prefixer } from "stylis";
 
 import "./Dashboard.css";
 import DashboardBox from "../Dashboard/components/DashboardBox";
+import { MyContext } from "../../App";
 import ProductsTable from "../../components/ProductsTable/ProductsTable";
+import { deleteData, fetchDataFromApi } from "../../utils/api";
 
 const ITEM_HEIGHT = 48;
 const theme = createTheme({ direction: "rtl" });
@@ -28,6 +30,14 @@ const cacheRtl = createCache({
 
 function Dashboard() {
   const [anchorEl, setAnchorEl] = useState(null);
+  const [productData, setProductData] = useState([]);
+  const [showBy, setShowBy] = useState("");
+  const [CatBy, setCatBy] = useState("");
+  const [categoryData, setCategoryData] = useState([]);
+  const [page, setPage] = useState(1);
+  const [totalProducts, setTotalProducts] = useState(0);
+  const [totalCategory, setTotalCategory] = useState(0);
+  const [totalSubCategory, setTotalSubCategory] = useState(0);
 
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -36,6 +46,98 @@ function Dashboard() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const context = useContext(MyContext);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    context.setProgress(40);
+    fetchDataFromApi("/api/product?page=1&perPage=8").then((res) => {
+      setProductData(res);
+      context.setProgress(100);
+    });
+
+    fetchDataFromApi("/api/category").then((res) => {
+      setCategoryData(res);
+    });
+
+    fetchDataFromApi("/api/products/get/count").then((res) => {
+      setTotalProducts(res.productsCount);
+    });
+    fetchDataFromApi("/api/category/get/count").then((res) => {
+      setTotalCategory(res.categoryCount);
+    });
+    fetchDataFromApi("/api/category/subCat/get/count").then((res) => {
+      setTotalSubCategory(res.subCategoryCount);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const deleteProduct = (id) => {
+    context.setProgress(30);
+    deleteData(`/api/product/${id}`).then((res) => {
+      context.setProgress(100);
+      context.setAlertBox({
+        open: true,
+        error: false,
+        msg: "محصول با موفقیت حذف شد",
+      });
+      fetchDataFromApi(`/api/product?page=${page}&perPage=8`).then((res) => {
+        setProductData(res);
+      });
+      context.fetchCategory();
+    });
+  };
+
+  const handleChange = (event, value) => {
+    context.setProgress(40);
+    setPage(value);
+    fetchDataFromApi(`/api/product?page=${value}&perPage=8`).then((res) => {
+      setProductData(res);
+      context.setProgress(100);
+      window.scrollTo({
+        top: 200,
+        behavior: "smooth",
+      });
+    });
+  };
+
+  const showPerPage = (e) => {
+    setShowBy(e.target.value);
+    context.setProgress(40);
+    fetchDataFromApi(`/api/product/page=${1}&perPage=${e.target.value}`).then(
+      (res) => {
+        setProductData(res);
+        context.setProgress(100);
+      }
+    );
+  };
+
+  const handleChangeCategory = (event) => {
+    console.log(event.target.value);
+    if (event.target.value !== "") {
+      setCatBy(event.target.value);
+      fetchDataFromApi(`/api/product?category=${event.target.value}`).then(
+        (res) => {
+          setProductData(res);
+          context.setProgress(100);
+        }
+      );
+    }
+    if (event.target.value === "") {
+      setCatBy(event.target.value);
+      fetchDataFromApi(`/api/product?page=${1}&perPage=${8}`).then((res) => {
+        setProductData(res);
+        context.setProgress(100);
+      });
+    }
+  };
+
+  function extractImageUrl(str) {
+    if (!str || typeof str !== "string") return null;
+
+    const match = str.match(/url:\s*'([^']+)'/); // extract value between url: '...'
+    return match ? match[1] : null;
+  }
 
   return (
     <>

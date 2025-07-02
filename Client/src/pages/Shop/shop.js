@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import "./shop.css";
 
 import Sidebar from "../../components/sidebar/sidebar";
+import { MyContext } from "../../App";
 
 import { ThemeProvider } from "@mui/material/styles";
 import { cacheRtl, theme } from "./rtlTheme";
@@ -17,6 +18,9 @@ import { Button, ClickAwayListener } from "@mui/material";
 const Shop = () => {
   const [isOpenDropDown, setIsOpenDropDown] = useState(false);
   const [isOpenDropDown2, setIsOpenDropDown2] = useState(false);
+
+  const context = useContext(MyContext);
+
 
   return (
     <>
@@ -166,53 +170,7 @@ const Shop = () => {
                   </div>
                 </div>
 
-                <div className="productRow pr-4 productsForShopRow w-100">
-                  <div className="item">
-                    <Product />
-                  </div>
-                  <div className="item">
-                    <Product tag="best" />
-                  </div>
-                  <div className="item">
-                    <Product tag="hot" />
-                  </div>
-                  <div className="item">
-                    <Product />
-                  </div>
-                  <div className="item">
-                    <Product tag="best" />
-                  </div>
-                  <div className="item">
-                    <Product tag="new" />
-                  </div>
-                  <div className="item">
-                    <Product />
-                  </div>
-                  <div className="item">
-                    <Product tag="best" />
-                  </div>
-                  <div className="item">
-                    <Product tag="hot" />
-                  </div>
-                  <div className="item">
-                    <Product />
-                  </div>
-                  <div className="item">
-                    <Product tag="best" />
-                  </div>
-                  <div className="item">
-                    <Product tag="new" />
-                  </div>
-                  <div className="item">
-                    <Product />
-                  </div>
-                  <div className="item">
-                    <Product tag="best" />
-                  </div>
-                  <div className="item">
-                    <Product tag="hot" />
-                  </div>
-                </div>
+                <div className="productRow pr-4 productsForShopRow w-100"></div>
               </div>
             </div>
           </div>

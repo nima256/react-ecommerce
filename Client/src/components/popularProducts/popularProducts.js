@@ -86,7 +86,7 @@ const PopularProducts = () => {
                     aria-label="scrollable auto tabs example"
                   >
                     <Tab label={"همه محصولات"} onClick={allProducts} />
-                    {context.categories?.categoryList?.map((cat) => {
+                    {context.categories?.categoryList?.filter((cat, index) => index < 5)?.map((cat) => {
                       return (
                         <Tab
                           key={cat.id}

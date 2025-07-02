@@ -15,12 +15,13 @@ app.use(express.json());
 const categoryRoutes = require("./routes/categories");
 const productRoutes = require("./routes/product.js");
 const imageUploadRoutes = require("./helper/imageUpload.js");
-
+const productReviewsRoutes = require("./routes/productReviews.js");
 
 app.use("/uploads", express.static("uploads"));
 app.use("/api/category", categoryRoutes);
 app.use("/api/product", productRoutes);
 app.use("/api/imageUpload", imageUploadRoutes);
+app.use("/api/productReviews", productReviewsRoutes);
 
 // DB
 mongoose

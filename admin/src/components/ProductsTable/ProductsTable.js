@@ -29,7 +29,7 @@ const cacheRtl = createCache({
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 function ProductsTable() {
-  const [showBy, setShowBy] = useState("");
+  const [showBy, setShowBy] = useState(8);
   const [CatBy, setCatBy] = useState("");
   const [productData, setProductData] = useState([]);
   const [categoryData, setCategoryData] = useState([]);
@@ -79,7 +79,7 @@ function ProductsTable() {
     });
   };
 
-  const handleChange = (event, value) => {
+  const handleChangePage = (event, value) => {
     context.setProgress(40);
     setPage(value);
     fetchDataFromApi(`/api/product?page=${value}&perPage=8`).then((res) => {
@@ -95,7 +95,7 @@ function ProductsTable() {
   const showPerPage = (e) => {
     setShowBy(e.target.value);
     context.setProgress(40);
-    fetchDataFromApi(`/api/product/page=${1}&perPage=${e.target.value}`).then(
+    fetchDataFromApi(`/api/product?page=${1}&perPage=${e.target.value}`).then(
       (res) => {
         setProductData(res);
         context.setProgress(100);
@@ -141,14 +141,14 @@ function ProductsTable() {
                 <FormControl size="small" className="w-100">
                   <Select
                     value={showBy}
-                    onChange={(e) => setShowBy(e.target.value)}
+                    onChange={(e) => showPerPage(e)}
                     displayEmpty
                     inputProps={{ "aria-label": "Without label" }}
                     labelId="demo-select-small-label"
                     className="w-100"
                   >
-                    <MenuItem value="">
-                      <em>انتخاب کنید</em>
+                    <MenuItem value={8}>
+                      <em value={8}>8</em>
                     </MenuItem>
                     <MenuItem value={10}>10</MenuItem>
                     <MenuItem value={20}>20 </MenuItem>

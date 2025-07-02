@@ -47,3 +47,9 @@
 .filters_Products .MuiButtonBase-root svg {
   font-size: 30px !important;
 }
+
+.filters_Products {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
