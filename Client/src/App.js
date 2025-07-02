@@ -5,6 +5,7 @@ import Header from "./components/header/header";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./pages/Home/home";
 import Shop from "./pages/Shop/shop";
+import CategoryListing from "./pages/CategoryListing/CategoryListing";
 import Footer from "./components/footer/footer";
 import NotFound from "./pages/NotFound/notFound";
 import ProductDetails from "./pages/ProductDetails/productDetails";
@@ -34,7 +35,7 @@ function App() {
 
         <Routes>
           <Route exact={true} path="/" element={<Home />} />
-          <Route exact={true} path="/category/:id" element={<Home />} />
+          <Route exact={true} path="/category/:id" element={<CategoryListing />} />
           <Route exact={true} path="/category/subCat/:id" element={<Home />} />
           <Route exact={true} path="/product/:id" element={<Home />} />
           <Route exact={true} path="/shop" element={<Shop />} />

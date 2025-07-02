@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 
-import "./shop.css";
+import "./CategoryListing.css";
 
 import Sidebar from "../../components/sidebar/sidebar";
 import { MyContext } from "../../App";
@@ -13,17 +13,42 @@ import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 import FilterListOutlinedIcon from "@mui/icons-material/FilterListOutlined";
 
 import { Button, ClickAwayListener } from "@mui/material";
+import { fetchDataFromApi } from "../../utils/api";
+import Product from "../../components/product/product";
 
-const Shop = () => {
+const CategoryListing = () => {
   const [isOpenDropDown, setIsOpenDropDown] = useState(false);
   const [isOpenDropDown2, setIsOpenDropDown2] = useState(false);
+
+  const [filterId, setFilterId] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [productData, setProductData] = useState([]);
 
   const context = useContext(MyContext);
 
   const { id } = useParams();
 
   useEffect(() => {
-    alert(id);
+    window.scrollTo(0, 0);
+    setFilterId("");
+
+    let url = window.location.href;
+    let apiEndPoint = "";
+
+    if (url.includes("subCat")) {
+      apiEndPoint = `/api/product?subCat=${id}`;
+    }
+    if (url.includes("category")) {
+      apiEndPoint = `/api/product?category=${id}`;
+    }
+
+    setIsLoading(true);
+    fetchDataFromApi(`${apiEndPoint}`).then((res) => {
+      setProductData(res);
+      setIsLoading(false);
+    });
+
+    fetchDataFromApi(`/api/product/`);
   }, [id]);
 
   return (
@@ -174,7 +199,16 @@ const Shop = () => {
                   </div>
                 </div>
 
-                <div className="productRow pr-4 productsForShopRow w-100"></div>
+                <div className="productRow pr-4 productsForShopRow w-100">
+                  {productData?.products?.length !== 0 &&
+                    productData?.products?.map((item, index) => {
+                      return (
+                        <div className="item" key={index}>
+                          <Product data={item} />
+                        </div>
+                      );
+                    })}
+                </div>
               </div>
             </div>
           </div>
@@ -184,4 +218,4 @@ const Shop = () => {
   );
 };
 
-export default Shop;
+export default CategoryListing;

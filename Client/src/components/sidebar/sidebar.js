@@ -8,7 +8,7 @@ import { useContext, useState } from "react";
 
 import Slider from "@mui/material/Slider";
 import Checkbox from "@mui/material/Checkbox";
-import { Button } from "@mui/material";
+import { Button, ButtonBase } from "@mui/material";
 import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
 import { Link } from "react-router-dom";
 import { MyContext } from "../../App";
@@ -27,7 +27,6 @@ function Sidebar() {
 
   const context = useContext(MyContext);
 
-
   return (
     <>
       <div className="sidebar">
@@ -38,13 +37,13 @@ function Sidebar() {
               context?.categories?.categoryList !== undefined &&
               context?.categories?.categoryList?.map((cat, index) => {
                 return (
-                  <Link to={`/cat/`} index={index}>
-                    <div className="catItem d-flex align-items-center">
+                  <Link to={`/category/${cat?.id}`} index={index}>
+                    <ButtonBase  className="catItem d-flex align-items-center w-100 justify-content-start" focusRipple>
                       <span className="img">
                         <img src={laptopLogo} alt="" width={30} />
                       </span>
                       <h4 className="mb-0 mr-3 ml-3">{cat?.name}</h4>
-                    </div>
+                    </ButtonBase>
                   </Link>
                 );
               })}
