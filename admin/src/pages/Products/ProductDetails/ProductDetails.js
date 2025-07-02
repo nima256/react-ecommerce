@@ -13,6 +13,7 @@ import { FaDollarSign } from "react-icons/fa";
 import { FaBoxOpen } from "react-icons/fa";
 import { FaComments } from "react-icons/fa";
 import { IoTimeSharp } from "react-icons/io5";
+import InnerImageZoom from "react-inner-image-zoom";
 
 import image1 from "../../../assets/images/productDetails/1.webp";
 import image2 from "../../../assets/images/productDetails/2.webp";
@@ -29,7 +30,9 @@ import { prefixer } from "stylis";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 import { Button } from "@mui/material";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useParams } from "react-router-dom";
+import { fetchDataFromApi } from "../../../utils/api";
 
 const theme = (outerTheme) =>
   createTheme({
@@ -43,30 +46,58 @@ const cacheRtl = createCache({
 // rtl end
 
 function ProductDetails() {
-  const productSliderBig = useRef();
-  const productSliderSml = useRef();
+  const [productData, setProductData] = useState([]);
+  const [reviewsData, setReviewsData] = useState([]);
 
-  var productSliderSettings = {
-    dots: false,
-    infinite: false,
+  const { id } = useParams();
+
+  const zoomSliderBig = useRef();
+  const zoomSlider = useRef();
+
+  const zoomSliderSettings = {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
+    autoplay: 1000,
   };
 
-  var productSliderSmlSettings = {
-    dots: false,
-    infinite: false,
+  const settings = {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
-    arrows: false,
+    arrows: true,
+  };
+
+  const goto = (index) => {
+    zoomSlider.current.slickGoTo(index);
+    zoomSliderBig.current.slickGoTo(index);
   };
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
+    fetchDataFromApi(`/api/product/${id}`).then((res) => {
+      setProductData(res);
+    });
+
+    fetchDataFromApi(`/api/produdctReviews?productId=${id}`).then((res) => {
+      setReviewsData(res);
+    });
+  }, [id]);
+
+  function extractImageUrl(str) {
+    if (!str || typeof str !== "string") return null;
+
+    const match = str.match(/url:\s*'([^']+)'/); // extract value between url: '...'
+    return match ? match[1] : null;
+  }
+
+  console.log(productData.images);
 
   return (
     <>
@@ -76,35 +107,49 @@ function ProductDetails() {
             <div className="col-md-4">
               <div className="sliderWrapper pt-3 pb-3 ps-4 pe-4">
                 <h5 className="mb-4">گالری محصول</h5>
-                <Slider
-                  {...productSliderSettings}
-                  ref={productSliderBig}
-                  className="sliderBig mb-2"
-                >
-                  <div className="item">
-                    <img src={image1} alt="" className="w-100" />
-                  </div>
-                </Slider>
-                <Slider
-                  {...productSliderSmlSettings}
-                  ref={productSliderSml}
-                  className="sliderSml"
-                >
-                  <div className="item">
-                    <img src={image2} alt="" className="w-100" />
-                  </div>
-                  <div className="item">
-                    <img src={image3} alt="" className="w-100" />
-                  </div>
-                  <div className="item">
-                    <img src={image4} alt="" className="w-100" />
-                  </div>
-                  <div className="item">
-                    <img src={image5} alt="" className="w-100" />
-                  </div>
-                  <div className="item">
-                    <img src={image6} alt="" className="w-100" />
-                  </div>
+                <div className="productZoom">
+
+                  <Slider
+                    {...zoomSliderSettings}
+                    className="zoomSliderBig"
+                    ref={zoomSliderBig}
+                  >
+                    {productData?.images?.length !== 0 &&
+                      productData?.images?.length !== undefined &&
+                      productData?.images?.map((item) => {
+                        return (
+                          <div className="item">
+                            <InnerImageZoom
+                              src={extractImageUrl(
+                                productData?.images?.length === 1
+                                  ? item
+                                  : item[0]
+                              )}
+                              zoomType="hover"
+                            />
+                          </div>
+                        );
+                      })}
+                  </Slider>
+                </div>
+
+                <Slider {...settings} className="zoomSlider" ref={zoomSlider}>
+                  {productData?.images?.length !== 0 &&
+                    productData?.images?.length !== undefined &&
+                    productData?.images?.map((item, index) => {
+                      return (
+                        <div className="item">
+                          <img
+                            src={extractImageUrl(
+                              productData?.images?.length === 1 ? '' : item[index+1]
+                            )}
+                            alt=""
+                            className="w-100"
+                            onClick={() => goto(0)}
+                          />
+                        </div>
+                      );
+                    })}
                 </Slider>
               </div>
             </div>
@@ -112,8 +157,7 @@ function ProductDetails() {
               <div className="pt-3 pb-3 ps-4 pe-4">
                 <h5 className="mb-4">توضیحات محصول</h5>
                 <h4>
-                  تینمشس نمسشیبت مشنسی بمسش م شسمسشنمسش سشنمی بنشسمیت تشس
-                  یمنبتمنسشیب
+                  {productData?.name}
                 </h4>
 
                 <div className="productInfo mt-3">
