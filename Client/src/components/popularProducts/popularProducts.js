@@ -56,16 +56,19 @@ const PopularProducts = () => {
       `/api/product?catId=${selectedCat}&page=1&perPage=10`
     ).then((res) => {
       setFilterData(res.products);
-      setIsLoading(false);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 500);
     });
   };
 
   const filterProducts = (id) => {
     setIsLoading(true);
     fetchDataFromApi(`/api/product?catId=${id}`).then((res) => {
-      console.log(res);
       setFilterData(res.products);
-      setIsLoading(false);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 500);
     });
   };
 
@@ -86,15 +89,17 @@ const PopularProducts = () => {
                     aria-label="scrollable auto tabs example"
                   >
                     <Tab label={"همه محصولات"} onClick={allProducts} />
-                    {context.categories?.categoryList?.filter((cat, index) => index < 5)?.map((cat) => {
-                      return (
-                        <Tab
-                          key={cat.id}
-                          label={cat?.name}
-                          onClick={() => filterProducts(cat?.id)}
-                        />
-                      );
-                    })}
+                    {context.categories?.categoryList
+                      ?.filter((cat, index) => index < 5)
+                      ?.map((cat) => {
+                        return (
+                          <Tab
+                            key={cat.id}
+                            label={cat?.name}
+                            onClick={() => filterProducts(cat?.id)}
+                          />
+                        );
+                      })}
                   </Tabs>
                 </ThemeProvider>
               </CacheProvider>

@@ -11,6 +11,7 @@ import { cacheRtl, theme } from "./rtlTheme";
 import { CacheProvider } from "@emotion/react";
 import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 import FilterListOutlinedIcon from "@mui/icons-material/FilterListOutlined";
+import Skeleton from "react-loading-skeleton";
 
 import { Button, ClickAwayListener } from "@mui/material";
 import { fetchDataFromApi } from "../../utils/api";
@@ -45,11 +46,30 @@ const CategoryListing = () => {
     setIsLoading(true);
     fetchDataFromApi(`${apiEndPoint}`).then((res) => {
       setProductData(res);
-      setIsLoading(false);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 500);
     });
 
     fetchDataFromApi(`/api/product/`);
   }, [id]);
+
+  function toPersianDigits(number) {
+    return number?.toString().replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d]);
+  }
+
+  const filterByPrice = (price, catId) => {
+    setIsLoading(true);
+
+    let apiEndPint = `/api/product?minPrice=${price[0]}&maxPrice=${price[1]}&catId=${catId}`;
+
+    fetchDataFromApi(apiEndPint).then((res) => {
+      setProductData(res);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 500);
+    });
+  };
 
   return (
     <>
@@ -60,17 +80,25 @@ const CategoryListing = () => {
               <div className="col-md-3 sidebarWrapper">
                 <CacheProvider value={cacheRtl}>
                   <ThemeProvider theme={theme}>
-                    <Sidebar />
+                    <Sidebar catId={id} filterByPrice={filterByPrice} />
                   </ThemeProvider>
                 </CacheProvider>
               </div>
 
               <div className="col-md-9 shoppingDataRightContent homeProducts pt-0 productsForShop">
                 <div className="topStrip d-flex aling-items-center">
-                  <p className="mb-0 ">
-                    برای شما <span className="text-success">۲۹</span> تا محصول
-                    پیدا شد
-                  </p>
+                  {isLoading ? (
+                    <Skeleton width={100} />
+                  ) : (
+                    <p className="mb-0 ">
+                      برای شما{" "}
+                      <span className="text-success">
+                        {toPersianDigits(productData?.products?.length)}
+                      </span>{" "}
+                      تا محصول پیدا شد
+                    </p>
+                  )}
+
                   <div className="mr-auto d-flex align-items-center">
                     <ClickAwayListener
                       onClickAway={() => setIsOpenDropDown(false)}
@@ -200,14 +228,19 @@ const CategoryListing = () => {
                 </div>
 
                 <div className="productRow pr-4 productsForShopRow w-100">
-                  {productData?.products?.length !== 0 &&
+                  {productData?.products?.length !== 0 ? (
                     productData?.products?.map((item, index) => {
                       return (
                         <div className="item" key={index}>
-                          <Product data={item} />
+                          <Product data={item} isLoading={isLoading} />
                         </div>
                       );
-                    })}
+                    })
+                  ) : (
+                    <div className="">
+                      <h4>محصولی یافت نشد</h4>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

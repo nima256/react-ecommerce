@@ -120,21 +120,30 @@ router.get("/", async (req, res) => {
 
   if (req.query.minPrice !== undefined && req.query.maxPrice !== undefined) {
     if (
-      req.query.subCatId !== undefined &&
-      req.query.subCatId !== null &&
-      req.query.subCatId !== ""
+      req.query.catId !== undefined &&
+      req.query.catId !== null &&
+      req.query.catId !== ""
     ) {
       productList = await Product.find({
-        subCatId: req.query.subCatId,
+        catId: req.query.catId,
       }).populate("category");
     }
 
     const filteredProducts = productList.filter((product) => {
-      if (req.query.minPrice && product.price < parseInt(+req.query.minPrice)) {
-        return false;
-      }
-      if (req.query.maxPrice && product.price > parseInt(+req.query.maxPrice)) {
-        return false;
+      if (product.offerPrice) {
+        if (req.query.minPrice && product.offerPrice < parseInt(+req.query.minPrice)) {
+          return false;
+        }
+        if (req.query.maxPrice && product.offerPrice > parseInt(+req.query.maxPrice)) {
+          return false;
+        }
+      } else {
+        if (req.query.minPrice && product.price < parseInt(+req.query.minPrice)) {
+          return false;
+        }
+        if (req.query.maxPrice && product.price > parseInt(+req.query.maxPrice)) {
+          return false;
+        }
       }
       return true;
     });

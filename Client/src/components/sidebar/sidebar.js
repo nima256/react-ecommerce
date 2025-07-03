@@ -4,13 +4,13 @@ import laptopLogo from "../../assets/images/sidebar/laptop.svg";
 import Tooman from "../../assets/images/product/toman.svg";
 import bannerImg from "../../assets/images/poster/poster-keyboard.webp";
 
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import Slider from "@mui/material/Slider";
 import Checkbox from "@mui/material/Checkbox";
 import { Button, ButtonBase } from "@mui/material";
 import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { MyContext } from "../../App";
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
@@ -18,14 +18,31 @@ function valuetext(value) {
   return `${value}°C`;
 }
 
-function Sidebar() {
-  const [value, setValue] = useState([150, 856]);
+function Sidebar(props) {
+  const [value, setValue] = useState([0, 100]);
+  const [catId, setCatId] = useState("");
+  const context = useContext(MyContext);
+  const { id } = useParams();
+
+  useEffect(() => {
+    setCatId(id);
+    props.filterByPrice(value, id);
+  }, [id]);
+
+  useEffect(() => {
+    props.filterByPrice(value, catId);
+  }, [value, id]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  const context = useContext(MyContext);
+  const toPersianDigits = (num) => {
+    if (num === null || num === undefined || isNaN(num)) return "";
+    const persianDigits = "۰۱۲۳۴۵۶۷۸۹";
+    const withCommas = num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return withCommas.replace(/\d/g, (digit) => persianDigits[digit]);
+  };
 
   return (
     <>
@@ -38,7 +55,10 @@ function Sidebar() {
               context?.categories?.categoryList?.map((cat, index) => {
                 return (
                   <Link to={`/category/${cat?.id}`} index={index}>
-                    <ButtonBase  className="catItem d-flex align-items-center w-100 justify-content-start" focusRipple>
+                    <ButtonBase
+                      className="catItem d-flex align-items-center w-100 justify-content-start"
+                      focusRipple
+                    >
                       <span className="img">
                         <img src={laptopLogo} alt="" width={30} />
                       </span>
@@ -54,27 +74,28 @@ function Sidebar() {
           <h3>فیلتر ها</h3>
           <Slider
             min={0}
-            max={1000}
+            max={50000}
             color="success"
             className="rangeSlider"
             getAriaLabel={() => "Temperature range"}
             value={value}
             onChange={handleChange}
-            valueLabelDisplay="auto"
-            getAriaValueText={valuetext}
+            getAriaValueText={toPersianDigits}
+            valueLabelFormat={toPersianDigits}
           />
 
           <div className="d-flex pt-2 pb-2 priceRange">
             <span>
               از: &nbsp;
               <strong className="text-success min-price">
-                {value[0]} <img src={Tooman} alt="" className="toomanSvg" />
+                {toPersianDigits(value[0])}{" "}
+                <img src={Tooman} alt="" className="toomanSvg" />
               </strong>
             </span>
             <span className="mr-auto">
               تا: &nbsp;
               <strong className="text-success max-price">
-                {value[1]}
+                {toPersianDigits(value[1])}
                 <img src={Tooman} alt="" className="toomanSvg maxToomanSvg" />
               </strong>
             </span>
