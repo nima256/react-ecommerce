@@ -69,7 +69,7 @@ const CatSlider = (props) => {
                 return (
                   <div key={index}>
                     <div className="item" style={{ background: cat?.color }}>
-                      <Link to={`/category/${cat.id}`}>
+                      <Link to={`/product/category/${cat.id}`}>
                         <div className="info">
                           <img
                             src={cat?.images[0].url}

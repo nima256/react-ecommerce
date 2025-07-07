@@ -23,7 +23,7 @@ export const fetchDataFromApi = async (url) => {
 };
 
 export const uploadImage = async (url, formData) => {
-  const { res } = await axios.post(apiUrl + url, formData, { timeout: 60000 });
+  const { res } = await axios.post(apiUrl + url, formData);
   return res;
 };
 

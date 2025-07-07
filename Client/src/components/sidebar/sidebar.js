@@ -19,23 +19,31 @@ function valuetext(value) {
 }
 
 function Sidebar(props) {
-  const [value, setValue] = useState([0, 100]);
+  const [priceValue, setPriceValue] = useState([0, 0]);
   const [catId, setCatId] = useState("");
   const context = useContext(MyContext);
   const { id } = useParams();
 
   useEffect(() => {
     setCatId(id);
-    props.filterByPrice(value, id);
+    props.filterByPrice(priceValue, id);
   }, [id]);
 
   useEffect(() => {
-    props.filterByPrice(value, catId);
-  }, [value, id]);
+    props.filterByPrice(priceValue, catId);
+  }, [priceValue, id]);
+
+  useEffect(() => {
+    if (props.minMaxPrice) {
+      setPriceValue(props.minMaxPrice);
+    }
+  }, [props.minMaxPrice]);
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    setPriceValue(newValue);
   };
+
+  console.log(priceValue)
 
   const toPersianDigits = (num) => {
     if (num === null || num === undefined || isNaN(num)) return "";
@@ -54,7 +62,7 @@ function Sidebar(props) {
               context?.categories?.categoryList !== undefined &&
               context?.categories?.categoryList?.map((cat, index) => {
                 return (
-                  <Link to={`/category/${cat?.id}`} index={index}>
+                  <Link to={`/product/category/${cat?.id}`} index={index}>
                     <ButtonBase
                       className="catItem d-flex align-items-center w-100 justify-content-start"
                       focusRipple
@@ -73,12 +81,12 @@ function Sidebar(props) {
         <div dir="rtl" className="card border-0 shadow">
           <h3>فیلتر ها</h3>
           <Slider
-            min={0}
-            max={50000}
+            min={props?.minMaxPrice?.length !== 0 && props?.minMaxPrice[0]}
+            max={props?.minMaxPrice?.length !== 0 && props?.minMaxPrice[1]}
             color="success"
             className="rangeSlider"
             getAriaLabel={() => "Temperature range"}
-            value={value}
+            value={priceValue}
             onChange={handleChange}
             getAriaValueText={toPersianDigits}
             valueLabelFormat={toPersianDigits}
@@ -88,14 +96,14 @@ function Sidebar(props) {
             <span>
               از: &nbsp;
               <strong className="text-success min-price">
-                {toPersianDigits(value[0])}{" "}
+                {toPersianDigits(priceValue[0])}{" "}
                 <img src={Tooman} alt="" className="toomanSvg" />
               </strong>
             </span>
             <span className="mr-auto">
               تا: &nbsp;
               <strong className="text-success max-price">
-                {toPersianDigits(value[1])}
+                {toPersianDigits(priceValue[1])}
                 <img src={Tooman} alt="" className="toomanSvg maxToomanSvg" />
               </strong>
             </span>

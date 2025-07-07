@@ -35,8 +35,8 @@ function App() {
 
         <Routes>
           <Route exact={true} path="/" element={<Home />} />
-          <Route exact={true} path="/category/:id" element={<CategoryListing />} />
-          <Route exact={true} path="/category/subCat/:id" element={<Home />} />
+          <Route exact={true} path="/product/category/:id" element={<CategoryListing />} />
+          <Route exact={true} path="/product/subCat/:id" element={<CategoryListing />} />
           <Route exact={true} path="/product/:id" element={<Home />} />
           <Route exact={true} path="/shop" element={<Shop />} />
           <Route

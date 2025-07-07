@@ -127,21 +127,41 @@ router.get("/", async (req, res) => {
       productList = await Product.find({
         catId: req.query.catId,
       }).populate("category");
+    } else if (
+      req.query.subCatId !== undefined &&
+      req.query.subCatId !== null &&
+      req.query.subCatId !== ""
+    ) {
+      productList = await Product.find({
+        subCatId: req.query.subCatId,
+      }).populate("category");
     }
 
     const filteredProducts = productList.filter((product) => {
       if (product.offerPrice) {
-        if (req.query.minPrice && product.offerPrice < parseInt(+req.query.minPrice)) {
+        if (
+          req.query.minPrice &&
+          product.offerPrice < parseInt(+req.query.minPrice)
+        ) {
           return false;
         }
-        if (req.query.maxPrice && product.offerPrice > parseInt(+req.query.maxPrice)) {
+        if (
+          req.query.maxPrice &&
+          product.offerPrice > parseInt(+req.query.maxPrice)
+        ) {
           return false;
         }
       } else {
-        if (req.query.minPrice && product.price < parseInt(+req.query.minPrice)) {
+        if (
+          req.query.minPrice &&
+          product.price < parseInt(+req.query.minPrice)
+        ) {
           return false;
         }
-        if (req.query.maxPrice && product.price > parseInt(+req.query.maxPrice)) {
+        if (
+          req.query.maxPrice &&
+          product.price > parseInt(+req.query.maxPrice)
+        ) {
           return false;
         }
       }

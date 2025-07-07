@@ -45,7 +45,7 @@ const Nav = (props) => {
                       .map((item, index) => {
                         return (
                           <li className="list-inline-item" key={index}>
-                            <Link to={`/category/${item?.id}`}>
+                            <Link to={`/product/category/${item?.id}`}>
                               <Button>
                                 {item.name}
                                 {item?.children?.length !== 0 && (
@@ -65,7 +65,7 @@ const Nav = (props) => {
                                         style={{ width: "100%" }}
                                       >
                                         <Link
-                                          to={`/category/subCat/${item?.id}`}
+                                          to={`/product/subCat/${item_?.id}`}
                                         >
                                           <Button
                                             style={{
@@ -112,7 +112,7 @@ const Nav = (props) => {
                             .map((item, index) => {
                               return (
                                 <div className="col" key={index}>
-                                  <Link to={`/category/${item?.id}`}>
+                                  <Link to={`/product/category/${item?.id}`}>
                                     <h4 className="text-g">{item?.name}</h4>
                                   </Link>
 
@@ -122,7 +122,7 @@ const Nav = (props) => {
                                         return (
                                           <li key={index_}>
                                             <Link
-                                              to={`/category/subCat/${item_?.id}`}
+                                              to={`/product/subCat/${item_?.id}`}
                                             >
                                               {item_?.name}
                                             </Link>

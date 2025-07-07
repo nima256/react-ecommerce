@@ -40,6 +40,10 @@ const CategoryListing = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [productData, setProductData] = useState([]);
 
+  const [currentCat, setCurrentCat] = useState([]);
+
+  const [minMaxPrice, setMinMaxPrice] = useState([0, 100]);
+
   const context = useContext(MyContext);
 
   const { id } = useParams();
@@ -52,7 +56,7 @@ const CategoryListing = () => {
     let apiEndPoint = "";
 
     if (url.includes("subCat")) {
-      apiEndPoint = `/api/product?subCat=${id}`;
+      apiEndPoint = `/api/product?subCatId=${id}`;
     }
     if (url.includes("category")) {
       apiEndPoint = `/api/product?category=${id}`;
@@ -66,7 +70,24 @@ const CategoryListing = () => {
       }, 500);
     });
 
-    fetchDataFromApi(`/api/product/`);
+    fetchDataFromApi(`/api/category/${id}`).then((res) => {
+      setCurrentCat(res);
+    });
+
+    fetchDataFromApi(`${apiEndPoint}`).then((res) => {
+      if (res?.products?.length > 0) {
+        const prices = res.products.map(
+          (product) => product.offerPrice ?? product.price
+        );
+        const min = Math.min(...prices);
+        const max = Math.max(...prices);
+        setMinMaxPrice([min, max]);
+      }
+
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 500);
+    });
   }, [id]);
 
   function toPersianDigits(number) {
@@ -76,9 +97,17 @@ const CategoryListing = () => {
   const filterByPrice = (price, catId) => {
     setIsLoading(true);
 
-    let apiEndPint = `/api/product?minPrice=${price[0]}&maxPrice=${price[1]}&catId=${catId}`;
+    let url = window.location.href;
+    let apiEndPoint = "";
 
-    fetchDataFromApi(apiEndPint).then((res) => {
+    if (url.includes("subCat")) {
+      apiEndPoint = `/api/product?minPrice=${price[0]}&maxPrice=${price[1]}&subCatId=${catId}`;
+    }
+    if (url.includes("category")) {
+      apiEndPoint = `/api/product?minPrice=${price[0]}&maxPrice=${price[1]}&catId=${catId}`;
+    }
+
+    fetchDataFromApi(apiEndPoint).then((res) => {
       setProductData(res);
       setTimeout(() => {
         setIsLoading(false);
@@ -92,7 +121,7 @@ const CategoryListing = () => {
         <div className="container-fluid">
           <div className="breadcrumbs mb-5">
             <div className="mt-4 mb-4 me-4">
-              <h3>کیس کامپیوتر</h3>
+              <h3>{currentCat?.length !== 0 && currentCat.name}</h3>
 
               <CacheProvider value={cacheRtl}>
                 <ThemeProvider theme={theme}>
@@ -100,11 +129,17 @@ const CategoryListing = () => {
                     separator={<NavigateBeforeIcon fontSize="small" />}
                     aria-label="breadcrumb"
                   >
-                    <Link style={{fontSize: "1.5rem"}} underline="hover" key="1" color="inherit" href="/">
+                    <LinkUI
+                      style={{ fontSize: "1.2rem" }}
+                      underline="hover"
+                      key="1"
+                      color="inherit"
+                      href="/"
+                    >
                       خانه
-                    </Link>
+                    </LinkUI>
                     <Typography key="3" sx={{ color: "text.primary" }}>
-                      کیس کامپیوتر
+                      {currentCat?.length !== 0 && currentCat.name}
                     </Typography>
                   </Breadcrumbs>
                 </ThemeProvider>
@@ -116,7 +151,11 @@ const CategoryListing = () => {
               <div className="col-md-3 sidebarWrapper">
                 <CacheProvider value={cacheRtl}>
                   <ThemeProvider theme={theme}>
-                    <Sidebar catId={id} filterByPrice={filterByPrice} />
+                    <Sidebar
+                      catId={id}
+                      filterByPrice={filterByPrice}
+                      minMaxPrice={minMaxPrice}
+                    />
                   </ThemeProvider>
                 </CacheProvider>
               </div>
@@ -272,6 +311,8 @@ const CategoryListing = () => {
                         </div>
                       );
                     })
+                  ) : isLoading ? (
+                    <Skeleton width={100} />
                   ) : (
                     <div className="">
                       <h4>محصولی یافت نشد</h4>

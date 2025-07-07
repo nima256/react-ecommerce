@@ -13,7 +13,6 @@ import { prefixer } from "stylis";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 import { Button } from "@mui/material";
-import { useRef } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { FaRegImages } from "react-icons/fa";
@@ -105,19 +104,19 @@ function ProductUpload() {
   };
 
   useEffect(() => {
-    const subCatArr = [];
-
-    context.catData?.categoryList?.length !== 0 &&
-      context.catData?.categoryList?.map((cat, index) => {
-        if (cat?.children.length !== 0) {
-          cat?.children?.map((subCat) => {
-            subCatArr.push(subCat);
-          });
-        }
-      });
-
-    setSubCategoryData(subCatArr);
-  }, [context.catData]);
+    if (category && context.catData?.categoryList?.length !== 0) {
+      const selectedCat = context.catData.categoryList.find(
+        (cat) => cat._id === category
+      );
+      if (selectedCat && selectedCat.children.length > 0) {
+        setSubCategoryData(selectedCat.children);
+      } else {
+        setSubCategoryData([]);
+      }
+    } else {
+      setSubCategoryData([]);
+    }
+  }, [category, context.catData]);
 
   // For image
   const onChageFile = async (e, apiEndPoint) => {
@@ -228,7 +227,6 @@ function ProductUpload() {
 
     if (
       formFields.name !== "" &&
-      formFields.images.length > 0 &&
       formFields.subCat !== "" &&
       formFields.description !== "" &&
       formFields.price !== null &&
