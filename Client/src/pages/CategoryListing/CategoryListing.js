@@ -6,9 +6,6 @@ import "./CategoryListing.css";
 import Sidebar from "../../components/sidebar/sidebar";
 import { MyContext } from "../../App";
 
-import { ThemeProvider } from "@mui/material/styles";
-import { cacheRtl, theme } from "./rtlTheme";
-import { CacheProvider } from "@emotion/react";
 import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 import FilterListOutlinedIcon from "@mui/icons-material/FilterListOutlined";
 import Skeleton from "react-loading-skeleton";
@@ -16,6 +13,24 @@ import Skeleton from "react-loading-skeleton";
 import { Button, ClickAwayListener } from "@mui/material";
 import { fetchDataFromApi } from "../../utils/api";
 import Product from "../../components/product/product";
+
+import Breadcrumbs from "@mui/material/Breadcrumbs";
+import Typography from "@mui/material/Typography";
+import LinkUI from "@mui/material/Link";
+import Stack from "@mui/material/Stack";
+import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
+
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import createCache from "@emotion/cache";
+import rtlPlugin from "stylis-plugin-rtl";
+import { prefixer } from "stylis";
+import { CacheProvider } from "@emotion/react";
+
+const theme = createTheme({ direction: "rtl" });
+const cacheRtl = createCache({
+  key: "muirtl",
+  stylisPlugins: [prefixer, rtlPlugin],
+});
 
 const CategoryListing = () => {
   const [isOpenDropDown, setIsOpenDropDown] = useState(false);
@@ -75,6 +90,27 @@ const CategoryListing = () => {
     <>
       <section className="shoppingPage">
         <div className="container-fluid">
+          <div className="breadcrumbs mb-5">
+            <div className="mt-4 mb-4 me-4">
+              <h3>کیس کامپیوتر</h3>
+
+              <CacheProvider value={cacheRtl}>
+                <ThemeProvider theme={theme}>
+                  <Breadcrumbs
+                    separator={<NavigateBeforeIcon fontSize="small" />}
+                    aria-label="breadcrumb"
+                  >
+                    <Link style={{fontSize: "1.5rem"}} underline="hover" key="1" color="inherit" href="/">
+                      خانه
+                    </Link>
+                    <Typography key="3" sx={{ color: "text.primary" }}>
+                      کیس کامپیوتر
+                    </Typography>
+                  </Breadcrumbs>
+                </ThemeProvider>
+              </CacheProvider>
+            </div>
+          </div>
           <div className="shoppingData">
             <div className="row">
               <div className="col-md-3 sidebarWrapper">

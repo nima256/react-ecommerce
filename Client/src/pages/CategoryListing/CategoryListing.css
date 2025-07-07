@@ -1,0 +1,15 @@
+.breadcrumbs {
+  display: flex;
+  flex-direction: column;
+  background-color: #bbebd6;
+  height: max-content;
+  border-radius: 10px;
+}
+
+.muirtl-4leci6-MuiTypography-root {
+  font-size: 1.5rem !important;
+}
+
+.muirtl-120dh41-MuiSvgIcon-root {
+  font-size: 1.5rem !important;
+}

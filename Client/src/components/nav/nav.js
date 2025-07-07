@@ -41,7 +41,7 @@ const Nav = (props) => {
                   {navData !== undefined &&
                     navData?.length !== 0 &&
                     navData
-                      ?.filter((item, idx) => idx < 6)
+                      ?.filter((item, idx) => idx < 3)
                       .map((item, index) => {
                         return (
                           <li className="list-inline-item" key={index}>
