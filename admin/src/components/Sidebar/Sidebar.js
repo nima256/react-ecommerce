@@ -70,9 +70,6 @@ function Sidebar() {
                   <Link to={"/products"}>لیست محصولات</Link>
                 </li>
                 <li>
-                  <Link to={"/product/detail"}>دیدن محصولات</Link>
-                </li>
-                <li>
                   <Link to={"/product/upload"}>اضافه محصول</Link>
                 </li>
               </ul>
