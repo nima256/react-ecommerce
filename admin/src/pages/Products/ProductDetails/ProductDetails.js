@@ -111,6 +111,7 @@ function ProductDetails() {
     const match = str.match(/url:\s*'([^']+)'/); // extract value between url: '...'
     return match ? match[1] : null;
   }
+  
 
   return (
     <>
@@ -126,7 +127,18 @@ function ProductDetails() {
                     className="zoomSliderBig"
                     ref={zoomSliderBig}
                   >
-                    <div className="item">
+                    {productData?.images?.length !== 0 && productData?.images?.length !== undefined &&
+                      productData?.images?.map((item, index) => {
+                        return (
+                          <div className="item" key={index}>
+                            <InnerImageZoom
+                              src={extractImageUrl(item)}
+                              zoomType="hover"
+                            />
+                          </div>
+                        );
+                      })}
+                    {/* <div className="item">
                       <InnerImageZoom src={productImage1} zoomType="hover" />
                     </div>
                     <div className="item">
@@ -143,12 +155,25 @@ function ProductDetails() {
                     </div>
                     <div className="item">
                       <InnerImageZoom src={productImage6} zoomType="hover" />
-                    </div>
+                    </div> */}
                   </Slider>
                 </div>
 
                 <Slider {...settings} className="zoomSlider" ref={zoomSlider}>
-                  <div className="item">
+                  {productData?.images?.length !== 0 && productData?.images?.length !== undefined &&
+                    productData?.images.map((item, index) => {
+                      return (
+                        <div className="item" key={index}>
+                          <img
+                            src={extractImageUrl(item)}
+                            alt=""
+                            className="w-100"
+                            onClick={() => goto(0)}
+                          />
+                        </div>
+                      );
+                    })}
+                  {/* <div className="item">
                     <img
                       src={productImage1}
                       alt=""
@@ -195,7 +220,7 @@ function ProductDetails() {
                       className="w-100"
                       onClick={() => goto(5)}
                     />
-                  </div>
+                  </div> */}
                 </Slider>
                 {/* productZoom end */}
 

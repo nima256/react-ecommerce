@@ -225,3 +225,19 @@ body.dark .reviewForm textarea::-webkit-input-placeholder {
   border-radius: 10px;
   padding-left: 20px !important;
 }
+
+.slick-arrow {
+  position: absolute !important;
+  top: 47% !important;
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50% !important;
+  background: #f2f3f4 !important;
+  z-index: 100;
+  font-family: FontAwesome !important;
+  transition: all 0.2s ease-in-out;
+}
+
+.slick-prev:before, .slick-next:before {
+  color: black !important;
+}
