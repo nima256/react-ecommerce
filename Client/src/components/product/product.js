@@ -74,7 +74,7 @@ const Product = (props) => {
                 : null}
             </span>
           ))}
-        <Link to={`/product/${productData?.id}`}>
+        <Link to={`/product/details/${productData?._id}`}>
           {props.isLoading ? (
             <Skeleton height={250} />
           ) : (

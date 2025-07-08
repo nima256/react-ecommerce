@@ -201,3 +201,27 @@ body.dark .reviewForm textarea {
 body.dark .reviewForm textarea::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.5) !important;
 }
+
+.productZoom {
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0px;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.zoomSliderBig {
+  width: 100% !important;
+}
+
+.zoomSlider * {
+  padding-top: 1px;
+  cursor: pointer;
+  outline: none !important;
+}
+
+.zoomSlider .slick-slide {
+  border-radius: 10px;
+  padding-left: 20px !important;
+}

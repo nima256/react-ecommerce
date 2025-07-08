@@ -34,6 +34,13 @@ import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchDataFromApi } from "../../../utils/api";
 
+import productImage1 from "../../../assets/images/productDetails/1.webp";
+import productImage2 from "../../../assets/images/productDetails/2.webp";
+import productImage3 from "../../../assets/images/productDetails/3.webp";
+import productImage4 from "../../../assets/images/productDetails/4-1.jpg";
+import productImage5 from "../../../assets/images/productDetails/5-1.jpg";
+import productImage6 from "../../../assets/images/productDetails/6.webp";
+
 const theme = (outerTheme) =>
   createTheme({
     direction: "rtl",
@@ -44,6 +51,14 @@ const cacheRtl = createCache({
   stylisPlugins: [prefixer, rtlPlugin],
 });
 // rtl end
+
+const images = [
+  "https://ik.imagekit.io/gm3v3vuxiu/categories/1748865888153-computer-case_Jc9xJksP2.svg",
+  "https://ik.imagekit.io/gm3v3vuxiu/categories/1748865908163-motherboard_Zz6rC2AvS.svg",
+  "https://ik.imagekit.io/gm3v3vuxiu/categories/1748865927093-cpu_k3a-HJ7EFx.svg",
+  "https://ik.imagekit.io/gm3v3vuxiu/categories/1748865943959-gpu_9bpHqUVGB.svg",
+  "https://ik.imagekit.io/gm3v3vuxiu/categories/1748866022714-keyboard_A0a51i95k.svg",
+];
 
 function ProductDetails() {
   const [productData, setProductData] = useState([]);
@@ -97,68 +112,102 @@ function ProductDetails() {
     return match ? match[1] : null;
   }
 
-  console.log(productData.images);
-
   return (
     <>
       <div className="right-content w-100">
         <div className="card productDetailsSection">
           <div className="row">
             <div className="col-md-4">
-              <div className="sliderWrapper pt-3 pb-3 ps-4 pe-4">
-                <h5 className="mb-4">گالری محصول</h5>
+              <div className="container detailsContainer pt-5 pb-3">
+                {/* productZoom start */}
                 <div className="productZoom">
-
                   <Slider
                     {...zoomSliderSettings}
                     className="zoomSliderBig"
                     ref={zoomSliderBig}
                   >
-                    {productData?.images?.length !== 0 &&
-                      productData?.images?.length !== undefined &&
-                      productData?.images?.map((item) => {
-                        return (
-                          <div className="item">
-                            <InnerImageZoom
-                              src={extractImageUrl(
-                                productData?.images?.length === 1
-                                  ? item
-                                  : item[0]
-                              )}
-                              zoomType="hover"
-                            />
-                          </div>
-                        );
-                      })}
+                    <div className="item">
+                      <InnerImageZoom src={productImage1} zoomType="hover" />
+                    </div>
+                    <div className="item">
+                      <InnerImageZoom src={productImage2} zoomType="hover" />
+                    </div>
+                    <div className="item">
+                      <InnerImageZoom src={productImage3} zoomType="hover" />
+                    </div>
+                    <div className="item">
+                      <InnerImageZoom src={productImage4} zoomType="hover" />
+                    </div>
+                    <div className="item">
+                      <InnerImageZoom src={productImage5} zoomType="hover" />
+                    </div>
+                    <div className="item">
+                      <InnerImageZoom src={productImage6} zoomType="hover" />
+                    </div>
                   </Slider>
                 </div>
 
                 <Slider {...settings} className="zoomSlider" ref={zoomSlider}>
-                  {productData?.images?.length !== 0 &&
-                    productData?.images?.length !== undefined &&
-                    productData?.images?.map((item, index) => {
-                      return (
-                        <div className="item">
-                          <img
-                            src={extractImageUrl(
-                              productData?.images?.length === 1 ? '' : item[index+1]
-                            )}
-                            alt=""
-                            className="w-100"
-                            onClick={() => goto(0)}
-                          />
-                        </div>
-                      );
-                    })}
+                  <div className="item">
+                    <img
+                      src={productImage1}
+                      alt=""
+                      className="w-100"
+                      onClick={() => goto(0)}
+                    />
+                  </div>
+                  <div className="item">
+                    <img
+                      src={productImage2}
+                      alt=""
+                      className="w-100"
+                      onClick={() => goto(1)}
+                    />
+                  </div>
+                  <div className="item">
+                    <img
+                      src={productImage3}
+                      alt=""
+                      className="w-100"
+                      onClick={() => goto(2)}
+                    />
+                  </div>
+                  <div className="item">
+                    <img
+                      src={productImage4}
+                      alt=""
+                      className="w-100"
+                      onClick={() => goto(3)}
+                    />
+                  </div>
+                  <div className="item">
+                    <img
+                      src={productImage5}
+                      alt=""
+                      className="w-100"
+                      onClick={() => goto(4)}
+                    />
+                  </div>
+                  <div className="item">
+                    <img
+                      src={productImage6}
+                      alt=""
+                      className="w-100"
+                      onClick={() => goto(5)}
+                    />
+                  </div>
                 </Slider>
+                {/* productZoom end */}
+
+                {/* productInfo start */}
+
+                {/* productInfo end */}
               </div>
             </div>
             <div className="col-md-8">
               <div className="pt-3 pb-3 ps-4 pe-4">
                 <h5 className="mb-4">توضیحات محصول</h5>
-                <h4>
-                  {productData?.name}
-                </h4>
+                <h4>{productData?.name}</h4>
 
                 <div className="productInfo mt-3">
                   <div className="row mb-2">

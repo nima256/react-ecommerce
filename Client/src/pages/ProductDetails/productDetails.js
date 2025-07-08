@@ -8,14 +8,14 @@ import productImage6 from "../../assets/images/productDetails/6.webp";
 
 import InnerImageZoom from "react-inner-image-zoom";
 import "react-inner-image-zoom/lib/styles.min.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Rating from "@mui/material/Rating";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import CompareArrowsOutlinedIcon from "@mui/icons-material/CompareArrowsOutlined";
@@ -26,14 +26,18 @@ import { cacheRtl, theme } from "./rtlTheme";
 import { CacheProvider } from "@emotion/react";
 import Product from "../../components/product/product";
 import QuantityBox from "../../components/quantityBox/quantityBox";
+import { fetchDataFromApi } from "../../utils/api";
 
 function ProductDetails() {
   const [zoomImage, setZoomImage] = useState(productImage1);
   const [value, setValue] = useState(1);
   const [activeTabs, setActiveTabs] = useState(2);
+  const [currentProduct, setCurrentProdcut] = useState({});
 
   const zoomSliderBig = useRef();
   const zoomSlider = useRef();
+
+  const { id } = useParams();
 
   const zoomSliderSettings = {
     speed: 500,
@@ -87,6 +91,14 @@ function ProductDetails() {
     arrows: true,
     autoplay: 3000,
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
+    fetchDataFromApi(`/api/product/${id}`).then((res) => {
+      setCurrentProdcut(res);
+    });
+  }, [id]);
 
   return (
     <>

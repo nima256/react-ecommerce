@@ -22,6 +22,7 @@ import EditCategory from "./pages/Categories/EditCategory/EditCategory";
 import SubCategoryList from "./pages/Categories/SubCategoryList/SubCategoryList";
 import AddSubCategory from "./pages/Categories/AddSubCategory/AddSubCategory";
 import ProductEdit from "./pages/Products/ProductEdit/ProductEdit";
+import ForTestSlider from "./pages/ForTestSlider/ForTestSlider";
 
 const MyContext = createContext();
 
@@ -209,6 +210,7 @@ function App() {
               <Route path={"/dashboard"} exact={true} element={<Dashboard />} />
               <Route path={"/login"} exact={true} element={<Login />} />
               <Route path={"/products"} exact={true} element={<Products />} />
+              <Route path={"/forTestSlider"} exact={true} element={<ForTestSlider />} />
               <Route
                 path={"/product/upload"}
                 exact={true}
